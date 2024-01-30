@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom"
-import MyPage from '../component/mypage/index'
-import Signup from '../component/signup/index'
-import Login from '../component/login/index'
+import MyPage from '../component/mypage'
+import Signup from '../component/signup'
+import Login from '../component/login'
 import Main from '../component/main'
 import App from "../App"
 
