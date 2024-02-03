@@ -66,7 +66,7 @@ export const Minibox = styled.div`
     justify-content: center;
 `
 
-export const ID_Mini = styled.div`
+export const ID_find = styled.div`
     width: 49px;
     height: 12px;
     font-size: 10px;
@@ -76,7 +76,7 @@ export const ID_Mini = styled.div`
     font-weight: 500;
 `
 
-export const Pwd_Mini = styled.div`
+export const Pwd_find = styled.div`
     width: 58px;
     height: 12px;
     font-size: 10px;
@@ -86,7 +86,7 @@ export const Pwd_Mini = styled.div`
     font-weight: 500;
 `
 
-export const Signup_Mini = styled.div`
+export const Signup = styled.div`
     width: 37px;
     height: 12px;
     font-size: 10px;
@@ -101,9 +101,10 @@ export const Social = styled.div`
     justify-content: center;
 `
 
-export const Social_Mini = styled.div`
+export const Social_button = styled.div`
     height: 35px;
     width: 35px;
     margin-left: 22px;
-    margin-right: 22px;   
+    margin-right: 22px;
+   
 `
