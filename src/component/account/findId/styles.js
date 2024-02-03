@@ -27,7 +27,6 @@ export const Find_id = styled.div`
 
 `
 export const Information = styled.div`
-    height: 15px;
     margin-top: 7px;
     font-size: 13px;
     font-weight: 500;
