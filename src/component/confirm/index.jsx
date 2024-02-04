@@ -33,7 +33,7 @@ const index = () => {
         console.log("naver token: ", token);
       }
       if(code){
-        // kakao();
+        kakao();
         naver();
       }
     }, []);

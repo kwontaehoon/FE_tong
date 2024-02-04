@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const REST_API_KEY ="JQ3LN1au64GoCxY_jppC";
-const REDIRECT_URI = "http://localhost:5173";
+// const REDIRECT_URI = "http://localhost:5173";
+const REDIRECT_URI = "http://52.78.174.115";
 const REST_API_SECRET_KEY = "FChqSs3QA6";
 
 export const naverLogin = () => {
