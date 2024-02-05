@@ -1,5 +1,4 @@
 import * as React from 'react';
-import Main from './main'
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -8,25 +7,28 @@ import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import ListSubheader from '@mui/material/ListSubheader';
-import DraftsIcon from '@mui/icons-material/Drafts';
-import SendIcon from '@mui/icons-material/Send';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import Collapse from '@mui/material/Collapse';
 import StarBorder from '@mui/icons-material/StarBorder';
+import { useNavigate } from 'react-router-dom';
+import Banner from './main/banner'
+import Pick from './main/pick'
+import Reservation from './main/reservation'
+import SearchRecommend from './search/searchRecommend'
+
 
 const index = (props) => {
 
     const drawerWidth = 240;
+    const navigate = useNavigate();
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
     const [isClosing, setIsClosing] = React.useState(false);
@@ -54,7 +56,7 @@ const index = (props) => {
 
     const drawer = (
         <div>
-            <Toolbar />
+            <Toolbar onClick={()=>navigate("/")}>홈</Toolbar>
             <Divider />
             <List
                 sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
@@ -85,7 +87,7 @@ const index = (props) => {
                     </List>
                 </Collapse>
 
-                <Collapse in={open} timeout="auto" unmountOnExit onClick={()=>setContent("PICK")}>
+                <Collapse in={open} timeout="auto" unmountOnExit onClick={()=>setContent("pick")}>
                     <List component="div" disablePadding>
                         <ListItemButton sx={{ pl: 4 }}>
                             <ListItemIcon>
@@ -96,19 +98,42 @@ const index = (props) => {
                     </List>
                 </Collapse>
 
+                <Collapse in={open} timeout="auto" unmountOnExit onClick={()=>setContent("reservation")}>
+                    <List component="div" disablePadding>
+                        <ListItemButton sx={{ pl: 4 }}>
+                            <ListItemIcon>
+                                <StarBorder />
+                            </ListItemIcon>
+                            <ListItemText primary="예약" />
+                        </ListItemButton>
+                    </List>
+                </Collapse>
+
             </List>
             <Divider />
-            <List>
-                {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                    <ListItem key={text} disablePadding>
-                        <ListItemButton>
+            <List
+                sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
+                component="nav"
+                aria-labelledby="nested-list-subheader"
+            >
+                <ListItemButton onClick={handleClick}>
+                    <ListItemIcon>
+                        <InboxIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="검색" />
+                    {open ? <ExpandLess /> : <ExpandMore />}
+                </ListItemButton>
+
+                <Collapse in={open} timeout="auto" unmountOnExit onClick={()=>setContent("searchRecommend")}>
+                    <List component="div" disablePadding>
+                        <ListItemButton sx={{ pl: 4 }}>
                             <ListItemIcon>
-                                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                                <StarBorder />
                             </ListItemIcon>
-                            <ListItemText primary={text} />
+                            <ListItemText primary="추천 검색어" />
                         </ListItemButton>
-                    </ListItem>
-                ))}
+                    </List>
+                </Collapse>
             </List>
         </div>
     );
@@ -117,7 +142,7 @@ const index = (props) => {
 
     return (
         <div className='flex'>
-            <Box sx={{ display: 'flex' }}>
+            <Box className="w-full" sx={{ display: 'flex' }}>
                 <CssBaseline />
                 <AppBar
                     position="fixed"
@@ -173,12 +198,15 @@ const index = (props) => {
                         {drawer}
                     </Drawer>
                 </Box>
-                <Box
+                <Box className='w-full'
                     component="main"
-                    sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
+                    sx={{  p: 3  }}
                 >
                     <Toolbar />
-                    <Main content={content} />
+                    {content == "searchRecommend" && <Banner />}
+                    {content == "pick" && <Pick />}
+                    {content == "reservation" && <Reservation />}
+                    {content == "" && <SearchRecommend />}
                 </Box>
             </Box>
         </div>
