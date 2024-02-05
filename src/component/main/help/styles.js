@@ -1,9 +1,10 @@
 import styled from "styled-components";
 
-
-
+export const Container = styled.div`
+   
+`
 export const Help = styled.div`
-    width: 394px;
+
     height: 180px;
     border: 1px solid;
     margin-top: 12px;
@@ -21,9 +22,8 @@ export const Question = styled.div`
     font-size: 20px;
     font-weight: 700;
 `
-export const Img = styled.div`
+export const IconBox = styled.div`
     height: 120px;
-    border: 1px solid;
     display: flex;
     margin-top: 20px;
     justify-content: center;
@@ -35,37 +35,28 @@ export const Button = styled.div`
     border: 1px solid;
     border-radius: 20px;
     display: flex;
+    align-items: center;
     justify-content: center;
+    margin-top: 8px;
     
 `
-export const Ikon = styled.div`
-    width: 33px;
-    height: 23px;
-    border: 1px solid;
+export const Icon = styled.div`
+   
 
 `
 export const Name = styled.div`
-    width: 35px;
-    height: 20px;
-    border: 1px solid;
     margin-top: 8px;
     font-size: 13px;
     font-weight: 700;
     white-space: nowrap;
 `
 export const Reservation = styled.div`
-    width: 24px;
-    height: 20px;
-    border: 1px solid;
     font-size: 13px;
     font-weight: 700;
     white-space: nowrap;
-    margin-top: 8px;
+    margin: 8px 0px 0px 8px;
 `
 export const Community = styled.div`
-    width: 47px;
-    height: 20px;
-    border: 1px solid;
     font-size: 13px;
     font-weight: 700;
     margin-top: 8px;

@@ -1,9 +1,18 @@
 import React from 'react'
+import Header from './header'
+import Banner from'./banner'
+import Help from './help'
+import Reservation from './reservation'
 
 const index = () => {
 
   return (
-    <div>메인페이지</div>
+    <>
+      <Header />
+      <Banner />
+      <Help />
+      <Reservation/>
+    </>
   )
 }
 
