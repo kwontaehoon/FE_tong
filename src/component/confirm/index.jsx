@@ -51,6 +51,7 @@ const index = () => {
         <div><span className='mb-2 cursor-pointer' onClick={()=>navigate("/mypage")}>마이페이지</span></div>
         <div><span className='mb-2 cursor-pointer' onClick={kakaoLogin}>카카오 로그인</span></div>
         <div><span className='mb-2 cursor-pointer' onClick={naverLogin}>네이버 로그인</span></div>
+        <div><span className='mb-2 cursor-pointer' onClick={()=>navigate("/admin")}>관리자 페이지</span></div>
     </div>
   )
 }
