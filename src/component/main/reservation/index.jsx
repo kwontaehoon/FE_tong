@@ -10,7 +10,14 @@ import {Container,Recommendation,
   Img,
   Img_Name,
   Place,
-  Soccer
+  Soccer,
+  Recommended_Ground,
+  Explanation,
+  Star,
+  Horoscope,
+  Arrow,
+  Recommended_Ground_Bix,
+  Soccer_Field_Box
 
 } from './styles'
 
@@ -19,7 +26,31 @@ const index = () => {
     <Container>
       <Recommendation>
         <Recommendation_Box>
-          <Ground></Ground>
+          <Ground>
+            <Recommended_Ground>
+              < Recommended_Ground_Bix>
+                추천운통장
+              </Recommended_Ground_Bix>
+              <Arrow>
+                <img src="svg/Right Arrow.svg"></img>
+              </Arrow>
+            </Recommended_Ground>
+
+
+            <Explanation>
+              김포 마산 축구장
+              금일예약*인원 가능
+            </Explanation>
+            <Star>
+              <img src="svg/Star.svg"></img>
+              <img src="svg/Star.svg"></img>
+              <img src="svg/Star.svg"></img>
+              <img src="svg/Star.svg"></img>
+              <img src="svg/Star.svg"></img>
+              <Horoscope>4.8</Horoscope>
+            </Star>
+
+          </Ground>
           <PlayGround>
             <img src="svg/PlayGround.svg"></img>
             <Sun>
@@ -30,36 +61,36 @@ const index = () => {
           </PlayGround>
 
         </Recommendation_Box>
-        <Recommendation_Box>
+        <Soccer_Field_Box>
 
           <Soccer_Field>
             <Img_Name>
-            <Place>여기어때요</Place>
-            <Soccer>장기동축구장</Soccer>
+              <Place>여기어때요</Place>
+              <Soccer>장기동축구장</Soccer>
             </Img_Name>
             <Img>
-            <img src = "svg/Ground-1.svg"></img>
+              <img src="svg/Ground-1.svg"></img>
             </Img>
           </Soccer_Field>
 
           <Soccer_Field>
             <Img_Name>
-            <Place>여기어때요</Place>
-            <Soccer>장기동축구장</Soccer>
+              <Place>여기어때요</Place>
+              <Soccer>장기동축구장</Soccer>
             </Img_Name>
             <Img>
-            <img src = "svg/Ground-2.svg"></img></Img>
-            </Soccer_Field>
+              <img src="svg/Ground-2.svg"></img></Img>
+          </Soccer_Field>
           <Soccer_Field>
 
             <Img_Name>
-            <Place>여기어때요</Place>
-            <Soccer>장기동축구장</Soccer>
+              <Place>여기어때요</Place>
+              <Soccer>장기동축구장</Soccer>
             </Img_Name>
             <Img>
-            <img src = "svg/Ground-3.svg"></img></Img>
+              <img src="svg/Ground-3.svg"></img></Img>
           </Soccer_Field>
-        </Recommendation_Box>
+        </Soccer_Field_Box>
       </Recommendation>
     </Container>
   )
