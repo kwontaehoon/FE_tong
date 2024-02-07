@@ -85,7 +85,8 @@ font-weight: bold;
 
 export const Soccer_Field = styled.div`
     height: 86px;
-    border: 1px solid ;
+    padding: 10px;
+    border: 1px solid;
     display: flex;
     justify-content: center;
     align-items: center;
