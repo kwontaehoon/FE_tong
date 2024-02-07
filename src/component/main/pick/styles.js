@@ -28,6 +28,8 @@ export const Icon = styled.div`
     border: 1px solid;
     display: flex;
     margin-top: 20px;
+    position: fixed;
+    bottom:0;
 `
 export const Icon_Box = styled.div`
     width: 35px;
@@ -65,17 +67,13 @@ export const House = styled.div`
     font-weight: 500;
 `
 
-export const Scrollbar = styled.div`
-    height: 21px;
-    border: 1px solid blue;
-    
-`
 export const SpeechBubble = styled.div`
     width: 372px;
     height: 145px;
     border: 1px solid;
     display: flex;
     flex-direction: column;
+    margin-top: 12px;
 `
 export const SpeechBubble_Box  = styled.div`
     width: 241px;

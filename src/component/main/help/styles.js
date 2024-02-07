@@ -37,7 +37,7 @@ export const Button = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 8px;
+    margin: 8px 6px 0px 6px;
     
 `
 export const Icon = styled.div`

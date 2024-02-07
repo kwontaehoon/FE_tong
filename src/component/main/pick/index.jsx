@@ -9,7 +9,6 @@ Home_Box,
 Home,
 Home_Name ,
 House,
-Scrollbar,
 SpeechBubble,
 SpeechBubble_Box, 
 SpeechBubble_Center,
@@ -55,9 +54,7 @@ const index = () => {
 
         </Icon_Box>
       </Icon>
-      < Scrollbar>
 
-      </Scrollbar>
       <SpeechBubble>
         <SpeechBubble_Box>
           <MZ>
