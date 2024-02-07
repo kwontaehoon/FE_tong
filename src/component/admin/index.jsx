@@ -203,10 +203,10 @@ const index = (props) => {
                     sx={{  p: 3  }}
                 >
                     <Toolbar />
-                    {content == "searchRecommend" && <Banner />}
+                    {content == "" && <Banner />}
                     {content == "pick" && <Pick />}
                     {content == "reservation" && <Reservation />}
-                    {content == "" && <SearchRecommend />}
+                    {content == "searchRecommend" && <SearchRecommend />}
                 </Box>
             </Box>
         </div>
