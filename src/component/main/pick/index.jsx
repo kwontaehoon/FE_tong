@@ -39,10 +39,8 @@ const index = () => {
               <img src="svg/Home_black.svg"></img>
             </House>
           </Home>
-
           <Home_Name>홈</Home_Name>
         </Home_Box>
-
         <Icon_Box>
           <img src="svg/Home.svg"></img>
           <House>찜</House>
@@ -51,10 +49,8 @@ const index = () => {
         <Icon_Box>
           <img src="svg/Home.svg"></img>
           <House>카테고리</House>
-
         </Icon_Box>
       </Icon>
-
       <SpeechBubble>
         <SpeechBubble_Box>
           <MZ>

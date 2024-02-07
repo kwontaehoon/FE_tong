@@ -4,7 +4,6 @@ export const Container = styled.div`
 
 `
 export const Ground_Pick = styled.div`
-    width: 430px;
     height: 25px;
     margin: 20px 0px 0px 10px;
     display: flex;
@@ -23,17 +22,17 @@ export const Pick = styled.div`
     font-weight: 700;
 `
 export const Icon = styled.div`
-    width: 372px;
+    width: 100%;
     height: 72px;
-    border: 1px solid;
     display: flex;
     margin-top: 20px;
     position: fixed;
-    bottom:0;
+    left: 0;
+    bottom: 0;
+    background-color: white;
 `
 export const Icon_Box = styled.div`
-    width: 35px;
-    margin: 0px 20px 0px 20px;
+    width: 20%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -41,11 +40,14 @@ export const Icon_Box = styled.div`
     
 `
 export const Home_Box = styled.div`
-    width: 53px;
     height: 77px;
     position: relative;
     bottom: 30px;
-   
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 `
 export const Home = styled.div`
     width: 53px;
@@ -68,7 +70,6 @@ export const House = styled.div`
 `
 
 export const SpeechBubble = styled.div`
-    width: 372px;
     height: 145px;
     border: 1px solid;
     display: flex;

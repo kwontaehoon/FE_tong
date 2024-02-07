@@ -1,10 +1,8 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-   
 `
 export const Help = styled.div`
-
     height: 180px;
     border: 1px solid;
     margin-top: 12px;

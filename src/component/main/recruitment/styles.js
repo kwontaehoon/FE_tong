@@ -1,14 +1,12 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-
+    margin-bottom: 102px;
 `
 export const Recruitment = styled.div`
-    width: 394px;
     height: 300px;
 `
 export const Soccer_Team = styled.div`
-    width: 365px;
     height: 89px;
     border: 1px solid;
     margin-top: 12px;
@@ -37,6 +35,6 @@ export const Img = styled.div`
 export const Rescue = styled.div`
     font-size: 14px;
     color: gray;
-    white-space: nowrap;
+    white-space: pre-wrap;
     margin-top: 6px;
 `

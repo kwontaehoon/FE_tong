@@ -10,12 +10,10 @@ border-radius: 15px;
 
 `
 export const Soccer_Field_Box = styled.div`
-width: 191px;
 height: 282px;
 border-radius: 15px;
 `
 export const Recommendation_Box = styled.div`
-width: 191px;
 height: 282px;
 display: flex;
 flex-direction: column;
@@ -24,23 +22,19 @@ border: 1px solid ;
 border-radius: 15px;
 margin-top: 10px;
 margin-right: 12px;
-
 `
 
 export const Ground = styled.div`
-width: 151px;
 height: 110px;
 margin: 10px 0px 6px 0px;
 border-radius: 15px;
 
 `
 export const PlayGround = styled.div`
-    width: 151px;
     height: 110px;
 
 `
 export const Recommended_Ground = styled.div`
-    width: 140px;
     height: 20px;
     display: flex;
     margin-left: 8px;
@@ -58,13 +52,10 @@ export const Arrow = styled.div`
 `
 
 export const Explanation = styled.div`
-    width: 112px;
     height: 35px;
     font-size: 13px;
     margin-left: 6px;
     margin-top: 10px;
-   
-
 `
 export const Star = styled.div`
     display: flex;
@@ -93,7 +84,6 @@ font-weight: bold;
 `
 
 export const Soccer_Field = styled.div`
-    width: 190px;
     height: 86px;
     border: 1px solid ;
     display: flex;

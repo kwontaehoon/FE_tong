@@ -1,11 +1,8 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    width: 430px;
-   
 `
 export const Gimpo = styled.div`
-    width: 382px;
     height: 60px;
     display: flex;
     align-items: center;
@@ -34,5 +31,5 @@ export const Tong = styled.div`
     color: #007CFF;
 `
 export const Lightning = styled.div`
-    margin-right: 8px;
+    margin-right: 0x;
 `

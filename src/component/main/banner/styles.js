@@ -6,5 +6,4 @@ export const Container = styled.div`
     justify-content: center;
 `
 export const Gimpo_Playground = styled.div`
-    width: 394px;
 `
