@@ -6,11 +6,10 @@ import {
     Question,
     IconBox,
     Button,
-    Icon,
     Name,
     Reservation,
     Community,
-   
+
 } from './styles'
 
 const index = () => {
@@ -22,34 +21,25 @@ const index = () => {
                 </Help_Question>
                 <IconBox>
                     <Button>
-                        <Icon>
-                            <img src="svg/Cloud.svg"></img>
-                            <Name>운동장</Name>
-                        </Icon>
+                        <img src="svg/Cloud.svg"></img>
+                        <Name>운동장</Name>
                     </Button>
 
                     <Button>
-                        <Icon>
-                            <img src="svg/Cloud.svg"></img>
-                            <Name>스케쥴</Name>
-                        </Icon>
+                        <img src="svg/Cloud.svg"></img>
+                        <Name>스케쥴</Name>
                     </Button>
                     <Button>
-                        <Icon>
                             <img src="svg/Cloud.svg"></img>
                             <Reservation>예약</Reservation>
-                        </Icon>
                     </Button>
                     <Button>
-                        <Icon>
                             <img src="svg/Cloud.svg"></img>
                             <Community>커뮤니티</Community>
-
-                        </Icon>
                     </Button>
                 </IconBox>
             </Help>
-            
+
         </Container>
     )
 }

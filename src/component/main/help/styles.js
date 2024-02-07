@@ -1,14 +1,12 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-   
 `
 export const Help = styled.div`
-
     height: 180px;
     border: 1px solid;
     margin-top: 12px;
-    border-radius: 20px 20px 20px 20px;
+    border-radius: 20px;
 
 `
 export const Help_Question = styled.div`
@@ -17,7 +15,6 @@ export const Help_Question = styled.div`
 `
 export const Question = styled.div`
     height: 20px;
-    margin-left: 30px;
     margin-top: 20px;
     font-size: 20px;
     font-weight: 700;
@@ -32,17 +29,13 @@ export const IconBox = styled.div`
 export const Button = styled.div`
     width: 80px;
     height: 80px;
-    border: 1px solid;
     border-radius: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 8px;
-    
-`
-export const Icon = styled.div`
-   
-
+    flex-direction: column;
+    margin: 8px 6px 0px 6px;
+    background: #FAFBFD;
 `
 export const Name = styled.div`
     margin-top: 8px;
