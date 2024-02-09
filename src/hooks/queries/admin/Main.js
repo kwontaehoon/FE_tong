@@ -1,12 +1,41 @@
 import { useQuery, useMutation } from "react-query";
-import { getPickList, postPickModify } from "../../../service/admin/Main";
+import { getBannerList, postBannerModify, getPickList, postPickModify } from "../../../service/admin/Main";
 
 const MAIN_KEYS = {
+  bannerList: "bannerList",
   pickList: "pickList"
 }
 
 /**
- * 목록
+ * Banner 목록
+ * 
+ */
+export const useBannerListQuery = () => {
+  return useQuery(MAIN_KEYS.bannerList, async () => {
+      const { data } = await getBannerList();
+      return data;
+  }, {
+    staleTime: Infinity,
+  });
+};
+
+/**
+ * Banner 수정
+ * 
+ */
+export const useBannerModifyMutation = () =>
+  useMutation({
+    mutationFn: (params) => {
+      console.log("params: ", params);
+      return postBannerModify(params);
+    },
+    onSuccess: () => {
+      // 성공 시 실행할 로직 추가
+    }
+  });
+
+/**
+ * Pick 목록
  * 
  */
 export const usePickListQuery = () => {
@@ -19,7 +48,7 @@ export const usePickListQuery = () => {
 };
 
 /**
- * 수정
+ * Pick 수정
  * 
  */
 export const usePickModifyMutation = () =>
