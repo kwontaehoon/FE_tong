@@ -10,6 +10,7 @@ const MAIN_KEYS = {
  * Banner 목록
  * 
  */
+
 export const useBannerListQuery = () => {
   return useQuery(MAIN_KEYS.bannerList, async () => {
       const { data } = await getBannerList();
@@ -23,10 +24,10 @@ export const useBannerListQuery = () => {
  * Banner 수정
  * 
  */
+
 export const useBannerModifyMutation = () =>
   useMutation({
     mutationFn: (params) => {
-      console.log("params: ", params);
       return postBannerModify(params);
     },
     onSuccess: () => {
@@ -38,6 +39,7 @@ export const useBannerModifyMutation = () =>
  * Pick 목록
  * 
  */
+
 export const usePickListQuery = () => {
     return useQuery(MAIN_KEYS.pickList, async () => {
         const { data } = await getPickList();
@@ -51,6 +53,7 @@ export const usePickListQuery = () => {
  * Pick 수정
  * 
  */
+
 export const usePickModifyMutation = () =>
   useMutation({
     mutationFn: (params) => {

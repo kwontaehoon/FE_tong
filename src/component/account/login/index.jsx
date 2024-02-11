@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
     Component,
     Header,
@@ -13,11 +13,18 @@ import {
     Signup,
     Minibox,
     Social_button
-
 } from './styles'
+import { useLoginMutation } from '../../../hooks/queries/api/Account'
 
 const index = () => {
 
+    const [info, setInfo] = useState({
+        id: '',
+        password: ''
+    });
+    console.log("info: ", info);
+    const [validation, setValidation] = useState(); // 유효성 검사
+    const { mutate: login } = useLoginMutation();
 
     return (
         <Component>
@@ -26,10 +33,9 @@ const index = () => {
             <Logo>LOGO</Logo>
 
             <Center>
-                <Id placeholder='아이디'></Id>
-                <Pwd placeholder='비밀번호'></Pwd>
-                <Login>로그인</Login>
-
+                <Id placeholder='아이디' onChange={(e)=>setInfo({...info, id: e.target.value})}></Id>
+                <Pwd placeholder='비밀번호' onChange={(e)=>setInfo({...info, password: e.target.value})}></Pwd>
+                <Login onClick={()=>login()}>로그인</Login>
                 <Minibox>
                     <ID_find>아이디 찾기</ID_find>
                     <img src="/svg/Line 2.svg" />
@@ -40,10 +46,10 @@ const index = () => {
             </Center>
 
             <Social>
-                < Social_button><img src="/svg/Ellipse 19.svg" /></Social_button>
-                < Social_button><img src="/svg/Ellipse 19.svg" /></Social_button>
+                <Social_button><img src="/svg/Ellipse 19.svg" /></Social_button>
+                <Social_button><img src="/svg/Ellipse 19.svg" /></Social_button>
+                <Social_button><img src="/svg/Ellipse 19.svg" /></Social_button>
             </Social>
-
         </Component>
     )
 }
