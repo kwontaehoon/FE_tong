@@ -23,17 +23,3 @@ export const Besides_that =styled.div`
     height: 368px;
     border: 1px solid;
 `
-export const Check_Box = styled.div`
-    height: 60px;
-    background-color: #007CFF;
-    margin-top: 20px;   
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-`
-export const Check = styled.div`
-    color: white;
-    cursor: pointer;
-    font-weight: 700;
-`

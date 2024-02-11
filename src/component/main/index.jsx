@@ -10,7 +10,7 @@ import Recruitment from './recruitment'
 const index = () => {
 
   return (
-    <div className='p-5'>
+    <div className='p-5 pt-0'>
       <Header />
       <Banner />
       <Help />

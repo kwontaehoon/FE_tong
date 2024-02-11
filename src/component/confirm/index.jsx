@@ -26,6 +26,8 @@ const index = () => {
         <div className='mb-2 cursor-pointer' onClick={()=>navigate("/findPwd_success")}>비밀번호 찾기 성공</div>
         <div className='mb-2 cursor-pointer' onClick={()=>navigate("/mypage")}>마이페이지</div>
         <div className='mb-2 cursor-pointer' onClick={()=>navigate("/Reservation")}>예약</div>
+        <div className='mb-2 cursor-pointer' onClick={()=>navigate("/reservation_details")}>예약 상세</div>
+        <div className='mb-2 cursor-pointer' onClick={()=>navigate("/Search")}>검색</div>
 
         
     </div>
