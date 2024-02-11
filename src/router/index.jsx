@@ -11,6 +11,7 @@ import NewPwd from '../component/account/newPwd'
 import FindPwd_success from '../component/account/findPwd_success'
 import Search from '../component/Search'
 import Reservation from '../component/Reservation'
+import Reservation_Details from '../component/Reservation_Details'
 
 
 
@@ -31,7 +32,8 @@ export const router = createBrowserRouter([
             { path: "/newPwd", element: <NewPwd/> },
             { path: "/findPwd_success", element: <FindPwd_success /> },
             { path: "/search", element: <Search/>},
-            { path: "/reservation", element: <Reservation/>}
+            { path: "/reservation", element: <Reservation/>},
+            { path: "/reservation_details", element: <Reservation_Details/>}
           
            
            

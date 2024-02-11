@@ -31,7 +31,9 @@ const index = () => {
         <TITLE>TITLE</TITLE>
       </TITLE_Box>
 
-      <IMG></IMG>
+      <IMG>
+      <img src ="svg/heart.svg"></img>
+      </IMG>
       <Img_Text>
         <Lorem>
           Lorem ipsum dolor sit amet
