@@ -15,7 +15,7 @@ export const Help_Question = styled.div`
 `
 export const Question = styled.div`
     height: 20px;
-    margin-top: 20px;
+    margin: 25px 0px 0px 12px;
     font-size: 20px;
     font-weight: 700;
 `

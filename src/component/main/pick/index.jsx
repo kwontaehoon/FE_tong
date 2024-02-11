@@ -3,19 +3,13 @@ import { Container,
   Ground_Pick,
 Ground,
 Pick,
-Icon,
-Icon_Box,
-Home_Box,
-Home,
-Home_Name ,
-House,
 SpeechBubble,
 SpeechBubble_Box, 
 SpeechBubble_Center,
 Interview,
 MZ,
 Club,
-Weather} from './styles'
+} from './styles'
 
 const index = () => {
   return (
@@ -24,33 +18,7 @@ const index = () => {
         <Ground>운통장</Ground>
         <Pick>PICK</Pick>
       </Ground_Pick>
-      <Icon>
-        <Icon_Box>
-          <img src="svg/Home.svg"></img>
-          <House>예약</House>
-        </Icon_Box>
-        <Icon_Box>
-          <img src="svg/Home.svg"></img>
-          <House>마이</House>
-        </Icon_Box>
-        <Home_Box>
-          <Home>
-            <House>
-              <img src="svg/Home_black.svg"></img>
-            </House>
-          </Home>
-          <Home_Name>홈</Home_Name>
-        </Home_Box>
-        <Icon_Box>
-          <img src="svg/Home.svg"></img>
-          <House>찜</House>
-        </Icon_Box>
-
-        <Icon_Box>
-          <img src="svg/Home.svg"></img>
-          <House>카테고리</House>
-        </Icon_Box>
-      </Icon>
+      
       <SpeechBubble>
         <SpeechBubble_Box>
           <MZ>
@@ -63,10 +31,7 @@ const index = () => {
 
             #동호회축구대회!!
           </Club>
-          < Weather>
-
-            #오늘의날씨!!
-          </Weather>
+         <Club>#오늘의날씨</Club>
         </SpeechBubble_Center>
         <SpeechBubble_Box>
           <Interview>

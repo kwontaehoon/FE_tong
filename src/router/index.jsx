@@ -10,6 +10,12 @@ import FindPwd from '../component/account/findPwd'
 import NewPwd from '../component/account/newPwd'
 import FindPwd_success from '../component/account/findPwd_success'
 import Admin from '../component/admin'
+import Search from '../component/Search'
+import Reservation from '../component/Reservation'
+import Reservation_Details from '../component/Reservation_Details'
+
+
+
 import App from "../App"
 
 export const router = createBrowserRouter([
@@ -26,7 +32,13 @@ export const router = createBrowserRouter([
             { path: "/findPwd", element: <FindPwd /> },
             { path: "/newPwd", element: <NewPwd/> },
             { path: "/findPwd_success", element: <FindPwd_success /> },
-            { path: "/admin", element: <Admin /> }
+            { path: "/admin", element: <Admin /> },
+            { path: "/search", element: <Search/>},
+            { path: "/reservation", element: <Reservation/>},
+            { path: "/reservation_details", element: <Reservation_Details/>}
+          
+           
+           
            
         ]
     },
