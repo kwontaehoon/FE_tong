@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Component = styled.div`
+export const Container = styled.div`
     padding: 29px 33px;
 `
 
@@ -21,11 +21,6 @@ export const Logo = styled.div`
     font-weight: 800;
 `
 
-export const Center = styled.div`
-    height: 169px;
-    margin-bottom: 39px;
-`
-
 export const Id = styled.input`
     border: 1px solid;
     width: 100%;
@@ -33,7 +28,7 @@ export const Id = styled.input`
     display: block;
     margin-bottom: 13px;
     border-radius: 15px;
-    padding-left: 13px;
+    padding: 0px 13px;
     box-sizing: border-box;
 `
 
@@ -50,7 +45,7 @@ export const Login = styled.div`
     border: 1px solid;
     width: 100%;
     height: 35px;
-    margin-top: 21px;
+    margin-top: ${props => props.$validation ? '0px' : "21px"};
     border-radius: 15px;
     display: flex;
     align-items: center;
@@ -60,25 +55,19 @@ export const Login = styled.div`
 ` 
 
 export const Minibox = styled.div`
-    height: 15px;
     display: flex;
-    margin-top: 18px;
+    margin: 18px 0px;
     justify-content: center;
 `
 
 export const ID_find = styled.div`
-    width: 49px;
-    height: 12px;
     font-size: 10px;
     white-space: nowrap;
     display: flex;
     margin-right: 9px;
     font-weight: 500;
 `
-
 export const Pwd_find = styled.div`
-    width: 58px;
-    height: 12px;
     font-size: 10px;
     white-space: nowrap;
     margin-right: 10px;
@@ -87,8 +76,6 @@ export const Pwd_find = styled.div`
 `
 
 export const Signup = styled.div`
-    width: 37px;
-    height: 12px;
     font-size: 10px;
     white-space: nowrap;
     margin-left: 11px;
@@ -96,15 +83,10 @@ export const Signup = styled.div`
 ` 
 
 export const Social = styled.div`
-    height: 35px;
     display: flex;
     justify-content: center;
 `
 
 export const Social_button = styled.div`
-    height: 35px;
-    width: 35px;
-    margin-left: 22px;
-    margin-right: 22px;
-   
+    margin: 0px 22px;
 `

@@ -1,14 +1,14 @@
 import styled from "styled-components"
 
-export const Component = styled.div`
-    padding: 33px;
-
+export const Container = styled.div`
+    padding: 20px;
 `
 export const Top = styled.div`
     height: 15px;
     display: flex;
     justify-content: right;
 `
+
 export const Gimpo = styled.div`
     width: 220px;
     height: 19px;
@@ -17,6 +17,7 @@ export const Gimpo = styled.div`
     font-weight: 800;
     white-space: nowrap;
 `
+
 export const Enterinformation = styled.div`
     width: 257px;
     height: 15px;
@@ -26,36 +27,19 @@ export const Enterinformation = styled.div`
     font-weight: 500;
     white-space: nowrap;
 `
+
 export const Information = styled.input`
-    width: 310px;
-    height: 23px;
+    width: 100%;
     border: 1px solid;
     margin-top: 10px;
+    padding: 0px 13px;
 `
-export const ID = styled.div`
-    width: 28px;
-    height: 12px;
+
+export const Title = styled.div`
     font-size: 10px;
-    white-space: nowrap;
-`
-export const Pwd = styled.div`
-    width: 37px;
-    font-size: 10px;
-    white-space: nowrap;
     margin-top: 15px;
 `
-export const Pwd_Check = styled.div`
-    width: 58px;
-    font-size: 10px;
-    white-space: nowrap;
-    margin-top: 15px;
-`
-export const Mail = styled.div`
-    width: 28px;
-    margin-top: 15px;
-    font-size: 10px;
-    white-space: nowrap;
-` 
+
 export const Terms = styled.div`
     width: 40px;
     height: 12px;
@@ -63,6 +47,7 @@ export const Terms = styled.div`
     margin-bottom: 11px;
     font-size: 10px;
 `
+
 export const Essential = styled.div`
     width: 52px;
     height: 9px;

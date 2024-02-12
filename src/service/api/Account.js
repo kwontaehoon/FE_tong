@@ -5,6 +5,6 @@ const ACCOUNT_URL = {
     login: "/api/login",
 }
 
-export const postSignup = () => client.post(ACCOUNT_URL.signup);
+export const postSignup = (params) => client.post(ACCOUNT_URL.signup, params);
 
-export const postLogin = () => client.post(ACCOUNT_URL.login);
+export const postLogin = (params) => client.post(ACCOUNT_URL.login, params);

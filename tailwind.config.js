@@ -8,7 +8,9 @@ module.exports = {
     extend: {},
     colors: {
       'm': '#007CFF',
-      'ms': '#00D4EA'
+      'ms': '#00D4EA',
+
+      "valid": '#FF0000'
 
     },
   },
