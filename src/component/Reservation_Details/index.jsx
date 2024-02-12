@@ -1,25 +1,19 @@
 import React from 'react'
-import {Container,
-    Heather,
-Banner,
-Details,
-Weather,
-Besides_that,
-Check_Box,
-Check} from './styles'
+import Header from './header'
+import Banner from './banner'
+import Contents from './contents'
+import Weather_Box from './weather'
+import Facilities from './facilities'
 
 const index = () => {
   return (
-    <Container>
-        <Heather></Heather>
-        <Banner></Banner>
-        <Details></Details>
-        <Weather></Weather>
-        <Besides_that></Besides_that>
-        <Check_Box>
-            <Check>예약하기</Check>
-        </Check_Box>
-    </Container>
+    <div>
+      <Header />
+      <Banner />
+      <Contents />
+      <Weather_Box/>
+      <Facilities/>
+    </div>
   )
 }
 
