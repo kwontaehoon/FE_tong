@@ -6,7 +6,7 @@ const SEARCH_KEYS = {
 }
 
 /**
- * 추천 검색어 목록
+ * 관리자 추천 검색어 목록
  * 
  */
 export const useSearchRecommendListQuery = () => {
@@ -19,7 +19,7 @@ export const useSearchRecommendListQuery = () => {
 };
 
 /**
- * 추천 검색어 수정
+ * 관리자 추천 검색어 수정
  * 
  */
 export const useSearchRecommendModifyMutation = () =>

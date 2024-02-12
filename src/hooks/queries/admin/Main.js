@@ -1,13 +1,14 @@
 import { useQuery, useMutation } from "react-query";
-import { getBannerList, postBannerModify, getPickList, postPickModify } from "../../../service/admin/Main";
+import { getBannerList, postBannerModify, getPickList, postPickModify, getReservationList, postReservationModify } from "../../../service/admin/Main";
 
 const MAIN_KEYS = {
   bannerList: "bannerList",
-  pickList: "pickList"
+  pickList: "pickList",
+  reservationList: "reservationList"
 }
 
 /**
- * Banner 목록
+ * 관리자 배너 목록
  * 
  */
 
@@ -21,7 +22,7 @@ export const useBannerListQuery = () => {
 };
 
 /**
- * Banner 수정
+ * 관리자 배너 수정
  * 
  */
 
@@ -36,7 +37,7 @@ export const useBannerModifyMutation = () =>
   });
 
 /**
- * Pick 목록
+ * 관리자 Pick 목록
  * 
  */
 
@@ -50,7 +51,7 @@ export const usePickListQuery = () => {
 };
 
 /**
- * Pick 수정
+ * 관리자 Pick 수정
  * 
  */
 
@@ -58,6 +59,35 @@ export const usePickModifyMutation = () =>
   useMutation({
     mutationFn: (params) => {
       return postPickModify(params);
+    },
+    onSuccess: () => {
+      // 성공 시 실행할 로직 추가
+    }
+  });
+
+/**
+ * 관리자 예약 목록
+ * 
+ */
+
+export const useReservationListQuery = () => {
+  return useQuery(MAIN_KEYS.reservationList, async () => {
+      const { data } = await getReservationList();
+      return data;
+  }, {
+    staleTime: Infinity,
+  });
+};
+
+/**
+ * 관리자 예약 수정
+ * 
+ */
+
+export const useReservationModifyMutation = () =>
+  useMutation({
+    mutationFn: (params) => {
+      return postReservationModify(params);
     },
     onSuccess: () => {
       // 성공 시 실행할 로직 추가

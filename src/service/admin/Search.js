@@ -5,8 +5,8 @@ const SEARCH_URL = {
     searchRecommendModify: "/admin/search/recommend/modify"
 }
 
-// 추천 검색어
+// 관리자 추천 검색어
 export const getSearchRecommendList = () => client.get(SEARCH_URL.searchRecommendList);
 
-// 추천 검색어 수정
+// 관리자 추천 검색어 수정
 export const postSearchRecommendModify = (params) => client.post(SEARCH_URL.searchRecommendModify, params);

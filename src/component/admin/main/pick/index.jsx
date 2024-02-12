@@ -6,6 +6,7 @@ const index = () => {
 
     const count = Array.from({ length: 5 }, () => "");
     const { data, isSuccess } = usePickListQuery();
+    console.log("pick: ", data);
     const [info, setInfo] = useState(data);
     const { mutateAsync: modify } = usePickModifyMutation();
 

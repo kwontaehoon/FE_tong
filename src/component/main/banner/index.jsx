@@ -3,8 +3,13 @@ import {
     Container,
     Gimpo_Playground
 } from './styles'
+import { useBannerListQuery } from '../../../hooks/queries/api/Main'
 
 const index = () => {
+
+  // const { data } = useBannerListQuery();
+  // console.log("bannerList: ", data);
+
   return (
     <Container>
         <Gimpo_Playground>

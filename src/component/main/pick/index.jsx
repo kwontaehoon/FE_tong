@@ -10,8 +10,13 @@ Interview,
 MZ,
 Club,
 } from './styles'
+import { usePickListQuery } from '../../../hooks/queries/api/Main'
 
 const index = () => {
+
+  // const { data } = usePickListQuery();
+  // console.log("data: ", data);
+
   return (
     <Container>
       <Ground_Pick>
