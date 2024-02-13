@@ -10,6 +10,7 @@ const MAIN_URL = {
 
     reservationList: "/admin/reservation/list",
     reservationModify: "/admin/reservation/modify",
+    reservationAdd: "/admin/reservation/add",
 }
 
 // 관리자 배너 목록
@@ -28,4 +29,7 @@ export const postPickModify = (params) => client.post(MAIN_URL.pickModify, param
 export const getReservationList = () => client.get(MAIN_URL.reservationList);
 
 // 관리자 예약 수정
-export const postReservationModify = (params) => client.post(MAIN_URL.reservationModify, params); 
+export const postReservationModify = (params) => client.post(MAIN_URL.reservationModify, params);
+
+// 관리자 예약 추가
+export const postReservationAdd = (params) => client.post(MAIN_URL.reservationAdd, params);

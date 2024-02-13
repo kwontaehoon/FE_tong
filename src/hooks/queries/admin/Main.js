@@ -1,5 +1,5 @@
 import { useQuery, useMutation } from "react-query";
-import { getBannerList, postBannerModify, getPickList, postPickModify, getReservationList, postReservationModify } from "../../../service/admin/Main";
+import { getBannerList, postBannerModify, getPickList, postPickModify, getReservationList, postReservationModify, postReservationAdd } from "../../../service/admin/Main";
 
 const MAIN_KEYS = {
   bannerList: "bannerList",
@@ -93,3 +93,18 @@ export const useReservationModifyMutation = () =>
       // 성공 시 실행할 로직 추가
     }
   });
+
+  /**
+ * 관리자 예약 추가
+ * 
+ */
+
+export const useReservationAddMutation = () =>
+useMutation({
+  mutationFn: (params) => {
+    return postReservationAdd(params);
+  },
+  onSuccess: () => {
+    // 성공 시 실행할 로직 추가
+  }
+});

@@ -6,6 +6,7 @@ const index = () => {
     const count = Array.from({ length: 5 }, () => "");
     const imgRef = useRef();
     const { data, isSuccess } = useBannerListQuery();
+    console.log("banner data: ", data);
     const { mutateAsync: modify } = useBannerModifyMutation();
 
     return isSuccess && (
