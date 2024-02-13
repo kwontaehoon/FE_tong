@@ -14,6 +14,8 @@ import Search from '../component/Search'
 import Reservation from '../component/Reservation'
 import Reservation_Details from '../component/Reservation_Details'
 import Reservation_information from '../component/reservation_information'
+import Breakdown from '../component/breakdown'
+
 
 
 
@@ -39,6 +41,7 @@ export const router = createBrowserRouter([
             { path: "/reservation", element: <Reservation/>},
             { path: "/reservation_details", element: <Reservation_Details/>},
             { path: "/reservation_information", element: <Reservation_information/>},
+            { path: "/breakdown", element: <Breakdown/>}
            
           
            
