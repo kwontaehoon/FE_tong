@@ -23,6 +23,7 @@ export const Recommendation_Box = styled.div`
     border-radius: 15px;
     margin-top: 10px;
     margin-right: 12px;
+
 `
 
 export const Ground = styled.div`
@@ -96,13 +97,17 @@ export const Soccer_Field = styled.div`
     border-radius: 15px;
     
 `
+export const Popularity = styled.div`
+    width: 100%;
+    height: 290px;
+`
 export const Img = styled.div`
-    width: 50px;
     height: 50px;
     border-radius: 15px;
 `
 export const Img_Name = styled.div`
     height: 42px;
+    margin-right: 5px;
 `
 export const Place = styled.div`
     font-size: 15px;

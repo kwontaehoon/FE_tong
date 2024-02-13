@@ -17,7 +17,8 @@ import {Container,Recommendation,
   Horoscope,
   Arrow,
   Recommended_Ground_Bix,
-  Soccer_Field_Box
+  Soccer_Field_Box,
+  Popularity
 
 } from './styles'
 
@@ -61,36 +62,37 @@ const index = () => {
           </PlayGround>
 
         </Recommendation_Box>
-        <Soccer_Field_Box>
+        <Popularity>
+          <Soccer_Field_Box>
+            <Soccer_Field>
+              <Img_Name>
+                <Place>인기운통장</Place>
+                <Soccer>장기동축구장</Soccer>
+              </Img_Name>
+              <Img>
+                <img src="svg/Ground-1.svg"></img>
+              </Img>
+            </Soccer_Field>
 
-          <Soccer_Field>
-            <Img_Name>
-              <Place>여기어때요</Place>
-              <Soccer>장기동축구장</Soccer>
-            </Img_Name>
-            <Img>
-              <img src="svg/Ground-1.svg"></img>
-            </Img>
-          </Soccer_Field>
+            <Soccer_Field>
+              <Img_Name>
+                <Place>인기운통장</Place>
+                <Soccer>장기동축구장</Soccer>
+              </Img_Name>
+              <Img>
+                <img src="svg/Ground-1.svg"></img></Img>
+            </Soccer_Field>
+            <Soccer_Field>
 
-          <Soccer_Field>
-            <Img_Name>
-              <Place>여기어때요</Place>
-              <Soccer>장기동축구장</Soccer>
-            </Img_Name>
-            <Img>
-              <img src="svg/Ground-2.svg"></img></Img>
-          </Soccer_Field>
-          <Soccer_Field>
-
-            <Img_Name>
-              <Place>여기어때요</Place>
-              <Soccer>장기동축구장</Soccer>
-            </Img_Name>
-            <Img>
-              <img src="svg/Ground-3.svg"></img></Img>
-          </Soccer_Field>
-        </Soccer_Field_Box>
+              <Img_Name>
+                <Place>인기운통장</Place>
+                <Soccer>장기동축구장</Soccer>
+              </Img_Name>
+              <Img>
+                <img src="svg/Ground-1.svg"></img></Img>
+            </Soccer_Field>
+          </Soccer_Field_Box>
+        </Popularity>
       </Recommendation>
     </Container>
   )

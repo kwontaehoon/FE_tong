@@ -5,6 +5,7 @@ import Help from './help'
 import Reservation from './reservation'
 import Pick from './pick'
 import Recruitment from './recruitment'
+import Information from './information'
 
 
 const index = () => {
@@ -17,6 +18,7 @@ const index = () => {
       <Reservation/>
       <Pick/>
       <Recruitment/>
+      <Information/>
     </div>
   )
 }
