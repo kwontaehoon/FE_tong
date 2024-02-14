@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { weather } from '../../hooks/weather/Weather';
+import { weatherStatus } from '../../utill/WeatherStatus';
 
 const index = () => {
 
@@ -15,9 +16,11 @@ const index = () => {
             console.log("response: ", response);
             const temp = response.data.response.body.items.item.filter(x=> x.category == "T1H")[0].fcstValue;
             const rain = response.data.response.body.items.item.filter(x=>x.category == "RN1")[0].fcstValue;
+            const sky = response.data.response.body.items.item.filter(x=>x.category == "SKY")[0].fcstValue;
             setWeatherList({
                 temp: temp,
-                rain: rain
+                rain: rain,
+                sky: sky
             })
           }
 
@@ -28,6 +31,8 @@ const index = () => {
         <div>
             <div>온도: {weatherList?.temp}</div>
             <div>강수: {weatherList?.rain}</div>
+            <div>하늘: {weatherList?.sky}</div>
+            {weatherList && weatherStatus(weatherList)}
         </div>
     )
 }

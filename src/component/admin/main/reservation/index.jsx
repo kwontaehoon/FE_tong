@@ -13,6 +13,7 @@ const index = () => {
     const [location, setLocation] = useState('');
     const { data, isSuccess } = useReservationListQuery();
     const [dataArr, setDataArr] = useState(data);
+    console.log("dataArr: ", dataArr);
     const [addFlag, setAddFlag] = useState(false);
     const [info, setInfo] = useState({
         title: "",
@@ -47,8 +48,8 @@ const index = () => {
         formData.append("location", info.location);
         formData.append("score", info.score);
         formData.append("peopleCount", info.peopleCount);
-        formData.append("xCoordinate", location.x);
-        formData.append("yCoordinate", location.y);
+        formData.append("xCoordinate", !addFlag ? info.xcoordinate : location.x);
+        formData.append("yCoordinate", !addFlag ? info.ycoordinate : location.y);
 
         if (addFlag) {
             await add(formData);
@@ -70,18 +71,20 @@ const index = () => {
                             <div className='flex-1'>이미지</div>
                             <Button sx={{ backgroundColor: '#007CFF' }} variant="contained"
                                 onClick={() => {
-                                    if (!modifyFlag[index]) {
+                                    if(!modifyFlag[index] && !addFlag) {
                                         modifyButton(index);
-                                        setInfo(dataArr[index].reservation);
+                                        setInfo(dataArr[index]);
                                     } else if (!imgFileList) {
                                         window.alert("이미지는 필수입니다.");
-                                    } else {
+                                    } else if(!dataArr.length == 1 && addFlag) {
+                                        window.alert("추가를 완료해주세요.");
+                                    } else{
                                         submit();
                                     }
                                 }}>{modifyFlag[index] ? '완료' : '수정하기'}</Button>
                         </div>
                         <label className="border border-grey200 mr-5 w-20 h-20 rounded flex cursor-pointer mb-5" htmlFor={modifyFlag[index] ? `reservationImage-${index}` : ''}>
-                            {x.reservationId ? <img src={`https://tong-bucket.s3.ap-northeast-2.amazonaws.com/${x.reservationFiles[0].fileName}`} /> : <img src={imgPath} />}
+                            {x.reservationId ? imgPath ? <img src={imgPath}/> : <img src={`https://tong-bucket.s3.ap-northeast-2.amazonaws.com/${x?.reservationFiles[0]?.fileName}`} /> : <img src={imgPath} />}
                         </label>
                         <input
                             type="file"
@@ -91,10 +94,10 @@ const index = () => {
                             ref={imgRef}
                             style={{ display: 'none' }}
                             onChange={(e) => {
+                                console.log("e.target.files[0]: ", e.target.files[0]);
                                 setImgFileList(e.target.files[0]);
-                                const img = imgRef.current.files[0];
                                 const reader = new FileReader();
-                                reader.readAsDataURL(img);
+                                reader.readAsDataURL(e.target.files[0]);
                                 reader.onload = () => {
                                     setImgPath(reader.result);
                                 };
@@ -158,19 +161,23 @@ const index = () => {
                 <div className='flex justify-end'>
                     <Button sx={{ backgroundColor: '#007CFF' }} variant="contained"
                         onClick={() => {
-                            const arr = [...dataArr];
-                            const modifyFlagArr = [...modifyFlag];
-                            arr.push({
-                                title: "",
-                                subTitle: "",
-                                location: "",
-                                peopleCount: "",
-                                score: ""
-                            });
-                            modifyFlagArr.push(true);
-                            setDataArr(arr);
-                            setModifyFlag(modifyFlagArr);
-                            setAddFlag(true);
+                            if(modifyFlag.filter(x => x == true).length == 1){
+                                window.alert("수정을 완료해주세요.");
+                            }else{
+                                const arr = [...dataArr];
+                                const modifyFlagArr = [...modifyFlag];
+                                arr.push({
+                                    title: "",
+                                    subTitle: "",
+                                    location: "",
+                                    peopleCount: "",
+                                    score: ""
+                                });
+                                modifyFlagArr.push(true);
+                                setDataArr(arr);
+                                setModifyFlag(modifyFlagArr);
+                                setAddFlag(true);
+                            }
                         }}>추가
                     </Button>
                 </div>

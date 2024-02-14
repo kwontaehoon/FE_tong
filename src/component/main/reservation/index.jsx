@@ -60,7 +60,7 @@ const index = () => {
           <PlayGround>
             <img src="svg/PlayGround.svg"></img>
             <Sun>
-              <img src="svg/sun.svg"></img>
+              <img src="svg/weather-sun.svg"></img>
               <Temperature>현재날씨</Temperature>
               < Weather>23º</Weather>
             </Sun>

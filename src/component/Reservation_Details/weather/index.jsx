@@ -9,7 +9,7 @@ const index = () => {
   return (
    <Container>
     <Weather_Box>
-        <img style={{width:"30px", margin: "10px"}} src="svg/sun.svg"></img>
+        <img style={{width:"30px", margin: "10px"}} src="svg/weather-sun.svg"></img>
        <Weather>
         <Sunny>Lorem</Sunny>
         <Temperature>23°</Temperature>
