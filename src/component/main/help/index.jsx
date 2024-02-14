@@ -21,7 +21,7 @@ const index = () => {
                 </Help_Question>
                 <IconBox>
                     <Button>
-                        <img src="svg/Cloud.svg"></img>
+                        <img src="svg/Playground_1.svg"></img>
                         <Name>운동장</Name>
                     </Button>
 

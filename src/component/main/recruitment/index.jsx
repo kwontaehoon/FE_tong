@@ -56,7 +56,9 @@ const index = () => {
 
           </Soccer_Team_Box>
         </Soccer_Team>
-        <Icon>
+        
+      </Recruitment>
+      <Icon>
           <Icon_Box>
             <img src="svg/Home.svg"></img>
             <House>예약</House>
@@ -83,7 +85,6 @@ const index = () => {
             <House>카테고리</House>
           </Icon_Box>
         </Icon>
-      </Recruitment>
 
     </Container>
   )

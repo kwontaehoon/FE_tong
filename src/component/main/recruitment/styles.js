@@ -4,15 +4,16 @@ export const Container = styled.div`
     
 `
 export const Recruitment = styled.div`
-    height: 300px;
+    height: 285px;
+    margin-top: 20px;
 `
 export const Soccer_Team = styled.div`
     height: 89px;
-    border: 1px solid ;
-    margin-top: 20px;
+    border: 1px solid;
     display: flex;
     align-items: center;
     border-radius: 20px;
+    margin-top: 10px;
 `
 export const Soccer_Team_Box = styled.div`
     width: 200px;
@@ -42,7 +43,7 @@ export const Icon = styled.div`
     width: 100%;
     height: 72px;
     display: flex;
-    margin-top: 20px;
+    margin-top: 2px;
     position: fixed;
     left: 0;
     bottom: 0;
@@ -66,6 +67,7 @@ export const Home_Box = styled.div`
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    
 `
 export const Home = styled.div`
     width: 53px;

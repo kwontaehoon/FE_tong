@@ -10,29 +10,25 @@ export const Heather =  styled.div`
     justify-content: center;
 `
 export const Heather_Text = styled.div`
-
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 600;
-`
-export const Ikon = styled.div`
     flex: 1;
+    text-align: center;
 `
-
 export const TITLE_Box = styled.div`
-    height: 80px;
     margin-top: 20px;
     display: flex;
     align-items: end;
-`
-export const TITLE = styled.div`
     font-size: 25px;
     font-weight: 600;
-    margin-bottom: 10px;
 `
 export const IMG = styled.div`
     height: 200px;
-    border: 1px solid;
+    border: 1px solid ;
     border-radius: 20px;
+    margin-top: 10px;
+    display: flex;
+
 `
 export const Img_Text= styled.div`
     height: 80px;
@@ -47,4 +43,24 @@ export const Lorem_Text = styled.div`
     font-size: 10px;
     color: #737373;
 
+`
+export const Score = styled.div`
+    width: 60px;
+    height: 30px;
+    border: 1px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    position: relative;
+    top: 75%;
+    font-size: 15px;
+    background-color: #3B3B3B;
+    color: white;
+   
+`
+export const Heart_Box = styled.div`
+    position: relative;
+    left: 85%;
+    top: 20px;
 `
