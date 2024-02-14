@@ -3,13 +3,14 @@ import {
   Container,
   Heather,
   Heather_Text,
-  Ikon,
-  TITLE,
   TITLE_Box,
   IMG,
   Img_Text,
   Lorem,
-  Lorem_Text
+  Lorem_Text,
+  Score,
+  Heart_Box,
+
 } from './styles'
 
 
@@ -17,22 +18,22 @@ const index = () => {
   return (
     <Container>
       <Heather>
-        <Ikon>
-          <img src="svg/BackArrow.svg"></img>
-        </Ikon>
+        <img src="svg/BackArrow.svg"></img>
         <Heather_Text>
           TITLE
         </Heather_Text>
-        <Ikon>
-          <img style={{ marginLeft: "110px" }} src="svg/search.svg"></img>
-        </Ikon>
+        <img src="svg/search.svg"></img>
       </Heather>
       <TITLE_Box>
-        <TITLE>TITLE</TITLE>
+        TITLE
       </TITLE_Box>
-
       <IMG>
-      <img src ="svg/heart.svg"></img>
+        <Heart_Box>
+          <img src="svg/heart.svg"></img>
+        </Heart_Box>
+        <Score>
+          <img style={{ marginRight: "6px" }} src="svg/Star.svg"></img>
+          4.8</Score>
       </IMG>
       <Img_Text>
         <Lorem>
