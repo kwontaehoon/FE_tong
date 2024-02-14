@@ -5,7 +5,7 @@ import { useSearchRecommendListQuery, useSearchRecommendModifyMutation } from '.
 const index = () => {
 
   const count = Array.from({ length: 10 }, () => "");
-  const { data, isSuccess } = useSearchRecommendListQuery();
+  const { data, isSuccess, refetch } = useSearchRecommendListQuery();
   const [info, setInfo] = useState(data);
   const { mutateAsync: modify } = useSearchRecommendModifyMutation();
 
@@ -19,9 +19,10 @@ const index = () => {
         <div className='font-bold text-xl flex-1'>추천 검색어</div>
         <Button sx={{ backgroundColor: '#007CFF' }} 
           variant="contained" 
-          onClick={()=>{
-            modify(info);
+          onClick={async()=>{
+            await modify(info);
             window.alert("수정했습니다.");
+            refetch();
           }}>수정하기
         </Button>
       </div>

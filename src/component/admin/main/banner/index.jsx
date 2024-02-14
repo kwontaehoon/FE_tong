@@ -5,8 +5,7 @@ const index = () => {
 
     const count = Array.from({ length: 5 }, () => "");
     const imgRef = useRef();
-    const { data, isSuccess } = useBannerListQuery();
-    console.log("banner data: ", data);
+    const { data, isSuccess, refetch } = useBannerListQuery();
     const { mutateAsync: modify } = useBannerModifyMutation();
 
     return isSuccess && (
@@ -33,12 +32,14 @@ const index = () => {
                                 style={{ display: 'none' }}
                                 onChange={async(e) => {
                                     let formData = new FormData();
+                                    console.log(index);
                                     let arr = [];
                                     formData.append("files", e.target.files[0]);
                                     formData.append("bannerIds", index);
                                     arr.push(formData);
                                     await modify(formData);
-                                    window.location.reload();
+                                    window.alert("수정했습니다.");
+                                    refetch();
                                 }}
                             />
                         </div>

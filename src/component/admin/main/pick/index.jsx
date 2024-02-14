@@ -5,7 +5,7 @@ import { usePickListQuery, usePickModifyMutation } from '../../../../hooks/queri
 const index = () => {
 
     const count = Array.from({ length: 5 }, () => "");
-    const { data, isSuccess } = usePickListQuery();
+    const { data, isSuccess, refetch } = usePickListQuery();
     console.log("pick: ", data);
     const [info, setInfo] = useState(data);
     const { mutateAsync: modify } = usePickModifyMutation();
@@ -19,9 +19,10 @@ const index = () => {
             <div className='flex mb-5'>
                 <div className='font-bold text-xl flex-1'>Pick</div>
                 <Button sx={{backgroundColor: '#007CFF'}} variant="contained"
-                    onClick={()=>{
-                        modify(info);
+                    onClick={async()=>{
+                        await modify(info);
                         window.alert("수정했습니다.");
+                        refetch();
                     }}>수정하기
                 </Button>
             </div>

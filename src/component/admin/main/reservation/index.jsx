@@ -72,7 +72,7 @@ const index = () => {
                                 }}>{modifyFlag[index] ? '완료' : '수정하기'}</Button>
                         </div>
                         <label className="border border-grey200 mr-5 w-20 h-20 rounded flex cursor-pointer" htmlFor={modifyFlag[index] ? `reservationImage-${index}` : ''}>
-                            {x.fileName && <img src={`https://tong-bucket.s3.ap-northeast-2.amazonaws.com/${x.fileName}`} />}
+                            {x.reservationId && <img src={`https://tong-bucket.s3.ap-northeast-2.amazonaws.com/${x.reservationFiles[0].fileName}`} />}
                         </label>
                         <input
                             type="file"
@@ -88,35 +88,35 @@ const index = () => {
                         <div className='w-full mt-5'>
                             <div className='mb-5'>
                                 <div>제목</div>
-                                <input className='border p-3 w-full rounded mt-2' disabled={!modifyFlag[index]} placeholder={x?.reservation?.title}
+                                <input className='border p-3 w-full rounded mt-2' disabled={!modifyFlag[index]} placeholder={x.title}
                                     onChange={(e) => {
                                         setInfo({...info, title: e.target.value});
                                     }} />
                             </div>
                             <div className='mb-5'>
                                 <div>서브 제목</div>
-                                <input className='border p-3 w-full rounded mt-2'  disabled={!modifyFlag[index]} placeholder={x?.reservation?.subTitle}
+                                <input className='border p-3 w-full rounded mt-2'  disabled={!modifyFlag[index]} placeholder={x.subTitle}
                                     onChange={(e) => {
                                         setInfo({...info, subTitle: e.target.value});
                                     }} />
                             </div>
                             <div className='mb-5'>
                                 <div>위치</div>
-                                <input className='border p-3 w-full rounded mt-2' disabled={!modifyFlag[index]} placeholder={x?.reservation?.location}
+                                <input className='border p-3 w-full rounded mt-2' disabled={!modifyFlag[index]} placeholder={x.location}
                                     onChange={(e) => {
                                         setInfo({...info, location: e.target.value});
                                     }} />
                             </div>
                             <div className='mb-5'>
                                 <div>평점</div>
-                                <input className='border p-3 w-full rounded mt-2'  disabled={!modifyFlag[index]} type='number' placeholder={x?.reservation?.score}
+                                <input className='border p-3 w-full rounded mt-2'  disabled={!modifyFlag[index]} type='number' placeholder={x.score}
                                     onChange={(e) => {
                                         setInfo({...info, score: e.target.value});
                                     }} />
                             </div>
                             <div className='mb-5'>
                                 <div>인원</div>
-                                <input className='border p-3 w-full rounded mt-2'  disabled={!modifyFlag[index]} type='number' placeholder={x.reservation?.peopleCount}
+                                <input className='border p-3 w-full rounded mt-2'  disabled={!modifyFlag[index]} type='number' placeholder={x.peopleCount}
                                     onChange={(e) => {
                                         setInfo({...info, peopleCount: e.target.value});
                                     }} />

@@ -20,8 +20,13 @@ import {Container,Recommendation,
   Soccer_Field_Box
 
 } from './styles'
+import { useReservationListQuery } from '../../../hooks/queries/api/Main'
 
 const index = () => {
+
+  // const { data } = useReservationListQuery();
+  // console.log("reservation data: ", data);
+  
   return (
     <Container>
       <Recommendation>
