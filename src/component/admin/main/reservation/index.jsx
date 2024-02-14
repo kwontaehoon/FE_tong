@@ -1,10 +1,16 @@
 import React, { useRef, useState, useEffect } from 'react'
 import Button from '@mui/material/Button';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 import { useReservationListQuery, useReservationModifyMutation, useReservationAddMutation } from '../../../../hooks/queries/admin/Main';
+import { locationText } from '../../../../constants/text/admin/Reservation';
 
 const index = () => {
 
     const imgRef = useRef();
+    const [location, setLocation] = useState('');
     const { data, isSuccess } = useReservationListQuery();
     const [dataArr, setDataArr] = useState(data);
     const [addFlag, setAddFlag] = useState(false);
@@ -15,23 +21,24 @@ const index = () => {
         score: "",
         peopleCount: ""
     });
-    const [imgFileList, setImgFileList] = useState();
+    const [imgFileList, setImgFileList] = useState(); // 업로드된 이미지 파일 저장
+    const [imgPath, setImgPath] = useState(); // 이미지 업도르 후 미리보기
     const { mutateAsync: modify } = useReservationModifyMutation();
     const { mutateAsync: add } = useReservationAddMutation();
     const [modifyFlag, setModifyFlag] = useState([]);
 
     useEffect(() => {
         setDataArr(data);
-        setModifyFlag(Array.from({length: data?.length}, () => false));
+        setModifyFlag(Array.from({ length: data?.length }, () => false));
     }, [isSuccess]);
 
     const modifyButton = (index) => {
-        let arr = Array.from({length: dataArr?.length}, () => false);
+        let arr = Array.from({ length: dataArr?.length }, () => false);
         arr[index] = true;
         setModifyFlag(arr);
     }
 
-    const submit = async() => {
+    const submit = async () => {
         let formData = new FormData();
         formData.append("files", imgFileList);
         !addFlag && formData.append("reservationId", info.reservationId);
@@ -40,10 +47,12 @@ const index = () => {
         formData.append("location", info.location);
         formData.append("score", info.score);
         formData.append("peopleCount", info.peopleCount);
+        formData.append("xCoordinate", location.x);
+        formData.append("yCoordinate", location.y);
 
-        if(addFlag){
+        if (addFlag) {
             await add(formData);
-        }else await modify(formData);
+        } else await modify(formData);
 
         window.alert("수정했습니다.");
         window.location.reload();
@@ -60,19 +69,19 @@ const index = () => {
                         <div className='flex'>
                             <div className='flex-1'>이미지</div>
                             <Button sx={{ backgroundColor: '#007CFF' }} variant="contained"
-                                onClick={()=>{
-                                    if(!modifyFlag[index]){
+                                onClick={() => {
+                                    if (!modifyFlag[index]) {
                                         modifyButton(index);
                                         setInfo(dataArr[index].reservation);
-                                    }else if(!imgFileList){
+                                    } else if (!imgFileList) {
                                         window.alert("이미지는 필수입니다.");
-                                    }else {
+                                    } else {
                                         submit();
                                     }
                                 }}>{modifyFlag[index] ? '완료' : '수정하기'}</Button>
                         </div>
-                        <label className="border border-grey200 mr-5 w-20 h-20 rounded flex cursor-pointer" htmlFor={modifyFlag[index] ? `reservationImage-${index}` : ''}>
-                            {x.reservationId && <img src={`https://tong-bucket.s3.ap-northeast-2.amazonaws.com/${x.reservationFiles[0].fileName}`} />}
+                        <label className="border border-grey200 mr-5 w-20 h-20 rounded flex cursor-pointer mb-5" htmlFor={modifyFlag[index] ? `reservationImage-${index}` : ''}>
+                            {x.reservationId ? <img src={`https://tong-bucket.s3.ap-northeast-2.amazonaws.com/${x.reservationFiles[0].fileName}`} /> : <img src={imgPath} />}
                         </label>
                         <input
                             type="file"
@@ -83,42 +92,64 @@ const index = () => {
                             style={{ display: 'none' }}
                             onChange={(e) => {
                                 setImgFileList(e.target.files[0]);
+                                const img = imgRef.current.files[0];
+                                const reader = new FileReader();
+                                reader.readAsDataURL(img);
+                                reader.onload = () => {
+                                    setImgPath(reader.result);
+                                };
+
                             }}
                         />
+                        {x.reservationId ? "" : <FormControl fullWidth>
+                            <InputLabel id="demo-simple-select-label">지역 선택</InputLabel>
+                            <Select
+                                labelId="demo-simple-select-label"
+                                id="demo-simple-select"
+                                value={location}
+                                label="지역 선택"
+                                onChange={(e) => setLocation(e.target.value)}
+                            >
+                                {locationText.map((x, index) => {
+                                    return <MenuItem value={x} key={index}>{x.location}</MenuItem>
+                                })}
+                            </Select>
+                        </FormControl>}
+
                         <div className='w-full mt-5'>
                             <div className='mb-5'>
                                 <div>제목</div>
                                 <input className='border p-3 w-full rounded mt-2' disabled={!modifyFlag[index]} placeholder={x.title}
                                     onChange={(e) => {
-                                        setInfo({...info, title: e.target.value});
+                                        setInfo({ ...info, title: e.target.value });
                                     }} />
                             </div>
                             <div className='mb-5'>
                                 <div>서브 제목</div>
-                                <input className='border p-3 w-full rounded mt-2'  disabled={!modifyFlag[index]} placeholder={x.subTitle}
+                                <input className='border p-3 w-full rounded mt-2' disabled={!modifyFlag[index]} placeholder={x.subTitle}
                                     onChange={(e) => {
-                                        setInfo({...info, subTitle: e.target.value});
+                                        setInfo({ ...info, subTitle: e.target.value });
                                     }} />
                             </div>
                             <div className='mb-5'>
-                                <div>위치</div>
+                                <div>상세 위치</div>
                                 <input className='border p-3 w-full rounded mt-2' disabled={!modifyFlag[index]} placeholder={x.location}
                                     onChange={(e) => {
-                                        setInfo({...info, location: e.target.value});
+                                        setInfo({ ...info, location: e.target.value });
                                     }} />
                             </div>
                             <div className='mb-5'>
                                 <div>평점</div>
-                                <input className='border p-3 w-full rounded mt-2'  disabled={!modifyFlag[index]} type='number' placeholder={x.score}
+                                <input className='border p-3 w-full rounded mt-2' disabled={!modifyFlag[index]} type='number' placeholder={x.score}
                                     onChange={(e) => {
-                                        setInfo({...info, score: e.target.value});
+                                        setInfo({ ...info, score: e.target.value });
                                     }} />
                             </div>
                             <div className='mb-5'>
                                 <div>인원</div>
-                                <input className='border p-3 w-full rounded mt-2'  disabled={!modifyFlag[index]} type='number' placeholder={x.peopleCount}
+                                <input className='border p-3 w-full rounded mt-2' disabled={!modifyFlag[index]} type='number' placeholder={x.peopleCount}
                                     onChange={(e) => {
-                                        setInfo({...info, peopleCount: e.target.value});
+                                        setInfo({ ...info, peopleCount: e.target.value });
                                     }} />
                             </div>
                         </div>

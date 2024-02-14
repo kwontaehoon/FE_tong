@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom'
 import Modal from './modal'
 
 const App = () => {
+
   return (
     <>
       <Modal />

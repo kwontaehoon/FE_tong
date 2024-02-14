@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useBearStore } from '../../store/test'
 import { useTestQuery } from '../../hooks/queries/Test';
 import { useNavigate } from 'react-router-dom'
@@ -13,6 +13,9 @@ const index = () => {
 
     const code = new URL(window.location.href).searchParams.get("code");
     const state = new URL(window.location.href).searchParams.get('state');
+
+    
+
     const googleGetCode = useGoogleLogin({
       onSuccess: async(codeResponse) => {
         const response = await googleLogin(codeResponse);
@@ -41,6 +44,7 @@ const index = () => {
         kakao();
         naver();
       }
+      
     }, []);
 
   return (
@@ -62,6 +66,7 @@ const index = () => {
         <div><span className='mb-2 cursor-pointer' onClick={()=>navigate("/reservation_details")}>예약상세</span></div>
         <div><span className='mb-2 cursor-pointer' onClick={()=>navigate("/reservation_information")}>예약정보</span></div>
         <div><span className='mb-2 cursor-pointer' onClick={()=>navigate("/breakdown")}>예약내역</span></div>
+        <div><span className='mb-2 cursor-pointer' onClick={()=>navigate("/weather")}>날씨</span></div>
     </div>
   )
 }
