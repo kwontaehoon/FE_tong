@@ -31,12 +31,11 @@ export const Ikon_name = styled.div`
 `
 export const Rule = styled.div`
     margin-top: 20px;
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 600;
 `
 export const Description = styled.div`
     height: 190px;
-    border: 1px solid;
     margin-top: 20px;
     
 `
@@ -45,7 +44,6 @@ export const Description_Box = styled.div`
 `
 export const Reservation_Box = styled.div`
     height: 60px;
-    border: 1px solid;
     margin-top: 20px;
     display: flex;
     align-items: center;

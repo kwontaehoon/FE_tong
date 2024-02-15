@@ -4,19 +4,25 @@ export const Container = styled.div`
     padding: 20px;
 `
 export const Search = styled.div`
-    height: 44px;
     display: flex;
     align-items: center;
 `
-export const Search_Box = styled.input`
-    margin-left: 10px;
+export const Search_Box = styled.div`
+    height: 40px;
     display: flex;
+    align-items: center;
     flex: 1;
+    border: 1px solid;
+    text-align: center;
+    border-radius: 10px;
 `
-export const Search_Ikon = styled.div`
-    position: relative;
-    right: 25px;
-    cursor: pointer;
+export const Name = styled.input`
+    width: 80%;
+    margin-left: 6px;
+`
+export const Cancellation = styled.div`
+    font-size: 15px;
+    margin-left: 10px;
 `
 export const Search_Word = styled.div`
     font-size: 13px;
@@ -40,8 +46,7 @@ export const Tag_Box = styled.div`
 
 `
 export const Tag_Box_color = styled.div`
-    width: 70px;
-    height: 40px;
+    width: 145px;
     border: 1px solid;
     margin-right: 8px;
     border-radius: 20px;
@@ -54,7 +59,7 @@ export const Tag_Box_color = styled.div`
 `
 
 export const Tag = styled.div`
-    width: 135px;
+    width: 100px;
     height: 40px;
     border: 1px solid;
     border-radius: 20px;

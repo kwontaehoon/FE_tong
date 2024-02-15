@@ -73,7 +73,7 @@ export const SpeechBubble_Center = styled.div`
     height: 40px;
     display: flex;
     border-radius: 30px;
-    margin: 10px 0px 0px 10px;
+    margin: 10px 0px 0px 0px;
     
 `
 export const Interview = styled.div`

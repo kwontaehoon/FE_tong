@@ -23,8 +23,6 @@ export const TITLE_Box = styled.div`
     font-weight: 600;
 `
 export const IMG = styled.div`
-    height: 200px;
-    border: 1px solid ;
     border-radius: 20px;
     margin-top: 10px;
     display: flex;
@@ -40,27 +38,7 @@ export const Lorem = styled.div`
 `
 export const Lorem_Text = styled.div`
     margin-top: 12px;
-    font-size: 10px;
+    font-size: 13px;
     color: #737373;
 
-`
-export const Score = styled.div`
-    width: 60px;
-    height: 30px;
-    border: 1px solid;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 8px;
-    position: relative;
-    top: 75%;
-    font-size: 15px;
-    background-color: #3B3B3B;
-    color: white;
-   
-`
-export const Heart_Box = styled.div`
-    position: relative;
-    left: 85%;
-    top: 20px;
 `
