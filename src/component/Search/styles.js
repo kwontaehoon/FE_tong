@@ -15,8 +15,12 @@ export const Search_Box = styled.input`
 `
 export const Search_Ikon = styled.div`
     position: relative;
-    right: 25px;
+    left: 20;
     cursor: pointer;
+`
+export const Cancellation = styled.div`
+    font-size: 15px;
+    margin-left: 10px;
 `
 export const Search_Word = styled.div`
     font-size: 13px;
@@ -40,8 +44,7 @@ export const Tag_Box = styled.div`
 
 `
 export const Tag_Box_color = styled.div`
-    width: 70px;
-    height: 40px;
+    width: 145px;
     border: 1px solid;
     margin-right: 8px;
     border-radius: 20px;
@@ -54,7 +57,7 @@ export const Tag_Box_color = styled.div`
 `
 
 export const Tag = styled.div`
-    width: 135px;
+    width: 100px;
     height: 40px;
     border: 1px solid;
     border-radius: 20px;

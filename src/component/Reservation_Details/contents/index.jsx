@@ -3,6 +3,7 @@ import { Container,
   Contents_Box,
   Title,
   Introduction,
+  Jangi,
 Star,
 Score} from './styles'
 
@@ -11,13 +12,13 @@ const index = () => {
     <Container>
       <Contents_Box>
         <Title>
-          Lorem ipsum
+          장기 통통축구장
         </Title>
+        <Jangi>
+          장기역 도보 5분
+        </Jangi>
         <Introduction>
-          Lorem ipsum dolor sit ament
-        </Introduction>
-        <Introduction>
-          Lorem ipsum dolor
+          경기도 김포시 김포한강3로 383 김포 통통축구장
         </Introduction>
         <Star>
           <img src="svg/Star.svg"></img>
