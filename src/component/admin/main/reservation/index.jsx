@@ -13,7 +13,6 @@ const index = () => {
     const [location, setLocation] = useState('');
     const { data, isSuccess } = useReservationListQuery();
     const [dataArr, setDataArr] = useState(data);
-    console.log("dataArr: ", dataArr);
     const [addFlag, setAddFlag] = useState(false);
     const [info, setInfo] = useState({
         title: "",
@@ -83,7 +82,7 @@ const index = () => {
                                     }
                                 }}>{modifyFlag[index] ? '완료' : '수정하기'}</Button>
                         </div>
-                        <label className="border border-grey200 mr-5 w-20 h-20 rounded flex cursor-pointer mb-5" htmlFor={modifyFlag[index] ? `reservationImage-${index}` : ''}>
+                        <label className="border border-grey200 mr-5 w-52 h-40 rounded flex cursor-pointer mb-5" htmlFor={modifyFlag[index] ? `reservationImage-${index}` : ''}>
                             {x.reservationId ? imgPath ? <img src={imgPath}/> : <img src={`https://tong-bucket.s3.ap-northeast-2.amazonaws.com/${x?.reservationFiles[0]?.fileName}`} /> : <img src={imgPath} />}
                         </label>
                         <input

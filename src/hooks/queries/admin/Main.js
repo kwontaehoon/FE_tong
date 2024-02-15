@@ -1,5 +1,5 @@
 import { useQuery, useMutation } from "react-query";
-import { getBannerList, postBannerModify, getPickList, postPickModify, getReservationList, postReservationModify, postReservationAdd } from "../../../service/admin/Main";
+import { getBannerList, postBannerModify, getPickList, postPickModify, getReservationList, postReservationModify, postReservationAdd, postPickAdd } from "../../../service/admin/Main";
 
 const MAIN_KEYS = {
   bannerList: "bannerList",
@@ -14,8 +14,8 @@ const MAIN_KEYS = {
 
 export const useBannerListQuery = () => {
   return useQuery(MAIN_KEYS.bannerList, async () => {
-      const { data } = await getBannerList();
-      return data;
+    const { data } = await getBannerList();
+    return data;
   }, {
     staleTime: Infinity,
   });
@@ -37,21 +37,21 @@ export const useBannerModifyMutation = () =>
   });
 
 /**
- * 관리자 Pick 목록
+ * 관리자 pick 목록
  * 
  */
 
 export const usePickListQuery = () => {
-    return useQuery(MAIN_KEYS.pickList, async () => {
-        const { data } = await getPickList();
-        return data;
-    }, {
-      staleTime: Infinity,
-    });
+  return useQuery(MAIN_KEYS.pickList, async () => {
+    const { data } = await getPickList();
+    return data;
+  }, {
+    staleTime: Infinity,
+  });
 };
 
 /**
- * 관리자 Pick 수정
+ * 관리자 pick 수정
  * 
  */
 
@@ -66,14 +66,29 @@ export const usePickModifyMutation = () =>
   });
 
 /**
+* 관리자 pick 추가
+* 
+*/
+
+export const usePickAddMutation = () =>
+  useMutation({
+    mutationFn: (params) => {
+      return postPickAdd(params);
+    },
+    onSuccess: () => {
+      // 성공 시 실행할 로직 추가
+    }
+  });
+
+/**
  * 관리자 예약 목록
  * 
  */
 
 export const useReservationListQuery = () => {
   return useQuery(MAIN_KEYS.reservationList, async () => {
-      const { data } = await getReservationList();
-      return data;
+    const { data } = await getReservationList();
+    return data;
   }, {
     staleTime: Infinity,
   });
@@ -94,17 +109,17 @@ export const useReservationModifyMutation = () =>
     }
   });
 
-  /**
- * 관리자 예약 추가
- * 
- */
+/**
+* 관리자 예약 추가
+* 
+*/
 
 export const useReservationAddMutation = () =>
-useMutation({
-  mutationFn: (params) => {
-    return postReservationAdd(params);
-  },
-  onSuccess: () => {
-    // 성공 시 실행할 로직 추가
-  }
-});
+  useMutation({
+    mutationFn: (params) => {
+      return postReservationAdd(params);
+    },
+    onSuccess: () => {
+      // 성공 시 실행할 로직 추가
+    }
+  });

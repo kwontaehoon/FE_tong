@@ -1,42 +1,183 @@
-import React, { useState, useEffect } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import Button from '@mui/material/Button';
-import { usePickListQuery, usePickModifyMutation } from '../../../../hooks/queries/admin/Main';
+import { usePickModifyMutation, usePickAddMutation, usePickListQuery } from '../../../../hooks/queries/admin/Main';
 
 const index = () => {
 
-    const count = Array.from({ length: 5 }, () => "");
-    const { data, isSuccess, refetch } = usePickListQuery();
-    const [info, setInfo] = useState(data);
+    const imgRef = useRef();
+    const { data, isSuccess } = usePickListQuery();
+    const [dataArr, setDataArr] = useState(data);
+    console.log("dataArr: ", dataArr);
+    const [addFlag, setAddFlag] = useState(false);
+    const [info, setInfo] = useState({
+        title: "",
+        subTitle: "",
+        location: "",
+        score: "",
+        peopleCount: ""
+    });
+    console.log("info: ", info);
+    const [imgFileList, setImgFileList] = useState([]); // 업로드된 이미지 파일 저장
+    console.log("imgFileList: ", imgFileList);
+    const [pickFileIds, setPickFileIds] = useState([]); // pickFileIds
+    console.log("pickFileIds: ", pickFileIds);
     const { mutateAsync: modify } = usePickModifyMutation();
+    const { mutateAsync: add } = usePickAddMutation();
+    const [modifyFlag, setModifyFlag] = useState([]);
+    console.log("modifyFlag: ", modifyFlag);
 
     useEffect(() => {
-        setInfo(data);
+        setDataArr(data);
+        setModifyFlag(Array.from({ length: data?.length }, () => false));
     }, [isSuccess]);
+
+    const modifyButton = (index) => {
+        let arr = Array.from({ length: dataArr?.length }, () => false);
+        arr[index] = true;
+        setModifyFlag(arr);
+    }
+
+    const submit = async () => {
+        let formData = new FormData();
+        for(let i of imgFileList){
+            formData.append("files", i);
+        }
+        !addFlag && formData.append("pickId", info.pickId);
+        !addFlag && formData.append("pickFileIds", pickFileIds);
+        formData.append("title", info.title);
+        formData.append("content", info.content);
+
+        if (addFlag) {
+            await add(formData);
+        } else await modify(formData);
+
+        window.alert("수정했습니다.");
+        window.location.reload();
+    }
 
     return isSuccess && (
         <div>
             <div className='flex mb-5'>
-                <div className='font-bold text-xl flex-1'>Pick</div>
-                <Button sx={{backgroundColor: '#007CFF'}} variant="contained"
-                    onClick={async()=>{
-                        await modify(info);
-                        window.alert("수정했습니다.");
-                        refetch();
-                    }}>수정하기
-                </Button>
+                <div className='font-bold text-xl flex-1'>PICK</div>
             </div>
-            {count.map((_, index) => {
-                return <div key={index}>
-                    <div className='mb-2'>내용{index+1}</div>
-                    <input className='mb-5 p-3 border rounded w-full'
-                         placeholder={data[index]?.content} 
-                         onChange={(e)=>{
-                            let contents = [...info];
-                            contents[index].content = e.target.value;
-                            setInfo(contents);
-                         }}/>
+            <div>
+                {dataArr?.map((x, index) => {
+                    return <div key={index}>
+                        <div className='flex mb-2'>
+                            <div className='flex-1 '>이미지</div>
+                            <Button sx={{ backgroundColor: '#007CFF' }} variant="contained"
+                                onClick={() => {
+                                    if (!modifyFlag[index] && !addFlag) {
+                                        modifyButton(index);
+                                        setInfo(dataArr[index]);
+                                    } else if (!imgFileList) {
+                                        window.alert("이미지는 필수입니다.");
+                                    } else if (!dataArr.length == 1 && addFlag) {
+                                        window.alert("추가를 완료해주세요.");
+                                    } else {
+                                        submit();
+                                    }
+                                }}>{modifyFlag[index] ? '완료' : '수정하기'}
+                            </Button>
+                        </div>
+                        <div className='flex overflow-x-scroll'>
+                        {x.pickFiles.map((y, imgIndex) => {
+                            return (<div key={imgIndex}>
+                                <label className="border border-grey200 mr-5 w-52 h-40 rounded flex cursor-pointer mb-5" htmlFor={modifyFlag[index] ? `pickImage-${index}-${imgIndex}` : ''}>
+                                    {x.pickFiles[imgIndex].fileName ? x.pickFiles[imgIndex].imgPath ? <img src={x.pickFiles[imgIndex].imgPath}/> : <img src={`https://tong-bucket.s3.ap-northeast-2.amazonaws.com/${x?.pickFiles[imgIndex]?.fileName}`} /> : <img src={x.pickFiles[imgIndex].imgPath}/>}
+                                </label>
+                                <input
+                                    type="file" 
+                                    accept="image/*"
+                                    id={`pickImage-${index}-${imgIndex}`}
+                                    multiple
+                                    ref={imgRef}
+                                    style={{ display: 'none' }}
+                                    onChange={(e) => {
+                                        let arr = [...imgFileList];
+                                        arr[imgIndex] = e.target.files[0]; 
+
+                                        const ids = [...pickFileIds];
+                                        ids.push(y.pickFileId);
+                                        setPickFileIds(ids);
+                                        setImgFileList(arr);
+                                        const reader = new FileReader();
+                                        reader.readAsDataURL(e.target.files[0]);
+                                        reader.onload = () => {
+                                            let arr = [...dataArr];
+                                            arr[index].pickFiles[imgIndex].imgPath = reader.result;
+                                            setDataArr(arr);
+                                        };
+                                    }}
+                                />
+                            </div>)
+                        })}
+                        </div>
+                        {modifyFlag[index] &&
+                        <div className='my-5'>
+                        <Button sx={{ backgroundColor: '#007CFF', marginRight: "12px" }} variant="contained"
+                            onClick={()=>{
+                                const arr = [...dataArr];
+                                arr[index].pickFiles.push({
+                                    fileName: "",
+                                    fileSize: "",
+                                    pickFileId: dataArr[0].pickFiles.length+1,
+                                });
+                                setDataArr(arr);
+                            }} >이미지 추가
+                        </Button>
+                        <Button sx={{ backgroundColor: '#007CFF' }} variant="contained"
+                            onClick={()=>{
+                               const arr = [...dataArr];
+                               arr[index].pickFiles.pop();
+                               setDataArr(arr);
+                            }} >이미지 삭제
+                        </Button>
+                        </div>}
+                        
+                        <div className='w-full mt-5'>
+                            <div className='mb-5'>
+                                <div>제목</div>
+                                <input className='border p-3 w-full rounded mt-2' disabled={!modifyFlag[index]} placeholder={x.title}
+                                    onChange={(e) => {
+                                        setInfo({ ...info, title: e.target.value });
+                                    }} />
+                            </div>
+                            <div className='mb-5'>
+                                <div>내용</div>
+                                <input className='border p-3 w-full rounded mt-2' disabled={!modifyFlag[index]} placeholder={x.content}
+                                    onChange={(e) => {
+                                        setInfo({ ...info, content: e.target.value });
+                                    }} />
+                            </div>
+                        </div>
+                    </div>
+                })}
+                <div className='flex justify-end'>
+                    <Button sx={{ backgroundColor: '#007CFF' }} variant="contained"
+                        onClick={() => {
+                            if (modifyFlag.filter(x => x == true).length == 1) {
+                                window.alert("수정을 완료해주세요.");
+                            } else {
+                                let arr = [...dataArr];
+                                const modifyFlagArr = [...modifyFlag];
+                                arr.push({
+                                    title: "",
+                                    subTitle: "",
+                                    location: "",
+                                    pickFiles: [],
+                                    peopleCount: "",
+                                    score: ""
+                                });
+                                modifyFlagArr.push(true);
+                                setDataArr(arr);
+                                setModifyFlag(modifyFlagArr);
+                                setAddFlag(true);
+                            }
+                        }}>추가
+                    </Button>
                 </div>
-            })}
+            </div>
         </div>
     )
 }

@@ -7,6 +7,7 @@ const MAIN_URL = {
 
     pickList: "/admin/pick/list",
     pickModify: "/admin/pick/modify",
+    pickAdd: "/admin/pick/add",
 
     reservationList: "/admin/reservation/list",
     reservationModify: "/admin/reservation/modify",
@@ -24,6 +25,9 @@ export const getPickList = () => client.get(MAIN_URL.pickList);
 
 // 관리자 pick 수정
 export const postPickModify = (params) => client.post(MAIN_URL.pickModify, params);
+
+// 관리자 pick 추가
+export const postPickAdd = (params) => client.post(MAIN_URL.pickAdd, params);
 
 // 관리자 예약 목록
 export const getReservationList = () => client.get(MAIN_URL.reservationList);
