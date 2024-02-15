@@ -1,60 +1,66 @@
-import React from 'react'
-import { Container,
+import React, { useState, useEffect } from 'react'
+import {
+  Container,
   Ground_Pick,
   Ground,
   Pick,
-  Pick_Gimpo,
-  Gimpo,
-  Restaurant_Box,
-  SpeechBubble_Box,
-  SpeechBubble_Center,
-  Interview,
-  MZ,
-  Club,
- 
-  
+  PickContent,
+  Scroll
 } from './styles'
 import { usePickListQuery } from '../../../hooks/queries/api/Main'
 
 const index = () => {
 
-  // const { data } = usePickListQuery();
-  // console.log("data: ", data);
+  const { data, isSuccess } = usePickListQuery();
+  console.log("pick data: ", data);
 
-  return (
+  const [flag, setFlag] = useState([]);
+
+  useEffect(()=>{
+    if(data){
+      const arr = Array.from({length: data.length} , ()=>false);
+      arr[0] = true;
+      setFlag(arr);
+    }
+    
+  }, [isSuccess]);
+
+  return isSuccess && (
     <Container>
-      
-      <Ground_Pick>
-        <Ground>운통장</Ground>
-        <Pick>MANU</Pick>
-      </Ground_Pick>
-        < Pick_Gimpo>
-          <Gimpo>
-            #김포 핫플은 요즘 여기!!
-          </Gimpo>
-        </Pick_Gimpo>
-        <Restaurant_Box>
-          #운통장 추천 맛집!!
-        </Restaurant_Box>
-        <SpeechBubble_Box>
-          <MZ>
-            #김포5일장 MZ세대 취향저경!!
-          </MZ>
-        </SpeechBubble_Box>
-
-        <SpeechBubble_Center>
-          <Club>
-
-            #동호회축구대회!!
-          </Club>
-          <Club>#오늘의날씨</Club>
-        </SpeechBubble_Center>
-        <SpeechBubble_Box>
-          <Interview>
-            #사우동유투버**인터뷰!!
-          </Interview>
-        </SpeechBubble_Box>
-       
+      <div className='bg-white px-5 py-4 rounded-2xl mb-5'>
+        <Ground_Pick>
+          <Ground>운통장</Ground>
+          <Pick>MANU</Pick>
+        </Ground_Pick>
+        <div className='flex flex-wrap'>
+          {data.map((x, index) => {
+            return (
+              <PickContent $flag={flag[index]} key={x.pickId} 
+                onClick={()=>{
+                  const arr = Array(data.length).fill(false);
+                  arr[index] = true;
+                  setFlag(arr);
+                }}>{x.title}
+              </PickContent>
+            )
+          })}
+        </div>
+      </div>
+      <Scroll>
+        <div className='flex'>
+          {data[flag.findIndex(x=>x)]?.pickFiles?.map(x => {
+            return (
+              <div key={x.pickFileId} style={{ height: "244px" }} className='border w-44 mr-3 rounded-2xl overflow-hidden'>
+                <div className='h-44 border'><img src={`https://tong-bucket.s3.ap-northeast-2.amazonaws.com/${x.fileName}`}/></div>
+                <div className='h-16 flex flex-col justify-center p-3'>
+                  <div>#제목</div>
+                  <div>#내용</div>
+                </div>
+              </div>
+            )
+          })}
+        </div>
+      </Scroll>
     </Container>
   )
 }

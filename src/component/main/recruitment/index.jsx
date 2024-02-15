@@ -49,42 +49,43 @@ const index = () => {
             <img src="svg/Team_3.svg"></img>
           </Img>
           <Soccer_Team_Box>
-            <Gure>구래동 슛돌이 축구단</Gure>
+            <Soccer>구래동 슛돌이 축구단</Soccer>
             <Rescue>
-              축구를 사랑하는 초등학생을 구합니다(성별자유)
+              축구를 사랑하는 초등학생을 구합니다
             </Rescue>
 
           </Soccer_Team_Box>
         </Soccer_Team>
-        
+
       </Recruitment>
       <Icon>
-          <Icon_Box>
-            <img src="svg/Home.svg"></img>
-            <House>예약</House>
-          </Icon_Box>
-          <Icon_Box>
-            <img src="svg/Home.svg"></img>
-            <House>마이</House>
-          </Icon_Box>
-          <Home_Box>
+        <Icon_Box>
+          <img src="/svg/Nav_reservation.svg"></img>
+          <House>예약</House>
+        </Icon_Box>
+        <Icon_Box>
+          <img src="/svg/Nav_mypage.svg"></img>
+          <House>마이</House>
+        </Icon_Box>
+        <Icon_Box>
+          <div className='absolute left-25% -top-6 flex justify-center items-center flex-col'>
             <Home>
-              <House>
-                <img src="svg/Home_black.svg"></img>
-              </House>
+              <img src="/svg/Nav_home.svg"></img>
             </Home>
-            <Home_Name>홈</Home_Name>
-          </Home_Box>
-          <Icon_Box>
-            <img src="svg/Home.svg"></img>
-            <House>찜</House>
-          </Icon_Box>
+            <House>홈</House>
+          </div>
+          <House></House>
+        </Icon_Box>
+        <Icon_Box>
+          <img src="/svg/Nav_wish.svg"></img>
+          <House>찜</House>
+        </Icon_Box>
 
-          <Icon_Box>
-            <img src="svg/Home.svg"></img>
-            <House>카테고리</House>
-          </Icon_Box>
-        </Icon>
+        <Icon_Box>
+          <img src="/svg/Nav_category.svg"></img>
+          <House>카테고리</House>
+        </Icon_Box>
+      </Icon>
 
     </Container>
   )

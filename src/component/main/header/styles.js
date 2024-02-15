@@ -1,26 +1,21 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+    padding: 18px;
 `
 export const Gimpo = styled.div`
-    height: 60px;
     display: flex;
     align-items: center;
 `
 export const Playground = styled.div`
-    width: 84px;
-    height: 19px;
     display: flex;
     flex: 1;
-    margin-left: 18px;
     font-size: 16px;
     font-family: Inter;
     font-weight: 700;
     white-space: nowrap;
 `
 export const Tong = styled.div`
-    width: 16px;
-    height: 23px;
     font-family: Inter;
     font-size: 20px;
     font-weight: 700;

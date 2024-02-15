@@ -7,9 +7,6 @@ import {
     IconBox,
     Button,
     Name,
-    Reservation,
-    Community,
-
 } from './styles'
 
 const index = () => {
@@ -17,7 +14,8 @@ const index = () => {
         <Container>
             <Help>
                 <Help_Question>
-                    <Question>무엇을 도와드릴까요</Question>
+                    <Question>운통장</Question>
+                    <div className='ml-2 text-xl text-ms font-bold'>MENU</div>
                 </Help_Question>
                 <IconBox>
                     <Button>
@@ -30,12 +28,12 @@ const index = () => {
                         <Name>스케쥴</Name>
                     </Button>
                     <Button>
-                            <img src="svg/Cloud.svg"></img>
-                            <Reservation>예약</Reservation>
+                        <img src="svg/Reservation.svg"></img>
+                        <Name>예약</Name>
                     </Button>
                     <Button>
-                            <img src="svg/Cloud.svg"></img>
-                            <Community>커뮤니티</Community>
+                        <img src="svg/Community.svg"></img>
+                        <Name>커뮤니티</Name>
                     </Button>
                 </IconBox>
             </Help>

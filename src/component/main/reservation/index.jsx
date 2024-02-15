@@ -1,5 +1,6 @@
-import React from 'react'
-import {Container,Recommendation,
+import React, { useEffect, useState } from 'react'
+import {
+  Container, Recommendation,
   Recommendation_Box,
   Ground,
   PlayGround,
@@ -17,7 +18,6 @@ import {Container,Recommendation,
   Horoscope,
   Arrow,
   Recommended_Ground_Bix,
-  Soccer_Field_Box,
   Popularity
 
 } from './styles'
@@ -25,27 +25,35 @@ import { useReservationListQuery } from '../../../hooks/queries/api/Main'
 
 const index = () => {
 
-  // const { data } = useReservationListQuery();
-  // console.log("reservation data: ", data);
-  
-  return (
+  const { data, isSuccess } = useReservationListQuery();
+  console.log("reservation data: ", data);
+
+  const [dataArr, setDataArr] = useState();
+  console.log("dataArr: ", dataArr);
+
+  useEffect(() => {
+    if (data) {
+      const arr = data.filter((_, index) => index !== 0);
+      setDataArr(arr);
+    }
+  }, [isSuccess]);
+
+  return isSuccess && (
     <Container>
       <Recommendation>
         <Recommendation_Box>
           <Ground>
             <Recommended_Ground>
-              < Recommended_Ground_Bix>
-                추천운통장
+              <Recommended_Ground_Bix>
+                {data[0].title}
               </Recommended_Ground_Bix>
               <Arrow>
                 <img src="svg/Right Arrow.svg"></img>
               </Arrow>
             </Recommended_Ground>
 
-
             <Explanation>
-              김포 마산 축구장
-              금일예약*인원 가능
+              {data[0].subTitle}
             </Explanation>
             <Star>
               <img src="svg/Star.svg"></img>
@@ -53,50 +61,34 @@ const index = () => {
               <img src="svg/Star.svg"></img>
               <img src="svg/Star.svg"></img>
               <img src="svg/Star.svg"></img>
-              <Horoscope>4.8</Horoscope>
+              <Horoscope>{data[0].score}</Horoscope>
             </Star>
 
           </Ground>
           <PlayGround>
-            <img src="svg/PlayGround.svg"></img>
-            <Sun>
-              <img src="svg/weather-sun.svg"></img>
-              <Temperature>현재날씨</Temperature>
-              < Weather>23º</Weather>
-            </Sun>
+            <img style={{ width: "151px", height: "110px", borderRadius: "20px" }} className="overflow-hidden" src={`https://tong-bucket.s3.ap-northeast-2.amazonaws.com/${data[0].reservationFiles[0].fileName}`} />
           </PlayGround>
+          <Sun>
+            <img src="svg/weather-sun.svg"></img>
+            <Temperature>현재날씨</Temperature>
+            < Weather>23º</Weather>
+          </Sun>
 
         </Recommendation_Box>
         <Popularity>
-          <Soccer_Field_Box>
-            <Soccer_Field>
-              <Img_Name>
-                <Place>인기운통장</Place>
-                <Soccer>장기동축구장</Soccer>
-              </Img_Name>
-              <Img>
-                <img src="svg/Ground-1.svg"></img>
-              </Img>
-            </Soccer_Field>
-
-            <Soccer_Field>
-              <Img_Name>
-                <Place>인기운통장</Place>
-                <Soccer>장기동축구장</Soccer>
-              </Img_Name>
-              <Img>
-                <img src="svg/Ground-1.svg"></img></Img>
-            </Soccer_Field>
-            <Soccer_Field>
-
-              <Img_Name>
-                <Place>인기운통장</Place>
-                <Soccer>장기동축구장</Soccer>
-              </Img_Name>
-              <Img>
-                <img src="svg/Ground-1.svg"></img></Img>
-            </Soccer_Field>
-          </Soccer_Field_Box>
+          {dataArr?.map((x, index) => {
+            return (
+              <Soccer_Field key={index}>
+                <Img_Name>
+                  <Place>{x.title}</Place>
+                  <Soccer>{x.subTitle}</Soccer>
+                </Img_Name>
+                <Img>
+                  <img src={`https://tong-bucket.s3.ap-northeast-2.amazonaws.com/${x.reservationFiles[0].fileName}`} />
+                </Img>
+              </Soccer_Field>
+            )
+          })}
         </Popularity>
       </Recommendation>
     </Container>
