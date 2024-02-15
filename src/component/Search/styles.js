@@ -4,19 +4,21 @@ export const Container = styled.div`
     padding: 20px;
 `
 export const Search = styled.div`
-    height: 44px;
     display: flex;
     align-items: center;
 `
-export const Search_Box = styled.input`
-    margin-left: 10px;
+export const Search_Box = styled.div`
+    height: 40px;
     display: flex;
+    align-items: center;
     flex: 1;
+    border: 1px solid;
+    text-align: center;
+    border-radius: 10px;
 `
-export const Search_Ikon = styled.div`
-    position: relative;
-    left: 20;
-    cursor: pointer;
+export const Name = styled.input`
+    width: 80%;
+    margin-left: 6px;
 `
 export const Cancellation = styled.div`
     font-size: 15px;

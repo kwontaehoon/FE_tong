@@ -20,6 +20,7 @@ import Breakdown from '../component/breakdown'
 
 
 
+
 import App from "../App"
 
 export const router = createBrowserRouter([
@@ -41,7 +42,8 @@ export const router = createBrowserRouter([
             { path: "/reservation", element: <Reservation/>},
             { path: "/reservation_details", element: <Reservation_Details/>},
             { path: "/reservation_information", element: <Reservation_information/>},
-            { path: "/breakdown", element: <Breakdown/>}
+            { path: "/breakdown", element: <Breakdown/>},
+
            
           
            

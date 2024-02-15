@@ -4,9 +4,9 @@ import {
     Search,
     Search_Box,
     Search_Word,
-    Search_Ikon,
     Recommendation_Box,
     Tag_Box,
+    Name,
     Tag_Box_color,
     Tag,
     Text,
@@ -17,11 +17,12 @@ const index = () => {
     return (
         <Container>
             <Search>
-                <Search_Ikon>
-                    <img src="svg/search.svg"></img>
-                </Search_Ikon>
-                <Search_Box placeholder='검색어를 입력하세요'></Search_Box>
+                <Search_Box>
+                    <img style={{ marginLeft: "8px" }} src="svg/search.svg"></img>
 
+                    <Name placeholder='검색어를 입력하세요'></Name>
+
+                </Search_Box>
                 <Cancellation>
                     취소
                 </Cancellation>
@@ -54,7 +55,6 @@ const index = () => {
                     <Text>Lorem</Text>
                 </Tag_Box>
             </Recommendation_Box>
-
             <Recommendation_Box>
                 <Tag_Box>
                     <Text>Lorem</Text>
