@@ -12,7 +12,7 @@ import Recommendation from './recommendation'
 const index = () => {
 
   return (
-    <div className='p-5 pt-0'>
+    <div className='p-5 pt-0 bg-bg-grey05'>
       <Header />
       <Banner />
       <Help />

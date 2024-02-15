@@ -16,11 +16,6 @@ import Reservation_Details from '../component/Reservation_Details'
 import Reservation_information from '../component/reservation_information'
 import Breakdown from '../component/breakdown'
 import Weather from '../component/weather'
-
-
-
-
-
 import App from "../App"
 
 export const router = createBrowserRouter([
@@ -43,12 +38,7 @@ export const router = createBrowserRouter([
             { path: "/reservation_details", element: <Reservation_Details/>},
             { path: "/reservation_information", element: <Reservation_information/>},
             { path: "/breakdown", element: <Breakdown/>},
-            { path: "/weather", element: <Weather />}
-           
-          
-           
-           
-           
+            { path: "/weather", element: <Weather />} 
         ]
     },
     

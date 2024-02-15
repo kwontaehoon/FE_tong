@@ -7,13 +7,13 @@ import { useBannerListQuery } from '../../../hooks/queries/api/Main'
 
 const index = () => {
 
-  // const { data } = useBannerListQuery();
-  // console.log("bannerList: ", data);
+  const { data } = useBannerListQuery();
+  console.log("bannerList: ", data);
 
   return (
     <Container>
         <Gimpo_Playground>
-            <img src="svg/Palyground.svg"></img>
+            <img src="svg/Palyground.svg" className='w-full'/>
         </Gimpo_Playground>
     </Container>
 

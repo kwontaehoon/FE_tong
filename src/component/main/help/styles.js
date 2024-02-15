@@ -1,13 +1,12 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+    background-color: white;
+    border-radius: 16px;
 `
 export const Help = styled.div`
     height: 180px;
-    border: 1px solid;
     margin-top: 12px;
-    border-radius: 20px;
-
 `
 export const Help_Question = styled.div`
     height: 40px;
