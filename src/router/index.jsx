@@ -13,6 +13,7 @@ import Admin from '../component/admin'
 import Search from '../component/Search'
 import Reservation from '../component/Reservation'
 import Reservation_Details from '../component/Reservation_Details'
+import Category from '../component/category'
 
 
 
@@ -35,7 +36,8 @@ export const router = createBrowserRouter([
             { path: "/admin", element: <Admin /> },
             { path: "/search", element: <Search/>},
             { path: "/reservation", element: <Reservation/>},
-            { path: "/reservation_details", element: <Reservation_Details/>}
+            { path: "/reservation_details", element: <Reservation_Details/>},
+            { path: "/category", element: <Category />}
           
            
            
