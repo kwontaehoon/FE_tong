@@ -1,12 +1,14 @@
 import React from 'react'
+import {divBox,divList1,divList2,pTit} from './styles'
+
 
 const index = () => {
   return (
-    <div> 
-        <div>TEST</div>
-        <div>TEST2</div>
-    <p>test2</p>
-    </div>
+    <divBox> 
+        <divList1>TEST</divList1>
+        <divList2>TEST2</divList2>
+    <pTit>test2</pTit>
+    </divBox>
    
   )
 }
