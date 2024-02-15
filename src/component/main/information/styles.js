@@ -19,7 +19,7 @@ export const Policy = styled.div`
 export const Policy_Name = styled.div`
     font-size: 13px;
     font-weight: 600;
-    margin-left: 10px;
+    margin: 3px 0px 0px 10px;
 
 `
 export const Gimpo = styled.div`
