@@ -1,28 +1,31 @@
 import React from 'react'
-import {Component,Header, Header_img,Arrow,
-New_Pwd,Information,Input,
-Pwd,Pwd_Check,Pwd_Change} from './styles'
+import {
+  Component,
+  Find_pwd,
+  Information,
+  Input,
+  Name,
+  Pwd,
+  ID
+} from './styles'
+import Header from '../../../layout/Header'
 
 const index = () => {
   return (
     <Component>
-      <Header>
-        <Arrow>
-          <img src="svg/grommet-icons_link-next.svg"></img>
-        </Arrow>
-        <Header_img>
-          <img src="svg/Vector.svg"></img>
-        </Header_img>
-      </Header>
-      <New_Pwd>새 비밀번호</New_Pwd>
+      
+      <Header noBtn />
+
+      <Find_pwd>새 비밀번호</Find_pwd>
       <Information>
-        아래 정보를 입력하여 비밀번호를 재설정해주세요.
+        아래 정보를 입력하여 비밀번호를 재설정 해주세요.
       </Information>
-      <Pwd>비밀번호</Pwd>
-      <Input></Input>
-      <Pwd_Check>비밀번호 확인</Pwd_Check>
-      <Input></Input>
-      <Pwd_Change>비밀번호 확인</Pwd_Change>
+
+      <Name>이름</Name>
+      <Input placeholder='비밀번호를 입력하세요.'></Input>
+
+      <Name>이메일</Name>
+      <Input placeholder='비밀번호 확인'></Input>
 
     </Component>
   )

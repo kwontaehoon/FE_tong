@@ -1,34 +1,38 @@
 import React from 'react'
-import {Component,Header,
-    Header_img,Header_Arrow,
-Pwd,Information,Input,
-ID, Mail,ID_Find, Pwd_Find } from './styles'
+import {
+  Component,
+  Find_pwd,
+  Information,
+  Input,
+  Name,
+  Pwd,
+  ID
+} from './styles'
+import Header from '../../../layout/Header'
 
 const index = () => {
-    return (
-        < Component>
-            <Header>
-                <Header_Arrow>
-                    <img src="svg/grommet-icons_link-next.svg"></img>
-                </Header_Arrow>
-                <Header_img>
-                    <img src="svg/Vector.svg"></img>
-                </Header_img>
-            </Header>
+  return (
+    <Component>
+      
+      <Header />
 
-            <Pwd>비밀번호 찾기</Pwd>
-            <Information>
-                아래 정보를 입력하여 비밀번호찾기를 완료해주세요.
-            </Information>
-            <ID>아이디</ID>
-            <Input></Input>
-            <Mail>이메일</Mail>
-            <Input></Input>
-            <ID_Find>아이디 찾기</ID_Find>
-            <Pwd_Find>비밀번호 찾기</Pwd_Find>
+      <Find_pwd>비밀번호 찾기</Find_pwd>
+      <Information>
+        아래 정보를 입력하여 비밀번호 찾기를 완료해주세요.
+      </Information>
 
-        </Component>
-    )
+      <Name>아이디</Name>
+      <Input placeholder='아이디를 입력하세요.'></Input>
+
+      <Name>이메일</Name>
+      <Input placeholder='이메일을 입력하세요.'></Input>
+
+      <ID>아이디 찾기</ID>
+      <Pwd>
+        <div className='border-b'>아이디 찾기</div>
+      </Pwd>
+    </Component>
+  )
 }
 
 export default index

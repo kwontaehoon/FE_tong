@@ -11,7 +11,7 @@ import Information from './information'
 const index = () => {
 
   return (
-    <div className='p-5 pt-0 bg-grey05'>
+    <div className='p-5 pt-0 bg-bg'>
       <Header />
       <Banner />
       <Help />

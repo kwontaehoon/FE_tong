@@ -1,18 +1,17 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    padding: 29px 33px;
+    padding: 0px 20px;
 `
 
 export const Header = styled.div`
-    height: 15px;
-    margin-bottom: 62px;
+    margin-bottom: 100px;
+    height: 45px;
     display: flex;
     justify-content: right;
 `
 
 export const Logo = styled.div`
-    height: 56px;
     margin-bottom: 57px;
     display: flex;
     align-items: center;
@@ -22,71 +21,60 @@ export const Logo = styled.div`
 `
 
 export const Id = styled.input`
-    border: 1px solid;
     width: 100%;
-    height: 35px;
+    height: 50px;
     display: block;
-    margin-bottom: 13px;
-    border-radius: 15px;
+    margin-bottom: 11px;
+    border-radius: 8px;
     padding: 0px 13px;
     box-sizing: border-box;
+    background-color: #E9EBED;
 `
 
 export const Pwd = styled.input`
-    border: 1px solid;
     width: 100%;
-    height: 35px;
-    border-radius: 15px;
+    height: 50px;
+    border-radius: 8px;
     padding-left: 13px;
     box-sizing: border-box;
+    background-color: #E9EBED;
 `
 
 export const Login = styled.div`
-    border: 1px solid;
     width: 100%;
-    height: 35px;
+    height: 51px;
     margin-top: ${props => props.$validation ? '0px' : "21px"};
     border-radius: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 10px;
-    font-weight: 500;
+    font-size: 16px;
+    color: white;
+    background-color: #007CFF;
 ` 
 
 export const Minibox = styled.div`
     display: flex;
-    margin: 18px 0px;
+    margin: 20px 0px;
     justify-content: center;
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 30px;
 `
 
 export const ID_find = styled.div`
-    font-size: 10px;
-    white-space: nowrap;
     display: flex;
-    margin-right: 9px;
-    font-weight: 500;
+    margin-right: 14px;
 `
 export const Pwd_find = styled.div`
-    font-size: 10px;
-    white-space: nowrap;
-    margin-right: 10px;
-    margin-left: 11px;
-    font-weight: 500;
+    margin-right: 14px;
+    margin-left: 14px;
 `
 
 export const Signup = styled.div`
-    font-size: 10px;
-    white-space: nowrap;
-    margin-left: 11px;
-    font-weight: 500;
+    margin-left: 14px;
 ` 
 
-export const Social = styled.div`
-    display: flex;
-    justify-content: center;
-`
-
 export const Social_button = styled.div`
-    margin: 0px 22px;
+    margin: 0px 20px;
 `

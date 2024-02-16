@@ -7,7 +7,6 @@ const index = () => {
     const imgRef = useRef();
     const { data, isSuccess } = usePickListQuery();
     const [dataArr, setDataArr] = useState(data);
-    console.log("dataArr: ", dataArr);
     const [addFlag, setAddFlag] = useState(false);
     const [info, setInfo] = useState({
         title: "",
@@ -16,15 +15,11 @@ const index = () => {
         score: "",
         peopleCount: ""
     });
-    console.log("info: ", info);
     const [imgFileList, setImgFileList] = useState([]); // 업로드된 이미지 파일 저장
-    console.log("imgFileList: ", imgFileList);
     const [pickFileIds, setPickFileIds] = useState([]); // pickFileIds
-    console.log("pickFileIds: ", pickFileIds);
     const { mutateAsync: modify } = usePickModifyMutation();
     const { mutateAsync: add } = usePickAddMutation();
     const [modifyFlag, setModifyFlag] = useState([]);
-    console.log("modifyFlag: ", modifyFlag);
 
     useEffect(() => {
         setDataArr(data);
@@ -98,7 +93,9 @@ const index = () => {
                                         arr[imgIndex] = e.target.files[0]; 
 
                                         const ids = [...pickFileIds];
-                                        ids.push(y.pickFileId);
+                                        if(!ids.includes(y.pickFileId)){
+                                            ids.push(y.pickFileId);
+                                        }
                                         setPickFileIds(ids);
                                         setImgFileList(arr);
                                         const reader = new FileReader();

@@ -4,16 +4,16 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import { useReservationListQuery, useReservationModifyMutation, useReservationAddMutation } from '../../../../hooks/queries/admin/Main';
 import { locationText } from '../../../../constants/text/admin/Reservation';
+import { useReservationAddMutation, useReservationListQuery, useReservationModifyMutation } from '../../../../hooks/queries/admin/Main';
 
 const index = () => {
 
     const imgRef = useRef();
-    const [location, setLocation] = useState('');
     const { data, isSuccess } = useReservationListQuery();
     const [dataArr, setDataArr] = useState(data);
     const [addFlag, setAddFlag] = useState(false);
+    const [location, setLocation] = useState('');
     const [info, setInfo] = useState({
         title: "",
         subTitle: "",
@@ -21,8 +21,8 @@ const index = () => {
         score: "",
         peopleCount: ""
     });
-    const [imgFileList, setImgFileList] = useState(); // 업로드된 이미지 파일 저장
-    const [imgPath, setImgPath] = useState(); // 이미지 업도르 후 미리보기
+    const [imgFileList, setImgFileList] = useState([]); // 업로드된 이미지 파일 저장
+    const [reservationFileIds, setReservationFileIds] = useState([]); // reservationFileIds
     const { mutateAsync: modify } = useReservationModifyMutation();
     const { mutateAsync: add } = useReservationAddMutation();
     const [modifyFlag, setModifyFlag] = useState([]);
@@ -40,8 +40,11 @@ const index = () => {
 
     const submit = async () => {
         let formData = new FormData();
-        formData.append("files", imgFileList);
+        for(let i of imgFileList){
+            formData.append("files", i);
+        }
         !addFlag && formData.append("reservationId", info.reservationId);
+        !addFlag && formData.append("reservationFileIds", reservationFileIds);
         formData.append("title", info.title);
         formData.append("subTitle", info.subTitle);
         formData.append("location", info.location);
@@ -66,43 +69,80 @@ const index = () => {
             <div>
                 {dataArr?.map((x, index) => {
                     return <div key={index}>
-                        <div className='flex'>
-                            <div className='flex-1'>이미지</div>
+                        <div className='flex mb-2'>
+                            <div className='flex-1 '>이미지</div>
                             <Button sx={{ backgroundColor: '#007CFF' }} variant="contained"
                                 onClick={() => {
-                                    if(!modifyFlag[index] && !addFlag) {
+                                    if (!modifyFlag[index] && !addFlag) {
                                         modifyButton(index);
                                         setInfo(dataArr[index]);
                                     } else if (!imgFileList) {
                                         window.alert("이미지는 필수입니다.");
-                                    } else if(!dataArr.length == 1 && addFlag) {
+                                    } else if (!dataArr.length == 1 && addFlag) {
                                         window.alert("추가를 완료해주세요.");
-                                    } else{
+                                    } else {
                                         submit();
                                     }
-                                }}>{modifyFlag[index] ? '완료' : '수정하기'}</Button>
+                                }}>{modifyFlag[index] ? '완료' : '수정하기'}
+                            </Button>
                         </div>
-                        <label className="border border-grey200 mr-5 w-52 h-40 rounded flex cursor-pointer mb-5" htmlFor={modifyFlag[index] ? `reservationImage-${index}` : ''}>
-                            {x.reservationId ? imgPath ? <img src={imgPath}/> : <img src={`https://tong-bucket.s3.ap-northeast-2.amazonaws.com/${x?.reservationFiles[0]?.fileName}`} /> : <img src={imgPath} />}
-                        </label>
-                        <input
-                            type="file"
-                            accept="image/*"
-                            id={`reservationImage-${index}`}
-                            multiple
-                            ref={imgRef}
-                            style={{ display: 'none' }}
-                            onChange={(e) => {
-                                console.log("e.target.files[0]: ", e.target.files[0]);
-                                setImgFileList(e.target.files[0]);
-                                const reader = new FileReader();
-                                reader.readAsDataURL(e.target.files[0]);
-                                reader.onload = () => {
-                                    setImgPath(reader.result);
-                                };
+                        <div className='flex overflow-x-scroll'>
+                        {x.reservationFiles.map((y, imgIndex) => {
+                            return (<div key={imgIndex}>
+                                <label className="border border-grey200 mr-5 w-52 h-40 rounded flex cursor-pointer mb-5" htmlFor={modifyFlag[index] ? `reservationImage-${index}-${imgIndex}` : ''}>
+                                    {x.reservationFiles[imgIndex].fileName ? x.reservationFiles[imgIndex].imgPath ? <img src={x.reservationFiles[imgIndex].imgPath}/> : <img src={`https://tong-bucket.s3.ap-northeast-2.amazonaws.com/${x?.reservationFiles[imgIndex]?.fileName}`} /> : <img src={x.reservationFiles[imgIndex].imgPath}/>}
+                                </label>
+                                <input
+                                    type="file" 
+                                    accept="image/*"
+                                    id={`reservationImage-${index}-${imgIndex}`}
+                                    multiple
+                                    ref={imgRef}
+                                    style={{ display: 'none' }}
+                                    onChange={(e) => {
+                                        let arr = [...imgFileList];
+                                        arr[imgIndex] = e.target.files[0]; 
 
-                            }}
-                        />
+                                        const ids = [...reservationFileIds];
+                                        if(!ids.includes(y.reservationFileId)){
+                                            ids.push(y.reservationFileId);
+                                        }
+                                        setReservationFileIds(ids);
+                                        setImgFileList(arr);
+                                        const reader = new FileReader();
+                                        reader.readAsDataURL(e.target.files[0]);
+                                        reader.onload = () => {
+                                            let arr = [...dataArr];
+                                            arr[index].reservationFiles[imgIndex].imgPath = reader.result;
+                                            setDataArr(arr);
+                                        };
+                                    }}
+                                />
+                            </div>)
+                        })}
+                        </div>
+                        {modifyFlag[index] &&
+                        <div className='my-5'>
+                        <Button sx={{ backgroundColor: '#007CFF', marginRight: "12px" }} variant="contained"
+                            onClick={()=>{
+                                const arr = [...dataArr];
+                                arr[index].reservationFiles.push({
+                                    fileName: "",
+                                    fileSize: "",
+                                    reservationFileId: dataArr[0].reservationFiles.length+1,
+                                });
+                                setDataArr(arr);
+                            }} >이미지 추가
+                        </Button>
+                        <Button sx={{ backgroundColor: '#007CFF' }} variant="contained"
+                            onClick={()=>{
+                               const arr = [...dataArr];
+                               arr[index].reservationFiles.pop();
+                               setDataArr(arr);
+                            }} >이미지 삭제
+                        </Button>
+                        </div>}
+
                         {x.reservationId ? "" : <FormControl fullWidth>
                             <InputLabel id="demo-simple-select-label">지역 선택</InputLabel>
                             <Select
@@ -117,7 +157,7 @@ const index = () => {
                                 })}
                             </Select>
                         </FormControl>}
-
+                        
                         <div className='w-full mt-5'>
                             <div className='mb-5'>
                                 <div>제목</div>
@@ -127,8 +167,8 @@ const index = () => {
                                     }} />
                             </div>
                             <div className='mb-5'>
-                                <div>서브 제목</div>
-                                <input className='border p-3 w-full rounded mt-2' disabled={!modifyFlag[index]} placeholder={x.subTitle}
+                                <div>내용</div>
+                                <input className='border p-3 w-full rounded mt-2' disabled={!modifyFlag[index]} placeholder={x.content}
                                     onChange={(e) => {
                                         setInfo({ ...info, subTitle: e.target.value });
                                     }} />
@@ -160,15 +200,16 @@ const index = () => {
                 <div className='flex justify-end'>
                     <Button sx={{ backgroundColor: '#007CFF' }} variant="contained"
                         onClick={() => {
-                            if(modifyFlag.filter(x => x == true).length == 1){
+                            if (modifyFlag.filter(x => x == true).length == 1) {
                                 window.alert("수정을 완료해주세요.");
-                            }else{
-                                const arr = [...dataArr];
+                            } else {
+                                let arr = [...dataArr];
                                 const modifyFlagArr = [...modifyFlag];
                                 arr.push({
                                     title: "",
                                     subTitle: "",
                                     location: "",
+                                    reservationFiles: [],
                                     peopleCount: "",
                                     score: ""
                                 });

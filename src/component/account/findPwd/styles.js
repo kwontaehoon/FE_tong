@@ -1,76 +1,49 @@
 import styled from "styled-components"
 
 export const Component = styled.div`
-    padding: 33px;
+    padding: 20px;
 `
-export const Header = styled.div`
-    width: 310px;
-    height: 24px;
-    display: flex;
-    align-items: center;
-`
-export const Header_img = styled.div`
-    height: 15px;
-    width: 15px;
-`
-export const Header_Arrow = styled.div`
-    width: 24px;
-    flex: 1;
-`
-export const Pwd = styled.div`
-    width: 93px;
-    height: 19px;
-    font-size: 16px;
+export const Find_pwd = styled.div`
     font-weight: 700;
-    white-space: nowrap;
-    margin-top: 7px;
+    font-size: 24px;
 `
 export const Information = styled.div`
-    height: 15px;
     margin-top: 7px;
-    font-size: 13px;
     font-weight: 500;
-    white-space: nowrap;
-
+    color: #9FA4A9;
+    margin-bottom: 50px;
 `
-
 export const Input = styled.input`
-    width: 310px;
-    height: 23px;
-    border: 1px solid;
-    margin-top: 10px;
+    width: 100%;
+    height: 46px;
+    border-radius: 8px;
+    background-color: #E9EBED;
+    margin-bottom: 18px;
+    padding-left: 13px;
 `
-export const ID  = styled.div`
-    width: 30px;
-    height: 12px;
-    font-size: 10px;
-    margin-top: 38px;
+export const Name = styled.div`
+    font-weight: 500;
+    color: #73787E;
+    margin-bottom: 6px;
 `
-export const Mail = styled.div`
-    width: 30px;
-    height: 12px;
-    font-size: 10px;
-    margin-top: 17px;
-`
-export const ID_Find = styled.div`
-    width: 39px;
-    height: 9px;
-    font-size: 8px;
-    margin-left: 271px;
-    margin-top: 14px;
-    white-space: nowrap;
-    cursor: pointer;
-`
-export const Pwd_Find = styled.div`
-    width: 310px;
-    height: 23px;
-    border: 1px solid;
-    margin-top: 14px;
-    font-size: 10px;
+
+export const ID = styled.div`
+    margin-top: 30px;
+    height: 51px;
+    font-weight: 500;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     cursor: pointer;
+    border-radius: 8px;
+    background-color: #E9EBED;
+    color: #73787E;
+`
 
-
+export const Pwd = styled.div`
+    font-size: 12px;
+    color: #26282B;
+    margin-top: 20px;
+    display: flex;
+    justify-content: end;
 `

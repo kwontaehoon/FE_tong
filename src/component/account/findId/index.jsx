@@ -1,31 +1,20 @@
 import React from 'react'
 import {
   Component,
-  Header,
-  Header_img,
-  Header_Arrow,
   Find_id,
   Information,
   Input,
   Name,
-  Mail,
   Pwd,
   ID
 } from './styles'
+import Header from '../../../layout/Header'
 
 const index = () => {
   return (
     <Component>
-      <Header>
-        <Header_Arrow>
-          <img src="svg/grommet-icons_link-next.svg"></img>
-        </Header_Arrow>
-
-        <Header_img>
-          <img src="svg/Vector.svg"></img>
-        </Header_img>
-      </Header>
-
+      
+      <Header />
 
       <Find_id>아이디 찾기</Find_id>
       <Information>
@@ -33,15 +22,15 @@ const index = () => {
       </Information>
 
       <Name>이름</Name>
-      <Input></Input>
+      <Input placeholder='이름을 입력하세요.'></Input>
 
-      <Mail>이메일</Mail>
-      <Input></Input>
+      <Name>이메일</Name>
+      <Input placeholder='이메일을 입력하세요.'></Input>
 
-      <Pwd>비밀번호 찾기</Pwd>
       <ID>아이디 찾기</ID>
-
-
+      <Pwd>
+        <div className='border-b'>비밀번호 찾기</div>
+      </Pwd>
     </Component>
   )
 }

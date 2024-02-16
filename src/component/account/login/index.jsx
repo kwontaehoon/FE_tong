@@ -3,7 +3,6 @@ import {
     Container,
     Header,
     Logo,
-    Social,
     Id,
     Pwd,
     Login,
@@ -37,9 +36,9 @@ const index = () => {
 
     return (
         <Container>
-            <Header><img src="/svg/Vector.svg" /></Header>
+            <Header><img src="/svg/Close.svg" className='w-6' /></Header>
 
-            <Logo>LOGO</Logo>
+            <Logo><img src="/svg/Logo.svg" className='w-44'/></Logo>
 
                 <Id placeholder='아이디' onChange={(e)=>setInfo({...info, id: e.target.value})}></Id>
                 <Pwd type='password' placeholder='비밀번호' onChange={(e)=>setInfo({...info, password: e.target.value})}></Pwd>
@@ -50,18 +49,23 @@ const index = () => {
                     }}>로그인
                 </Login>
                 <Minibox>
-                    <ID_find>아이디 찾기</ID_find>
+                    <ID_find>아이디</ID_find>
                     <img src="/svg/Line 2.svg" />
-                    <Pwd_find>비밀번호 찾기</Pwd_find>
+                    <Pwd_find>비밀번호</Pwd_find>
                     <img src="/svg/Line 2.svg" />
                     <Signup>회원가입</Signup>
                 </Minibox>
 
-            <Social>
-                <Social_button><img src="/svg/Ellipse 19.svg" /></Social_button>
-                <Social_button><img src="/svg/Ellipse 19.svg" /></Social_button>
-                <Social_button><img src="/svg/Ellipse 19.svg" /></Social_button>
-            </Social>
+                <div className='flex justify-center items-center mb-10'>
+                    <div className='border w-32 h-0 text-grey-b'></div>
+                    <div className='mx-4 whitespace-nowrap text-grey05' style={{fontSize: "13px"}}>SNS 계정으로 로그인</div>
+                    <div className='border w-32 h-0 text-grey-b'></div>
+                </div>
+                <div className='flex justify-center'>
+                    <Social_button><img src="/svg/Naver.svg" className='w-12' /></Social_button>
+                    <Social_button><img src="/svg/Kakao.svg" className='w-12' /></Social_button>
+                    <Social_button><img src="/svg/Google.svg" className='w-12' /></Social_button>
+                </div>
         </Container>
     )
 }
