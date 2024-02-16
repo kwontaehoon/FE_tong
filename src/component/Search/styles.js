@@ -35,7 +35,7 @@ export const Recommendation_Box = styled.div`
     
 `
 export const Tag_Box = styled.div`
-    width: 70px;
+    width: 20%;
     height: 40px;
     border: 1px solid;
     margin-right: 8px;
@@ -46,8 +46,8 @@ export const Tag_Box = styled.div`
 
 `
 export const Tag_Box_color = styled.div`
-    width: 145px;
-    border: 1px solid;
+    width: 45%;
+    border: 1px solid ;
     margin-right: 8px;
     border-radius: 20px;
     display: flex;
@@ -59,7 +59,7 @@ export const Tag_Box_color = styled.div`
 `
 
 export const Tag = styled.div`
-    width: 100px;
+    width: 30%;
     height: 40px;
     border: 1px solid;
     border-radius: 20px;
