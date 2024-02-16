@@ -16,7 +16,7 @@ const index = () => {
                 <TITLE_Box>
                     <TITLE>TITLE</TITLE>
                 </TITLE_Box>
-                <img src="svg/heart_2.svg"></img>
+                <img src="svg/heart_red.svg"></img>
             </Heather>
         </Container>
     )

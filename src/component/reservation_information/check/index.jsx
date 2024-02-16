@@ -17,10 +17,10 @@ const index = () => {
     <Container>
       <Reservation_Box>
         <Reservation>
-          Lorem ipsum dolor sit amet
+          장기 통통 운동장
         </Reservation>
         <Text>
-          Lorem ipsum dolor
+         경기도 김포시 김포한강3로 385 김포통통축구장
         </Text>
         <Check_Box>
           <Check>
