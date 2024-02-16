@@ -19,9 +19,7 @@ const index = () => {
             <Search>
                 <Search_Box>
                     <img style={{ marginLeft: "8px" }} src="svg/search.svg"></img>
-
                     <Name placeholder='검색어를 입력하세요'></Name>
-
                 </Search_Box>
                 <Cancellation>
                     취소

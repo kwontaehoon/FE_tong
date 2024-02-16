@@ -15,7 +15,7 @@ import Reservation from '../component/Reservation'
 import Reservation_Details from '../component/Reservation_Details'
 import Reservation_information from '../component/reservation_information'
 import Breakdown from '../component/breakdown'
-
+import Search_results from '../component/search_results'
 
 
 
@@ -43,6 +43,7 @@ export const router = createBrowserRouter([
             { path: "/reservation_details", element: <Reservation_Details/>},
             { path: "/reservation_information", element: <Reservation_information/>},
             { path: "/breakdown", element: <Breakdown/>},
+            { path: "/search_results", element: <Search_results/>}
 
            
           

@@ -32,6 +32,18 @@ const index = () => {
                     <Name>이달의 맛집 탐방</Name>
 
                 </IMG_Box>
+
+                <IMG_Box>
+                    <IMG>
+                        <img style={{ objectFit: "fill", width: "100%" }} src="svg/Restaurant.svg"></img>
+                    </IMG>
+                    <IMG_Name>
+                        #운통장 추천맛집!!!
+                    </IMG_Name>
+                    <Name>이달의 맛집 탐방</Name>
+
+                </IMG_Box>
+                
             </Recommendation>
         </Container>
     )

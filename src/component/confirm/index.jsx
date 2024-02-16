@@ -62,6 +62,7 @@ const index = () => {
         <div><span className='mb-2 cursor-pointer' onClick={()=>navigate("/reservation_details")}>예약상세</span></div>
         <div><span className='mb-2 cursor-pointer' onClick={()=>navigate("/reservation_information")}>예약정보</span></div>
         <div><span className='mb-2 cursor-pointer' onClick={()=>navigate("/breakdown")}>예약내역</span></div>
+        <div><span className='mb-2 cursor-pointer' onClick={()=>navigate("/search_results")}>검색결과</span></div>
     </div>
   )
 }
