@@ -203,9 +203,9 @@ const index = (props) => {
                     sx={{  p: 3  }}
                 >
                     <Toolbar />
-                    {content == "reservation" && <Banner />}
+                    {content == "" && <Banner />}
                     {content == "pick" && <Pick />}
-                    {content == "" && <Reservation />}
+                    {content == "reservation" && <Reservation />}
                     {content == "searchRecommend" && <SearchRecommend />}
                 </Box>
             </Box>

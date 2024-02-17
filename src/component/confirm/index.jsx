@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import { useBearStore } from '../../store/test'
-import { useTestQuery } from '../../hooks/queries/Test';
+import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { kakaoInfo, kakaoLogin, kakaoToken } from '../../hooks/sns/Kakao'
 import { naverLogin, naverToken } from '../../hooks/sns/Naver';
@@ -13,8 +11,6 @@ const index = () => {
 
     const code = new URL(window.location.href).searchParams.get("code");
     const state = new URL(window.location.href).searchParams.get('state');
-
-    
 
     const googleGetCode = useGoogleLogin({
       onSuccess: async(codeResponse) => {

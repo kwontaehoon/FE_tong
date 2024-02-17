@@ -9,12 +9,16 @@ import {
   ID
 } from './styles'
 import Header from '../../../layout/Header'
+import { useNavigate } from 'react-router-dom'
 
 const index = () => {
+
+  const navigate = useNavigate();
+
   return (
     <Component>
       
-      <Header />
+      <Header noArrow url={"login"}/>
 
       <Find_id>아이디 찾기</Find_id>
       <Information>
@@ -29,7 +33,7 @@ const index = () => {
 
       <ID>아이디 찾기</ID>
       <Pwd>
-        <div className='border-b'>비밀번호 찾기</div>
+        <div className='border-b' onClick={()=>navigate("/findPwd")}>비밀번호 찾기</div>
       </Pwd>
     </Component>
   )

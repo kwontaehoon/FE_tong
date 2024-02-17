@@ -9,12 +9,16 @@ import {
   ID
 } from './styles'
 import Header from '../../../layout/Header'
+import { useNavigate } from 'react-router-dom'
 
 const index = () => {
+
+  const navigate = useNavigate();
+
   return (
     <Component>
       
-      <Header />
+      <Header noArrow url={"login"}/>
 
       <Find_pwd>비밀번호 찾기</Find_pwd>
       <Information>
@@ -27,9 +31,9 @@ const index = () => {
       <Name>이메일</Name>
       <Input placeholder='이메일을 입력하세요.'></Input>
 
-      <ID>아이디 찾기</ID>
+      <ID>비밀번호 찾기</ID>
       <Pwd>
-        <div className='border-b'>아이디 찾기</div>
+        <div className='border-b' onClick={()=>navigate("/findId")}>아이디 찾기</div>
       </Pwd>
     </Component>
   )

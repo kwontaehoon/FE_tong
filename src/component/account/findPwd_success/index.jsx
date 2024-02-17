@@ -1,20 +1,22 @@
 import React from 'react'
-import {Component,Header,Header_img,Arrow,
-Pwd,Login} from './styles'
+import {
+    Component,
+    Pwd,Login
+} from './styles'
+import Header from '../../../layout/Header'
+import { useNavigate } from 'react-router-dom'
 
 const index = () => {
+
+    const navigate = useNavigate();
+
   return (
       <Component>
-          <Header>
-              <Arrow>
-                  <img src="svg/grommet-icons_link-next.svg"></img>
-              </Arrow>
-              <Header_img>
-                  <img src="svg/Vector.svg"></img>
-              </Header_img>
-          </Header>
+
+          <Header noBtn/>
+
           <Pwd>비밀번호를 변경했어요!</Pwd>
-          <Login>로그인 하기</Login>
+          <Login onClick={()=>navigate("/login")}>로그인 하기</Login>
       </Component>
   )
 }

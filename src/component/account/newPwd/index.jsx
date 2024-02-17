@@ -17,9 +17,7 @@ const index = () => {
       <Header noBtn />
 
       <Find_pwd>새 비밀번호</Find_pwd>
-      <Information>
-        아래 정보를 입력하여 비밀번호를 재설정 해주세요.
-      </Information>
+      <Information>아래 정보를 입력하여 비밀번호를 재설정 해주세요.</Information>
 
       <Name>이름</Name>
       <Input placeholder='비밀번호를 입력하세요.'></Input>

@@ -17,6 +17,8 @@ export const signupValidation = (info, validation, setValidation) => {
 
     if(info.passwordCheck == ''){
         arr = { ...arr, passwordCheck: true };
+    }else if(info.password !== info.passwordCheck){
+        arr = { ...arr, passwordCheck: true };
     }
 
     if(info.email == ''){

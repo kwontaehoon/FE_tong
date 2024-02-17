@@ -1,5 +1,16 @@
 import { useQuery, useMutation } from "react-query";
-import { getBannerList, postBannerModify, getPickList, postPickModify, getReservationList, postReservationModify, postReservationAdd, postPickAdd } from "../../../service/admin/Main";
+import {
+  getBannerList,
+  postBannerModify,
+  getPickList,
+  postPickModify,
+  getReservationList,
+  postReservationModify,
+  postReservationAdd,
+  postPickAdd,
+  postReservationDelete,
+  postPickDelete
+} from "../../../service/admin/Main";
 
 const MAIN_KEYS = {
   bannerList: "bannerList",
@@ -81,6 +92,21 @@ export const usePickAddMutation = () =>
   });
 
 /**
+* 관리자 pick 삭제
+* 
+*/
+
+export const usePickDeleteMutation = () =>
+  useMutation({
+    mutationFn: (params) => {
+      return postPickDelete(params);
+    },
+    onSuccess: () => {
+      // 성공 시 실행할 로직 추가
+    }
+  });
+
+/**
  * 관리자 예약 목록
  * 
  */
@@ -123,3 +149,18 @@ export const useReservationAddMutation = () =>
       // 성공 시 실행할 로직 추가
     }
   });
+
+/**
+* 관리자 예약 삭제
+* 
+*/
+
+export const useReservationDeleteMutation = () =>
+useMutation({
+  mutationFn: (params) => {
+    return postReservationDelete(params);
+  },
+  onSuccess: () => {
+    // 성공 시 실행할 로직 추가
+  }
+});

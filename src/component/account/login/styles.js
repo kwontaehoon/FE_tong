@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    padding: 0px 20px;
+    padding: 20px;
 `
 
 export const Header = styled.div`
@@ -12,12 +12,11 @@ export const Header = styled.div`
 `
 
 export const Logo = styled.div`
-    margin-bottom: 57px;
+    margin-bottom: 65px;
+    margin-top: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 48px;
-    font-weight: 800;
 `
 
 export const Id = styled.input`
@@ -28,7 +27,7 @@ export const Id = styled.input`
     border-radius: 8px;
     padding: 0px 13px;
     box-sizing: border-box;
-    background-color: #E9EBED;
+    background-color: #F4F5FA;
 `
 
 export const Pwd = styled.input`
@@ -37,7 +36,7 @@ export const Pwd = styled.input`
     border-radius: 8px;
     padding-left: 13px;
     box-sizing: border-box;
-    background-color: #E9EBED;
+    background-color: #F4F5FA;
 `
 
 export const Login = styled.div`
@@ -59,7 +58,7 @@ export const Minibox = styled.div`
     justify-content: center;
     font-size: 12px;
     font-weight: 500;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
 `
 
 export const ID_find = styled.div`

@@ -5,13 +5,14 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { locationText } from '../../../../constants/text/admin/Reservation';
-import { useReservationAddMutation, useReservationListQuery, useReservationModifyMutation } from '../../../../hooks/queries/admin/Main';
+import { useReservationAddMutation, useReservationListQuery, useReservationModifyMutation, useReservationDeleteMutation } from '../../../../hooks/queries/admin/Main';
 
 const index = () => {
 
     const imgRef = useRef();
     const { data, isSuccess } = useReservationListQuery();
     const [dataArr, setDataArr] = useState(data);
+    console.log("dataArr: ", dataArr);
     const [addFlag, setAddFlag] = useState(false);
     const [location, setLocation] = useState('');
     const [info, setInfo] = useState({
@@ -25,6 +26,7 @@ const index = () => {
     const [reservationFileIds, setReservationFileIds] = useState([]); // reservationFileIds
     const { mutateAsync: modify } = useReservationModifyMutation();
     const { mutateAsync: add } = useReservationAddMutation();
+    const { mutateAsync: remove } = useReservationDeleteMutation();
     const [modifyFlag, setModifyFlag] = useState([]);
 
     useEffect(() => {
@@ -69,14 +71,21 @@ const index = () => {
             <div>
                 {dataArr?.map((x, index) => {
                     return <div key={index}>
-                        <div className='flex mb-2'>
-                            <div className='flex-1 '>이미지</div>
+                        <div className='flex mb-4 items-center'>
+                            <div className='flex-1'>이미지</div>
+                            <Button sx={{ backgroundColor: '#FF0000', marginRight: "8px" }} variant="contained"
+                                onClick={()=>{
+                                    remove({reservationId: x.reservationId});
+                                    window.alert("삭제했습니다.");
+                                    window.location.reload();
+                                }}>삭제
+                            </Button>
                             <Button sx={{ backgroundColor: '#007CFF' }} variant="contained"
                                 onClick={() => {
                                     if (!modifyFlag[index] && !addFlag) {
                                         modifyButton(index);
                                         setInfo(dataArr[index]);
-                                    } else if (!imgFileList) {
+                                    } else if (imgFileList.length == 0) {
                                         window.alert("이미지는 필수입니다.");
                                     } else if (!dataArr.length == 1 && addFlag) {
                                         window.alert("추가를 완료해주세요.");
@@ -134,13 +143,13 @@ const index = () => {
                                 setDataArr(arr);
                             }} >이미지 추가
                         </Button>
-                        <Button sx={{ backgroundColor: '#007CFF' }} variant="contained"
+                        {/* <Button sx={{ backgroundColor: '#007CFF' }} variant="contained"
                             onClick={()=>{
                                const arr = [...dataArr];
                                arr[index].reservationFiles.pop();
                                setDataArr(arr);
                             }} >이미지 삭제
-                        </Button>
+                        </Button> */}
                         </div>}
 
                         {x.reservationId ? "" : <FormControl fullWidth>

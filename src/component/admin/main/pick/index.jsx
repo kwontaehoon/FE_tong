@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react'
 import Button from '@mui/material/Button';
-import { usePickModifyMutation, usePickAddMutation, usePickListQuery } from '../../../../hooks/queries/admin/Main';
+import { usePickModifyMutation, usePickAddMutation, usePickListQuery, usePickDeleteMutation } from '../../../../hooks/queries/admin/Main';
 
 const index = () => {
 
@@ -17,8 +17,10 @@ const index = () => {
     });
     const [imgFileList, setImgFileList] = useState([]); // 업로드된 이미지 파일 저장
     const [pickFileIds, setPickFileIds] = useState([]); // pickFileIds
+    console.log("pickFileIds: ", pickFileIds);
     const { mutateAsync: modify } = usePickModifyMutation();
     const { mutateAsync: add } = usePickAddMutation();
+    const { mutateAsync: remove } = usePickDeleteMutation();
     const [modifyFlag, setModifyFlag] = useState([]);
 
     useEffect(() => {
@@ -58,14 +60,21 @@ const index = () => {
             <div>
                 {dataArr?.map((x, index) => {
                     return <div key={index}>
-                        <div className='flex mb-2'>
+                        <div className='flex mb-4 items-center'>
                             <div className='flex-1 '>이미지</div>
+                            <Button sx={{ backgroundColor: '#FF0000', marginRight: "8px" }} variant="contained" 
+                                onClick={()=>{
+                                    remove({pickId: x.pickId});
+                                    window.alert("삭제했습니다.");
+                                    window.location.reload();
+                                }}>삭제
+                            </Button>
                             <Button sx={{ backgroundColor: '#007CFF' }} variant="contained"
                                 onClick={() => {
                                     if (!modifyFlag[index] && !addFlag) {
                                         modifyButton(index);
                                         setInfo(dataArr[index]);
-                                    } else if (!imgFileList) {
+                                    } else if (imgFileList.length == 0) {
                                         window.alert("이미지는 필수입니다.");
                                     } else if (!dataArr.length == 1 && addFlag) {
                                         window.alert("추가를 완료해주세요.");
@@ -123,13 +132,13 @@ const index = () => {
                                 setDataArr(arr);
                             }} >이미지 추가
                         </Button>
-                        <Button sx={{ backgroundColor: '#007CFF' }} variant="contained"
+                        {/* <Button sx={{ backgroundColor: '#007CFF' }} variant="contained"
                             onClick={()=>{
                                const arr = [...dataArr];
                                arr[index].pickFiles.pop();
                                setDataArr(arr);
                             }} >이미지 삭제
-                        </Button>
+                        </Button> */}
                         </div>}
                         
                         <div className='w-full mt-5'>

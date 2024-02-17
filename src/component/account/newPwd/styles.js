@@ -6,25 +6,26 @@ export const Component = styled.div`
 export const Find_pwd = styled.div`
     font-weight: 700;
     font-size: 24px;
+    margin-top: 30px;
 `
 export const Information = styled.div`
     margin-top: 7px;
     font-weight: 500;
     color: #9FA4A9;
-    margin-bottom: 50px;
+    margin-bottom: 43px;
 `
 export const Input = styled.input`
     width: 100%;
     height: 46px;
     border-radius: 8px;
-    background-color: #E9EBED;
-    margin-bottom: 18px;
+    background-color: #F4F5FA;
+    margin-bottom: 20px;
     padding-left: 13px;
 `
 export const Name = styled.div`
     font-weight: 500;
     color: #73787E;
-    margin-bottom: 6px;
+    margin-bottom: 10px;
 `
 
 export const ID = styled.div`
