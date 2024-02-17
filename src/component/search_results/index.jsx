@@ -10,25 +10,21 @@ Cancellation,
 Search,
 Input,
 Magnifier,
-Colse
+
 } from './styles'
 const index = () => {
   return (
         <Container>
             <Search_Box>
                 <Search>
-                    <Magnifier>
-                        <img src="svg/search.svg"></img>
-                    </Magnifier>
                     <Input_Box>
-                        <Input placeholder='검색어를 입력하세요'></Input>
-                    </Input_Box>
-                    <Cancellation>취소</Cancellation>
-                    <Colse>
-                    <img src="svg/close.svg"></img>
-                    </Colse>
+                        <Input placeholder='검색어를 입력하세요'></Input></Input_Box>
                 </Search>
+                <Cancellation>취소</Cancellation>
             </Search_Box>
+            <Magnifier>
+                <img src="svg/search.svg"></img>
+            </Magnifier>
             <Search_results>
                 <Results>
                     <Ikon>

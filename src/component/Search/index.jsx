@@ -3,10 +3,12 @@ import {
     Container,
     Search,
     Search_Box,
+    Input,
+    Input_Box,
+    Magnifier,
     Search_Word,
     Recommendation_Box,
     Tag_Box,
-    Name,
     Tag_Box_color,
     Tag,
     Text,
@@ -16,15 +18,16 @@ import {
 const index = () => {
     return (
         <Container>
-            <Search>
-                <Search_Box>
-                    <img style={{ marginLeft: "8px" }} src="svg/search.svg"></img>
-                    <Name placeholder='검색어를 입력하세요'></Name>
-                </Search_Box>
-                <Cancellation>
-                    취소
-                </Cancellation>
-            </Search>
+            <Search_Box>
+                <Search>
+                    <Input_Box>
+                        <Input placeholder='검색어를 입력하세요'></Input></Input_Box>
+                </Search>
+                <Cancellation>취소</Cancellation>
+            </Search_Box>
+            <Magnifier>
+                <img src="svg/search.svg"></img>
+            </Magnifier>
             <Search_Word>
                 추천검색어
             </Search_Word>

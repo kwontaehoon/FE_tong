@@ -9,8 +9,8 @@ export const Breakdown = styled.div`
      align-items: center;
 `
 export const Breakdown_Text = styled.div`
-    font-size: 16px;
-    font-weight: 600;
+    font-size: 20px;
+    font-weight: 700;
     text-align: center;
     flex: 1;
 `
@@ -20,27 +20,78 @@ export const Lorem_Box = styled.div`
 `
 export const Lorem = styled.div`
     text-align: center;
-    font-size: 25px;
-    font-weight: 600;
+    font-size: 24px;
+    font-weight: 700;
 `
 export const Lorem_Text = styled.div`
     text-align: center;
     color: #737373;
+    font-size: 14px;
 `
 export const Information_Box = styled.div`
-    height: 225px;
+    height: 150px;
     margin-top: 20px;
 `
 export const Details = styled.div`
-    height: 30px;
-    margin-top: 12px;
+    margin-top: 10px;
     display: flex;
 `
 export const Check = styled.div`
-    font-size: 13px;
+    font-size: 16px;
     flex: 1;
     color: #A5A5A5;
 `
 export const Besides = styled.div`
-    font-size: 13px;
+    font-size: 16x;
+   
+`
+export const Button_Box = styled.div`
+    width: 100%;
+    height: 78px;
+    display: flex;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    background-color: white;
+       
+`
+export const Button = styled.div`
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+`
+export const Img = styled.div`
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+`
+export const Name = styled.div`
+    height: 20px;
+    font-size: 14px;
+    text-align: center;
+
+`
+export const Home_Box = styled.div`
+    width: 53px;
+    height: 75px;
+    justify-content: center;
+    position: relative;
+    bottom: 20px;
+`
+export const Home = styled.div`
+    width: 53px;
+    height: 53px;
+    border: 1px solid;
+    display: flex;
+    justify-content: center;
+    border-radius: 50px;
+    background-color: black;
+`
+export const Home_Name = styled.div`
+    font-size: 14px;
+    text-align: center;
 `

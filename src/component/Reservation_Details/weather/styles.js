@@ -13,10 +13,12 @@ export const Time_Choice = styled.div`
         margin: 15px 0px 0px 5px;
 `
 export const Time_Box = styled.div`
-        height: 30px;
         display: flex;
-        margin-top: 20px;
-      
+        margin-top: 15px;
+        overflow-y: scroll;
+        &::-webkit-scrollbar {
+        display: none;
+    }
 `
 export const Time_Text = styled.div`
         width: 30%;
@@ -25,14 +27,17 @@ export const Time_Text = styled.div`
         display: flex;
         justify-content: center;
         align-items: center;
+        margin-left: 20px;
 `
 export const Text = styled.div`
         font-size: 13px;
         margin: 0px 5px 0px 5px;
+        
 `
 export const Time = styled.div`
         width: 30%;
-        border: 1px solid ;
+        height: 30px;
+        border: 1px solid;
         display: flex;
         justify-content: center;
         align-items: center;

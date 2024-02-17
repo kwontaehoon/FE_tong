@@ -38,9 +38,7 @@ const index = () => {
               12:00~14:00
             </Text>
           </Time>
-          <Time>
-            <Text>14:00~16:00</Text>
-          </Time>
+         
         </Time_Box>
       </Time_Container >
 

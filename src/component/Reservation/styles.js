@@ -9,78 +9,98 @@ export const Heather =  styled.div`
     align-items: center;
     justify-content: center;
 `
-export const Heather_Text = styled.div`
-    font-size: 18px;
+export const Reservation = styled.div`
+    font-size: 20px;
     font-weight: 600;
     flex: 1;
     text-align: center;
 `
-export const TITLE_Box = styled.div`
+export const Jangi = styled.div`
     margin-top: 20px;
     display: flex;
     align-items: end;
-    font-size: 25px;
-    font-weight: 600;
+    font-size: 24px;
+    font-weight: 700;
 `
 export const IMG = styled.div`
     border-radius: 20px;
-    margin-top: 10px;
+    margin-top: 20px;
     display: flex;
 
 `
-export const Img_Text= styled.div`
-    height: 80px;
+export const Tong_Tong = styled.div`
+    height: 94px;
     border: 1px solid;
     border-radius: 0px 0px 15px 15px;
-    
+   
 ` 
+export const Soccer_field = styled.div`
+    height: 94px;
+    border: 1px solid;
+    border-radius: 0px 0px 15px 15px;
+    margin-bottom: 78px;
+   
+`
 export const Lorem = styled.div`
-    margin: 10px 0px 0px 5px;
-    font-size: 18px;
-    font-weight: 600;
+    margin: 20px 0px 0px 20px;
+    font-size: 20px;
+    font-weight: 700;
+   
 `
 export const Lorem_Text = styled.div`
-     margin: 10px 0px 0px 5px;
-     font-size: 13px;
+     margin: 10px 0px 0px 20px;
+     font-size: 14px;
      color: #737373;
+     
 
 `
 export const Button_Box = styled.div`
     width: 100%;
+    height: 78px;
     display: flex;
     position: fixed;
     left: 0;
     bottom: 0;
     background-color: white;
-    
+       
 `
 export const Button = styled.div`
-    height: 30px;
+    width: 32px;
+    height: 32px;
     display: flex;
     justify-content: center;
     margin-top: 5px;
-    
 `
-export const Ikon = styled.div`
+export const Img = styled.div`
     width: 50%;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: end;
-   
+    align-items: center;
 `
-export const Ikon_name = styled.div`
+export const Name = styled.div`
     height: 20px;
     font-size: 14px;
     text-align: center;
+
 `
 export const Home_Box = styled.div`
-    width: 160px;
-    height: 65px;
-    border: 1px solid ;
-    background-color: black;
-    display: flex;
+    width: 53px;
+    height: 75px;
     justify-content: center;
     position: relative;
-    bottom: 30px;
+    bottom: 20px;
+`
+export const Home = styled.div`
+    width: 53px;
+    height: 53px;
+    border: 1px solid;
+    display: flex;
+    justify-content: center;
     border-radius: 50px;
-   
+    background-color: black;
+`
+export const Home_Name = styled.div`
+    font-size: 14px;
+    text-align: center;
 `

@@ -3,29 +3,32 @@ import styled from "styled-components";
 export const Container = styled.div`
     padding: 20px;
 `
+
 export const Search_Box = styled.div`
-    height: 45px;
+    height: 88px;
+    display: flex;
     align-items: center;
+    
 `
 export const Search = styled.div`
-    height:  50px;
+    width: 85%;
+    height:  48px;
     display: flex;
     align-items: center;
+    border: 1px solid;
+    border-radius: 12px;
 `
 export const Input = styled.input`
-    width: 100%;
+    width: 90%;
     height: 30px;
-    margin-left: 25px;
-
+    margin-left: 30px;
 `
 export const Input_Box = styled.div`
-    border: 1px solid;
     display: flex;
     align-items: center;
-    height: 40px;
+    height: 48px;
     flex: 1;
     margin-right: 6px;
-    border-radius: 8px;
 `
 export const Search_results = styled.div`
     height: 320px;
@@ -36,8 +39,8 @@ export const Search_results = styled.div`
 
 `
 export const Cancellation = styled.div`
-    font-size: 15px;
-    margin-right: 5px;
+    font-size: 16px;
+    margin-left: 16px;
 `
 export const Results = styled.div`
     height: 120px;
@@ -54,10 +57,9 @@ export const Ikon = styled.div`
     margin-bottom: 15px;
 `
 export const Magnifier = styled.div`
+    width: 24px;
+    height: 24px;
     position: relative;
-    left: 25px;
-`
-export const Colse = styled.div`
-    position: relative;
-    right: 20%;
+    bottom: 55px;
+    left: 5px;
 `

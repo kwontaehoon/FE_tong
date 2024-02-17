@@ -14,7 +14,9 @@ import {
     Button,
     Img,
     Name,
-    Home_Box
+    Home_Box,
+    Home,
+    Home_Name
 
 } from './styles'
 
@@ -80,7 +82,11 @@ const index = () => {
                     <Name>MY</Name>
                 </Img>
                 <Home_Box>
-                    <img style={{ width: "50%" }} src="svg/home_4.svg"></img>
+                    <Home>
+                        <img style={{ width: "32px" }} src="svg/home_4.svg"></img>
+                    </Home>
+                    <Home_Name>홈</Home_Name>
+
                 </Home_Box>
                 <Img>
                     <Button>
