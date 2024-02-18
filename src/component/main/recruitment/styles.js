@@ -11,7 +11,7 @@ export const Soccer_Team = styled.div`
     display: flex;
     align-items: center;
     border-radius: 20px;
-    padding: 18px 20px;
+    padding: 12px 20px;
     margin-bottom: 12px;
 `
 export const Soccer_Team_Box = styled.div`
@@ -24,10 +24,6 @@ export const Soccer = styled.div`
 export const Gure = styled.div`
     font-size: 20px;
     font-weight: 700;
-`
-export const Img = styled.div`
-    margin-left: 20px;
-   
 `
 export const Rescue = styled.div`
     font-size: 13px;

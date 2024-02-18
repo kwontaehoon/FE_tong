@@ -20,9 +20,9 @@ const index = () => {
   return isSuccess && (
     <Container>
       <Gimpo_Playground>
-        <Swiper pagination={true} modules={[Pagination]} className="mySwiper">
+        <Swiper pagination={true} modules={[Pagination]}>
           {data.map((x, index)=>{
-            return <SwiperSlide key={index}><img src={`https://tong-bucket.s3.ap-northeast-2.amazonaws.com/${x.fileName}`} className='w-full' /></SwiperSlide>
+            return <SwiperSlide style={{height: "auto"}} key={index}><img src={`https://tong-bucket.s3.ap-northeast-2.amazonaws.com/${x.fileName}`} className='w-full h-full' /></SwiperSlide>
           })}
         </Swiper>
       </Gimpo_Playground>

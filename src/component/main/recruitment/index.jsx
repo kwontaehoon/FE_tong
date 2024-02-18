@@ -4,15 +4,11 @@ import {
   Recruitment,
   Soccer_Team,
   Soccer_Team_Box,
-  Img,
   Soccer,
-  Gure,
   Rescue,
   Icon,
   Icon_Box,
   Home,
-  Home_Box,
-  Home_Name,
   House
 } from './styles'
 
@@ -21,9 +17,7 @@ const index = () => {
     <Container>
       <Recruitment>
         <Soccer_Team>
-          <Img>
             <img src="svg/Team_1.svg"></img>
-          </Img>
           <Soccer_Team_Box>
             <Soccer>김포 갓생 축구단</Soccer>
             <Rescue>
@@ -33,9 +27,7 @@ const index = () => {
         </Soccer_Team>
 
         <Soccer_Team>
-          <Img>
             <img src="svg/Team_2.svg"></img>
-          </Img>
           <Soccer_Team_Box>
             <Soccer>모두의 축구단</Soccer>
             <Rescue>
@@ -45,9 +37,7 @@ const index = () => {
         </Soccer_Team>
 
         <Soccer_Team>
-          <Img>
             <img src="svg/Team_3.svg"></img>
-          </Img>
           <Soccer_Team_Box>
             <Soccer>구래동 슛돌이 축구단</Soccer>
             <Rescue>

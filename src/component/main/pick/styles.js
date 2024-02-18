@@ -23,7 +23,9 @@ export const Pick = styled.div`
 `
 
 export const PickContent = styled.div`
-    border: ${props => props.$flag ? '1px solid #007CFF' : '1px solid'};
+    background-color: ${props => props.$flag ? '#007CFF' : ''};
+    border: 1px solid;
+    color: ${props => props.$flag ? 'white' : ''};
     font-size: 16px;
     border-radius: 30px;
     padding: 10px 20px;

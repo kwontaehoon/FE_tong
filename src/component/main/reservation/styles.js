@@ -67,10 +67,10 @@ export const Soccer_Field = styled.div`
     height: 30%;
     background-color: white;
     display: flex;
-    justify-content: center;
     align-items: center;
     border-radius: 15px;
     font-size: 20px;
+    padding: 12px 18px;
 `
 export const Popularity = styled.div`
     width: 50%;
@@ -88,12 +88,12 @@ export const Img = styled.div`
     overflow: hidden;
 `
 export const Img_Name = styled.div`
-    margin-right: 18px;
+    flex: 1;
 `
 export const Place = styled.div`
     font-size: 20px;
     font-weight: bold;
-    white-space: nowrap;
+
 `
 export const Soccer = styled.div`
     font-size: 12px;

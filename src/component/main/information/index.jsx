@@ -29,7 +29,7 @@ const index = () => {
         </Policy>
         <Personal_information>
         <Information>
-            정보처리 관리자: 홍석혁
+            정보처리 관리자: 홍성혁
             </Information>
             
             <Information>

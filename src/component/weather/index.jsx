@@ -28,11 +28,13 @@ const index = () => {
     }, [])
 
     return (
-        <div>
-            <div>온도: {weatherList?.temp}</div>
-            <div>강수: {weatherList?.rain}</div>
-            <div>하늘: {weatherList?.sky}</div>
+        <div className='flex font-sm'>
             {weatherList && weatherStatus(weatherList)}
+            <div className='text-grey05 ml-2 mr-1'>현재날씨</div>
+            <div>{weatherList?.temp}º</div>
+            {/* <div>강수: {weatherList?.rain}</div>
+            <div>하늘: {weatherList?.sky}</div> */}
+            
         </div>
     )
 }

@@ -22,14 +22,15 @@ import {
 
 } from './styles'
 import { useReservationListQuery } from '../../../hooks/queries/api/Main'
+import WeatherFuc from '../../weather'
 
 const index = () => {
 
   const { data, isSuccess } = useReservationListQuery();
-  console.log("reservation data: ", data);
+  console.log("reservation data: ", data, isSuccess);
 
   const [dataArr, setDataArr] = useState();
-  console.log("dataArr: ", dataArr);
+  console.log("reservation dataArr: ", dataArr);
 
   useEffect(() => {
     if (data) {
@@ -38,7 +39,7 @@ const index = () => {
     }
   }, [isSuccess]);
 
-  return isSuccess && (
+  return isSuccess && data.length !== 0 && (
     <Container>
       <Recommendation>
         <Recommendation_Box>
@@ -69,9 +70,7 @@ const index = () => {
             <img style={{ width: "151px", height: "110px", borderRadius: "20px" }} className="overflow-hidden" src={`https://tong-bucket.s3.ap-northeast-2.amazonaws.com/${data[0].reservationFiles[0].fileName}`} />
           </PlayGround>
           <Sun>
-            <img src="svg/weather-sun.svg"></img>
-            <Temperature>현재날씨</Temperature>
-            < Weather>23º</Weather>
+            <WeatherFuc />
           </Sun>
 
         </Recommendation_Box>

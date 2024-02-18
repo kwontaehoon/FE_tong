@@ -50,11 +50,11 @@ const index = () => {
         <div className='flex'>
           {data[flag.findIndex(x=>x)]?.pickFiles?.map(x => {
             return (
-              <div key={x.pickFileId} style={{ height: "244px" }} className='border w-44 mr-3 rounded-2xl overflow-hidden'>
-                <div className='h-44 border'><img src={`https://tong-bucket.s3.ap-northeast-2.amazonaws.com/${x.fileName}`}/></div>
-                <div className='h-16 flex flex-col justify-center p-3'>
+              <div key={x.pickFileId} style={{ height: "244px" }} className='w-44 mr-3 rounded-2xl overflow-hidden'>
+                <div className='h-44'><img src={`https://tong-bucket.s3.ap-northeast-2.amazonaws.com/${x.fileName}`}/></div>
+                <div className='h-16 flex flex-col justify-center p-3 bg-white'>
                   <div>#제목</div>
-                  <div>#내용</div>
+                  <div className='text-grey05' style={{fontSize: "13px"}}>#내용</div>
                 </div>
               </div>
             )
