@@ -10,6 +10,7 @@ export const Find_id = styled.div`
 `
 export const Information = styled.div`
     margin-top: 7px;
+    font-size: 12px;
     font-weight: 500;
     color: #9FA4A9;
     margin-bottom: 50px;
@@ -37,7 +38,7 @@ export const ID = styled.div`
     align-items: center;
     cursor: pointer;
     border-radius: 8px;
-    background-color: #F4F5FA;
+    background-color: #E9EBED;
     color: #73787E;
 `
 

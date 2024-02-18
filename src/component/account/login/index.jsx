@@ -80,7 +80,7 @@ const index = () => {
 
             <Id placeholder='아이디' onChange={(e) => setInfo({ ...info, id: e.target.value })}></Id>
             <Pwd type='password' placeholder='비밀번호' onChange={(e) => setInfo({ ...info, password: e.target.value })}></Pwd>
-            {validation && <div className='text-xs my-3 text-valid'>아이디 또는 비밀번호를 잘못 입력했습니다.입력하신 내용을 다시 확인해주세요.</div>}
+            {validation && <div className='text-xs my-3 text-valid'>아이디 또는 비밀번호를 잘못 입력했습니다. 다시 확인해주세요.</div>}
             <Login $validation={validation}
                 onClick={() => {
                     login(info);

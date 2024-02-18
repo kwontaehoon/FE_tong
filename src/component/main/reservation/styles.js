@@ -93,7 +93,6 @@ export const Img_Name = styled.div`
 export const Place = styled.div`
     font-size: 20px;
     font-weight: bold;
-
 `
 export const Soccer = styled.div`
     font-size: 12px;

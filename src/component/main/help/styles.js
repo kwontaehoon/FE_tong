@@ -35,7 +35,6 @@ export const Button = styled.div`
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background-color: #FAFBFD;
 `
 
 export const Name = styled.div`

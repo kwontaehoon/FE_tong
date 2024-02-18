@@ -18,6 +18,6 @@ export const FindPwd = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #F4F5FA;
+    background-color: #E9EBED;
     color: #73787E;
 `

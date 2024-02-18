@@ -14,7 +14,7 @@ const index = () => {
   return (
     <Component>
 
-      <Header noBtn />
+      <Header noArrow />
 
       <ID>아이디를 찾았어요!</ID>
       <FindPwd onClick={()=>navigate("/login")}>로그인</FindPwd>

@@ -43,7 +43,7 @@ export const Login = styled.div`
     width: 100%;
     height: 51px;
     margin-top: ${props => props.$validation ? '0px' : "21px"};
-    border-radius: 15px;
+    border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
