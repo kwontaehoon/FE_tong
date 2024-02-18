@@ -1,5 +1,5 @@
 import React from 'react'
-import { Cover,Container,Inner,Bar,Info,Pcoment,Right,Btn1,Btn2,Sec1,Sec2,Sec3,Sec1H1,List,Icon,Img,P } from '.styles';
+import { Cover,Container,Inner,Bar,Info,Pcoment,Right,Btn1,Btn2,Sec1,Sec2,Sec3,Sec1H1,List,Icon,Img,P } from './styles';
 
 const index = () => {
   return (
