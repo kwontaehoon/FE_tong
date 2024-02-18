@@ -9,7 +9,14 @@ import {
     Information_Box,
     Details,
     Check,
-    Besides
+    Besides,
+    Button_Box,
+    Button,
+    Img,
+    Name,
+    Home_Box,
+    Home_Name,
+    Home
 } from './styles'
 
 const index = () => {
@@ -33,23 +40,13 @@ const index = () => {
             <Information_Box>
                 예약정보
                 <Details>
-                    <Check>체크인</Check>
-                    <Besides>23.11.23(토)</Besides>
-                </Details>
-
-                <Details>
-                    <Check>체크아웃</Check>
-                    <Besides>23.11.24(일)</Besides>
-                </Details>
-
-                <Details>
                     <Check>예약번호</Check>
-                    <Besides>Lorrem ipsum dolor</Besides>
+                    <Besides>133442509-DSGGG</Besides>
                 </Details>
 
                 <Details>
-                    <Check>예약자 이름</Check>
-                    <Besides>***</Besides>
+                    <Check>예약자이름</Check>
+                    <Besides>이민희</Besides>
                 </Details>
 
                 <Details>
@@ -57,6 +54,40 @@ const index = () => {
                     <Besides>010-1234-5678</Besides>
                 </Details>
             </Information_Box>
+            <Button_Box>
+                <Img>
+                    <Button>
+                        <img src="svg/Calendar.svg"></img>
+                    </Button>
+                    <Name>예약</Name>
+                </Img>
+                <Img>
+                    <Button>
+                        <img style={{ marginTop: "3px" }} src="svg/Smile.svg"></img>
+                    </Button>
+                    <Name>MY</Name>
+                </Img>
+                <Home_Box>
+                    <Home>
+                        <img style={{ width: "32px" }} src="svg/home_4.svg"></img>
+                    </Home>
+                    <Home_Name>홈</Home_Name>
+
+                </Home_Box>
+                <Img>
+                    <Button>
+                        <img src="svg/heart.svg"></img>
+                    </Button>
+                    <Name>찜</Name>
+                </Img>
+                <Img>
+                    <Button>
+                        <img src="svg/rectangles.svg"></img>
+                    </Button>
+                    <Name>카테고리</Name>
+                </Img>
+
+            </Button_Box>
         </Container>
     )
 }

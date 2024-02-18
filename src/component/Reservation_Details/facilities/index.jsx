@@ -9,7 +9,15 @@ import {
     Description,
     Description_Box,
     Reservation_Box,
-    Reservation
+    Reservation,
+    Button_Box,
+    Button,
+    Img,
+    Name,
+    Home_Box,
+    Home,
+    Home_Name
+
 } from './styles'
 
 const index = () => {
@@ -57,9 +65,43 @@ const index = () => {
             </Description>
             <Reservation_Box>
                 <Reservation>
-                    예약하기
+                    확인
                 </Reservation>
             </Reservation_Box>
+            <Button_Box>
+                <Img>
+                    <Button>
+                        <img src="svg/Calendar.svg"></img>
+                    </Button>
+                    <Name>예약</Name>
+                </Img>
+                <Img>
+                    <Button>
+                        <img style={{ marginTop: "3px" }} src="svg/Smile.svg"></img>
+                    </Button>
+                    <Name>MY</Name>
+                </Img>
+                <Home_Box>
+                    <Home>
+                        <img style={{ width: "32px" }} src="svg/home_4.svg"></img>
+                    </Home>
+                    <Home_Name>홈</Home_Name>
+
+                </Home_Box>
+                <Img>
+                    <Button>
+                        <img src="svg/heart.svg"></img>
+                    </Button>
+                    <Name>찜</Name>
+                </Img>
+                <Img>
+                    <Button>
+                        <img src="svg/rectangles.svg"></img>
+                    </Button>
+                    <Name>카테고리</Name>
+                </Img>
+
+            </Button_Box>
         </Container>
 
     )

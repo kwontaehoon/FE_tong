@@ -7,8 +7,6 @@ export const Heather = styled.div`
     height: 45px;
     display: flex;
     align-items: center;
-    margin-top: 20px;
-
 `
 export const TITLE_Box = styled.div`
     height: 30px;

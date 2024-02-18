@@ -33,7 +33,7 @@ export const Check = styled.div`
     justify-content: center;
     align-items: center;
     border-radius: 20px;
-    margin-left: 12px;
+    margin-left: 15px;
     background-color: #F3F3F3;
 `
 export const Check_inout = styled.div`
