@@ -1,5 +1,8 @@
 import React from 'react'
 import {Container,
+  Weather_Box,
+  Weather,
+  Temperature,
   Time_Container ,
   Time_Choice,
   Time_Box,
@@ -10,17 +13,26 @@ import {Container,
   Personnel,
   Max,
   Max_Box,
-  Number
+  Number,
+  Lorem
 } from './styles'
 
 const index = () => {
   return (
     <Container>
+      <Weather_Box>
+        <Weather>
+        <img style={{width:"36px"}}src="svg/Sun.svg"></img>
+        <Temperature>
+          23° 
+        </Temperature>
+        <Lorem>Lorem</Lorem>
+        </Weather>
+      </Weather_Box>
       <Time_Container >
         <Time_Choice>
           시간을 선택하세요
         </Time_Choice>
-
         <Time_Box>
           <Time_Text>
             <Text>
@@ -38,7 +50,6 @@ const index = () => {
               12:00~14:00
             </Text>
           </Time>
-         
         </Time_Box>
       </Time_Container >
 
@@ -47,9 +58,9 @@ const index = () => {
         <Max_Box>
           <Max>(최대 5명)</Max>
         </Max_Box>
-        <img src="svg/Minus.svg"></img>
+        <img style={{width:"42px",height:"42px"}}src="svg/Minus.svg"></img>
         <Number>0명 </Number>
-        <img src="svg/Plus.svg"></img>
+        <img style={{width:"42px", height:"42px",marginRight:"10px"}}src="svg/Plus.svg"></img>
       </Personnel_Box>
     </Container>
   )

@@ -3,10 +3,10 @@ import {
     Container,
     Breakdown,
     Breakdown_Text,
-    Lorem_Box,
     Lorem,
     Lorem_Text,
     Information_Box,
+    Reservation_information,
     Details,
     Check,
     Besides,
@@ -24,21 +24,23 @@ const index = () => {
         <Container>
             <Breakdown>
                 <img src="svg/BackArrow.svg"></img>
-                <Breakdown_Text>
+                <Breakdown_Text> 
                     예약내역
                 </Breakdown_Text>
-                <img src="svg/home_1.svg"></img>
+                <img src="svg/home-16.svg"></img>
             </Breakdown>
-            <Lorem_Box>
                 <Lorem>
                     Lorem
                 </Lorem>
                 <Lorem_Text>
                     Lorem ipsum dolor
                 </Lorem_Text>
-            </Lorem_Box>
             <Information_Box>
-                예약정보
+                <Details>
+                    <Reservation_information>
+                        예약정보
+                    </Reservation_information>
+                </Details>
                 <Details>
                     <Check>예약번호</Check>
                     <Besides>133442509-DSGGG</Besides>
@@ -48,7 +50,6 @@ const index = () => {
                     <Check>예약자이름</Check>
                     <Besides>이민희</Besides>
                 </Details>
-
                 <Details>
                     <Check>안심번호</Check>
                     <Besides>010-1234-5678</Besides>

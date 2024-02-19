@@ -26,7 +26,7 @@ const index = () => {
                 <Cancellation>취소</Cancellation>
             </Search_Box>
             <Magnifier>
-                <img src="svg/search.svg"></img>
+                <img style={{ marginLeft: "16px" }} src="svg/search_1.svg"></img>
             </Magnifier>
             <Search_Word>
                 추천검색어

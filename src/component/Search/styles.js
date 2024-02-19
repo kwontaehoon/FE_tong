@@ -14,13 +14,14 @@ export const Search = styled.div`
     height:  48px;
     display: flex;
     align-items: center;
-    border: 1px solid;
     border-radius: 12px;
+    background-color:#e9ebed;
 `
 export const Input = styled.input`
     width: 90%;
     height: 30px;
-    margin-left: 30px;
+    margin-left: 50px;
+    background-color:#e9ebed;
 `
 export const Input_Box = styled.div`
     display: flex;
@@ -50,6 +51,9 @@ export const Cancellation = styled.div`
 `
 export const Search_Word = styled.div`
     font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 10px;
+
 `
 export const Recommendation_Box = styled.div`
     height: 41px;
@@ -59,39 +63,42 @@ export const Recommendation_Box = styled.div`
 `
 export const Tag_Box = styled.div`
     width: 20%;
-    height: 40px;
-    border: 1px solid;
+    height: 36px;
     margin-right: 8px;
-    border-radius: 20px;
+    border-radius: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
+    border: 1px solid #CACACA;
 
 `
 export const Tag_Box_color = styled.div`
     width: 45%;
-    border: 1px solid ;
+    height: 36px;
     margin-right: 8px;
-    border-radius: 20px;
+    border-radius: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: #007CFF;
+    border: 1px solid #CACACA;
     color: white;
+    cursor: pointer;
 
 `
 
 export const Tag = styled.div`
     width: 30%;
-    height: 40px;
-    border: 1px solid;
-    border-radius: 20px;
+    height: 36px;
+    border-radius: 100px;
     margin-right: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
+    border: 1px solid #CACACA;
 `
 export const Text = styled.div`
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 500;
+    font-style: normal;
 `

@@ -4,64 +4,44 @@ export const Container = styled.div`
 `
 
 export const Information_Box = styled.div`
-    height: 40px;
-    font-size: 18px;
-    margin: 10px 0px 0px 5px;
+    height: 20px;
+    font-size: 16px;
+    margin: 24px 0px 0px 16px;
+    color: #73787E;
 `
 export const Information_Container = styled.div`
-    height: 250px;
+    height: 264px;
     border: 1px solid;
     margin-top: 20px;
+    border-radius: 8px;
 `
 
 export const Information = styled.div`
     font-size: 14px;
-    margin: 10px 0px 0px 10px;
+    margin: 24px 0px 0px 16px;
+    color: #73787E;
 `
 export const Input = styled.input`
     width: 90%;
-    height: 40px;
-    border: 1px solid;
-    border-radius: 8px;
-    margin: 10px;
+    height:20px;
+    font-size: 14px;
+    margin-left: 10px;
+    background: #E9EBED;
     
+`
+export const Input_Box = styled.div`
+    height: 46px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    margin: 8px 10px 0px 10px;
+    background: #E9EBED;
 `
 
 export const Calendar = styled.div`
     position: relative;
     right: 30px;
 
-`
-export const Option_Box = styled.div`
-    height: 301px;
-    border: 1px solid;
-    margin-top: 20px;
-`
-export const  Option = styled.div`
-    height: 40px;
-    margin-top: 20px;
-    display: flex;
-    align-items: center;
-   
-`
-export const Option_name = styled.div`
-    height: 40px;
-    border: 1px solid;
-    display: flex;
-    align-items: center;
-    flex: 1;
-    margin-left: 10px;
-    border-radius: 8px;
-`
-export const  Option_Text = styled.div`
-    color: gray;
-    margin-left: 5px;
-`
-export const Choice_Box = styled.div`
-    height: 70px;
-    margin-top: 20px;
-    display: flex;
-    align-items: center;
 `
 export const Choice = styled.div`
     height: 40px;
@@ -75,35 +55,12 @@ export const Text = styled.div`
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
+    border: 1px solid;
 `
 export const Max = styled.div`
     font-size: 12px;
     color: gray;
 
-`
-export const Personnel = styled.div`
-    width: 30px;
-    height: 30px;
-    color: #007CFF;
-    margin: 0px 5px 0px 10px;
-    
-`
-export const Check = styled.div`
-    width: 100%;
-    height: 68px;
-    border-radius: 8px;
-    border: 1px solid;
-    margin-top: 28px;
-    margin-bottom: 151px;
-
-`
-export const Test = styled.div`
-    font-size: 20px;
-    font-weight: 700;
-    cursor: pointer;
-    text-align: center;
-    margin-top: 16px;
-    
 `
 export const Button_Box = styled.div`
     width: 100%;
