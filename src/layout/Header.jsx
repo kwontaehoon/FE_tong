@@ -10,7 +10,7 @@ const Header = ({noBtn, noArrow, url}) => {
       <div className='flex-1'>
         {!noBtn && !noArrow && <img src="/svg/Header_arrow_left.svg" onClick={()=>navigate(`/${url}`)} />}
         </div>
-      {!noBtn && <img src="/svg/Close.svg" onClick={()=>navigate(`/${url}`, { replace: true })} />}
+      {!noBtn && <img src="/svg/close.svg" onClick={()=>navigate(`/${url}`, { replace: true })} />}
     </div>
   )
 }

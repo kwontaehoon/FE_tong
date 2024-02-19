@@ -5,7 +5,7 @@ import {
   FindPwd
 } from './styles'
 import Header from '../../../layout/Header'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 
 const index = () => {
 
@@ -17,6 +17,7 @@ const index = () => {
       <Header noArrow />
 
       <ID>아이디를 찾았어요!</ID>
+      <div>{useLocation().state}</div>
       <FindPwd onClick={()=>navigate("/login")}>로그인</FindPwd>
 
     </Component>

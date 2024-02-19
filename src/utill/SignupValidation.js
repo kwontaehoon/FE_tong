@@ -27,8 +27,12 @@ export const signupValidation = (info, validation, setValidation) => {
         arr = { ...arr, email: false, emailForm: true};
     }
 
-    if(info.nickname == ''){
-        arr = { ...arr, nickname: true };
+    if(info.name == ''){
+        arr = { ...arr, name: true };
+    }
+
+    if(info.birth == ''){
+        arr= { ...arr, birth: true };
     }
     setValidation(arr);
 }

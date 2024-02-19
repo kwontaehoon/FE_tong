@@ -37,8 +37,8 @@ export const ID = styled.div`
     align-items: center;
     cursor: pointer;
     border-radius: 8px;
-    background-color: #F4F5FA;
-    color: #73787E;
+    background-color: ${props => props.$ok ? "#007CFF" : "#E9EBED"};
+    color: ${props => props.$ok ? "white" : "#73787E"};
 `
 
 export const Pwd = styled.div`

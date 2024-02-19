@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   Component,
   Find_id,
@@ -10,10 +10,24 @@ import {
 } from './styles'
 import Header from '../../../layout/Header'
 import { useNavigate } from 'react-router-dom'
+import { useFindIdMutation } from '../../../hooks/queries/api/Account'
 
 const index = () => {
 
   const navigate = useNavigate();
+
+  const [info, setInfo] = useState({
+    name: '',
+    email: ''
+  });
+
+  const { mutate: findId, data: findIdData } = useFindIdMutation();
+
+  useEffect(()=>{
+    if(findIdData?.data?.id){
+      navigate("/findId_success", {state: findIdData?.data?.id});
+    }
+  }, [findIdData]);
 
   return (
     <Component>
@@ -26,12 +40,17 @@ const index = () => {
       </Information>
 
       <Name>이름</Name>
-      <Input placeholder='이름을 입력하세요.'></Input>
+      <Input placeholder='이름을 입력하세요.' onChange={(e)=>setInfo({...info, name: e.target.value})}></Input>
 
       <Name>이메일</Name>
-      <Input placeholder='이메일을 입력하세요.'></Input>
+      <Input placeholder='이메일을 입력하세요.' onChange={(e)=>setInfo({...info, email: e.target.value})}></Input>
 
-      <ID>아이디 찾기</ID>
+      <ID $ok={Object.values(info).every(value => value !== "")}
+        onClick={()=>{
+          if(Object.values(info).every(value => value !== "")){
+            findId(info);
+          }
+        }}>아이디 찾기</ID>
       <Pwd>
         <div className='border-b' onClick={()=>navigate("/findPwd")}>비밀번호 찾기</div>
       </Pwd>
