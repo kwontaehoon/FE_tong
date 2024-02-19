@@ -26,7 +26,7 @@ const index = () => {
 
   useEffect(()=>{
     if(findPasswordData?.data?.password){
-      navigate("/newPwd");
+      navigate("/newPwd", {state: findPasswordData?.data?.id});
     }
   }, [findPasswordData]);
 

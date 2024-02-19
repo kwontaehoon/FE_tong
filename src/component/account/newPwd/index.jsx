@@ -10,14 +10,26 @@ import {
 } from './styles'
 import Header from '../../../layout/Header'
 import { useNewPasswordMutation } from '../../../hooks/queries/api/Account'
+import { useLocation, useNavigate } from 'react-router'
 
 const index = () => {
+
+  const id = useLocation().state;
+  const navigate = useNavigate();
 
   const [info, setInfo] = useState({
     password: "",
     passwordCheck: ""
   });
-  const { mutate: newPassword } = useNewPasswordMutation();
+  const { mutate: newPassword, data: newPasswordData } = useNewPasswordMutation();
+
+  useEffect(()=>{
+    if(newPasswordData?.data?.status == "success"){
+      navigate("/findPwd_success")
+    }else{
+
+    }
+  }, [newPasswordData]);
 
   return (
     <Component>
@@ -33,10 +45,13 @@ const index = () => {
       <Name>비밀번호 확인</Name>
       <Input type='password' placeholder='비밀번호 확인' onChange={(e)=>setInfo({...info, passwordCheck: e.target.value})}></Input>
 
-      <ID $ok={Object.values(info).every(value => value !== "")}
+      <ID $ok={Object.values(info).every(value => value !== "") && info.password == info.passwordCheck}
         onClick={()=>{
-          if(Object.values(info).every(value => value !== "")){
-            newPassword(info);
+          if(Object.values(info).every(value => value !== "" && info.password == info.passwordCheck)){
+            newPassword({
+              id: id,
+              password: info.password
+            });
           }
         }}>변경하기
       </ID>
