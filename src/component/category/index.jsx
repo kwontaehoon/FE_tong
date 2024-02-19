@@ -1,5 +1,6 @@
 import React from 'react'
-import { Cover,Container,Inner,Bar,Info,Pcoment,Right,Btn1,Btn2,Sec1,Sec2,Sec3,Sec1H1,List,Icon,Img,P } from './styles';
+import { Cover,Container,Inner,Bar,Info,Pcoment,Right,Btn1,Btn2,Sec1,Sec2,
+  Sec3,Sec1H1,List,Icon,Img,P,Weekley,WeekBox,WeekList} from './styles';
 
 const index = () => {
   return (
@@ -67,7 +68,23 @@ const index = () => {
   </List>
 </Sec2> 
 <Sec3>
-<Sec1H1>인기검색어<span style={{color:'#FF2A6D',fontSize:'14px',marginLeft:'4px'}}>weekley best</span></Sec1H1> 
+  <Weekley>
+  <Sec1H1>인기검색어<span style={{color:'#FF2A6D',fontSize:'14px',marginLeft:'4px'}}>weekley best</span></Sec1H1> 
+    <WeekBox>
+      <WeekList><a href='#'>#말풍선0</a></WeekList>
+      <WeekList><a href='#'>#말풍선말풍선1</a></WeekList>
+      <WeekList><a href='#'>#말풍선2</a></WeekList>
+      <WeekList><a href='#'>#말풍선말풍선말풍선3</a></WeekList>
+      <WeekList><a href='#'>#말풍선4</a></WeekList>
+      <WeekList><a href='#'>#말풍선5</a></WeekList>
+      <WeekList><a href='#'>#말풍선6</a></WeekList>
+      <WeekList><a href='#'>#말풍선7</a></WeekList>
+      <WeekList><a href='#'>#말풍선8</a></WeekList>
+      <WeekList><a href='#'>#말풍선9</a></WeekList>
+
+    </WeekBox>
+
+</Weekley>
 </Sec3>
 
 

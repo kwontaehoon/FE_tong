@@ -112,11 +112,13 @@ font-size: 16px;
 font-weight: 700;
 color:#1B1D1F;
 letter-spacing: -0.08px;
+margin-bottom: 20px;
 `
 export const Sec2 = styled(Sec1)`
 `
 export const Sec3 = styled(Sec1)`
 `
+
 export const List = styled.ul`
 list-style: none;
 display: flex;
@@ -144,4 +146,27 @@ color:#1B1D1F;
 font-size: 12px;
 text-align: center;
 text-decoration: none;
+`
+// 검색어
+export const Weekley = styled.div`
+width: auto;
+padding: 20px 0px;
+
+`
+export const WeekBox = styled.ul`
+display: flex;
+flex-wrap: wrap;
+align-items: center;
+`
+export const WeekList = styled.li`
+    width: auto;
+    display: inline-block;
+    margin: 0 6px 6px;
+    padding: 6px 15px;
+    border: 1px solid #1B1D1F;
+    border-radius: 40px;
+    font-size: 12px;
+    &:nth-child(1) {
+        border:1px solid #FF2A6D;
+    }
 `
