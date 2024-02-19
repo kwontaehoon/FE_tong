@@ -1,6 +1,6 @@
 import React from 'react'
 import { Cover,Container,Inner,Bar,Info,Pcoment,Right,Btn1,Btn2,Sec1,Sec2,
-  Sec3,Sec1H1,List,Icon,Img,P,Weekley,WeekBox,WeekList} from './styles';
+  Sec3,Sec1H1,List,Icon,Img,P,Weekley,WeekBox,WeekList,Sec4,H4,CsBox,Cs1,CsSpan} from './styles';
 
 const index = () => {
   return (
@@ -79,14 +79,22 @@ const index = () => {
       <WeekList><a href='#'>#말풍선5</a></WeekList>
       <WeekList><a href='#'>#말풍선6</a></WeekList>
       <WeekList><a href='#'>#말풍선7</a></WeekList>
-      <WeekList><a href='#'>#말풍선8</a></WeekList>
-      <WeekList><a href='#'>#말풍선9</a></WeekList>
-
+      <WeekList><a href='#'>#말풍선8</a></WeekList>      
     </WeekBox>
 
 </Weekley>
 </Sec3>
-
+<Sec4>
+<H4>고객센터</H4>
+    <CsBox>
+      <Cs1>
+        <CsSpan>운영시간</CsSpan>10:00 ~ 17:00 (주말, 공휴일 휴무)
+      </Cs1>
+      <Cs1>
+        <CsSpan>점심시간</CsSpan>12:00 ~ 13:30 
+      </Cs1>
+    </CsBox>
+</Sec4>
 
 
     </Inner>

@@ -161,8 +161,8 @@ align-items: center;
 export const WeekList = styled.li`
     width: auto;
     display: inline-block;
-    margin: 0 6px 6px;
-    padding: 6px 15px;
+    margin: 0 3px 6px;
+    padding: 2px 20px;
     border: 1px solid #1B1D1F;
     border-radius: 40px;
     font-size: 12px;
@@ -170,3 +170,34 @@ export const WeekList = styled.li`
         border:1px solid #FF2A6D;
     }
 `
+export const Sec4 = styled.div`
+width: auto;
+padding: 50px 20px;
+border-top: 10px solid #F4F5FA;
+`
+export const H4 = styled.h4`
+font-size: 13px;
+font-style: normal;
+font-weight: 350;
+line-height: 16px; 
+letter-spacing: -0.24px;
+color: #26282B ;
+`
+export const CsBox = styled.ul`
+width: 100%;
+`
+export const Cs1 = styled.li`
+font-size: 12px;
+font-style: normal;
+font-weight: 350;
+line-height: 16px; 
+letter-spacing: -0.24px;
+color: #464C52 ;
+margin-top: 13px;
+`
+export const CsSpan = styled.span`
+background: #F4F5FA;
+padding: 4px;
+margin-right: 4px;
+`
+
