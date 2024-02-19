@@ -59,8 +59,6 @@ font-weight: 400;
 line-height: 12px; /* 120% */
 letter-spacing: -0.1px;
 color: var(--Grayscale-05, #9FA4A9);
-
-
 `
 
 export const Right = styled.ul`
@@ -112,11 +110,13 @@ font-size: 16px;
 font-weight: 700;
 color:#1B1D1F;
 letter-spacing: -0.08px;
+margin-bottom: 20px;
 `
 export const Sec2 = styled(Sec1)`
 `
 export const Sec3 = styled(Sec1)`
 `
+
 export const List = styled.ul`
 list-style: none;
 display: flex;
@@ -145,3 +145,57 @@ font-size: 12px;
 text-align: center;
 text-decoration: none;
 `
+// 검색어
+export const Weekley = styled.div`
+width: auto;
+padding: 20px 0px;
+
+`
+export const WeekBox = styled.ul`
+display: flex;
+flex-wrap: wrap;
+align-items: center;
+`
+export const WeekList = styled.li`
+    width: auto;
+    display: inline-block;
+    margin: 0 3px 6px;
+    padding: 2px 20px;
+    border: 1px solid #1B1D1F;
+    border-radius: 40px;
+    font-size: 12px;
+    &:nth-child(1) {
+        border:1px solid #FF2A6D;
+    }
+`
+export const Sec4 = styled.div`
+width: auto;
+padding: 50px 20px;
+border-top: 10px solid #F4F5FA;
+`
+export const H4 = styled.h4`
+font-size: 13px;
+font-style: normal;
+font-weight: 350;
+line-height: 16px; 
+letter-spacing: -0.24px;
+color: #26282B ;
+`
+export const CsBox = styled.ul`
+width: 100%;
+`
+export const Cs1 = styled.li`
+font-size: 12px;
+font-style: normal;
+font-weight: 350;
+line-height: 16px; 
+letter-spacing: -0.24px;
+color: #464C52 ;
+margin-top: 13px;
+`
+export const CsSpan = styled.span`
+background: #F4F5FA;
+padding: 4px;
+margin-right: 4px;
+`
+
