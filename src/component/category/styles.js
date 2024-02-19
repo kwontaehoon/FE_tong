@@ -59,8 +59,6 @@ font-weight: 400;
 line-height: 12px; /* 120% */
 letter-spacing: -0.1px;
 color: var(--Grayscale-05, #9FA4A9);
-
-
 `
 
 export const Right = styled.ul`

@@ -3,6 +3,10 @@ import { Cover,Container,Inner,Bar,Info,Pcoment,Right,Btn1,Btn2,Sec1,Sec2,
   Sec3,Sec1H1,List,Icon,Img,P,Weekley,WeekBox,WeekList,Sec4,H4,CsBox,Cs1,CsSpan} from './styles';
 
 const index = () => {
+
+  const conut = Array(8).fill(0);
+
+
   return (
 
   <Container>
@@ -48,19 +52,19 @@ const index = () => {
   <Sec1H1>Customer Center<span style={{color:'#9FA4A9',fontSize:'12px',marginLeft:'4px'}}>고객센터</span></Sec1H1>
   <List>
     <Icon> 
-      <a href='#' style={{textDecoration:'none'}}>
+      <a href='#'>
       <Img></Img>
       <P>NOTICE</P>
       </a>    
     </Icon>
     <Icon> 
-      <a href='#' style={{textDecoration:'none'}}>
+      <a href='#'>
       <Img></Img>
       <P>FAQ</P>
       </a>    
     </Icon>
     <Icon> 
-      <a href='#' style={{textDecoration:'none'}}>
+      <a href='#'>
         <Img></Img>
         <P>FREE</P>
       </a>    
@@ -71,15 +75,12 @@ const index = () => {
   <Weekley>
   <Sec1H1>인기검색어<span style={{color:'#FF2A6D',fontSize:'14px',marginLeft:'4px'}}>weekley best</span></Sec1H1> 
     <WeekBox>
-      <WeekList><a href='#'>#말풍선0</a></WeekList>
-      <WeekList><a href='#'>#말풍선말풍선1</a></WeekList>
-      <WeekList><a href='#'>#말풍선2</a></WeekList>
-      <WeekList><a href='#'>#말풍선말풍선말풍선3</a></WeekList>
-      <WeekList><a href='#'>#말풍선4</a></WeekList>
-      <WeekList><a href='#'>#말풍선5</a></WeekList>
-      <WeekList><a href='#'>#말풍선6</a></WeekList>
-      <WeekList><a href='#'>#말풍선7</a></WeekList>
-      <WeekList><a href='#'>#말풍선8</a></WeekList>      
+      {conut.map((x,index)=>{
+        return (
+          <WeekList key={index}><a href='#'>#말풍선{x}</a></WeekList>
+        )
+      })}
+
     </WeekBox>
 
 </Weekley>
@@ -101,7 +102,6 @@ const index = () => {
     <Cover>
     </Cover>
     </Container>
-
 
   );
 
