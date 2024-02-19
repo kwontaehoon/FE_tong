@@ -1,5 +1,5 @@
 import { useQuery, useMutation } from "react-query";
-import { postSignup, postLogin, postIdCheck, postFindId, postFindPassword } from "../../../service/api/Account";
+import { postSignup, postLogin, postIdCheck, postFindId, postFindPassword, postNewPassword } from "../../../service/api/Account";
 
 const ACCOUNT_KEYS = {
 
@@ -74,6 +74,21 @@ export const useFindPasswordMutation = () =>
   useMutation({
     mutationFn: (params) => {
       return postFindPassword(params);
+    },
+    onSuccess: () => {
+      // 성공 시 실행할 로직 추가
+    }
+  });
+
+/**
+* 비밀번호 변경
+* 
+*/
+
+export const useNewPasswordMutation = () =>
+  useMutation({
+    mutationFn: (params) => {
+      return postNewPassword(params);
     },
     onSuccess: () => {
       // 성공 시 실행할 로직 추가

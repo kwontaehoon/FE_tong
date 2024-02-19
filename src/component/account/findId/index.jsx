@@ -50,7 +50,8 @@ const index = () => {
           if(Object.values(info).every(value => value !== "")){
             findId(info);
           }
-        }}>아이디 찾기</ID>
+        }}>아이디 찾기
+      </ID>
       <Pwd>
         <div className='border-b' onClick={()=>navigate("/findPwd")}>비밀번호 찾기</div>
       </Pwd>

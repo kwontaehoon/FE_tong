@@ -5,7 +5,8 @@ const ACCOUNT_URL = {
     login: "/api/login",
     idCheck: "/api/idCheck",
     findId: "/api/findId",
-    findPassword: "/api/findPassword"
+    findPassword: "/api/findPassword",
+    newPassword: "/api/newPassword"
 }
 
 // 회원가입
@@ -22,3 +23,6 @@ export const postFindId = (params) => client.post(ACCOUNT_URL.findId, params);
 
 // 비밀번호 찾기
 export const postFindPassword = (params) => client.post(ACCOUNT_URL.findPassword, params);
+
+// 비밀번호 변경
+export const postNewPassword = (params) => client.post(ACCOUNT_URL.newPassword, params);
