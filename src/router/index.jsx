@@ -18,8 +18,7 @@ import Breakdown from '../component/breakdown'
 import Weather from '../component/weather'
 import Category from '../component/category'
 import Search_results from '../component/search_results'
-
-
+import Reservation_options from '../component/reservation_options'
 
 
 
@@ -47,7 +46,9 @@ export const router = createBrowserRouter([
             { path: "/breakdown", element: <Breakdown/>},
             { path: "/weather", element: <Weather />},
             { path: "/category", element: <Category />},
-            { path: "/search_results", element: <Search_results/>}
+            { path: "/search_results", element: <Search_results/>},
+            { path: "/reservation_options", element: <Reservation_options/>}
+           
 
            
           

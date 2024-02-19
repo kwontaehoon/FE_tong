@@ -65,7 +65,7 @@ const index = () => {
             </Description>
             <Reservation_Box>
                 <Reservation>
-                    확인
+                    예약하기
                 </Reservation>
             </Reservation_Box>
             <Button_Box>

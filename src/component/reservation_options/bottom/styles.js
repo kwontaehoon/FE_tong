@@ -1,62 +1,31 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    padding: 20px;
+        padding: 20px;
 `
-export const Heather =  styled.div` 
-    height: 50px;
+export const Personnel_Box = styled.div`
+    height: 77px;
+    border: 1px solid;
+    margin-bottom: 80px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    border-radius: 8px;
 `
-export const Reservation = styled.div`
-    font-size: 20px;
-    font-weight: 600;
+export const Personnel = styled.div`
+    font-size: 16px;
+    font-weight: 500;
+    margin-left: 10px;
+`
+export const Choice = styled.div`
+    font-size: 14px;
+    font-weight: 500;
+    color: #9FA4A9;
     flex: 1;
-    text-align: center;
-    font-family: "Noto Sans KR";
+    margin-left: 5px;
 `
-export const Jangi = styled.div`
-    margin-top: 20px;
-    display: flex;
-    align-items: end;
-    font-size: 24px;
-    font-weight: 700;
-    font-family: "Noto Sans KR";
-`
-export const IMG = styled.div`
-    border-radius: 20px;
-    margin-top: 20px;
-    display: flex;
-
-`
-export const Tong_Tong = styled.div`
-    height: 94px;
-    border-radius: 0px 0px 15px 15px;
-    background-color: #FFFFFF;
-   
-` 
-export const Soccer_field = styled.div`
-    height: 94px;
-    border-radius: 0px 0px 15px 15px;
-    margin-bottom: 78px;
-    background-color: #FFFFFF;
-   
-`
-export const Lorem = styled.div`
-    margin: 20px 0px 0px 20px;
-    font-size: 20px;
-    font-weight: 700;
-    font-family: "Noto Sans KR";
-   
-`
-export const Lorem_Text = styled.div`
-     margin: 10px 0px 0px 20px;
-     font-size: 14px;
-     color: #737373;
-     font-family: "Noto Sans KR";
-     
-
+export const Number = styled.div`
+    color: #007CFF;
+    margin: 0px 16px 0px 16px;
 `
 export const Button_Box = styled.div`
     width: 100%;
@@ -86,6 +55,7 @@ export const Name = styled.div`
     height: 20px;
     font-size: 14px;
     text-align: center;
+
 `
 export const Home_Box = styled.div`
     width: 53px;
@@ -106,4 +76,5 @@ export const Home = styled.div`
 export const Home_Name = styled.div`
     font-size: 14px;
     text-align: center;
+    
 `

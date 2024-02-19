@@ -15,13 +15,14 @@ export const Search = styled.div`
     height:  48px;
     display: flex;
     align-items: center;
-    border: 1px solid;
     border-radius: 12px;
+    background-color: #E9EBED;
 `
 export const Input = styled.input`
     width: 90%;
-    height: 30px;
-    margin-left: 30px;
+    height: 18px;
+    margin-left: 50px;
+    background-color: #E9EBED;
 `
 export const Input_Box = styled.div`
     display: flex;
@@ -29,14 +30,6 @@ export const Input_Box = styled.div`
     height: 48px;
     flex: 1;
     margin-right: 6px;
-`
-export const Search_results = styled.div`
-    height: 320px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-
 `
 export const Cancellation = styled.div`
     font-size: 16px;
@@ -48,13 +41,14 @@ export const Results = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 110px;
 `
 export const Text = styled.div`
-     font-size: 15px;
-     color: gray;
+     font-size: 20px;
+     color: #cacdd2;
 `
 export const Ikon = styled.div`
-    margin-bottom: 15px;
+    margin-bottom: 16px;
 `
 export const Magnifier = styled.div`
     width: 24px;

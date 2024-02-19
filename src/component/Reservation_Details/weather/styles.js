@@ -1,16 +1,44 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+        padding: 20px;
 `
 export const Time_Container  = styled.div`
         height: 100px;
         border: 1px solid;
         margin-top: 20px;
+        border-radius: 8px;
+`
+export const Weather_Box = styled.div`
+        height: 68px;
+        border: 1px solid;
+        display: flex;
+        align-items: center;
+        border-radius: 8px;
+`
+export const Weather = styled.div`
+        width: 126px;
+        height: 36px;
+        margin-left: 22px;
+        display: flex;
+        align-items: center;
+`
+export const Temperature = styled.div`
+        margin-left: 16px;
+        font-size: 18px;
+        font-weight: 700;
+`
+export const Lorem  = styled.div`
+        color: #D0D0D0;
+        font-family: "Noto Sans KR";
+        font-weight: 400;
+        margin-left: 5px;
 `
 export const Time_Choice = styled.div`
         font-size: 15px;
         font-weight: 600;
-        margin: 15px 0px 0px 5px;
+        margin: 20px 0px 0px 14px;
+        font-family: "Noto Sans KR";
 `
 export const Time_Box = styled.div`
         display: flex;
@@ -48,6 +76,7 @@ export const Personnel_Box = styled.div`
         margin-top: 20px;
         display: flex;
         align-items: center;
+        border-radius: 8px;
 `
 export const Choice = styled.div`
         width: 50px;

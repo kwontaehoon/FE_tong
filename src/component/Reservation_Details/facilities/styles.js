@@ -4,13 +4,15 @@ export const Container = styled.div`
     padding: 20px;
 `
 export const Facilities_Box = styled.div`
-    font-weight: 600;
-    font-size: 18px;
+    font-weight: 700;
+    font-size: 16px;
+    font-family: "Noto Sans KR";
+    margin-bottom: 16px;
 
 `
 export const Ikon_Box = styled.div`
-    height: 60px;
-    border: 1px solid ;
+    height: 68px;
+    border: 1px solid;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,46 +20,51 @@ export const Ikon_Box = styled.div`
     border-radius: 10px;
 `
 export const Ikon = styled.div`
-    width: 50px;
-    height: 50px;
+    width: 35px;
+    height: 44px;
     margin: 10px;
     display: flex;
     flex-direction: column;
-
-    
 `
 export const Ikon_name = styled.div`
-    font-size: 13px;
+    font-size: 12px;
     text-align: center;
-    color: gray;
+    font-family: "Noto Sans KR";
+    color: #888;
+    white-space: nowrap;
+   
    
 `
 export const Rule = styled.div`
-    margin-top: 20px;
-    font-size: 15px;
-    font-weight: 600;
+    margin-top: 30px;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: "Noto Sans KR";
+   
 `
 export const Description = styled.div`
     height: 190px;
     margin-top: 20px;
+   
 `
 export const Description_Box = styled.div`
     margin-top: 20px;
-    
 `
 export const Reservation_Box = styled.div`
-    height: 60px;
+    height: 68px;
     margin-bottom: 80px;
-    margin-top: 20px;
+    margin-top: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid;
-    
+    background-color: #E9EDEB;
     
 `
 export const Reservation = styled.div`
     font-size: 20px;
+    font-family: "Noto Sans KR";
+    font-weight: 700;
+    color: #9FA4A9;
     cursor: pointer;
 
 `
@@ -110,4 +117,5 @@ export const Home = styled.div`
 export const Home_Name = styled.div`
     font-size: 14px;
     text-align: center;
+    
 `
