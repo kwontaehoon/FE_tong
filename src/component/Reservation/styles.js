@@ -9,6 +9,8 @@ export const Jangi = styled.div`
     font-size: 24px;
     font-weight: 700;
     margin-bottom: 19px;
+    background-color: white;
+    padding: 20px;
 `
 export const IMG = styled.div`
     border-top-right-radius: 20px;
