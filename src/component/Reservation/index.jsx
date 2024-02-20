@@ -1,145 +1,49 @@
 import React from 'react'
 import {
   Container,
-  Heather,
-  Reservation,
   Jangi,
   IMG,
   Tong_Tong,
   Lorem,
   Lorem_Text,
-  Soccer_field,
-  Button_Box,
-  Button,
-  Img,
-  Name,
-  Home_Box,
-  Home,
-  Home_Name
 } from './styles'
+import { useReservationListQuery } from '../../hooks/queries/api/Reservation';
+import Header from '../../layout/Header';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/pagination';
+
+import { Pagination } from 'swiper/modules';
 
 const index = () => {
-  return (
+
+  const { data, isSuccess } = useReservationListQuery();
+  console.log("data: ", data);
+
+  return isSuccess && (
     <Container>
-      <Heather>
-        <img src="svg/BackArrow.svg"></img>
-        <Reservation>
-          예약
-        </Reservation>
-        <img src="svg/search.svg"></img>
-      </Heather>
-      <Jangi>
-        장기동
-      </Jangi>
-      <IMG>
-        <img style={{ objectFit: "fill", width: "100%" }} src="svg/Ground_5.svg"></img>
-      </IMG>
-      <Tong_Tong>
-        <Lorem>
-          장기 통통축구장
-        </Lorem>
-        <Lorem_Text>
-          김포한강4로 125 장기역 2번출구 도보 5분
-        </Lorem_Text>
-      </Tong_Tong>
-      <IMG>
-        <img style={{ objectFit: "fill", width: "100%" }} src="svg/Ground_6.svg"></img></IMG>
-      <Tong_Tong>
-        <Lorem>
-          솔터 축구장
-        </Lorem>
-        <Lorem_Text>
-          김포한강4로 125 장기역 2번출구 도보5분
-        </Lorem_Text>
-      </Tong_Tong>
-      <IMG>
-        <img style={{ objectFit: "fill", width: "100%" }} src="svg/Ground_7.svg"></img>
-      </IMG>
-      <Tong_Tong>
-        <Lorem>
-          FC PJ 축구센터
-        </Lorem>
-        <Lorem_Text>
-          김포한강4로 125 장기역 2번출구 도보5분
-        </Lorem_Text>
-      </Tong_Tong>
-      <IMG>
-        <img style={{ objectFit: "fill", width: "100%" }} src="svg/Ground_8.svg"></img>
-      </IMG>
-      <Tong_Tong>
-        <Lorem>
-          PAJU 축구클럽
-        </Lorem>
-        <Lorem_Text>
-          김포한강4로 125 장기역 2번출구 도보5분
-        </Lorem_Text>
-      </Tong_Tong>
-      <IMG>
-        <img style={{ objectFit: "fill", width: "100%" }} src="svg/Ground_9.svg"></img>
-      </IMG>
-      <Tong_Tong>
-        <Lorem>
-          PAJU 축구클럽
-        </Lorem>
-        <Lorem_Text>
-          김포한강4로 125 장기역 2번출구 도보5분
-        </Lorem_Text>
-      </Tong_Tong>
-      <IMG>
-        <img style={{ objectFit: "fill", width: "100%" }} src="svg/Ground_10.svg"></img>
-      </IMG>
-      <Tong_Tong>
-        <Lorem>
-          장기 통통축구장
-        </Lorem>
-        <Lorem_Text>
-          장기 통통 축구장
-        </Lorem_Text>
-      </Tong_Tong>
-      <IMG>
-        <img style={{ objectFit: "fill", width: "100%" }} src="svg/Ground_11.svg"></img>
-      </IMG>
-      <Soccer_field>
-        <Lorem>
-          장기 통통축구장
-        </Lorem>
-        <Lorem_Text>
-          김포한강4로 125 장기역 2번출구 도보5분
-        </Lorem_Text>
-      </Soccer_field>
-      <Button_Box>
-        <Img>
-          <Button>
-            <img src="svg/Calendar.svg"></img>
-          </Button>
-          <Name>예약</Name>
-        </Img>
-        <Img>
-          <Button>
-            <img style={{ marginTop: "3px" }} src="svg/Smile.svg"></img>
-          </Button>
-          <Name>MY</Name>
-        </Img>
-        <Home_Box>
-          <Home>
-            <img style={{ width: "32px" }} src="svg/home_4.svg"></img>
-          </Home>
-          <Home_Name>홈</Home_Name>
-        </Home_Box>
-        <Img>
-          <Button>
-            <img src="svg/heart.svg"></img>
-          </Button>
-          <Name>찜</Name>
-        </Img>
-        <Img>
-          <Button>
-            <img src="svg/rectangles.svg"></img>
-          </Button>
-          <Name>카테고리</Name>
-        </Img>
-      </Button_Box>
+
+      <Header padding />
+
+      {data.map(x => {
+        return (
+          <div key={x.reservationId} className='bg-bg p-5'>
+            <Jangi>{x.location}</Jangi>
+            <Swiper pagination={true} modules={[Pagination]}>
+              {x.reservationFiles.map((x, index) => {
+                return <SwiperSlide style={{ height: "230px" }} key={index}><img src={`https://tong-bucket.s3.ap-northeast-2.amazonaws.com/${x.fileName}`} className='w-full h-full' /></SwiperSlide>
+              })}
+            </Swiper>
+            <Tong_Tong>
+                <Lorem>{x.title}</Lorem>
+                <Lorem_Text>{x.subTitle}</Lorem_Text>
+            </Tong_Tong>
+          </div>
+        )
+      })}
+
     </Container>
   )
 }

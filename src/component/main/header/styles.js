@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    padding: 18px;
+    margin: 18px 0px;
 `
 export const Gimpo = styled.div`
     display: flex;
@@ -11,9 +11,7 @@ export const Playground = styled.div`
     display: flex;
     flex: 1;
     font-size: 16px;
-    font-family: Inter;
     font-weight: 700;
-    white-space: nowrap;
 `
 export const Tong = styled.div`
     font-family: Inter;

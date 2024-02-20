@@ -3,7 +3,6 @@ import {
     Container,
     Gimpo,
     Playground,
-    Tong,
     Lightning,
 } from './styles'
 
@@ -12,16 +11,14 @@ const index = () => {
         <Container>
             <Gimpo>
                 <Playground>
-                    김포운
-                    <Tong>통</Tong>
-                    장
+                    <img src="/svg/Logo.svg" />
                 </Playground>
                 <Lightning>
-                    <img src="svg/Lightning.svg"></img>
+                    <img src="/svg/search.svg"></img>
                 </Lightning>
 
                 < Lightning>
-                    <img src="svg/Lightning.svg"></img>
+                    <img src="/svg/Lightning.svg"></img>
                 </Lightning>
             </Gimpo>
         </Container>

@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import { ModalContainer, ModalSubContainer } from '../../../layout/ModalContainer'
+import { ModalContainer, ModalSubContainer } from '../../layout/ModalContainer'
 
 const index = () => {
 

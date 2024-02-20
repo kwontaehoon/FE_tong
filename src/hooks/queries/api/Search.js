@@ -10,8 +10,8 @@ const SEARCH_KEYS = {
 * 
 */
 
-export const useRecommendListQuery = () => {
-    return useQuery(SEARCH_KEYS.recommendSearchList, async () => {
+export const useSearchRecommendListQuery = () => {
+    return useQuery(SEARCH_KEYS.searchRecommendList, async () => {
       const { data } = await getSearchRecommendList();
       return data;
     }, {
