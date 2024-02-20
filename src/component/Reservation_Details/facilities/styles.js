@@ -6,7 +6,6 @@ export const Container = styled.div`
 export const Facilities_Box = styled.div`
     font-weight: 700;
     font-size: 16px;
-    font-family: "Noto Sans KR";
     margin-bottom: 16px;
 
 `
@@ -29,7 +28,6 @@ export const Ikon = styled.div`
 export const Ikon_name = styled.div`
     font-size: 12px;
     text-align: center;
-    font-family: "Noto Sans KR";
     color: #888;
     white-space: nowrap;
    
@@ -37,9 +35,8 @@ export const Ikon_name = styled.div`
 `
 export const Rule = styled.div`
     margin-top: 30px;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 700;
-    font-family: "Noto Sans KR";
    
 `
 export const Description = styled.div`
@@ -58,11 +55,9 @@ export const Reservation_Box = styled.div`
     align-items: center;
     justify-content: center;
     background-color: #E9EDEB;
-    
 `
 export const Reservation = styled.div`
     font-size: 20px;
-    font-family: "Noto Sans KR";
     font-weight: 700;
     color: #9FA4A9;
     cursor: pointer;

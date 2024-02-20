@@ -30,7 +30,6 @@ export const Temperature = styled.div`
 `
 export const Lorem  = styled.div`
         color: #D0D0D0;
-        font-family: "Noto Sans KR";
         font-weight: 400;
         margin-left: 5px;
 `
@@ -38,7 +37,6 @@ export const Time_Choice = styled.div`
         font-size: 15px;
         font-weight: 600;
         margin: 20px 0px 0px 14px;
-        font-family: "Noto Sans KR";
 `
 export const Time_Box = styled.div`
         display: flex;

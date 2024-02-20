@@ -15,7 +15,6 @@ export const Reservation = styled.div`
     margin-top: 25px;
     font-size: 18px;
     font-weight: 700;
-    font-family: "Noto Sans KR";
 `
 export const Gimpo = styled.div`
     text-align: center;
