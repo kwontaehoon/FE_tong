@@ -1,21 +1,13 @@
 import styled, { keyframes } from 'styled-components'
 
-const fadeIn = keyframes`
-  from {
-    transform: translateX(100%);
-  }
-  to {
-    transform: translateX(0%);
-  }
+const slideIn = keyframes`
+  from { transform: translateX(100%); }
+  to { transform: translateX(20%); }
 `;
 
-const fadeOut = keyframes`
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
+const slideOut = keyframes`
+  from { transform: translateX(20%); }
+  to { transform: translateX(100%); }
 `;
 
 const MC = styled.div`
@@ -52,17 +44,16 @@ const MCS = styled.div`
     z-index: 999;
     visibility: ${props => props.$show ? 'visible' : 'hidden'};
     transition: 1s;
-    animation: ${props => props.$show ? fadeIn : fadeOut} 1s ease-in-out forwards;
 `
 const MCSS = styled.div`
     position: absolute;
+    width: 100%;
     height: 100%;
     right: 0;
-    padding: 50px;
     background-color: rgb(255, 255, 255);
     box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
     font-size: 12px;
-    
+    animation: ${props => props.$show ? slideIn : slideOut} 1s ease-in-out forwards;
 `
 const MCMobile = styled.div`
     position: fixed;
