@@ -1,5 +1,5 @@
 import { useQuery, useMutation } from "react-query";
-import { postSignup, postLogin, postIdCheck, postFindId, postFindPassword, postNewPassword } from "../../../service/api/Account";
+import { postSignup, postLogin, postIdCheck, postFindId, postFindPassword, postNewPassword, postSocialLogin } from "../../../service/api/Account";
 
 const ACCOUNT_KEYS = {
 
@@ -19,6 +19,21 @@ export const useSignupMutation = () =>
       // 성공 시 실행할 로직 추가
     }
   });
+
+/**
+ * 로그인
+ * 
+ */
+
+export const useSocialLoginMutation = () =>
+useMutation({
+  mutationFn: (params) => {
+    return postSocialLogin(params);
+  },
+  onSuccess: () => {
+    // 성공 시 실행할 로직 추가
+  }
+});
 
 /**
  * 로그인

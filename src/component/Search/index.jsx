@@ -62,7 +62,7 @@ const index = () => {
             <Recommendation_Box>
                 {recommendList.map(x=>{
                     return (
-                        <Tag_Box key={x.searchId}>{x.content}</Tag_Box>
+                        <Tag_Box key={x.searchId} onClick={()=>result({title: x.content})}>{x.content}</Tag_Box>
                     )
                 })}
             </Recommendation_Box>

@@ -20,7 +20,7 @@ const index = () => {
                 {count.map((_, index) => {
                     return (
                         <div key={index} className={data[index]?.fileName ? ' w-full lg:w-auto' : ' w-full lg:w-52'}>
-                            <label className="lg:mr-5 mb-5 h-52 rounded flex cursor-pointer border border-grey200" htmlFor={`reviewImage-${index}`}>
+                            <label className={"lg:mr-5 mb-5 h-52 rounded flex cursor-pointer border-grey200" + ( !data[index] ? ' border' : '')} htmlFor={`reviewImage-${index}`}>
                                 {!data[index] ? "" : <img src={`https://tong-bucket.s3.ap-northeast-2.amazonaws.com/${data[index].fileName}`} />}
                             </label>
                             <input

@@ -87,7 +87,7 @@ const index = () => {
                         <div className='flex overflow-x-scroll'>
                         {x.pickFiles.map((y, imgIndex) => {
                             return (<div key={imgIndex}>
-                                <label className="border border-grey200 mr-5 w-52 h-40 rounded flex cursor-pointer mb-5" htmlFor={modifyFlag[index] ? `pickImage-${index}-${imgIndex}` : ''}>
+                                <label className={"border-grey200 mr-5 w-52 h-40 rounded flex cursor-pointer mb-5" + (x.pickFiles[imgIndex].fileName == "" ? ' border' : '')} htmlFor={modifyFlag[index] ? `pickImage-${index}-${imgIndex}` : ''}>
                                     {x.pickFiles[imgIndex].fileName ? x.pickFiles[imgIndex].imgPath ? <img src={x.pickFiles[imgIndex].imgPath}/> : <img src={`https://tong-bucket.s3.ap-northeast-2.amazonaws.com/${x?.pickFiles[imgIndex]?.fileName}`} /> : <img src={x.pickFiles[imgIndex].imgPath}/>}
                                 </label>
                                 <input

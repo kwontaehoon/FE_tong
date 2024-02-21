@@ -98,7 +98,7 @@ const index = () => {
                         <div className='flex overflow-x-scroll'>
                         {x.reservationFiles.map((y, imgIndex) => {
                             return (<div key={imgIndex}>
-                                <label className="border border-grey200 mr-5 w-52 h-40 rounded flex cursor-pointer mb-5" htmlFor={modifyFlag[index] ? `reservationImage-${index}-${imgIndex}` : ''}>
+                                <label className={"border-grey200 mr-5 w-52 h-40 rounded flex cursor-pointer mb-5" + (x.reservationFiles[imgIndex].fileName == "" ? ' border' : '')} htmlFor={modifyFlag[index] ? `reservationImage-${index}-${imgIndex}` : ''}>
                                     {x.reservationFiles[imgIndex].fileName ? x.reservationFiles[imgIndex].imgPath ? <img src={x.reservationFiles[imgIndex].imgPath}/> : <img src={`https://tong-bucket.s3.ap-northeast-2.amazonaws.com/${x?.reservationFiles[imgIndex]?.fileName}`} /> : <img src={x.reservationFiles[imgIndex].imgPath}/>}
                                 </label>
                                 <input
@@ -177,7 +177,7 @@ const index = () => {
                             </div>
                             <div className='mb-5'>
                                 <div>내용</div>
-                                <input className='border p-3 w-full rounded mt-2' disabled={!modifyFlag[index]} placeholder={x.content}
+                                <input className='border p-3 w-full rounded mt-2' disabled={!modifyFlag[index]} placeholder={x.subTitle}
                                     onChange={(e) => {
                                         setInfo({ ...info, subTitle: e.target.value });
                                     }} />

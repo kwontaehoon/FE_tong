@@ -12,7 +12,12 @@ const Header = ({noBtn, noArrow, padding, title}) => {
       </div>
       <div className='flex-1 text-lg font-bold'>{title}</div>
       <div>
-        {!noBtn && <img src="/svg/close.svg" onClick={()=>navigate(`/${url}`, { replace: true })} />}
+        {!noBtn && <img src="/svg/close.svg"
+          onClick={()=>
+          // navigate(`/${url}`, { replace: true })
+            navigate(-1)
+        }
+          />}
       </div>
     </div>
   )

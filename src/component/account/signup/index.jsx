@@ -13,21 +13,25 @@ import {
 import { signupValidation } from '../../../utill/SignupValidation';
 import { checkBox } from '../../../utill/CheckBox';
 import { useIdCheckMutation, useSignupMutation } from '../../../hooks/queries/api/Account';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const index = () => {
 
     const navigate = useNavigate();
 
+    const state = useLocation().state;
+    console.log("state: ", state);
+
     const [info, setInfo] = useState({
         id: '',
         password: '',
         passwordCheck: '',
-        email: '',
+        email: state ? state : '',
         user_role: 'user',
         name: '',
         birth: ''
     });
+    console.log("info: ", info);
 
     const [validation, setValidation] = useState({
         id: false,
@@ -106,14 +110,17 @@ const index = () => {
 
             <Title maxLength={20}>이메일</Title>
             <div className='flex items-center text-sm text-grey05'>
-                <input className='w-1/2 bg-bg rounded-lg' style={{ height: "46px", padding: "0px 13px" }} maxLength={20} placeholder='이메일'
+                <input className='w-full bg-bg rounded-lg' style={{ height: "46px", padding: "0px 13px" }}
+                    maxLength={20}
+                    placeholder={state ? state : '이메일'}
+                    disabled={state ? true : false}
                     onChange={(e) => {
                         setInfo({ ...info, email: e.target.value });
                         setValidation({ ...validation, email: false, emailForm: false });
                     }}>
                 </input>
-                <div className='mx-2 text-lg'>@</div>
-                <div className='w-1/2 bg-bg rounded-lg flex items-center' style={{ height: "46px", padding: "0px 13px" }}>선택</div>
+                {/* <div className='mx-2 text-lg'>@</div> */}
+                {/* <div className='w-1/2 bg-bg rounded-lg flex items-center' style={{ height: "46px", padding: "0px 13px" }}>선택</div> */}
             </div>
             {validation.email && <div className='text-xs my-3 text-valid'>이메일을 입력해 주세요.</div>}
             {validation.emailForm && <div className='text-xs my-3 text-valid'>이메일을 다시 확인해주세요.</div>}
