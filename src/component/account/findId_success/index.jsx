@@ -4,7 +4,7 @@ import {
   ID,
   FindPwd
 } from './styles'
-import Header from '../../../layout/Header'
+import Header from '../../../function/header'
 import { useNavigate, useLocation } from 'react-router-dom'
 
 const index = () => {

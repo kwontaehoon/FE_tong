@@ -21,11 +21,12 @@ const index = () => {
     const { data: recommendList, isSuccess } = useSearchRecommendListQuery();
 
     const { mutateAsync: result, data: resultList } = useSearchResultListMutation();
+    console.log("resultList: ", resultList);
 
     const [info, setInfo] = useState('');
 
     useEffect(()=>{
-        if(resultList && resultList?.data?.length !== 0){
+        if(resultList && info !== '' && resultList?.data?.length !== 0){
             navigate("/reservation", { state: info });
         }
     }, [resultList]);
@@ -50,7 +51,7 @@ const index = () => {
                         <img src="/svg/InputClose.svg" className='mr-4' onClick={()=>setInfo('')}/>
                     </Input_Box>
                 </Search>
-                <Cancellation>취소</Cancellation>
+                <Cancellation onClick={()=>navigate(-1)}>취소</Cancellation>
             </Search_Box>
     
             {resultList && resultList?.data?.length == 0 && <div className='flex items-center flex-col mt-12'>  

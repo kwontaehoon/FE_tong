@@ -37,6 +37,7 @@ export const Arrow = styled.div`
 
 export const Explanation = styled.div`
     font-size: 14px;
+    margin: 2px 0px;
 `
 export const Star = styled.div`
     display: flex;
@@ -64,7 +65,6 @@ export const Weather = styled.div`
 `
 
 export const Soccer_Field = styled.div`
-    height: 30%;
     background-color: white;
     display: flex;
     align-items: center;
@@ -78,7 +78,7 @@ export const Popularity = styled.div`
     border-radius: 13px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between
+    justify-content: space-between;
 `
 export const Img = styled.div`
     width: 50px;
@@ -89,9 +89,10 @@ export const Img = styled.div`
 `
 export const Img_Name = styled.div`
     flex: 1;
+    margin-right: 4px;
 `
 export const Place = styled.div`
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
 `
 export const Soccer = styled.div`

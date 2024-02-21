@@ -5,8 +5,6 @@ import {
   Ground,
   PlayGround,
   Sun,
-  Temperature,
-  Weather,
   Soccer_Field,
   Img,
   Img_Name,

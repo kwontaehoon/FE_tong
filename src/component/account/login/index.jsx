@@ -13,7 +13,7 @@ import {
 } from './styles'
 import { useLoginMutation } from '../../../hooks/queries/api/Account'
 import { useNavigate } from 'react-router-dom'
-import Header from '../../../layout/Header'
+import Header from '../../../function/header'
 import { useGoogleLogin } from '@react-oauth/google'
 import { naverLogin, naverToken } from '../../../hooks/sns/Naver'
 import { kakaoInfo, kakaoLogin, kakaoToken } from '../../../hooks/sns/Kakao'

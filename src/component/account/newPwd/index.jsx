@@ -8,7 +8,7 @@ import {
   Pwd,
   ID
 } from './styles'
-import Header from '../../../layout/Header'
+import Header from '../../../function/header'
 import { useNewPasswordMutation } from '../../../hooks/queries/api/Account'
 import { useLocation, useNavigate } from 'react-router'
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { weather } from '../../hooks/weather/Weather';
-import { weatherStatus } from '../../utill/WeatherStatus';
+import { weatherStatus } from '../../function/weatherStatus';
 
 const index = () => {
 

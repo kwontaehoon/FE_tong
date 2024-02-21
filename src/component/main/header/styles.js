@@ -23,6 +23,3 @@ export const Tong = styled.div`
     transform: rotate(-25deg);
     color: #007CFF;
 `
-export const Lightning = styled.div`
-    margin-right: 0x;
-`

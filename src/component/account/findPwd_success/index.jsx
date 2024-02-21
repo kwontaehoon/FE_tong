@@ -3,7 +3,7 @@ import {
     Component,
     Pwd,Login
 } from './styles'
-import Header from '../../../layout/Header'
+import Header from '../../../function/header'
 import { useNavigate } from 'react-router-dom'
 
 const index = () => {

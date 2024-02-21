@@ -12,7 +12,6 @@ import { usePickListQuery } from '../../../hooks/queries/api/Main'
 const index = () => {
 
   const { data, isSuccess } = usePickListQuery();
-  console.log("pick data: ", data);
 
   const [flag, setFlag] = useState([]);
 

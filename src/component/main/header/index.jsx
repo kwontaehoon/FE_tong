@@ -3,23 +3,23 @@ import {
     Container,
     Gimpo,
     Playground,
-    Lightning,
 } from './styles'
+import { useCategoryStore } from '../../../store/main/Category';
+import { useNavigate } from 'react-router-dom';
 
 const index = () => {
+
+    const navigate = useNavigate();
+    const openCategoryModal = useCategoryStore((state) => state.setOpen);
+
     return (
         <Container>
             <Gimpo>
                 <Playground>
                     <img src="/svg/Logo.svg" />
                 </Playground>
-                <Lightning>
-                    <img src="/svg/search.svg"></img>
-                </Lightning>
-
-                < Lightning>
-                    <img src="/svg/Lightning.svg"></img>
-                </Lightning>
+                    <img src="/svg/search.svg" style={{marginRight: "6px"}} onClick={()=>navigate("/search")}/>
+                    <img src="/svg/Menu.svg" onClick={()=>openCategoryModal(true)} />
             </Gimpo>
         </Container>
     )

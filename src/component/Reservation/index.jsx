@@ -2,13 +2,12 @@ import React, { useEffect } from 'react'
 import {
   Container,
   Jangi,
-  IMG,
   Tong_Tong,
   Lorem,
   Lorem_Text,
 } from './styles'
 import { useReservationListQuery } from '../../hooks/queries/api/Reservation';
-import Header from '../../layout/Header';
+import Header from '../../function/header';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Import Swiper styles
@@ -18,6 +17,7 @@ import 'swiper/css/pagination';
 import { Pagination } from 'swiper/modules';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useSearchResultListMutation } from '../../hooks/queries/api/Search';
+import Navi from '../../function/navi'
 
 const index = () => {
 
@@ -31,12 +31,15 @@ const index = () => {
     if(state){
       result({title: state});
     }
+    window.scrollTo({
+      top: 0,
+  });
   }, []);
 
-  return reservationListSuccess && resultListSuccess && (
+  return reservationListSuccess && (
     <Container>
 
-      <Header padding />
+      <Header padding title="예약" />
 
       {(state && resultListSuccess ? resultList?.data : reservationList).map(x => {
         return (
@@ -57,7 +60,7 @@ const index = () => {
           </div>
         )
       })}
-
+    <Navi />
     </Container>
   )
 }

@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-
+    padding-bottom: 132px;
+    background-color: #F4F5FA;
 `
 export const Jangi = styled.div`
     display: flex;
