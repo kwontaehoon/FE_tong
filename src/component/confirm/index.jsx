@@ -53,7 +53,6 @@ const index = () => {
         <div><span className='mb-2 cursor-pointer' onClick={()=>navigate("/findPwd")}>비밀번호 찾기</span></div>
         <div><span className='mb-2 cursor-pointer' onClick={()=>navigate("/newPwd")}>새로운 비밀번호</span></div>
         <div><span className='mb-2 cursor-pointer' onClick={()=>navigate("/findPwd_success")}>비밀번호 찾기 성공</span></div>
-        <div><span className='mb-2 cursor-pointer' onClick={()=>navigate("/mypage")}>마이페이지</span></div>
         <div><span className='mb-2 cursor-pointer' onClick={kakaoLogin}>카카오 로그인</span></div>
         <div><span className='mb-2 cursor-pointer' onClick={naverLogin}>네이버 로그인</span></div>
         <div><span className='mb-2 cursor-pointer' onClick={googleGetCode}>구글 로그인</span></div>
@@ -67,7 +66,6 @@ const index = () => {
         <div><span className='mb-2 cursor-pointer' onClick={()=>navigate("/category")}>카테고리</span></div>
         <div><span className='mb-2 cursor-pointer' onClick={()=>navigate("/search_results")}>검색결과</span></div>
         <div><span className='mb-2 cursor-pointer' onClick={()=>navigate("/Search")}>검색목록</span></div>
-        <div><span className='mb-2 cursor-pointer' onClick={()=>navigate("/reservation_options")}>예약시간선택</span></div>
 
       
 
