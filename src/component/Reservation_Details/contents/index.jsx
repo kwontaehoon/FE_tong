@@ -1,32 +1,31 @@
 import React from 'react'
-import { Container,
+import {
+  Container,
   Contents_Box,
   Title,
   Introduction,
   Jangi,
-Star,
-Score} from './styles'
+  Star,
+  Score
+} from './styles'
 
-const index = () => {
+const index = ({ data }) => {
+
+  console.log("content data: ", data);
+
   return (
     <Container>
       <Contents_Box>
-        <Title>
-          장기 통통축구장
-        </Title>
-        <Jangi>
-          장기역 도보 5분
-        </Jangi>
-        <Introduction>
-          경기도 김포시 김포한강3로 383 김포 통통축구장
-        </Introduction>
+        <Title>{data.title}</Title>
+        <Jangi>{data.subTitle}</Jangi>
+        <Introduction>{data.location}</Introduction>
         <Star>
-          <img src="svg/Star.svg"></img>
-          <img src="svg/Star.svg"></img>
-          <img src="svg/Star.svg"></img>
-          <img src="svg/Star.svg"></img>
-          <img src="svg/Star.svg"></img>
-          <Score>4.8</Score>
+          <img src="/svg/Star.svg"></img>
+          <img src="/svg/Star.svg"></img>
+          <img src="/svg/Star.svg"></img>
+          <img src="/svg/Star.svg"></img>
+          <img src="/svg/Star.svg"></img>
+          <Score>{data.score}</Score>
         </Star>
       </Contents_Box>
     </Container>

@@ -16,10 +16,6 @@ import Reservation_information from '../component/reservation_information'
 import Breakdown from '../component/breakdown'
 import Weather from '../component/weather'
 import Category from '../component/category'
-import Reservation_options from '../component/reservation_options'
-import Search_results from '../component/search_results'
-
-
 
 import App from "../App"
 
@@ -38,23 +34,17 @@ export const router = createBrowserRouter([
             { path: "/findPwd_success", element: <FindPwd_success /> },
             { path: "/admin", element: <Admin /> },
             { path: "/search", element: <Search/>},
-            { path: "/reservation", element: <Reservation/>},
-            { path: "/reservation_details", element: <Reservation_Details/>},
+            { 
+                path: "reservation",
+                children: [
+                    { index: true, element: <Reservation /> },
+                    { path: ":id", element: <Reservation_Details /> }
+                ]
+            },
             { path: "/reservation_information", element: <Reservation_information/>},
             { path: "/breakdown", element: <Breakdown/>},
             { path: "/weather", element: <Weather />},
             { path: "/category", element: <Category />},
-            { path: "/reservation_options", element: <Reservation_options/>},
-            { path: "/search_results", element: <Search_results/>},
-            
-           
-
-           
-          
-           
-           
-           
         ]
     },
-    
 ])

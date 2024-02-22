@@ -25,10 +25,8 @@ import WeatherFuc from '../../weather'
 const index = () => {
 
   const { data, isSuccess } = useReservationListQuery();
-  console.log("reservation data: ", data, isSuccess);
 
   const [dataArr, setDataArr] = useState();
-  console.log("reservation dataArr: ", dataArr);
 
   useEffect(() => {
     if (data) {

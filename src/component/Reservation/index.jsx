@@ -26,12 +26,9 @@ const index = () => {
 
   const navigate = useNavigate();
   const state = useLocation().state;
-  console.log(getToken());
   const { data: reservationList, isSuccess: reservationListSuccess, refetch: reservationRefetch } = useReservationListQuery();
-  console.log("reservationList: ", reservationList);
 
   const { mutate: result, data: resultList, isSuccess: resultListSuccess } = useSearchResultListMutation();
-  console.log("resultList: ", resultList);
 
   const { mutateAsync: wish } = useWishMutation();
 
@@ -53,7 +50,7 @@ const index = () => {
         return (
           <div key={x.reservationId} className='bg-bg'>
             <Jangi>{x.location}</Jangi>
-            <div className='p-5'>
+            <div className='p-5' onClick={()=>navigate(`${x.reservationId}`)}>
             <Swiper pagination={true} modules={[Pagination]}>
                 <SwiperSlide style={{ height: "230px", position: "relative" }} key={index}>
                   {loginFlag() && <div className='absolute top-6 right-6' 

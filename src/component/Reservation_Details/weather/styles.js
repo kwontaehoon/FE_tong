@@ -1,81 +1,60 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-        padding: 20px;
-`
-export const Time_Container  = styled.div`
-        height: 100px;
-        border: 1px solid;
-        margin-top: 20px;
-        border-radius: 8px;
+        margin-top: 16px;
 `
 export const Weather_Box = styled.div`
-        height: 68px;
-        border: 1px solid;
         display: flex;
         align-items: center;
         border-radius: 8px;
+        padding: 16px 22px;
+        margin-bottom: 10px;
+        background-color: white;
 `
-export const Weather = styled.div`
-        width: 126px;
-        height: 36px;
-        margin-left: 22px;
-        display: flex;
-        align-items: center;
-`
-export const Temperature = styled.div`
-        margin-left: 16px;
-        font-size: 18px;
-        font-weight: 700;
-`
-export const Lorem  = styled.div`
-        color: #D0D0D0;
-        font-weight: 400;
-        margin-left: 5px;
+export const Time_Container = styled.div`
+        border-radius: 8px;
+        background-color: white;
+        padding: 20px 14px;
+        margin-bottom: 12px;
 `
 export const Time_Choice = styled.div`
         font-size: 16px;
         font-weight: 600;
-        margin: 20px 0px 0px 14px;
 `
 export const Time_Box = styled.div`
         display: flex;
         margin-top: 15px;
         overflow-y: scroll;
         &::-webkit-scrollbar {
-        display: none;
-        
-    }
+                display: none;
+        }
 `
 export const Time_Text = styled.div`
-        width: 30%;
-        border: 1px solid ;
+        border: 1px solid;
         border-radius: 8px 0px 0px 8px;
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-left: 15px;
 `
 export const Text = styled.div`
         font-size: 13px;
         margin: 0px 5px 0px 5px;
-        
 `
 export const Time = styled.div`
-        width: 30%;
-        height: 30px;
+        padding: 6px 10px;
+        margin-bottom: 8px;
         border: 1px solid;
         display: flex;
         justify-content: center;
         align-items: center;
 `
 export const Personnel_Box = styled.div`
-        height: 80px;
-        border: 1px solid;
-        margin-top: 20px;
+        margin-top: 12px;
         display: flex;
         align-items: center;
         border-radius: 8px;
+        padding: 16px 10px;
+        background-color: white;
 `
 export const Choice = styled.div`
         width: 50px;
@@ -104,7 +83,8 @@ export const Number = styled.div`
         color: #007CFF;
 `
 export const Choice_Box = styled.div`
-        height: 272px;
-        border: 1px solid;
         margin-top: 20px;
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
 `

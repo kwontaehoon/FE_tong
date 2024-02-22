@@ -1,13 +1,11 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-   padding: 20px 20px 0px 20px;
+   background-color: white;
 `
 export const Contents_Box = styled.div`
-    height: 152px;
-    border: 1px solid ;
     border-radius: 8px;
-
+    padding: 20px;
 `
 export const Title = styled.div`
     font-size: 20px;
