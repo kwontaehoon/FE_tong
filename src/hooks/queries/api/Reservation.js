@@ -2,7 +2,7 @@ import { useQuery, useMutation } from "react-query";
 import { getReservationList } from "../../../service/api/Reservation";
 
 const RESERVATION_KEYS = {
-    reservationList: "reservationList"
+  reservationList: "reservationList"
 }
 
 /**
@@ -11,10 +11,10 @@ const RESERVATION_KEYS = {
 */
 
 export const useReservationListQuery = () => {
-    return useQuery(RESERVATION_KEYS.reservationList, async () => {
-      const { data } = await getReservationList();
-      return data;
-    }, {
-      staleTime: Infinity,
-    });
-  };
+  return useQuery(RESERVATION_KEYS.reservationList, async () => {
+    const { data } = await getReservationList();
+    return data;
+  }, {
+    staleTime: Infinity,
+  });
+};

@@ -1,7 +1,7 @@
 import { client } from "../";
 
 const RESERVATION_URL = {
-    reservationList: "/api/reservation/list"
+    reservationList: "/api/reservation/list",
 }
 
 // 추천 검색어

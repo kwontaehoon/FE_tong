@@ -9,7 +9,6 @@ export const Jangi = styled.div`
     align-items: end;
     font-size: 24px;
     font-weight: 700;
-    margin-bottom: 19px;
     background-color: white;
     padding: 20px;
 `

@@ -87,6 +87,7 @@ const index = () => {
         if (data?.data?.status == 400) {
             setValidation(true);
         } else if (data?.data?.status == 200) {
+            localStorage.setItem("token", data.data.token);
             navigate("/main")
         }
     }, [data]);
