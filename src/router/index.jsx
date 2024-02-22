@@ -1,6 +1,5 @@
 import { createBrowserRouter } from "react-router-dom"
 import Confirm from '../component/confirm'
-import MyPage from '../component/mypage'
 import Signup from '../component/account/signup'
 import Login from '../component/account/login'
 import Main from '../component/main'
@@ -18,6 +17,7 @@ import Breakdown from '../component/breakdown'
 import Weather from '../component/weather'
 import Category from '../component/category'
 import Reservation_options from '../component/reservation_options'
+import Search_results from '../component/search_results'
 
 
 
@@ -29,7 +29,6 @@ export const router = createBrowserRouter([
         children: [
             { index: true, element: <Confirm /> },
             { path: "/main", element: <Main /> },
-            { path: "/mypage", element: <MyPage /> },
             { path: "/signup", element: <Signup /> },
             { path: "/login", element: <Login /> },
             { path: "/findId", element: <FindId/>},
@@ -45,7 +44,9 @@ export const router = createBrowserRouter([
             { path: "/breakdown", element: <Breakdown/>},
             { path: "/weather", element: <Weather />},
             { path: "/category", element: <Category />},
-            { path: "/reservation_options", element: <Reservation_options/>}
+            { path: "/reservation_options", element: <Reservation_options/>},
+            { path: "/search_results", element: <Search_results/>},
+            
            
 
            

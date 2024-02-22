@@ -30,15 +30,13 @@ export const Temperature = styled.div`
 `
 export const Lorem  = styled.div`
         color: #D0D0D0;
-        font-family: "Noto Sans KR";
         font-weight: 400;
         margin-left: 5px;
 `
 export const Time_Choice = styled.div`
-        font-size: 15px;
+        font-size: 16px;
         font-weight: 600;
         margin: 20px 0px 0px 14px;
-        font-family: "Noto Sans KR";
 `
 export const Time_Box = styled.div`
         display: flex;
@@ -46,16 +44,17 @@ export const Time_Box = styled.div`
         overflow-y: scroll;
         &::-webkit-scrollbar {
         display: none;
+        
     }
 `
 export const Time_Text = styled.div`
         width: 30%;
-        border: 1px solid;
+        border: 1px solid ;
         border-radius: 8px 0px 0px 8px;
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-left: 20px;
+        margin-left: 15px;
 `
 export const Text = styled.div`
         font-size: 13px;
@@ -103,4 +102,9 @@ export const Number = styled.div`
         margin: 0px 6px 0px 10px;
         text-align: center;
         color: #007CFF;
+`
+export const Choice_Box = styled.div`
+        height: 272px;
+        border: 1px solid;
+        margin-top: 20px;
 `
