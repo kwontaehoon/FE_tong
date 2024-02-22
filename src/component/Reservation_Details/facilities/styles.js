@@ -19,8 +19,6 @@ export const Ikon_Box = styled.div`
     border-radius: 10px;
 `
 export const Ikon = styled.div`
-    width: 35px;
-    height: 44px;
     margin: 10px;
     display: flex;
     flex-direction: column;
