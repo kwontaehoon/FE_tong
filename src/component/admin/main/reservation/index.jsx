@@ -24,6 +24,7 @@ const index = () => {
     });
     const [imgFileList, setImgFileList] = useState([]); // 업로드된 이미지 파일 저장
     const [reservationFileIds, setReservationFileIds] = useState([]); // reservationFileIds
+    console.log("reservationFileIds: ", reservationFileIds);
     const { mutateAsync: modify } = useReservationModifyMutation();
     const { mutateAsync: add } = useReservationAddMutation();
     const { mutateAsync: remove } = useReservationDeleteMutation();
@@ -138,7 +139,7 @@ const index = () => {
                                 arr[index].reservationFiles.push({
                                     fileName: "",
                                     fileSize: "",
-                                    reservationFileId: dataArr[0].reservationFiles.length+1,
+                                    reservationFileId: dataArr?.map(x => x.reservationFiles.length).reduce((a, b) => a + b)+1,
                                 });
                                 setDataArr(arr);
                             }} >이미지 추가

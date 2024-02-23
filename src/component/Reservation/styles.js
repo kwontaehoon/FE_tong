@@ -19,7 +19,6 @@ export const IMG = styled.div`
     display: flex;
 `
 export const Tong_Tong = styled.div`
-    border-radius: 0px 0px 15px 15px;
     padding: 20px;
     background-color: white;
 `

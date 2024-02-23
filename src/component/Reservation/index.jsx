@@ -51,6 +51,7 @@ const index = () => {
           <div key={x.reservationId} className='bg-bg'>
             <Jangi>{x.location}</Jangi>
             <div className='p-5'>
+              <div className='rounded-lg overflow-hidden'>
             <Swiper pagination={true} modules={[Pagination]}>
                 <SwiperSlide style={{ height: "230px", position: "relative" }} key={index}>
                   {loginFlag() && <div className='absolute top-6 right-6'
@@ -72,6 +73,7 @@ const index = () => {
                 <Lorem>{x.title}</Lorem>
                 <Lorem_Text>{x.subTitle}</Lorem_Text>
             </Tong_Tong>
+            </div>
             </div>
           </div>
         )

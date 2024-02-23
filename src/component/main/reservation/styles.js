@@ -82,7 +82,6 @@ export const Popularity = styled.div`
 export const Img = styled.div`
     width: 50px;
     height: 50px;
-    border-radius: 15px;
     border-radius: 20px;
     overflow: hidden;
 `

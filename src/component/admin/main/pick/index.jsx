@@ -16,6 +16,7 @@ const index = () => {
         peopleCount: ""
     });
     const [imgFileList, setImgFileList] = useState([]); // 업로드된 이미지 파일 저장
+    console.log("imgFileList: ", imgFileList);
     const [pickFileIds, setPickFileIds] = useState([]); // pickFileIds
     console.log("pickFileIds: ", pickFileIds);
     const { mutateAsync: modify } = usePickModifyMutation();
@@ -127,7 +128,7 @@ const index = () => {
                                 arr[index].pickFiles.push({
                                     fileName: "",
                                     fileSize: "",
-                                    pickFileId: dataArr[0].pickFiles.length+1,
+                                    pickFileId: dataArr?.map(x => x.pickFiles.length).reduce((a, b) => a + b)+1,
                                 });
                                 setDataArr(arr);
                             }} >이미지 추가

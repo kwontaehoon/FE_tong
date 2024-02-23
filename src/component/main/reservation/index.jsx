@@ -81,7 +81,7 @@ const index = () => {
                   <Soccer>{x.subTitle}</Soccer>
                 </Img_Name>
                 <Img>
-                  <img src={`https://tong-bucket.s3.ap-northeast-2.amazonaws.com/${x.reservationFiles[0].fileName}`} />
+                  <img src={`https://tong-bucket.s3.ap-northeast-2.amazonaws.com/${x.reservationFiles[0].fileName}`} className='w-full h-full' />
                 </Img>
               </Soccer_Field>
             )
