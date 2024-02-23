@@ -9,7 +9,7 @@ export const Icon = styled.div`
     left: 0;
     bottom: 0;
     background-color: white;
-    z-index: 999;
+    z-index: 900;
 `
 export const Icon_Box = styled.div`
     position: relative;

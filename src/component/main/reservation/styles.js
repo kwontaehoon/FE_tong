@@ -18,7 +18,6 @@ export const Recommendation_Box = styled.div`
 export const Ground = styled.div`
 `
 export const PlayGround = styled.div`
-
 `
 export const Recommended_Ground = styled.div`
     display: flex;

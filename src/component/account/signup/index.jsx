@@ -45,6 +45,7 @@ const index = () => {
         name: false,
         birth: false
     });
+    console.log("validation: ", validation);
 
     const [idCheckFlag, setIdCheckFlag] = useState(false);
 
@@ -187,10 +188,11 @@ const index = () => {
 
             {<Signup $ok={Object.values(info).every(value => value !== "" && check.every(element => element === true) && idCheckFlag)}
                 onClick={() => {
-                    // signupValidation(info, validation, setValidation);
-                    if(Object.values(validation).every(value => value === false) && Object.values(info).every(value => value !== "") && idCheckFlag) {
-                        signup(info);
-                        navigate("/main");
+                    if(Object.values(info).every(value => value !== "" && check.every(element => element === true) && idCheckFlag)){
+                        signupValidation(info, validation, setValidation, idCheckFlag, () => {
+                            signup(info);
+                            navigate("/main");
+                        });
                     }
                 }}>회원가입
             </Signup>}

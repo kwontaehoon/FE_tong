@@ -46,14 +46,14 @@ const index = () => {
 
       <Header padding title="예약" />
 
-      {(state && resultListSuccess ? resultList?.data : reservationList).map(x => {
+      {(state && resultListSuccess ? resultList?.data : reservationList).map((x, index) => {
         return (
           <div key={x.reservationId} className='bg-bg'>
             <Jangi>{x.location}</Jangi>
-            <div className='p-5' onClick={()=>navigate(`${x.reservationId}`)}>
+            <div className='p-5'>
             <Swiper pagination={true} modules={[Pagination]}>
                 <SwiperSlide style={{ height: "230px", position: "relative" }} key={index}>
-                  {loginFlag() && <div className='absolute top-6 right-6' 
+                  {loginFlag() && <div className='absolute top-6 right-6'
                     onClick={async()=>{
                         await wish({
                           users: { userId: getToken().userId },
@@ -68,7 +68,7 @@ const index = () => {
                   </SwiperSlide>
             </Swiper>
             
-            <Tong_Tong>
+            <Tong_Tong onClick={()=>navigate(`${x.reservationId}`)}>
                 <Lorem>{x.title}</Lorem>
                 <Lorem_Text>{x.subTitle}</Lorem_Text>
             </Tong_Tong>

@@ -5,6 +5,8 @@ import { ModalSideContainer, ModalSideSubContainer } from '../../../../layout/Mo
 import { useCategoryStore } from '../../../../store/main/Category';
 import { usePickListQuery } from '../../../../hooks/queries/api/Main'
 import { useNavigate } from 'react-router-dom';
+import { loginFlag } from '../../../../utill/LoginFlag'
+import { getToken } from '../../../../utill/GetToken'
 
 const index = () => {
 
@@ -22,7 +24,7 @@ const index = () => {
               <img src="/svg/close.svg" onClick={()=>openCategoryModal(false)} />
             </Bar>
             {/* 로긴박스 */}
-            <Info>
+            {loginFlag() ? <Info>{getToken().id}님 안녕하세요!</Info> : <Info>
               <Pcoment>로그인 해주세요 <span style={{ display: 'block' }}>회원이 아니신가요</span></Pcoment>
               <Right style={{ gap: '10px' }}>
                 <Btn1 onClick={()=>{ 
@@ -40,7 +42,7 @@ const index = () => {
                   }}>회원가입
                 </Btn2>
               </Right>
-            </Info>
+            </Info>}
 
             {/* 카테고리 */}
 

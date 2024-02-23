@@ -21,12 +21,12 @@ export const useReservationListQuery = () => {
 };
 
 /**
-* 예약 목록
+* 예약 상세
 * 
 */
 
 export const useReservationDetailsQuery = (params) => {
-  return useQuery(RESERVATION_KEYS.reservationDetails, async () => {
+  return useQuery([RESERVATION_KEYS.reservationDetails, {id: params}], async () => {
     const { data } = await getReservationDetails(params);
     return data;
   }, {

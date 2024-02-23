@@ -21,13 +21,18 @@ const index = () => {
     email: ''
   });
 
+  const [validation, setValidation] = useState(false);
+
   const { mutate: findPassword, data: findPasswordData } = useFindPasswordMutation();
   console.log(findPasswordData);
 
   useEffect(()=>{
-    if(findPasswordData?.data?.password){
-      navigate("/newPwd", {state: findPasswordData?.data?.id});
+    if(findPasswordData){
+      if(findPasswordData?.data?.password){
+        navigate("/newPwd", {state: findPasswordData?.data?.id});
+      }else setValidation(true);
     }
+    
   }, [findPasswordData]);
 
   return (
@@ -45,6 +50,8 @@ const index = () => {
 
       <Name>이메일</Name>
       <Input placeholder='이메일을 입력하세요.' onChange={(e)=>setInfo({...info, email: e.target.value})}></Input>
+
+      {validation && <div className='text-xs text-valid'>입력하신 정보로 비밀번호를 찾을 수 없습니다. 다시 확인해주세요.</div>}
 
       <ID $ok={Object.values(info).every(value => value !== "")}
       onClick={()=>{

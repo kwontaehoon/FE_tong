@@ -21,10 +21,14 @@ import {
 } from './styles'
 import { useReservationListQuery } from '../../../hooks/queries/api/Main'
 import WeatherFuc from '../../weather'
+import { useNavigate } from 'react-router-dom'
 
 const index = () => {
 
+  const navigate = useNavigate();
+
   const { data, isSuccess } = useReservationListQuery();
+  console.log("main reservation data: ", data);
 
   const [dataArr, setDataArr] = useState();
 
@@ -38,12 +42,10 @@ const index = () => {
   return isSuccess && data.length !== 0 && (
     <Container>
       <Recommendation>
-        <Recommendation_Box>
+        <Recommendation_Box onClick={()=>navigate(`/reservation/${data[0].reservationId}`)}>
           <Ground>
             <Recommended_Ground>
-              <Recommended_Ground_Bix>
-                {data[0].title}
-              </Recommended_Ground_Bix>
+              <Recommended_Ground_Bix>{data[0].title}</Recommended_Ground_Bix>
               <Arrow>
                 <img src="svg/Right Arrow.svg"></img>
               </Arrow>
@@ -71,9 +73,9 @@ const index = () => {
 
         </Recommendation_Box>
         <Popularity>
-          {dataArr?.map((x, index) => {
+          {dataArr?.map(x => {
             return (
-              <Soccer_Field key={index}>
+              <Soccer_Field key={x.reservationId} onClick={()=>navigate(`/reservation/${x.reservationId}`)}>
                 <Img_Name>
                   <Place>{x.title}</Place>
                   <Soccer>{x.subTitle}</Soccer>

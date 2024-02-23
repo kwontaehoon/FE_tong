@@ -40,7 +40,7 @@ const index = () => {
             console.log("google response: ", info);
 
             const response = await sociallLogin({email: info.data.email});
-            console.log("google response: ", response);
+            console.log("google response socialLogin: ", response);
 
             if(response.data.status == "400"){
                 navigate("/signup", {state: info.data.email});

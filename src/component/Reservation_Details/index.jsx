@@ -10,8 +10,10 @@ import { useParams } from 'react-router-dom';
 const index = () => {
 
   const { id } = useParams();
+  console.log("id: ", id);
 
   const { data, isSuccess } = useReservationDetailsQuery({ id: id });
+  console.log("예약 상세: ", data);
 
   return isSuccess && (
     <div className='bg-bg'>

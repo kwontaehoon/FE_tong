@@ -21,12 +21,18 @@ const index = () => {
     email: ''
   });
 
+  const [validation, setValidation] = useState(false);
+
   const { mutate: findId, data: findIdData } = useFindIdMutation();
+  console.log("findIdData: ", findIdData);
 
   useEffect(()=>{
-    if(findIdData?.data?.id){
-      navigate("/findId_success", {state: findIdData?.data?.id});
+    if(findIdData){
+      if(findIdData?.data?.id){
+        navigate("/findId_success", {state: findIdData?.data?.id});
+      }else setValidation(true);
     }
+    
   }, [findIdData]);
 
   return (
@@ -40,10 +46,12 @@ const index = () => {
       </Information>
 
       <Name>이름</Name>
-      <Input placeholder='이름을 입력하세요.' onChange={(e)=>setInfo({...info, name: e.target.value})}></Input>
+      <Input placeholder='이름을 입력하세요.' onChange={(e)=>{ setValidation(false); setInfo({...info, name: e.target.value}); }}></Input>
 
       <Name>이메일</Name>
-      <Input placeholder='이메일을 입력하세요.' onChange={(e)=>setInfo({...info, email: e.target.value})}></Input>
+      <Input placeholder='이메일을 입력하세요.' onChange={(e)=>{ setValidation(false); setInfo({...info, email: e.target.value}); }}></Input>
+
+      {validation && <div className='text-xs text-valid'>입력하신 정보로 아이디를 찾을 수 없습니다. 다시 확인해주세요.</div>}
 
       <ID $ok={Object.values(info).every(value => value !== "")}
         onClick={()=>{
