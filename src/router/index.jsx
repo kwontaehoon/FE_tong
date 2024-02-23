@@ -45,7 +45,7 @@ export const router = createBrowserRouter([
             { path: "/weather", element: <Weather />},
             { path: "/category", element: <Category />},
             { path: "/search_results", element: <Search_results/>},
-            { path: "/bulletin_board", element: <Bulletinboard/>}
+            { path: "/bulletinboard", element: <Bulletinboard/>}
             
            
 
