@@ -16,7 +16,7 @@ const index = () => {
             예약
           </Reservation_Box>
         </Reservation>
-        <img src="svg/search.svg"></img>
+        <img src="svg/BackArrow.svg"></img>
       </Heather>
     </Container>
   )

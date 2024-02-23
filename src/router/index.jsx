@@ -17,6 +17,7 @@ import Breakdown from '../component/breakdown'
 import Weather from '../component/weather'
 import Category from '../component/category'
 import Search_results from '../component/search_results'
+import Bulletinboard from '../component/bulletinboard'
 
 
 
@@ -44,6 +45,7 @@ export const router = createBrowserRouter([
             { path: "/weather", element: <Weather />},
             { path: "/category", element: <Category />},
             { path: "/search_results", element: <Search_results/>},
+            { path: "/bulletin_board", element: <Bulletinboard/>}
             
            
 
