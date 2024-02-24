@@ -3,8 +3,8 @@ import {Container,
 Header,
 Bulletin_board,
 Saving_Box,
-Saving,
-Mercenary} from './styles'
+Saving
+} from './styles'
 
 const index = () => {
   return (
@@ -15,8 +15,10 @@ const index = () => {
         <img src="svg/search.svg"></img>
         </Header>
         <Saving_Box>
-            <Saving>팀구하기</Saving>
-            <Mercenary>용병구하기</Mercenary>
+          <Saving>팀구하기</Saving>
+          <Saving>용병구하기</Saving>
+          <Saving>공지사항</Saving>
+          <Saving>FAQ</Saving>
         </Saving_Box>
     </Container>
    

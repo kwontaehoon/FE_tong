@@ -22,6 +22,7 @@ export const Recruitment_Box = styled.div`
     display: flex;
     border-radius: 8px;
     
+    
 `
 export const Recruitment_Jangi = styled.div`
     height: 116px;

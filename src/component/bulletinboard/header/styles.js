@@ -16,28 +16,15 @@ export const Bulletin_board = styled.div`
     text-align: center;
 `
 export const Saving_Box = styled.div`
-    height: 54px;
-    background-color: #E9EBED;
+    height: 68px;
     display: flex;
-    align-items: center;
-    border-radius: 25px;
+    align-items: end;
 `
 export const Saving = styled.div`
-    width: 189px;
-    height: 42px;
-    background-color: white;
+    width: 97px;
+    height: 48px;
     text-align: center;
-    line-height: 40px;
-    border-radius: 25px;
-    font-size: 15px;
-    margin-left: 5px;
-`
-export const Mercenary = styled.div`
-    width: 189px;
-    height: 42px;
-    text-align: center;
-    line-height: 40px;
-    margin-left: 5px;
-    font-size: 15px;
-    color: #9FA4A9;
+    line-height: 45px;
+    font-size: 14px;
+    font-weight: 600;
 `
