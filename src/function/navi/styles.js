@@ -4,7 +4,6 @@ export const Icon = styled.div`
     width: 100%;
     height: 72px;
     display: flex;
-    margin-top: 2px;
     position: fixed;
     left: 0;
     bottom: 0;

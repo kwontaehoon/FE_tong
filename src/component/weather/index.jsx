@@ -34,7 +34,6 @@ const index = () => {
             <div>{weatherList?.temp}º</div>
             {/* <div>강수: {weatherList?.rain}</div>
             <div>하늘: {weatherList?.sky}</div> */}
-            
         </div>
     )
 }

@@ -28,7 +28,7 @@ const index = () => {
 
     useEffect(()=>{
         if(resultList && info !== '' && resultList?.data?.length !== 0){
-            navigate("/reservation", { state: info });
+            navigate(`${info}`);
         }
     }, [resultList]);
 
