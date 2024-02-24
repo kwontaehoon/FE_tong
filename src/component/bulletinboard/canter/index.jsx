@@ -51,7 +51,7 @@ const index = () => {
                     <Comments_Box>
                         <img src="svg/eye.svg"></img> 322
                         <img style={{ marginLeft: "6px" }} src="svg/vertical_line.svg"></img>
-                        31
+                        <img src="svg/comment.svg"></img>31
                         <img style={{ marginRight: "6px" }} src="svg/vertical_line.svg"></img> 1시간전
                     </Comments_Box>
                 </FC_Box>
@@ -65,7 +65,7 @@ const index = () => {
                     <Comments_Box>
                         <img src="svg/eye.svg"></img> 322
                         <img style={{ marginLeft: "6px" }} src="svg/vertical_line.svg"></img>
-                        31
+                        <img src="svg/comment.svg"></img>31
                         <img style={{ marginRight: "6px" }} src="svg/vertical_line.svg"></img> 1시간전
                     </Comments_Box>
                 </FC_Box>
@@ -80,7 +80,7 @@ const index = () => {
                     <Comments_Box>
                         <img src="svg/eye.svg"></img> 322
                         <img style={{ marginLeft: "6px" }} src="svg/vertical_line.svg"></img>
-                        31
+                        <img src="svg/comment.svg"></img>31
                         <img style={{ marginRight: "6px" }} src="svg/vertical_line.svg"></img> 1시간전
                     </Comments_Box>
                 </FC_Box>
@@ -96,7 +96,7 @@ const index = () => {
                     <Comments_Box>
                         <img src="svg/eye.svg"></img> 322
                         <img style={{ marginLeft: "6px" }} src="svg/vertical_line.svg"></img>
-                        31
+                        <img src="svg/comment.svg"></img>31
                         <img style={{ marginRight: "6px" }} src="svg/vertical_line.svg"></img>
                         1시간전
                     </Comments_Box>
@@ -112,7 +112,7 @@ const index = () => {
                     <Comments_Box>
                         <img src="svg/eye.svg"></img> 322
                         <img style={{ marginLeft: "6px" }} src="svg/vertical_line.svg"></img>
-                        31
+                        <img src="svg/comment.svg"></img>31
                         <img style={{ marginRight: "6px" }} src="svg/vertical_line.svg"></img> 1시간전
                     </Comments_Box>
                 </FC_Box>
@@ -127,7 +127,7 @@ const index = () => {
                     <Comments_Box>
                         <img src="svg/eye.svg"></img> 322
                         <img style={{ marginLeft: "6px" }} src="svg/vertical_line.svg"></img>
-                        31
+                        <img src="svg/comment.svg"></img>31
                         <img style={{ marginRight: "6px" }} src="svg/vertical_line.svg"></img>1시간전
                     </Comments_Box>
                 </FC_Box>

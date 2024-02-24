@@ -113,7 +113,7 @@ export const Writing = styled.div`
     height: 60px;
     border: 1px solid;
     position: absolute;
-    right: 10px;
+    right: 12px;
     bottom: 80px;
     background-color: #38373D;
     border-radius: 50px;
