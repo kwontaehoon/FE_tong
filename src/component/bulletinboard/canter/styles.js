@@ -50,10 +50,10 @@ export const Comments_Box = styled.div`
     margin-top: 10px;
     display: flex;
     font-size: 12px;
-    line-height: 10px;
+    line-height: 14px;
 `
 export const Activity = styled.div`
-    font-size: 13px;
+    font-size: 12px;
     color: #00D4EA;
     margin-left: 6px;
     
