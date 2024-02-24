@@ -1,5 +1,5 @@
 import { useQuery, useMutation } from "react-query";
-import { postWish } from "../../../service/api/wish";
+import { postWish } from "../../../service/api/Wish";
 
 const WISH_KEYS = {
 
