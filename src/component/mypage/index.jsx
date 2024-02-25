@@ -7,7 +7,7 @@ import Header from '../../layout/Header'
 const index = () => {
   return (
     <Div>
-    <Header noArrow url={"login"} padding='0 20px' />
+    <Header noArrow url={"login"} padding/>
 
     <Info>
       <Left>
@@ -62,8 +62,10 @@ const index = () => {
   <Wrap>
   <h3>나의예약기록</h3> 
     <Left style={{gap:'4px'}}>
-      {/* <P3>더보기</P3>
-     <Icon2 src="./svg/gravity-ui_chevron-right.png" alt='더보기아이콘'></Icon2> */}
+      <P3>더보기</P3>
+     <Icon2 src="./svg/Choose.png" alt='더보기아이콘'></Icon2>
+     <Icon2 src="./svg/ㅁ.png" alt='더보기아이콘'></Icon2>
+     <Icon2 src="./svg/close.png" alt='더보기아이콘'></Icon2>
     </Left>  
   </Wrap>
   
