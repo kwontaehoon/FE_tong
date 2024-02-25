@@ -95,8 +95,8 @@ box-shadow: 4px 4px 20px 0px rgba(0, 0, 0, 0.05);
 }
 `
 export const Icon2 = styled.img`
-width: 15px;
-height: 15px;
+width: 24px;
+height: 24px;
 `
 export const P3 = styled.p`
 color: #424242;
@@ -107,7 +107,7 @@ letter-spacing: -0.24px;
 `
 export const Comment = styled.div`
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     padding: 20px 20px;
     gap: 10px;
@@ -121,7 +121,6 @@ export const Wrap = styled.div`
     padding: 0 20px;
     background: #fff;
     
-
 
 `
 export const Span = styled.span`
