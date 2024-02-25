@@ -111,7 +111,7 @@ letter-spacing: -0.24px;
 `
 export const Comment = styled.div`
     display: flex;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     padding: 20px 20px;
     gap: 10px;
@@ -121,11 +121,11 @@ export const Comment = styled.div`
 export const Wrap = styled.div`
     width: 100%;
     display: flex;
+    justify-content: center;
     align-items: center;
     padding: 0 20px;
     background: #fff;
     
-
 `
 export const Span = styled.span`
 color: #007CFF;

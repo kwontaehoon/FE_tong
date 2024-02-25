@@ -7,7 +7,7 @@ import Header from '../../function/header'
 const index = () => {
   return (
     <Div>
-    <Header noArrow url={"login"} padding/>
+    <Header Arrow title={"MY"} padding/>
 
     <Info>
       <Left>
