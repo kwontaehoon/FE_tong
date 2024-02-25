@@ -70,7 +70,7 @@ const index = () => {
                                     </SwiperSlide>
                                 </Swiper>
 
-                                <Tong_Tong onClick={() => navigate(`${x.reservationId}`)}>
+                                <Tong_Tong onClick={() => navigate(`/reservation/${x.reservationId}`)}>
                                     <Lorem>{x.title}</Lorem>
                                     <Lorem_Text>{x.subTitle}</Lorem_Text>
                                 </Tong_Tong>

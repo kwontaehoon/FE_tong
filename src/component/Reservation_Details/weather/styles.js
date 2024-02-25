@@ -14,7 +14,7 @@ export const Weather_Box = styled.div`
 export const Time_Container = styled.div`
         border-radius: 8px;
         background-color: white;
-        padding: 20px 14px;
+        padding: 20px;
         margin-bottom: 12px;
 `
 export const Time_Choice = styled.div`
@@ -66,11 +66,7 @@ export const Personnel = styled.div`
         margin-left: 10px;
 `
 export const Max_Box = styled.div`
-        width: 60px;
-        height: 30px;
-        display: flex;
         flex: 1;
-        align-items: center;
 `
 export const Max = styled.div`
         font-size: 12px;
