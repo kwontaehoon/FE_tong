@@ -5,7 +5,6 @@ export const Container = styled.div`
 ` 
 export const Exchange = styled.div`
     height: 50px;
-    border: 1px solid;
     display: flex;
     align-items: center;
   
@@ -16,7 +15,6 @@ export const Exchange_Text = styled.div`
 `
 export const Comment_Box = styled.div`
     height: 80px;
-    border: 1px solid;
     display: flex;
     
 `  
