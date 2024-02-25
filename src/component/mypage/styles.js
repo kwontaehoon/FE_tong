@@ -98,6 +98,10 @@ export const Icon2 = styled.img`
 width: 24px;
 height: 24px;
 `
+export const Icon1 = styled.img`
+width: 15px;
+height: 15px;
+`
 export const P3 = styled.p`
 color: #424242;
 font-family: "Noto Sans KR";
