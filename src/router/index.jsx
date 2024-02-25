@@ -3,6 +3,7 @@ import Confirm from '../component/confirm'
 import Signup from '../component/account/signup'
 import Login from '../component/account/login'
 import Main from '../component/main'
+import Mypage from '../component/mypage'
 import FindId from '../component/account/findId'
 import FindId_success from '../component/account/findId_success'
 import FindPwd from '../component/account/findPwd'
@@ -26,6 +27,7 @@ export const router = createBrowserRouter([
         children: [
             { index: true, element: <Confirm /> },
             { path: "/main", element: <Main /> },
+            { path: "/mypage", element: <Mypage/> },
             { path: "/signup", element: <Signup /> },
             { path: "/login", element: <Login /> },
             { path: "/findId", element: <FindId/>},

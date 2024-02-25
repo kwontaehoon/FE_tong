@@ -41,6 +41,9 @@ const index = ({info, setInfo}) => {
   const [morningClock, setMorningClock] = useState(Array(3).fill(false));
   const [afterNoonClock, setAfterNoonClock] = useState(Array(6).fill(false));
 
+  console.log("morningClock: ", morningClock);
+  console.log("afterNoonClock: ", afterNoonClock);
+
   const [selectBox, setSelectBox] = useState(false);
 
   useEffect(() => {
@@ -117,7 +120,7 @@ const index = ({info, setInfo}) => {
           <div className='flex flex-wrap'>
             {afterNoonClockText.map((x, index) => {
               return (
-                <div key={x.id} className='p-4 border rounded-lg mr-2 mb-2'
+                <div key={x.id} className={'p-4 border rounded-lg mr-2 mb-2' + (afterNoonClock[index] ? '' : '')}
                   onClick={()=>{
                     const arr = Array(6).fill(false);
                     arr[index] = true;
