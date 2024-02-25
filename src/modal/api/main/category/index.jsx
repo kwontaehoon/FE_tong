@@ -100,7 +100,7 @@ const index = () => {
                 <WeekBox>
                   {data.map(x => {
                     return (
-                      <WeekList key={x.pickId}>{x.content}</WeekList>
+                      <WeekList key={x.pickId}>{x.title}</WeekList>
                     )
                   })}
                 </WeekBox>

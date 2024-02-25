@@ -19,10 +19,8 @@ const index = () => {
     const navigate = useNavigate();
 
     const { data: recommendList, isSuccess } = useSearchRecommendListQuery();
-    console.log("recommendList: ", recommendList);
 
     const { mutateAsync: result, data: resultList } = useSearchResultListMutation();
-    console.log("resultList: ", resultList);
 
     const [info, setInfo] = useState('');
 

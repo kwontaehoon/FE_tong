@@ -1,15 +1,17 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Banner from './banner'
 import Contents from './contents'
 import Weather_Box from './weather'
 import Facilities from './facilities'
 import Header from '../../function/header'
 import { useReservationDetailsQuery } from '../../hooks/queries/api/Reservation'
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useWishMutation } from '../../hooks/queries/api/Wish'
 import { getToken } from '../../utill/GetToken'
 
 const index = () => {
+
+  const navigate = useNavigate();
 
   const { id } = useParams();
 
@@ -19,10 +21,17 @@ const index = () => {
 
   const [info, setInfo] = useState({
     selectMonth: new Date().getMonth(),
+    selectDate: '',
     selectDay: '',
     selectClock: '',
     peopleCount: 0,
   });
+
+  useEffect(()=>{
+    window.scrollTo({
+      top: 0,
+  });
+  }, []);
 
   return isSuccess && (
     <div className='bg-bg'>
@@ -36,7 +45,15 @@ const index = () => {
         <Contents data={data} />
         <Weather_Box info={info} setInfo={setInfo} />
         <Facilities />
-        <div className='mt-12 py-5 px-2 flex items-center justify-center rounded-lg bg-grey07 text-grey05'>예약하기</div>
+        <div className={'py-5 px-2 flex items-center justify-center rounded-lg bg-grey07 text-grey05'
+          + (Object.values(info).every(value => value !== "") && info.peopleCount !== 0 ? ' bg-m text-white' : '')}
+          style={{marginTop: "30px"}}
+          onClick={()=>{
+            if(Object.values(info).every(value => value !== "") && info.peopleCount !== 0){
+              navigate(`/reservation_information/${id}`, {state: info, data: data});
+            }
+          }}>예약하기
+        </div>
       </div>
     </div>
   )

@@ -50,8 +50,8 @@ export const router = createBrowserRouter([
                     { path: ":id", element: <Reservation_Details /> }
                 ]
             },
-            { path: "/reservation_information", element: <Reservation_information/>},
-            { path: "/breakdown", element: <Breakdown/>},
+            { path: "/reservation_information/:id", element: <Reservation_information/>},
+            { path: "/breakdown/:id", element: <Breakdown/>},
             { path: "/weather", element: <Weather />},
             { path: "/category", element: <Category />},
         ]

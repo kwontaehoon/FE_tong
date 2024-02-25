@@ -15,8 +15,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 
 import { Pagination } from 'swiper/modules';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { useSearchResultListMutation } from '../../hooks/queries/api/Search';
+import { useNavigate } from 'react-router-dom';
 import Navi from '../../function/navi'
 import { loginFlag } from '../../utill/LoginFlag';
 import { getToken } from '../../utill/GetToken';
@@ -25,17 +24,13 @@ import { useWishMutation } from '../../hooks/queries/api/Wish';
 const index = () => {
 
   const navigate = useNavigate();
-  const state = useLocation().state;
-  const { data: reservationList, isSuccess: reservationListSuccess, refetch: reservationRefetch } = useReservationListQuery();
 
-  const { mutate: result, data: resultList, isSuccess: resultListSuccess } = useSearchResultListMutation();
+  const { data: reservationList, isSuccess: reservationListSuccess, refetch: reservationRefetch } = useReservationListQuery();
+  console.log("rservation: ", reservationList);
 
   const { mutateAsync: wish } = useWishMutation();
 
   useEffect(()=>{
-    if(state){
-      result({title: state});
-    }
     window.scrollTo({
       top: 0,
   });
@@ -46,10 +41,9 @@ const index = () => {
 
       <Header padding title="예약" />
 
-      {(state && resultListSuccess ? resultList?.data : reservationList).map((x, index) => {
+      {reservationList.map((x, index) => {
         return (
           <div key={x.reservationId} className='bg-bg'>
-            <Jangi>{x.location}</Jangi>
             <div className='p-5'>
               <div className='rounded-lg overflow-hidden'>
             <Swiper pagination={true} modules={[Pagination]}>

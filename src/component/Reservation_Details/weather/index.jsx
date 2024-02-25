@@ -38,11 +38,7 @@ const index = ({info, setInfo}) => {
   ).getDate();
 
   const [selectDay, setSelectDay] = useState([]);
-  const [morningClock, setMorningClock] = useState(Array(3).fill(false));
-  const [afterNoonClock, setAfterNoonClock] = useState(Array(6).fill(false));
-
-  console.log("morningClock: ", morningClock);
-  console.log("afterNoonClock: ", afterNoonClock);
+  const [clock, setClock] = useState(Array(9).fill(false));
 
   const [selectBox, setSelectBox] = useState(false);
 
@@ -87,7 +83,7 @@ const index = ({info, setInfo}) => {
                       let arr = Array(selectDay.length).fill(false);
                       arr[index] = true;
                       setSelectDay(arr);
-                      setInfo({...info, selectDay: today.month == current.getMonth()+1 ? index + today.date : index+1});
+                      setInfo({...info, selectDate: today.month == current.getMonth()+1 ? index + today.date : index+1, selectDay: dayOfWeek(day)});
                     }}>
                     {today.month == current.getMonth()+1 ? <div>{numberTwo(index + today.date)}</div> : <div>{numberTwo(index+1)}</div>}
                     <div className={'mt-4' + (!selectDay[index] && day == 0 ? ' text-valid' : !selectDay[index] && day == 6 ? ' text-ms' : '' )}>{dayOfWeek(day)}</div>
@@ -106,11 +102,12 @@ const index = ({info, setInfo}) => {
           <div className='flex flex-wrap mb-5'>
             {morningClockText.map((x, index) => {
               return (
-                <div key={x.id} className='p-4 border rounded-lg mr-2 mb-2'
+                <div key={x.id} className={'p-4 border rounded-lg mr-2 mb-2' + (clock[index] ? ' bg-m text-white' : '')}
                   onClick={()=>{
-                    const arr = Array(3).fill(false);
+                    const arr = Array(9).fill(false);
                     arr[index] = true;
-                    setMorningClock(arr);
+                    setClock(arr);
+                    setInfo({...info, selectClock: index});
                   }}>{x.clock}
                 </div>
               )
@@ -120,11 +117,12 @@ const index = ({info, setInfo}) => {
           <div className='flex flex-wrap'>
             {afterNoonClockText.map((x, index) => {
               return (
-                <div key={x.id} className={'p-4 border rounded-lg mr-2 mb-2' + (afterNoonClock[index] ? '' : '')}
+                <div key={x.id} className={'p-4 border rounded-lg mr-2 mb-2' + (clock[index+3] ? ' bg-m text-white' : '')}
                   onClick={()=>{
-                    const arr = Array(6).fill(false);
-                    arr[index] = true;
-                    setAfterNoonClock(arr);
+                    const arr = Array(9).fill(false);
+                    arr[index+3] = true;
+                    setClock(arr);
+                    setInfo({...info, selectClock: index+3});
                   }}>{x.clock}
                 </div>
               )

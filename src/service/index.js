@@ -2,7 +2,8 @@ import axios from "axios";
 import moment from "moment";
 
 export const client = axios.create({
-  baseURL: "http://localhost:8080",
+  // baseURL: "http://localhost:8080",
+  baseURL: "http://3.36.37.240",
   timeout: 10000,
   headers: {
     "x-Requested-With": "XMLHttpRequest",

@@ -37,6 +37,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
     font-family: "Noto Sans KR", sans-serif;
+	letter-spacing: -0.24px;
 }
 ol, ul {
 	list-style: none;
