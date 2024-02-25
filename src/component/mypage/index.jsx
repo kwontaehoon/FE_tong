@@ -2,7 +2,7 @@ import React from 'react'
 import {Div,Info,Left,Icon,H3,P,P2,Reservation,
   InfoBox,List1,Icon2,Icon1,P3,Comment,Span,
   Wrap} from './styles'
-import Header from '../../layout/Header'
+import Header from '../../function/header'
 
 const index = () => {
   return (

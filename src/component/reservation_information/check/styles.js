@@ -4,60 +4,56 @@ export const Container = styled.div`
    
 `
 export const Reservation_Box = styled.div`
-    height: 200px;
+    height: 192px;
     border: 1px solid;
-    margin-top: 20px;
+    margin-top: 60px;
+    border-radius: 8px;
+
 `
 export const Reservation = styled.div`
     text-align: center;
-    margin-top: 20px;
+    margin-top: 25px;
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 700;
 `
-export const Text = styled.div`
+export const Gimpo = styled.div`
     text-align: center;
     color: #007CFF;
-    font-size: 13px;
+    font-size: 14px;
 `
 export const Check_Box = styled.div`
-    margin-top: 20px;
+    height: 80px;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-   
-`
-export const Check = styled.div`
-    width: 290px;
-    height: 90px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 20px;
-    margin-left: 15px;
     background-color: #F3F3F3;
+    border-radius: 16px 16px 16px 16px;
+    margin: 16px;
+    
 `
 export const Check_inout = styled.div`
-    width: 110px;
-    height: 60px;
-    margin-left: 6px;
-` 
-export const Check_in = styled.div`
-    text-align: center;
-    font-size: 13px;
-    color: #CECECE;
+    width: 50%;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+   
 `
-export const Days_Time = styled.div`
+export const Handwriting = styled.div`
+    font-size: 12px;
+    color: #CECECE;
+    
+`
+export const Day_Box = styled.div`
+    width: 110px;
     height: 30px;
     display: flex;
+    margin-top: 6px;
     align-items: center;
-    justify-content: center;
-    margin-left: 8px;
-    margin-top: 10px;
 `
-export const Days = styled.div`
-    font-size: 13px;
-    margin: 0px 10px 0px 10px;
-    white-space: nowrap;
-    
-
+export const Day = styled.div`
+    font-size: 14px;
+    font-family: "Noto Sans KR";
+    font-weight: 400;
+    flex: 1;
+    text-align: center;
 `

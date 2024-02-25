@@ -16,6 +16,7 @@ const index = () => {
         peopleCount: ""
     });
     const [imgFileList, setImgFileList] = useState([]); // 업로드된 이미지 파일 저장
+    console.log("imgFileList: ", imgFileList);
     const [pickFileIds, setPickFileIds] = useState([]); // pickFileIds
     console.log("pickFileIds: ", pickFileIds);
     const { mutateAsync: modify } = usePickModifyMutation();
@@ -87,7 +88,7 @@ const index = () => {
                         <div className='flex overflow-x-scroll'>
                         {x.pickFiles.map((y, imgIndex) => {
                             return (<div key={imgIndex}>
-                                <label className="border border-grey200 mr-5 w-52 h-40 rounded flex cursor-pointer mb-5" htmlFor={modifyFlag[index] ? `pickImage-${index}-${imgIndex}` : ''}>
+                                <label className={"border-grey200 mr-5 w-52 h-40 rounded flex cursor-pointer mb-5" + (x.pickFiles[imgIndex].fileName == "" ? ' border' : '')} htmlFor={modifyFlag[index] ? `pickImage-${index}-${imgIndex}` : ''}>
                                     {x.pickFiles[imgIndex].fileName ? x.pickFiles[imgIndex].imgPath ? <img src={x.pickFiles[imgIndex].imgPath}/> : <img src={`https://tong-bucket.s3.ap-northeast-2.amazonaws.com/${x?.pickFiles[imgIndex]?.fileName}`} /> : <img src={x.pickFiles[imgIndex].imgPath}/>}
                                 </label>
                                 <input
@@ -127,7 +128,7 @@ const index = () => {
                                 arr[index].pickFiles.push({
                                     fileName: "",
                                     fileSize: "",
-                                    pickFileId: dataArr[0].pickFiles.length+1,
+                                    pickFileId: dataArr?.map(x => x.pickFiles.length).reduce((a, b) => a + b)+1,
                                 });
                                 setDataArr(arr);
                             }} >이미지 추가

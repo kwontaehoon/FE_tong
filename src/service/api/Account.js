@@ -2,6 +2,7 @@ import { client } from "../";
 
 const ACCOUNT_URL = {
     signup: "/api/signup",
+    socialLogin: "/api/social/login",
     login: "/api/login",
     idCheck: "/api/idCheck",
     findId: "/api/findId",
@@ -11,6 +12,9 @@ const ACCOUNT_URL = {
 
 // 회원가입
 export const postSignup = (params) => client.post(ACCOUNT_URL.signup, params);
+
+// 소셜 로그인
+export const postSocialLogin = (params) => client.post(ACCOUNT_URL.socialLogin, params);
 
 // 로그인
 export const postLogin = (params) => client.post(ACCOUNT_URL.login, params);

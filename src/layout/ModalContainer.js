@@ -1,4 +1,14 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
+
+const slideIn = keyframes`
+  from { transform: translateX(100%); }
+  to { transform: translateX(20%); }
+`;
+
+const slideOut = keyframes`
+  from { transform: translateX(20%); }
+  to { transform: translateX(100%); }
+`;
 
 const MC = styled.div`
     position: fixed;
@@ -22,6 +32,28 @@ const MSC = styled.div`
     border-radius: 20px;
     box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
     font-size: 12px;
+`
+const MCS = styled.div`
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    z-index: 999;
+    visibility: ${props => props.$show ? 'visible' : 'hidden'};
+    transition: 1s;
+`
+const MCSS = styled.div`
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    right: 0;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+    font-size: 12px;
+    animation: ${props => props.$show ? slideIn : slideOut} 1s ease-in-out forwards;
 `
 const MCMobile = styled.div`
     position: fixed;
@@ -71,6 +103,8 @@ const MSCCMobile = styled.div`
 
 export const ModalContainer = MC;
 export const ModalSubContainer = MSC;
+export const ModalSideContainer = MCS; // PC 옆에서 나오는 모달
+export const ModalSideSubContainer = MCSS; // PC 옆에서 나오는 서브 모달
 export const ModalMobileContainer = MCMobile; // 밑에서 나오는 모바일 모달
 export const ModalMobileSubContainer = MSCMobile; // 밑에서 나오는 모바일 서브 모달
 export const ModalCenterMobileContainer = MCCMobile; // 센터 모바일 모달

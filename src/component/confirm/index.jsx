@@ -4,10 +4,13 @@ import { kakaoInfo, kakaoLogin, kakaoToken } from '../../hooks/sns/Kakao'
 import { naverLogin, naverToken } from '../../hooks/sns/Naver';
 import { useGoogleLogin } from '@react-oauth/google';
 import { googleLogin } from '../../hooks/sns/Google';
+import { useCategoryStore } from '../../store/main/Category';
 
 const index = () => {
 
     const navigate = useNavigate();
+
+    const openCategoryModal = useCategoryStore((state) => state.setOpen);
 
     const code = new URL(window.location.href).searchParams.get("code");
     const state = new URL(window.location.href).searchParams.get('state');
@@ -48,26 +51,22 @@ const index = () => {
         <div><span className='mb-2 cursor-pointer' onClick={()=>navigate("/signup")}>회원가입</span></div>
         <div><span className='mb-2 cursor-pointer' onClick={()=>navigate("/login")}>로그인</span></div>
         <div><span className='mb-2 cursor-pointer' onClick={()=>navigate("/main")}>메인페이지</span></div>
+        <div><span className='mb-2 cursor-pointer' onClick={()=>navigate("/mypage")}>마이페이지</span></div>
         <div><span className='mb-2 cursor-pointer' onClick={()=>navigate("/findId")}>아이디 찾기</span></div>
         <div><span className='mb-2 cursor-pointer' onClick={()=>navigate("/findId_success")}>아이디 찾기 성공</span></div>
         <div><span className='mb-2 cursor-pointer' onClick={()=>navigate("/findPwd")}>비밀번호 찾기</span></div>
         <div><span className='mb-2 cursor-pointer' onClick={()=>navigate("/newPwd")}>새로운 비밀번호</span></div>
         <div><span className='mb-2 cursor-pointer' onClick={()=>navigate("/findPwd_success")}>비밀번호 찾기 성공</span></div>
-        <div><span className='mb-2 cursor-pointer' onClick={()=>navigate("/mypage")}>마이페이지</span></div>
         <div><span className='mb-2 cursor-pointer' onClick={kakaoLogin}>카카오 로그인</span></div>
         <div><span className='mb-2 cursor-pointer' onClick={naverLogin}>네이버 로그인</span></div>
         <div><span className='mb-2 cursor-pointer' onClick={googleGetCode}>구글 로그인</span></div>
         <div><span className='mb-2 cursor-pointer' onClick={()=>navigate("/admin")}>관리자 페이지</span></div>
-        <div><span className='mb-2 cursor-pointer' onClick={()=>navigate("/reservation")}>검색 페이지</span></div>
-        <div><span className='mb-2 cursor-pointer' onClick={()=>navigate("/reservation_details")}>예약상세</span></div>
-        <div><span className='mb-2 cursor-pointer' onClick={()=>navigate("/reservation_information")}>예약정보</span></div>
-        <div><span className='mb-2 cursor-pointer' onClick={()=>navigate("/breakdown")}>예약내역</span></div>
+        <div><span className='mb-2 cursor-pointer' onClick={()=>navigate("/reservation")}>예약 목록</span></div>
+        <div><span className='mb-2 cursor-pointer' onClick={()=>navigate("/reservation_information")}>예약 정보</span></div>
+        <div><span className='mb-2 cursor-pointer' onClick={()=>navigate("/breakdown")}>예약 내역</span></div>
         <div><span className='mb-2 cursor-pointer' onClick={()=>navigate("/weather")}>날씨</span></div>
-        <div><span className='mb-2 cursor-pointer' onClick={()=>navigate("/reservation_details")}>검색상세 페이지</span></div>
-        <div><span className='mb-2 cursor-pointer' onClick={()=>navigate("/category")}>카테고리</span></div>
-        <div><span className='mb-2 cursor-pointer' onClick={()=>navigate("/search_results")}>검색결과</span></div>
-        <div><span className='mb-2 cursor-pointer' onClick={()=>navigate("/Search")}>검색목록</span></div>
-
+        <div><span className='mb-2 cursor-pointer' onClick={()=>navigate("/search")}>검색 목록</span></div>
+        <div onClick={()=>openCategoryModal(true)}>카테고리</div>
     </div>
   )
 }

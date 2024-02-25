@@ -40,6 +40,7 @@ export const Icon = styled.div`
     left: 0;
     bottom: 0;
     background-color: white;
+    border: 1px solid;
 `
 export const Icon_Box = styled.div`
     position: relative;

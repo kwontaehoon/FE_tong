@@ -11,12 +11,13 @@ import {
     Minibox,
     Social_button
 } from './styles'
-import { useLoginMutation } from '../../../hooks/queries/api/Account'
+import { useLoginMutation, useSocialLoginMutation } from '../../../hooks/queries/api/Account'
 import { useNavigate } from 'react-router-dom'
-import Header from '../../../layout/Header'
+import Header from '../../../function/header'
 import { useGoogleLogin } from '@react-oauth/google'
 import { naverLogin, naverToken } from '../../../hooks/sns/Naver'
 import { kakaoInfo, kakaoLogin, kakaoToken } from '../../../hooks/sns/Kakao'
+import { googleLogin } from '../../../hooks/sns/Google'
 
 const index = () => {
 
@@ -31,42 +32,62 @@ const index = () => {
     });
     const [validation, setValidation] = useState(false); // 유효성 검사
     const { mutateAsync: login, data } = useLoginMutation();
+    const { mutateAsync: sociallLogin } = useSocialLoginMutation();
 
     const googleGetCode = useGoogleLogin({
         onSuccess: async (codeResponse) => {
-            const response = await googleLogin(codeResponse);
-            window.alert(`Google ${response.data.name}님 안녕하세요!`);
+            const info = await googleLogin(codeResponse);
+            console.log("google response: ", info);
+
+            const response = await sociallLogin({email: info.data.email});
+            console.log("google response socialLogin: ", response);
+
+            if(response.data.status == "400"){
+                navigate("/signup", {state: info.data.email});
+            }else {
+                localStorage.setItem("token", response.data.token)
+                navigate("/main");
+            }
         }
     });
 
     useEffect(() => {
 
-        const kakao = async () => {
-            const token = await kakaoToken(code);
-            console.log("kakao token: ", token);
-
-            const info = await kakaoInfo(token.data.access_token);
-            console.log("info: ", info);
-
-            window.alert(`Kakao ${info.data.kakao_account.profile.nickname}님 안녕하세요!`);
-            navigate("/");
+        if(code){
+            const kakao = async () => {
+                const token = await kakaoToken(code);
+                console.log("kakao token: ", token);
+    
+                const info = await kakaoInfo(token.data.access_token);
+                console.log("kakao infooo: ", info.data.kakao_account.email);
+    
+                const response = await sociallLogin({email: info.data.kakao_account.email});
+                console.log("kakao response: ", response);
+    
+                if(response.data.status == "400"){
+                    navigate("/signup", {state: info.data.kakao_account.email});
+                }else {
+                    localStorage.setItem("token", response.data.token);
+                    navigate("/main");
+                }
+            }
+    
+            const naver = async () => {
+                const token = await naverToken(code, state);
+                console.log("naver token: ", token);
+            }
+            if (code) {
+                kakao();
+                naver();
+            }
         }
-
-        const naver = async () => {
-            const token = await naverToken(code, state);
-            console.log("naver token: ", token);
-        }
-        if (code) {
-            kakao();
-            naver();
-        }
-
     }, []);
 
     useEffect(() => {
         if (data?.data?.status == 400) {
             setValidation(true);
         } else if (data?.data?.status == 200) {
+            localStorage.setItem("token", data.data.token);
             navigate("/main")
         }
     }, [data]);
@@ -74,18 +95,14 @@ const index = () => {
     return (
         <Container>
 
-            <Header noArrow url={"main"} />
+            <Header noArrow />
 
             <Logo><img src="/svg/Logo.svg" className='w-44' /></Logo>
 
             <Id placeholder='아이디' onChange={(e) => setInfo({ ...info, id: e.target.value })}></Id>
             <Pwd type='password' placeholder='비밀번호' onChange={(e) => setInfo({ ...info, password: e.target.value })}></Pwd>
             {validation && <div className='text-xs my-3 text-valid'>아이디 또는 비밀번호를 잘못 입력했습니다. 다시 확인해주세요.</div>}
-            <Login $validation={validation}
-                onClick={() => {
-                    login(info);
-                }}>로그인
-            </Login>
+            <Login $validation={validation} onClick={()=>login(info)}>로그인</Login>
             <Minibox>
                 <ID_find onClick={() => navigate("/findId")}>아이디</ID_find>
                 <img src="/svg/Line 2.svg" />

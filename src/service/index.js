@@ -1,4 +1,5 @@
 import axios from "axios";
+import moment from "moment";
 
 export const client = axios.create({
   baseURL: "http://localhost:8080",
@@ -14,3 +15,19 @@ export const client = axios.create({
   decompress: true,
   withCredentials: true, // cors
 });
+
+client.interceptors.request.use(
+  (config) => {
+    // localStorage에서 토큰 가져오기
+    const token = localStorage.getItem('token');
+    // 토큰이 존재하면 헤더에 토큰 설정
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => {
+    // 요청 오류 처리
+    return Promise.reject(error);
+  }
+);

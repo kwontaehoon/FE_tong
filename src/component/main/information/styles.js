@@ -4,39 +4,34 @@ export const Container = styled.div`
     
 `
 export const Information_Box = styled.div`
-    height: 178px;
     margin-top: 20px;
 `
 export const Inquiry = styled.div`
-    font-size: 13px;
-    margin: 6px 6px 0px 6px;
+    font-size: 10px;
 `
 export const Policy = styled.div`
     display: flex;
     align-items: center;
     margin-top: 5px;
+    margin-left: 6px;
 `
-export const Policy_Name = styled.div`
-    font-size: 13px;
-    font-weight: 600;
-    margin: 3px 0px 0px 10px;
-
+export const PrivatePolicy = styled.div`
+    font-size: 12px;
+    font-weight: bold;
 `
 export const Gimpo = styled.div`
-   margin-left: 5px;
-   font-size: 13px;
+   margin: 22px 0px 12px 6px;
+   font-size: 14px;
 `
 export const Information = styled.div`
-    font-size: 13px;
+    font-size: 10px;
 `
 export const Personal_information = styled.div`
-    height: 140px;
-    margin: 12px 0px 0px 6px;
-
+    margin: 0px 0px 0px 6px;
+    padding: 12px 0px;
 `
 export const English = styled.div`
-    height: 50px;
     margin-top: 10px;
-    font-size: 13px;
+    font-size: 10px;
     color: gray;
 `

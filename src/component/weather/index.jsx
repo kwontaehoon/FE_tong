@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { weather } from '../../hooks/weather/Weather';
-import { weatherStatus } from '../../utill/WeatherStatus';
+import { weatherStatus } from '../../function/weatherStatus';
 
 const index = () => {
 
@@ -34,7 +34,6 @@ const index = () => {
             <div>{weatherList?.temp}º</div>
             {/* <div>강수: {weatherList?.rain}</div>
             <div>하늘: {weatherList?.sky}</div> */}
-            
         </div>
     )
 }
