@@ -50,13 +50,16 @@ export const Jangi_FC = styled.div`
 export const Comments_Box = styled.div`
     margin-top: 10px;
     display: flex;
+    box-sizing: border-box;
+`
+export const Comment = styled.div`
     font-size: 12px;
-    line-height: 14px;
+    padding-right: 6px;
 `
 export const Activity = styled.div`
     font-size: 12px;
     color: #00D4EA;
-    margin-left: 6px;
+    padding-left: 6px;
     
 `
 export const Button_Box = styled.div`

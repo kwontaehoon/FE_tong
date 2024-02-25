@@ -8,6 +8,7 @@ FC,
 FC_Box ,
 Jangi_FC,
 Comments_Box,
+Comment,
 Activity,
 Button_Box,
 Button,
@@ -33,10 +34,12 @@ const index = () => {
                         장기동 FC통통팀원 모집합니다. 매주 수요...
                     </Jangi_FC>
                     <Comments_Box>
-                        <img src="svg/eye.svg"></img> 322
-                        <img style={{ marginLeft: "6px" }} src="svg/vertical_line.svg"></img>
-                        <img style={{ marginLeft: "6px" }}src="svg/comment.svg"></img> 31
-                        <img style={{ marginLeft: "6px" }}src="svg/vertical_line.svg"></img>
+                        <img src="svg/eye.svg"></img> 
+                        <Comment>322</Comment>
+                        <img src="svg/vertical_line.svg"></img>
+                        <img style={{paddingLeft:"6px"}}src="svg/comment.svg"></img> 
+                        <Comment>31</Comment>
+                        <img src="svg/vertical_line.svg"></img>
                         <Activity>방금활동</Activity>
                     </Comments_Box>
                 </FC_Box>
@@ -49,10 +52,13 @@ const index = () => {
                         장기동 FC통통팀원 모집합니다. 매주 수요일 14시 장기통...
                     </Jangi_FC>
                     <Comments_Box>
-                        <img src="svg/eye.svg"></img> 322
-                        <img style={{ marginLeft: "6px" }} src="svg/vertical_line.svg"></img>
-                        <img style={{ marginLeft: "6px" }}src="svg/comment.svg"></img>31
-                        <img style={{ marginLeft: "6px",marginRight:"6px" }}src="svg/vertical_line.svg"></img> 1시간전
+                        <img src="svg/eye.svg"></img> 
+                        <Comment>322</Comment>
+                        <img src="svg/vertical_line.svg"></img>
+                        <img style={{paddingLeft:"6px"}}src="svg/comment.svg"></img>
+                        <Comment>31</Comment>
+                        <img style={{paddingRight:"6px"}}src="svg/vertical_line.svg"></img> 
+                        <Comment>1시간전</Comment>
                     </Comments_Box>
                 </FC_Box>
             </Recruitment_Box>
@@ -63,10 +69,13 @@ const index = () => {
                         안녕하세요. 김포운통장은 사용해보셨죠?
                     </Jangi_FC>
                     <Comments_Box>
-                        <img src="svg/eye.svg"></img> 322
-                        <img style={{ marginLeft: "6px" }} src="svg/vertical_line.svg"></img>
-                        <img style={{marginLeft:"6px"}}src="svg/comment.svg"></img>31
-                        <img style={{ marginLeft: "6px",marginRight:"6px" }} src="svg/vertical_line.svg"></img> 1시간전
+                        <img src="svg/eye.svg"></img> 
+                        <Comment>322</Comment>
+                        <img src="svg/vertical_line.svg"></img>
+                        <img style={{paddingLeft:"6px"}}src="svg/comment.svg"></img>
+                        <Comment>31</Comment>
+                        <img style={{paddingRight:"6px"}}src="svg/vertical_line.svg"></img> 
+                        <Comment>1시간전</Comment>
                     </Comments_Box>
                 </FC_Box>
                 <img style={{ marginRight: "15px" }} src="svg/Teamwork.svg"></img>
@@ -78,15 +87,17 @@ const index = () => {
                         안녕하세요. 김포운통장은 사용해보셨죠?
                     </Jangi_FC>
                     <Comments_Box>
-                        <img src="svg/eye.svg"></img> 322
-                        <img style={{ marginLeft: "6px" }} src="svg/vertical_line.svg"></img>
-                        <img style={{ marginLeft:"6px"}}src="svg/comment.svg"></img>31
-                        <img style={{ marginLeft: "6px",marginRight:"6px" }}src="svg/vertical_line.svg"></img> 1시간전
+                        <img src="svg/eye.svg"></img> 
+                        <Comment>322</Comment>
+                        <img src="svg/vertical_line.svg"></img>
+                        <img style={{paddingLeft:"6px"}}src="svg/comment.svg"></img>
+                        <Comment>31</Comment>
+                        <img style={{paddingRight:"6px"}}src="svg/vertical_line.svg"></img>
+                        <Comment>1시간전</Comment>
                     </Comments_Box>
                 </FC_Box>
                 <img style={{ marginRight: "15px" }} src="svg/Teamwork_2.svg"></img>
             </Recruitment_Box>
-
             <Recruitment_Box>
                 <FC_Box>
                     <FC>장기동 FC팀원 모집합니다.</FC>
@@ -94,11 +105,13 @@ const index = () => {
                         안녕하세요. 김포운통장은 사용해보셨죠?
                     </Jangi_FC>
                     <Comments_Box>
-                        <img src="svg/eye.svg"></img> 322
-                        <img style={{ marginLeft: "6px" }} src="svg/vertical_line.svg"></img>
-                        <img style={{marginLeft:"6px"}}src="svg/comment.svg"></img>31
-                        <img style={{ marginLeft: "6px",marginRight:"6px" }}src="svg/vertical_line.svg"></img>
-                        1시간전
+                        <img src="svg/eye.svg"></img> 
+                        <Comment>322</Comment>
+                        <img src="svg/vertical_line.svg"></img>
+                        <img style={{paddingLeft:"6px"}}src="svg/comment.svg"></img>
+                        <Comment>31</Comment>
+                        <img style={{paddingRight:"6px"}}src="svg/vertical_line.svg"></img>
+                        <Comment>1시간전</Comment>
                     </Comments_Box>
                 </FC_Box>
                 <img style={{ marginRight: "15px" }} src="svg/Teamwork_3.svg"></img>
@@ -110,10 +123,13 @@ const index = () => {
                         안녕하세요. 김포운통장은 사용해보셨죠?
                     </Jangi_FC>
                     <Comments_Box>
-                        <img src="svg/eye.svg"></img> 322
-                        <img style={{ marginLeft: "6px" }} src="svg/vertical_line.svg"></img>
-                        <img style={{marginLeft:"6px"}}src="svg/comment.svg"></img>31
-                        <img style={{ marginLeft: "6px",marginRight:"6px" }} src="svg/vertical_line.svg"></img> 1시간전
+                        <img src="svg/eye.svg"></img>
+                        <Comment>322</Comment>
+                        <img src="svg/vertical_line.svg"></img>
+                        <img style={{paddingLeft:"6px"}}src="svg/comment.svg"></img>
+                        <Comment>31</Comment>
+                        <img style={{paddingRight:"6px"}}src="svg/vertical_line.svg"></img> 
+                        <Comment>1시간전</Comment>
                     </Comments_Box>
                 </FC_Box>
                 <img style={{ marginRight: "15px" }} src="svg/Teamwork_4.svg"></img>
@@ -125,10 +141,13 @@ const index = () => {
                         안녕하세요. 김포운통장은 사용해보셨죠?
                     </Jangi_FC>
                     <Comments_Box>
-                        <img src="svg/eye.svg"></img> 322
-                        <img style={{ marginLeft: "6px" }} src="svg/vertical_line.svg"></img>
-                        <img style={{marginLeft:"6px"}}src="svg/comment.svg"></img>31
-                        <img style={{ marginLeft: "6px",marginRight:"6px" }}src="svg/vertical_line.svg"></img>1시간전
+                        <img src="svg/eye.svg"></img> 
+                        <Comment>322</Comment>
+                        <img src="svg/vertical_line.svg"></img>
+                        <img style={{paddingLeft:"6px"}}src="svg/comment.svg"></img>
+                        <Comment>31</Comment>
+                        <img style={{paddingRight:"6px"}}src="svg/vertical_line.svg"></img>
+                        <Comment>1시간전</Comment>
                     </Comments_Box>
                 </FC_Box>
                 <img style={{ marginRight: "15px" }} src="svg/Teamwork_4.svg"></img>
