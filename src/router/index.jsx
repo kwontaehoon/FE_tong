@@ -19,6 +19,7 @@ import Category from '../component/category'
 import Search_results from '../component/search_results'
 import Bulletinboard from '../component/bulletinboard'
 import Saving_details from '../component/saving_details'
+import Recruitment from '../component/recruitment'
 
 
 
@@ -47,7 +48,8 @@ export const router = createBrowserRouter([
             { path: "/category", element: <Category />},
             { path: "/search_results", element: <Search_results/>},
             { path: "/bulletinboard", element: <Bulletinboard/>},
-            { path: "/saving_details", element: <Saving_details/>}
+            { path: "/saving_details", element: <Saving_details/>},
+            { path: "/recruitment", element: <Recruitment/>}
             
            
 
