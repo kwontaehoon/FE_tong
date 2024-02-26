@@ -21,7 +21,7 @@ export const Saving_Box = styled.div`
     align-items: end;
 `
 export const Saving = styled.div`
-    width: 97px;
+    width: 100%;
     height: 48px;
     text-align: center;
     line-height: 45px;
