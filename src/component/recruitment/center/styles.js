@@ -24,6 +24,7 @@ export const Title = styled.div`
     font-weight: 600;
 `
 export const Text = styled.div`
+    padding-left: 6px;
 `
 export const Time_Box = styled.div`
     display: flex;
@@ -33,7 +34,9 @@ export const Time = styled.div`
     flex: 1;
     color: #9FA4A9;
     font-size: 13px;
+    padding-left: 6px;
 `
 export const Comment = styled.div`
     font-size: 13px;
+    padding-right: 6px;
 `
