@@ -12,7 +12,6 @@ import { usePickListQuery } from '../../../hooks/queries/api/Main'
 const index = () => {
 
   const { data, isSuccess } = usePickListQuery();
-  console.log("pick data: ", data);
 
   const [flag, setFlag] = useState([]);
 
@@ -27,7 +26,7 @@ const index = () => {
 
   return isSuccess && (
     <Container>
-      <div className='bg-white px-5 py-4 rounded-2xl mb-5'>
+      {data.length == 0 ? '' : <div className='bg-white px-5 py-4 rounded-2xl mb-5'>
         <Ground_Pick>
           <Ground>운통장</Ground>
           <Pick>MANU</Pick>
@@ -45,7 +44,7 @@ const index = () => {
             )
           })}
         </div>
-      </div>
+      </div>}
       <Scroll>
         <div className='flex'>
           {data[flag.findIndex(x=>x)]?.pickFiles?.map(x => {

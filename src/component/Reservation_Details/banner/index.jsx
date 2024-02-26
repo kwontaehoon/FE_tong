@@ -1,14 +1,28 @@
 import React from 'react'
-import {Container,
-IMG} from './styles'
+import {
+  Container,
+} from './styles'
+import { Swiper, SwiperSlide } from 'swiper/react';
 
-const index = () => {
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/pagination';
+import { Pagination } from 'swiper/modules';
+
+const index = ({ data }) => {
+
   return (
-   <Container>
-    <IMG>
-    <img style={{objectFit:"fill", width:"100%"}} src="svg/Ground_12.svg"></img>
-    </IMG>
-   </Container>
+    <Container>
+      <Swiper pagination={true} modules={[Pagination]}>
+        {data.reservationFiles.map(x => {
+          return (
+            <SwiperSlide key={x.reservationFileId}>
+              <img src={`https://tong-bucket.s3.ap-northeast-2.amazonaws.com/${x.fileName}`} style={{height: "262px"}} className='w-full'/>
+            </SwiperSlide>
+          )
+        })}
+      </Swiper>
+    </Container>
   )
 }
 

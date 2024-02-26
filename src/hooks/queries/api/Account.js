@@ -1,8 +1,8 @@
 import { useQuery, useMutation } from "react-query";
-import { postSignup, postLogin } from "../../../service/api/Account";
+import { postSignup, postLogin, postIdCheck, postFindId, postFindPassword, postNewPassword, postSocialLogin } from "../../../service/api/Account";
 
 const ACCOUNT_KEYS = {
-  
+
 }
 
 /**
@@ -25,10 +25,85 @@ export const useSignupMutation = () =>
  * 
  */
 
+export const useSocialLoginMutation = () =>
+useMutation({
+  mutationFn: (params) => {
+    return postSocialLogin(params);
+  },
+  onSuccess: () => {
+    // 성공 시 실행할 로직 추가
+  }
+});
+
+/**
+ * 로그인
+ * 
+ */
+
 export const useLoginMutation = () =>
   useMutation({
     mutationFn: (params) => {
       return postLogin(params);
+    },
+    onSuccess: () => {
+      // 성공 시 실행할 로직 추가
+    }
+  });
+
+/**
+* 아이디 중복확인
+* 
+*/
+
+export const useIdCheckMutation = () =>
+  useMutation({
+    mutationFn: (params) => {
+      return postIdCheck(params);
+    },
+    onSuccess: () => {
+      // 성공 시 실행할 로직 추가
+    }
+  });
+
+/**
+ * 아이디 찾기
+ * 
+ */
+
+export const useFindIdMutation = () =>
+  useMutation({
+    mutationFn: (params) => {
+      return postFindId(params);
+    },
+    onSuccess: () => {
+      // 성공 시 실행할 로직 추가
+    }
+  });
+
+/**
+* 비밀번호 찾기
+* 
+*/
+
+export const useFindPasswordMutation = () =>
+  useMutation({
+    mutationFn: (params) => {
+      return postFindPassword(params);
+    },
+    onSuccess: () => {
+      // 성공 시 실행할 로직 추가
+    }
+  });
+
+/**
+* 비밀번호 변경
+* 
+*/
+
+export const useNewPasswordMutation = () =>
+  useMutation({
+    mutationFn: (params) => {
+      return postNewPassword(params);
     },
     onSuccess: () => {
       // 성공 시 실행할 로직 추가

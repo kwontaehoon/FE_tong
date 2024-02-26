@@ -8,8 +8,12 @@ import {
     Button,
     Name,
 } from './styles'
+import { useNavigate } from 'react-router-dom'
 
 const index = () => {
+
+    const navigate = useNavigate();
+
     return (
         <Container>
             <Help>
@@ -27,7 +31,7 @@ const index = () => {
                         <img src="svg/Cloud.svg"></img>
                         <Name>스케쥴</Name>
                     </Button>
-                    <Button>
+                    <Button onClick={()=>navigate("/reservation")}>
                         <img src="svg/Reservation.svg"></img>
                         <Name>예약</Name>
                     </Button>

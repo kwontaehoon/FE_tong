@@ -67,6 +67,6 @@ export const Signup = styled.div`
     justify-content: center;
     cursor: pointer;
     border-radius: 8px;
-    background-color: ${props => props.$ok ? "#007CFF" : "#F4F5FA"};
+    background-color: ${props => props.$ok ? "#007CFF" : "#E9EBED"};
     color: ${props => props.$ok ? "white" : "#73787E"};
 `

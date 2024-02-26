@@ -19,6 +19,7 @@ import ExpandMore from '@mui/icons-material/ExpandMore';
 import Collapse from '@mui/material/Collapse';
 import StarBorder from '@mui/icons-material/StarBorder';
 import { useNavigate } from 'react-router-dom';
+import User from './main/user'
 import Banner from './main/banner'
 import Pick from './main/pick'
 import Reservation from './main/reservation'
@@ -32,12 +33,12 @@ const index = (props) => {
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
     const [isClosing, setIsClosing] = React.useState(false);
-    const [open, setOpen] = React.useState(Array.from({length: 3}, () => false));
+    const [open, setOpen] = React.useState(Array.from({ length: 3 }, () => false));
     const [content, setContent] = React.useState("");
 
     const handleClick = () => {
         setOpen(!open);
-      };
+    };
 
     const handleDrawerClose = () => {
         setIsClosing(true);
@@ -56,7 +57,7 @@ const index = (props) => {
 
     const drawer = (
         <div>
-            <Toolbar onClick={()=>navigate("/")}>홈</Toolbar>
+            <Toolbar onClick={() => navigate("/")}>홈</Toolbar>
             <Divider />
             <List
                 sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
@@ -68,6 +69,26 @@ const index = (props) => {
                     </ListSubheader>
                 }
             >
+
+                <ListItemButton onClick={handleClick}>
+                    <ListItemIcon>
+                        <InboxIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="회원" />
+                    {open ? <ExpandLess /> : <ExpandMore />}
+                </ListItemButton>
+
+                <Collapse in={open} timeout="auto" unmountOnExit onClick={() => setContent("")}>
+                    <List component="div" disablePadding>
+                        <ListItemButton sx={{ pl: 4 }}>
+                            <ListItemIcon>
+                                <StarBorder />
+                            </ListItemIcon>
+                            <ListItemText primary="회원" />
+                        </ListItemButton>
+                    </List>
+                </Collapse>
+
                 <ListItemButton onClick={handleClick}>
                     <ListItemIcon>
                         <InboxIcon />
@@ -76,7 +97,7 @@ const index = (props) => {
                     {open ? <ExpandLess /> : <ExpandMore />}
                 </ListItemButton>
 
-                <Collapse in={open} timeout="auto" unmountOnExit onClick={()=>setContent("")}>
+                <Collapse in={open} timeout="auto" unmountOnExit onClick={() => setContent("banner")}>
                     <List component="div" disablePadding>
                         <ListItemButton sx={{ pl: 4 }}>
                             <ListItemIcon>
@@ -87,7 +108,7 @@ const index = (props) => {
                     </List>
                 </Collapse>
 
-                <Collapse in={open} timeout="auto" unmountOnExit onClick={()=>setContent("pick")}>
+                <Collapse in={open} timeout="auto" unmountOnExit onClick={() => setContent("pick")}>
                     <List component="div" disablePadding>
                         <ListItemButton sx={{ pl: 4 }}>
                             <ListItemIcon>
@@ -98,7 +119,7 @@ const index = (props) => {
                     </List>
                 </Collapse>
 
-                <Collapse in={open} timeout="auto" unmountOnExit onClick={()=>setContent("reservation")}>
+                <Collapse in={open} timeout="auto" unmountOnExit onClick={() => setContent("reservation")}>
                     <List component="div" disablePadding>
                         <ListItemButton sx={{ pl: 4 }}>
                             <ListItemIcon>
@@ -124,7 +145,7 @@ const index = (props) => {
                     {open ? <ExpandLess /> : <ExpandMore />}
                 </ListItemButton>
 
-                <Collapse in={open} timeout="auto" unmountOnExit onClick={()=>setContent("searchRecommend")}>
+                <Collapse in={open} timeout="auto" unmountOnExit onClick={() => setContent("searchRecommend")}>
                     <List component="div" disablePadding>
                         <ListItemButton sx={{ pl: 4 }}>
                             <ListItemIcon>
@@ -151,7 +172,7 @@ const index = (props) => {
                         ml: { sm: `${drawerWidth}px` },
                     }}
                 >
-                    <Toolbar sx={{backgroundColor: '#007CFF'}}>
+                    <Toolbar sx={{ backgroundColor: '#007CFF' }}>
                         <IconButton
                             color="inherit"
                             aria-label="open drawer"
@@ -200,10 +221,11 @@ const index = (props) => {
                 </Box>
                 <Box className='w-full'
                     component="main"
-                    sx={{  p: 3  }}
+                    sx={{ p: 3 }}
                 >
                     <Toolbar />
-                    {content == "" && <Banner />}
+                    {content == "" && <User />}
+                    {content == "banner" && <Banner />}
                     {content == "pick" && <Pick />}
                     {content == "reservation" && <Reservation />}
                     {content == "searchRecommend" && <SearchRecommend />}

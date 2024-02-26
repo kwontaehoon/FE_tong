@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 export const Component = styled.div`
-    padding: 20px;
+    padding: 0px 20px 20px 20px;
 `
 export const Find_id = styled.div`
     font-weight: 700;
@@ -38,8 +38,8 @@ export const ID = styled.div`
     align-items: center;
     cursor: pointer;
     border-radius: 8px;
-    background-color: #E9EBED;
-    color: #73787E;
+    background-color: ${props => props.$ok ? "#007CFF" : "#E9EBED"};
+    color: ${props => props.$ok ? "white" : "#73787E"};
 `
 
 export const Pwd = styled.div`

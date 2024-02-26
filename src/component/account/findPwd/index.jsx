@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   Component,
   Find_pwd,
@@ -8,12 +8,32 @@ import {
   Pwd,
   ID
 } from './styles'
-import Header from '../../../layout/Header'
+import Header from '../../../function/header'
 import { useNavigate } from 'react-router-dom'
+import { useFindPasswordMutation } from '../../../hooks/queries/api/Account'
 
 const index = () => {
 
   const navigate = useNavigate();
+
+  const [info, setInfo] = useState({
+    id: '',
+    email: ''
+  });
+
+  const [validation, setValidation] = useState(false);
+
+  const { mutate: findPassword, data: findPasswordData } = useFindPasswordMutation();
+  console.log(findPasswordData);
+
+  useEffect(()=>{
+    if(findPasswordData){
+      if(findPasswordData?.data?.password){
+        navigate("/newPwd", {state: findPasswordData?.data?.id});
+      }else setValidation(true);
+    }
+    
+  }, [findPasswordData]);
 
   return (
     <Component>
@@ -26,12 +46,18 @@ const index = () => {
       </Information>
 
       <Name>아이디</Name>
-      <Input placeholder='아이디를 입력하세요.'></Input>
+      <Input placeholder='아이디를 입력하세요.' onChange={(e)=>setInfo({...info, id: e.target.value})}></Input>
 
       <Name>이메일</Name>
-      <Input placeholder='이메일을 입력하세요.'></Input>
+      <Input placeholder='이메일을 입력하세요.' onChange={(e)=>setInfo({...info, email: e.target.value})}></Input>
 
-      <ID>비밀번호 찾기</ID>
+      {validation && <div className='text-xs text-valid'>입력하신 정보로 비밀번호를 찾을 수 없습니다. 다시 확인해주세요.</div>}
+
+      <ID $ok={Object.values(info).every(value => value !== "")}
+      onClick={()=>{
+        if(Object.values(info).every(value => value !== "")){
+          findPassword(info);
+        }}}>비밀번호 찾기</ID>
       <Pwd>
         <div className='border-b' onClick={()=>navigate("/findId")}>아이디 찾기</div>
       </Pwd>

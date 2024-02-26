@@ -18,7 +18,6 @@ export const Recommendation_Box = styled.div`
 export const Ground = styled.div`
 `
 export const PlayGround = styled.div`
-
 `
 export const Recommended_Ground = styled.div`
     display: flex;
@@ -37,6 +36,7 @@ export const Arrow = styled.div`
 
 export const Explanation = styled.div`
     font-size: 14px;
+    margin: 2px 0px;
 `
 export const Star = styled.div`
     display: flex;
@@ -64,13 +64,13 @@ export const Weather = styled.div`
 `
 
 export const Soccer_Field = styled.div`
-    height: 30%;
     background-color: white;
     display: flex;
     align-items: center;
     border-radius: 15px;
     font-size: 20px;
     padding: 12px 18px;
+    margin-bottom: 12px;
 `
 export const Popularity = styled.div`
     width: 50%;
@@ -78,20 +78,19 @@ export const Popularity = styled.div`
     border-radius: 13px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between
 `
 export const Img = styled.div`
     width: 50px;
     height: 50px;
-    border-radius: 15px;
     border-radius: 20px;
     overflow: hidden;
 `
 export const Img_Name = styled.div`
     flex: 1;
+    margin-right: 4px;
 `
 export const Place = styled.div`
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
 `
 export const Soccer = styled.div`
