@@ -2,7 +2,6 @@ export const morningClockText = [
     {id: 1, clock: "06:00~08:00"},
     {id: 2, clock: "08:00~10:00"},
     {id: 3, clock: "10:00~12:00"}
-   
 ];
 
 export const afterNoonClockText = [

@@ -4,11 +4,10 @@ export const Container = styled.div`
     padding: 20px;
 ` 
 export const Announcement_Box = styled.div`
-    border: 1px solid;
-   padding: 10px;
+    padding: 20px;
     margin-bottom: 10px;
     border-radius: 8px;
-    display: flex;
+    background-color: white;
 `
 export const Announcement = styled.div`
     font-size: 14px;

@@ -18,14 +18,8 @@ import Reservation_information from '../component/reservation_information'
 import Breakdown from '../component/breakdown'
 import Weather from '../component/weather'
 import Category from '../component/category'
-import Bulletinboard from '../component/bulletinboard'
+import Board from '../component/board'
 import Saving_details from '../component/saving_details'
-import Recruitment from '../component/recruitment'
-import Notice from '../component/notice'
-import Faq from '../component/faq'
-
-
-
 import App from "../App"
 
 export const router = createBrowserRouter([
@@ -57,15 +51,12 @@ export const router = createBrowserRouter([
                     { path: ":id", element: <Reservation_Details /> }
                 ]
             },
-            { path: "/reservation_information/:id", element: <Reservation_information/>},
-            { path: "/breakdown/:id", element: <Breakdown/>},
+            { path: "/reservation_information/:id", element: <Reservation_information />},
+            { path: "/breakdown/:id", element: <Breakdown />},
             { path: "/weather", element: <Weather />},
             { path: "/category", element: <Category />},
-            { path: "/bulletinboard", element: <Bulletinboard/>},
-            { path: "/saving_details", element: <Saving_details/>},
-            { path: "/recruitment", element: <Recruitment/>},
-            { path: "notice", element: <Notice/>},
-            { path: "faq", element: <Faq/>}
+            { path: "/board", element: <Board />},
+            { path: "/saving_details", element: <Saving_details />},
         ]
     },
 ])
