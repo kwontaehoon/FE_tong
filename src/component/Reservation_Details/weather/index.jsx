@@ -14,9 +14,9 @@ import { setMonth } from 'date-fns'
 import { numberTwo } from '../../../utill/NumberTwo'
 import { dayOfWeek } from '../../../utill/DayOfWeek'
 import { morningClockText, afterNoonClockText } from '../../../constants/text/api/Reservation'
+import moment from 'moment'
 
-const index = ({info, setInfo}) => {
-  console.log("info: ", info);
+const index = ({info, setInfo, data}) => {
 
   const today = {
     year: new Date().getFullYear(), //오늘 연도
@@ -41,11 +41,24 @@ const index = ({info, setInfo}) => {
   const [clock, setClock] = useState(Array(9).fill(false));
 
   const [selectBox, setSelectBox] = useState(false);
+  const [blockClock, setBlockClock] = useState([]); // 이미 예약 찬 시간
 
-  useEffect(() => {
-    setSelectDay(Array.from({ length: today.month == current.getMonth()+1 ?  dateTotalCount - today.date : prevMonthEndDate }, () => false));
+  useEffect(()=>{
+    setSelectDay(Array.from({ length: today.month == current.getMonth()+1 ?  dateTotalCount - today.date : prevMonthEndDate }, (_, index) => index === 0));
     setInfo({...info, selectMonth: current.getMonth()+1});
   }, [current]);
+
+  useEffect(()=>{
+      let arr = [];
+      data.resrvationApplicants.filter(x => {
+        if(moment(x.reservationDate).format("MM") == current.getMonth()+1){
+          if(moment(x.reservationDate).format("DD") == numberTwo(selectDay.findIndex(x=>x) + today.date) || moment(x.reservationDate).format("DD") == numberTwo(selectDay.findIndex(x=>x)+1)){
+            arr.push(x.reservationClock);
+          }
+        }
+      })
+      setBlockClock(arr);
+  }, [selectDay, current]);
 
   return (
     <Container>
@@ -102,12 +115,16 @@ const index = ({info, setInfo}) => {
           <div className='flex flex-wrap mb-5'>
             {morningClockText.map((x, index) => {
               return (
-                <div key={x.id} className={'p-4 border rounded-lg mr-2 mb-2' + (clock[index] ? ' bg-m text-white' : '')}
+                <div key={x.id} className={'p-4 border rounded-lg mr-2 mb-2' + (blockClock.includes(index) ? ' bg-grey07 text-grey05' : clock[index] ? ' bg-m text-white' : '')}
                   onClick={()=>{
                     const arr = Array(9).fill(false);
-                    arr[index] = true;
-                    setClock(arr);
-                    setInfo({...info, selectClock: index});
+                    if(blockClock.includes(index)){
+                      return;
+                    }else{
+                      arr[index] = true;
+                      setClock(arr);
+                      setInfo({...info, selectClock: index});
+                    }
                   }}>{x.clock}
                 </div>
               )
@@ -117,12 +134,16 @@ const index = ({info, setInfo}) => {
           <div className='flex flex-wrap'>
             {afterNoonClockText.map((x, index) => {
               return (
-                <div key={x.id} className={'p-4 border rounded-lg mr-2 mb-2' + (clock[index+3] ? ' bg-m text-white' : '')}
+                <div key={x.id} className={'p-4 border rounded-lg mr-2 mb-2' + (blockClock.includes(index+3) ? ' bg-grey07 text-grey05' : clock[index+3] ? ' bg-m text-white' : '')}
                   onClick={()=>{
                     const arr = Array(9).fill(false);
-                    arr[index+3] = true;
-                    setClock(arr);
-                    setInfo({...info, selectClock: index+3});
+                    if(blockClock.includes(index)){
+                      return;
+                    }else{
+                      arr[index+3] = true;
+                      setClock(arr);
+                      setInfo({...info, selectClock: index+3});
+                    }
                   }}>{x.clock}
                 </div>
               )

@@ -5,7 +5,8 @@ import Header from '../../function/header'
 import { Container } from './styles'
 import Navi from '../../function/navi'
 import { useLocation, useNavigate, useParams } from 'react-router'
-import { useReservationDetailsQuery } from '../../hooks/queries/api/Reservation'
+import { useReservationDetailsQuery, useReservationMutation } from '../../hooks/queries/api/Reservation'
+import { numberTwo } from '../../utill/NumberTwo'
 
 const index = () => {
 
@@ -19,8 +20,11 @@ const index = () => {
     name: '',
     phoneNumber: ''
   });
+  console.log("info: ", info);
 
   const { data, isSuccess } = useReservationDetailsQuery({ id: id });
+
+  const { mutateAsync: reservation } = useReservationMutation();
 
   useEffect(()=>{
     window.scrollTo({
@@ -42,8 +46,19 @@ const index = () => {
           </div>
           <div className={'py-5 px-2 flex items-center justify-center rounded-lg bg-grey07 text-grey05' 
             + (Object.values(info).every(value => value !== "") ? ' bg-m text-white' : '')}
-            onClick={()=>{
+            onClick={async()=>{
               if(Object.values(info).every(value => value !== "")){
+
+                await reservation({
+                  reservationName: info.name,
+                  reservationPhoneNumber: info.phoneNumber,
+                  reservationDate: `${info.year}-${numberTwo(info.selectMonth)}-${numberTwo(info.selectDate)}`,
+                  reservationClock: info.selectClock,
+                  reservation: {
+                    reservationId: id
+                  },
+                  peopleCount: info.peopleCount
+                });
                 navigate(`/breakdown/${id}`, { state: info });
               }
             }}>예약하기

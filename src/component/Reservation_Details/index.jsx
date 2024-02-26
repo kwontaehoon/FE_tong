@@ -24,6 +24,7 @@ const index = () => {
     selectDate: '',
     selectDay: '',
     selectClock: '',
+    year: new Date().getFullYear(),
     peopleCount: 0,
   });
 
@@ -38,12 +39,12 @@ const index = () => {
       <Header
         padding title={"예약 상세"}
         wish={{open: true , data: data.userIdsOfWishes.includes(getToken().id) }}
-        func={()=>{ wish({users: { userId: getToken().userId}, reservation: { reservationId: id}}); refetch(); }}
+        func={async()=>{ await wish({users: { userId: getToken().userId}, reservation: { reservationId: id}}); refetch(); }}
         />
       <Banner data={data} />
       <div className='p-5 pt-0'>
         <Contents data={data} />
-        <Weather_Box info={info} setInfo={setInfo} />
+        <Weather_Box info={info} setInfo={setInfo} data={data} />
         <Facilities />
         <div className={'py-5 px-2 flex items-center justify-center rounded-lg bg-grey07 text-grey05'
           + (Object.values(info).every(value => value !== "") && info.peopleCount !== 0 ? ' bg-m text-white' : '')}

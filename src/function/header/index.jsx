@@ -1,5 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import { loginFlag } from '../../utill/LoginFlag';
 
 const Header = ({ noBtn, noArrow, padding, title, search, wish, func }) => {
 
@@ -18,7 +19,7 @@ const Header = ({ noBtn, noArrow, padding, title, search, wish, func }) => {
             navigate(-1)
           }
         />}
-        {!noBtn && wish?.open && <div onClick={func}>
+        {loginFlag() && !noBtn && wish?.open && <div onClick={func}>
           {wish.data ? <img src='/svg/heart_red.svg' /> : <img src='/svg/heart_2.svg' />}
           </div>}
       </div>
