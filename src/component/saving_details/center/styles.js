@@ -2,10 +2,11 @@ import styled from "styled-components";
 
 export const Container = styled.div`
     padding: 20px;
+    background-color: white;
+    margin-bottom: 10px;
 ` 
 export const Bulletin_Box = styled.div`
-    border: 1px solid;
-    padding: 20px;
+    padding: 20px 0px;
 `
 export const Bulletin = styled.div`
 `

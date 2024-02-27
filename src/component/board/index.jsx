@@ -30,10 +30,10 @@ const index = () => {
           })}
         </div>
       </TabBox>
-      {tab[3] && <Team />}
-      {tab[2] && <Mercenary />}
-      {tab[0] && <Notice />}
-      {tab[1] && <Faq />}
+      {tab[0] && <Team />}
+      {tab[1] && <Mercenary />}
+      {tab[2] && <Notice />}
+      {tab[3] && <Faq />}
       <Navi />
     </Container>
   )

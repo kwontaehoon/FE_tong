@@ -55,8 +55,13 @@ export const router = createBrowserRouter([
             { path: "/breakdown/:id", element: <Breakdown />},
             { path: "/weather", element: <Weather />},
             { path: "/category", element: <Category />},
-            { path: "/board", element: <Board />},
-            { path: "/saving_details", element: <Saving_details />},
+            { 
+                path: "/board",
+                children: [
+                    { index: true, element: <Board /> },
+                    { path: ":id", element: <Saving_details /> }
+                ]
+            },
         ]
     },
 ])

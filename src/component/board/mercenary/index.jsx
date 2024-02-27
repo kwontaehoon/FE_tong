@@ -10,27 +10,34 @@ import {
     Time,
     Comment
 } from './styles'
+import { useNavigate } from 'react-router-dom';
+import { useBoardListQuery } from '../../../hooks/queries/api/Board';
+import moment from 'moment';
+import { dateDiff } from '../../../utill/DateDiff'
 
 const index = () => {
 
-    const dummy = Array(5).fill(0);
+    const navigate = useNavigate();
+    
+    const { data, isSuccess } = useBoardListQuery();
+    console.log("data: ", data?.content?.filter(x => x.category.includes("용병")));
 
-    return (
+    return isSuccess && (
         <Container>
-            {dummy.map((_, index) => {
+            {data?.content?.filter(x => x.category.includes("용병")).map((x, index) => {
                 return (
-                    <Recruitment_Box key={index}>
+                    <Recruitment_Box key={x.boardId} onClick={()=>navigate(`${x.boardId}`)}>
                         <Recruitment>
                             <Area>장기동</Area>
-                            <Title>용병구합니다</Title>
+                            <Title>{x.title}</Title>
                         </Recruitment>
-                        <Text>Text</Text>
+                        <Text>{x.content}</Text>
                         <Time_Box>
-                            <Time>17시간전</Time>
+                            <Time>{dateDiff(x.createDate)}</Time>
                             <img src="svg/eye.svg" className='mr-1'></img>
-                            <Comment>322</Comment>
+                            <Comment>{x.hits}</Comment>
                             <img src="svg/comment.svg" className='mr-1'></img>
-                            <Comment>31</Comment>
+                            <Comment>{x.recommend}</Comment>
                         </Time_Box>
                     </Recruitment_Box>
                 )

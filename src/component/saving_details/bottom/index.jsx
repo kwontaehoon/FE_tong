@@ -1,93 +1,40 @@
 import React from 'react'
-import {Container,
-Exchange,
-Exchange_Text,
-Comment_Box,
-Comment,
-Nickname,
-Hi,
-Days,
-Reply,
-Input_Box,
-Input,
-Send
+import {
+  Container,
+  Exchange,
+  Exchange_Text,
+  Comment_Box,
 } from './styles'
 
 const index = () => {
+
+  const dummy = Array(5).fill(0);
+
   return (
     <Container>
       <Exchange>
-        <img style={{ width: "18px" }} src="svg/Whiteheart.svg"></img>
+        <img src="/svg/Whiteheart.svg" className='mr-1' />
         <Exchange_Text>좋아요 1</Exchange_Text>
-        <img style={{ width: "18px" }} src="svg/comment.svg"></img>
+        <img src="/svg/comment.svg" className='mr-1' />
         <Exchange_Text>댓글 1</Exchange_Text>
       </Exchange>
-      <Comment_Box>
-        <img style={{ width: "48px", marginLeft: "10px" }} src="svg/Ikon.svg"></img>
-        <Comment>
-          <Nickname>통통이</Nickname>
-          <Days>2024.02.24</Days>
-        </Comment>
-        <Comment>
-          <Hi>안녕하세요</Hi>
-          <Reply>답글하기</Reply>
-        </Comment>
-      </Comment_Box>
-
-      <Comment_Box>
-        <img style={{ width: "32px", marginLeft: "20px" }} src="svg/Ikon.svg"></img>
-        <Comment>
-          <Nickname>통통이</Nickname>
-          <Days>2024.02.24</Days>
-        </Comment>
-        <Comment>
-          <Hi>안녕하세요</Hi>
-          <Reply>답글하기</Reply>
-        </Comment>
-      </Comment_Box>
-
-      <Comment_Box>
-        <img style={{ width: "32px", marginLeft: "20px" }} src="svg/Ikon.svg"></img>
-        <Comment>
-          <Nickname>통통이</Nickname>
-          <Days>2024.02.24</Days>
-        </Comment>
-        <Comment>
-          <Hi>안녕하세요</Hi>
-          <Reply>답글하기</Reply>
-        </Comment>
-      </Comment_Box>
-
-      <Comment_Box>
-        <img style={{ width: "48px", marginLeft: "10px" }} src="svg/Ikon.svg"></img>
-        <Comment>
-          <Nickname>통통이</Nickname>
-          <Days>2024.02.24</Days>
-        </Comment>
-        <Comment>
-          <Hi>안녕하세요</Hi>
-          <Reply>답글하기</Reply>
-        </Comment>
-      </Comment_Box>
-
-      <Comment_Box>
-        <img style={{ width: "48px", marginLeft: "10px" }} src="svg/Ikon.svg"></img>
-        <Comment>
-          <Nickname>통통이</Nickname>
-          <Days>2024.02.24</Days>
-        </Comment>
-        <Comment>
-          <Hi>안녕하세요</Hi>
-          <Reply>답글하기</Reply>
-        </Comment>
-      </Comment_Box>
-      <Input_Box>
-        <Input placeholder='댓글을 입력하세요'></Input>
-        <Send>
-          <img src="svg/Send.svg"></img>
-        </Send>
-      </Input_Box>
-
+      {dummy.map((_, index) => {
+        return (
+          <Comment_Box key={index}>
+            <img src="/svg/Ikon.svg" className='mr-1 w-12' />
+            <div>
+              <div className='flex items-center mb-2'>
+                <div className='text-lg mr-2 font-bold'>통통이</div>
+                <div>안녕하세요.</div>
+              </div>
+              <div className='flex items-center text-sm'>
+                <div className='mr-2 text-grey05'>2024.02.24</div>
+                <div className='text-grey04'>답글달기</div>
+              </div>
+            </div>
+          </Comment_Box>
+        )
+      })}
     </Container>
   )
 }

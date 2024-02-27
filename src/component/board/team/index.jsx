@@ -11,31 +11,35 @@ import {
     Comment,
     Activity,
 } from './styles'
+import { useNavigate } from 'react-router-dom';
+import { useBoardListQuery } from '../../../hooks/queries/api/Board';
+import { dateDiff } from '../../../utill/DateDiff';
 
 const index = () => {
 
-    const dummy = Array(5).fill(0);
+    const navigate = useNavigate();
 
-    return (
+    const { data, isSuccess } = useBoardListQuery();
+    console.log("팀구하기: ", data?.content?.filter(x => x.category.includes("팀")));
+
+    return isSuccess && (
         <Container>
             <Choice_Box>
                 <Choice>최신순</Choice>
                 <img src="svg/down_arrow.svg"></img>
             </Choice_Box>
-            {dummy.map((_, index) => {
+            {data?.content?.filter(x => x.category.includes("팀")).map((x, index) => {
                 return (
-                    <Recruitment_Box key={index}>
+                    <Recruitment_Box key={index} onClick={()=>navigate(`${x.boardId}`)}>
                         <FC_Box>
-                            <FC>장기동 FC팀원 모집합니다.</FC>
-                            <Jangi_FC>장기동 FC통통팀원 모집합니다. 매주 uuuuuklku</Jangi_FC>
+                            <FC>{x.title}</FC>
+                            <Jangi_FC>{x.content}</Jangi_FC>
                             <Comments_Box>
-                                <img src="svg/eye.svg"></img>
-                                <Comment>322</Comment>
-                                <img src="svg/vertical_line.svg"></img>
-                                <img style={{ paddingLeft: "6px" }} src="svg/comment.svg"></img>
-                                <Comment>31</Comment>
-                                <img src="svg/vertical_line.svg"></img>
-                                <Activity>방금활동</Activity>
+                                <img src="/svg/eye.svg" className='mr-1' />
+                                <Comment>{x.hits}</Comment>
+                                <img src="/svg/comment.svg" className='mr-1' />
+                                <Comment>{x.recommend}</Comment>
+                                <Activity>{dateDiff(x.createDate)}</Activity>
                             </Comments_Box>
                         </FC_Box>
                         <img src="svg/Teamwork_5.svg"></img>

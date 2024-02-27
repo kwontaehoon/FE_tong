@@ -8,6 +8,7 @@ import { useReservationDetailsQuery } from '../../hooks/queries/api/Reservation'
 import { useNavigate, useParams } from 'react-router-dom';
 import { useWishMutation } from '../../hooks/queries/api/Wish'
 import { getToken } from '../../utill/GetToken'
+import { dayOfWeek } from '../../utill/DayOfWeek'
 
 const index = () => {
 
@@ -21,12 +22,13 @@ const index = () => {
 
   const [info, setInfo] = useState({
     selectMonth: new Date().getMonth(),
-    selectDate: '',
-    selectDay: '',
+    selectDate: new Date().getDate(),
+    selectDay: dayOfWeek(new Date().getDay()),
     selectClock: '',
     year: new Date().getFullYear(),
     peopleCount: 0,
   });
+  console.log("info: ", info);
 
   useEffect(()=>{
     window.scrollTo({
