@@ -25,6 +25,7 @@ const index = () => {
     
       <P4 style={{textAlign:'center',color:'#9FA4A9',fontWeight:'500'}}>*최근 90일 이내의 활동만 조회됩니다.</P4>
       <ListBox>
+        {/* 수정필요 태그분리 */}
       <List2><Icon2 src="./svg/Reserve.png" alt='예약'></Icon2><P3>예약 1</P3></List2>
       <List2><Icon2 src="./svg/Manual.png" alt='대기'></Icon2><P3>대기 0</P3></List2>    
       <List2><Icon2 src="./svg/Completed.png" alt='완료'></Icon2><P3>완료 10</P3></List2>
