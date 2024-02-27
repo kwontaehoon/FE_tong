@@ -11,11 +11,11 @@ import {
 
 const index = () => {
 
-  const [dummy, setDummy] = useState(Array(8).fill(false));
+  const [dummy, setDummy] = useState(Array(10).fill(false));
 
   return (
     <Container>
-      {dummy.map((x, index) => {
+      {dummy.map((_, index) => {
         return (
           <Announcement_Box key={index}>
             <div className='flex items-center w-full'>

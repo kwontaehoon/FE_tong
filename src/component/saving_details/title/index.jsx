@@ -9,23 +9,24 @@ import {
   TongTong,
   Days
 } from './styles'
+import { dateDiff } from '../../../utill/DateDiff';
 
-const index = () => {
+const index = ({boardList}) => {
+
   return (
     <Container>
-        <Recruitment>장기동 FC통통 팀원 모집</Recruitment>
-        <Recruitment>2/23(금) 오후8시 통통 축구장</Recruitment>
+        <Recruitment>{boardList.title}</Recruitment>
       <Comment_Box>
         <img style={{ width: "16px" }} src="/svg/eye.svg" className='mr-1' />
-        <Comment>322</Comment>
+        <Comment>{boardList.hits}</Comment>
         <img style={{ width: "16px" }} src="/svg/comment.svg" className='mr-1' />
-        <Comment>31</Comment>
+        <Comment>{boardList.recommend}</Comment>
       </Comment_Box>
       <Anonymous>
         <img style={{ width: "36px" }} src="/svg/Ikon.svg" />
         <TongTong_Box>
-          <TongTong>통통이</TongTong>
-          <Days>2024.02.24</Days>
+          <TongTong>{boardList?.user?.name}</TongTong>
+          <Days>{dateDiff(boardList.createDate)}</Days>
         </TongTong_Box>
         <img style={{ width: "24px" }} src="/svg/details.svg" />
       </Anonymous>

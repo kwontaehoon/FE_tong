@@ -55,7 +55,7 @@ const index = () => {
                   reservationDate: `${info.year}-${numberTwo(info.selectMonth)}-${numberTwo(info.selectDate)}`,
                   reservationClock: info.selectClock,
                   reservation: {
-                    reservationId: id
+                    reservationId: Number(id)
                   },
                   peopleCount: info.peopleCount
                 });

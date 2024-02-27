@@ -14,6 +14,8 @@ import {
 import { useNavigate } from 'react-router-dom';
 import { useBoardListQuery } from '../../../hooks/queries/api/Board';
 import { dateDiff } from '../../../utill/DateDiff';
+import Spinner from '../../../function/spinner'
+
 
 const index = () => {
 
@@ -22,7 +24,7 @@ const index = () => {
     const { data, isSuccess } = useBoardListQuery();
     console.log("팀구하기: ", data?.content?.filter(x => x.category.includes("팀")));
 
-    return isSuccess && (
+    return !isSuccess ? <Spinner /> : (
         <Container>
             <Choice_Box>
                 <Choice>최신순</Choice>

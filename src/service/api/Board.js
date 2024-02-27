@@ -6,12 +6,11 @@ const BOARD_URL = {
     boardRegister: '/api/board/write'
 }
 
-// 게시판 전제 보기
+// 게시판 전체 보기
 export const getBoardList = () => client.get(BOARD_URL.boardList);
 
-//게시판 상세 보기
-export const getBoardDetails = (params) => client.get(BOARD_URL.boardDetails, { params: params });
+// 게시판 상세 보기
+export const getBoardDetails = (params) => client.get(`${BOARD_URL.boardDetails}/${params}`);
 
 // 게시판 작성
 export const postBoardRegister = () => client.post(BOARD_URL.boardRegister);
-

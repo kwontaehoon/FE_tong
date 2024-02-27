@@ -5,10 +5,11 @@ import {
   Exchange_Text,
   Comment_Box,
 } from './styles'
+import moment from 'moment';
 
-const index = () => {
+const index = ({commentList}) => {
 
-  const dummy = Array(5).fill(0);
+  console.log("commentList: ", commentList);
 
   return (
     <Container>
@@ -18,17 +19,17 @@ const index = () => {
         <img src="/svg/comment.svg" className='mr-1' />
         <Exchange_Text>댓글 1</Exchange_Text>
       </Exchange>
-      {dummy.map((_, index) => {
+      {commentList.length !== 0 && commentList.map((x, index) => {
         return (
-          <Comment_Box key={index}>
+          <Comment_Box key={x.commentsId}>
             <img src="/svg/Ikon.svg" className='mr-1 w-12' />
             <div>
               <div className='flex items-center mb-2'>
-                <div className='text-lg mr-2 font-bold'>통통이</div>
-                <div>안녕하세요.</div>
+                <div className='text-lg mr-2 font-bold'>{x.user.name}</div>
+                <div>{x.content}</div>
               </div>
               <div className='flex items-center text-sm'>
-                <div className='mr-2 text-grey05'>2024.02.24</div>
+                <div className='mr-2 text-grey05'>{moment(x.createDate).format("YYYY.MM.DD")}</div>
                 <div className='text-grey04'>답글달기</div>
               </div>
             </div>

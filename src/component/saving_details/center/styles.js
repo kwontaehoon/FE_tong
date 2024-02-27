@@ -6,7 +6,7 @@ export const Container = styled.div`
     margin-bottom: 10px;
 ` 
 export const Bulletin_Box = styled.div`
-    padding: 20px 0px;
+    padding-top: 20px;
 `
 export const Bulletin = styled.div`
 `

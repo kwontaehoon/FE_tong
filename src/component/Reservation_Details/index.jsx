@@ -9,6 +9,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useWishMutation } from '../../hooks/queries/api/Wish'
 import { getToken } from '../../utill/GetToken'
 import { dayOfWeek } from '../../utill/DayOfWeek'
+import moment from 'moment'
 
 const index = () => {
 
@@ -22,7 +23,7 @@ const index = () => {
 
   const [info, setInfo] = useState({
     selectMonth: new Date().getMonth(),
-    selectDate: new Date().getDate(),
+    selectDate: moment(new Date()).format("DD"),
     selectDay: dayOfWeek(new Date().getDay()),
     selectClock: '',
     year: new Date().getFullYear(),
