@@ -12,13 +12,13 @@ export const Top = styled.div`
 export const Gimpo = styled.div`
     margin-top: 30px;
     font-size: 24px;
-    font-weight: 800;
+    font-weight: 700;
 `
 
 export const Enterinformation = styled.div`
     width: 257px;
-    margin-top: 7px;
-    margin-bottom: 19px;
+    margin-top: 12px;
+    margin-bottom: 30px;
     font-size: 13px;
     font-weight: 500;
     white-space: nowrap;
@@ -35,13 +35,13 @@ export const Information = styled.input`
 `
 
 export const Title = styled.div`
-    font-size: 16px;
+    font-size: 14px;
     margin-top: 20px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     color: #73787E;
 `
 export const IdCheck = styled.div`
-    width: 101px;
+    width: 98px;
     height: 46px;
     margin-left: 12px;
     display: flex;
@@ -54,13 +54,14 @@ export const IdCheck = styled.div`
 `
 
 export const Terms = styled.div`
-    margin-top: 50px;
-    margin-bottom: 11px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-size: 16px;
 `
 
 export const Signup = styled.div`
     height: 51px;
-    margin-top: 30px;
+    margin-top: 23px;
     font-weight: 500;
     display: flex;
     align-items: center;
