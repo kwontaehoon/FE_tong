@@ -14,7 +14,7 @@ export const Login = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 66px;
+    margin-top: 50px;
     border-radius: 8px;
     color: #73787E;
 `
