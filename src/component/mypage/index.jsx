@@ -1,7 +1,7 @@
 import React from 'react'
 import {Div,Info,Left,Icon,H3,P,P2,Reservation,
-  InfoBox,List1,Icon2,Icon1,P3,Comment,Span,
-  Wrap} from './styles'
+  InfoBox,List1,Icon2,Icon1,Icon3,P3,P4,Comment,Span,H4,
+  Wrap,ListBox,List2,Bottom} from './styles'
 import Header from '../../function/header'
 
 const index = () => {
@@ -13,12 +13,25 @@ const index = () => {
       <Left>
         <Icon src="./svg/proflie.png" alt='이미지'></Icon>
           <div style={{marginBottom:'10px'}}>
+            <H3>000님</H3>
             <P>오늘로 00번 로그인 하였습니다!</P>
-            <H3>안녕하세요.000님</H3>
           </div>
       </Left>        
       <P2>내정보관리</P2>
     </Info>
+{/*  예약기록<상단순서변경*/}
+  <Wrap>
+  <H4>나의 활동 기록</H4> 
+    
+      <P4 style={{textAlign:'center',color:'#9FA4A9',fontWeight:'500'}}>*최근 90일 이내의 활동만 조회됩니다.</P4>
+      <ListBox>
+      <List2><Icon2 src="./svg/Reserve.png" alt='예약'></Icon2><P3>예약 1</P3></List2>
+      <List2><Icon2 src="./svg/Manual.png" alt='대기'></Icon2><P3>대기 0</P3></List2>    
+      <List2><Icon2 src="./svg/Completed.png" alt='완료'></Icon2><P3>완료 10</P3></List2>
+      </ListBox>
+     
+   
+  </Wrap>
 
     <InfoBox>
   {/* 리스트1 */}
@@ -29,7 +42,7 @@ const index = () => {
         </Left>
         <Left style={{gap:'4px'}}>
           <P3>02</P3>
-          <Icon1 src="./svg/gravity-ui_chevron-right.png" alt='더보기아이콘'></Icon1>
+          <Icon3 src="./svg/gravity-ui_chevron-right.png" alt='더보기아이콘'></Icon3>
         </Left>  
       </List1>
    {/* 리스트2 */}
@@ -40,7 +53,7 @@ const index = () => {
         </Left>
         <Left style={{gap:'4px'}}>
           <P3>00</P3>
-          <Icon1 src="./svg/gravity-ui_chevron-right.png" alt='더보기아이콘'></Icon1>
+          <Icon3 src="./svg/gravity-ui_chevron-right.png" alt='더보기아이콘'></Icon3>
         </Left>  
       </List1>
    {/* 리스트3 */}
@@ -51,23 +64,22 @@ const index = () => {
         </Left>
         <Left style={{gap:'4px'}}>
           <P3>00</P3>
-          <Icon1 src="./svg/gravity-ui_chevron-right.png" alt='더보기아이콘'></Icon1>
+          <Icon3 src="./svg/gravity-ui_chevron-right.png" alt='더보기아이콘'></Icon3>
         </Left>  
       </List1>
   </InfoBox>
   <Comment>
-  <P3>더욱 <Span>많은</Span> 활동을 원하신다면 게시판을 이용해보세요!</P3>
-  <Icon1 src="./svg/gravity-ui_chevron-right.png" alt='더보기아이콘'></Icon1>
+    <P4>더욱 <Span>많은</Span> 활동을 원하신다면 게시판을 이용해보세요!</P4>
+    <Icon3 src="./svg/gravity-ui_chevron-right.png" alt='더보기아이콘'></Icon3>
   </Comment>
-  <Wrap>
-  <h3>나의예약기록</h3> 
-    <Left style={{gap:'4px'}}>
-      <P3>더보기</P3>
-     <Icon2 src="./svg/Choose.png" alt='더보기아이콘'></Icon2>
-     <Icon2 src="./svg/ㅁ.png" alt='더보기아이콘'></Icon2>
-     <Icon2 src="./svg/close.png" alt='더보기아이콘'></Icon2>
-    </Left>  
-  </Wrap>
+  <Bottom>
+    <P4>회원탈퇴</P4>
+    <Left style={{gap:'4px',alignItems:'end'}}>
+      <P4>로그아웃</P4>
+      <Icon3 src="./svg/line-md_arrow-close-right.png" alt='로그아웃아이콘'></Icon3>
+    </Left>
+  </Bottom>
+
   
 
     </Div>
