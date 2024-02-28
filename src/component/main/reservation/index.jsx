@@ -23,12 +23,9 @@ import { useReservationListQuery } from '../../../hooks/queries/api/Main'
 import WeatherFuc from '../../weather'
 import { useNavigate } from 'react-router-dom'
 
-const index = () => {
+const index = ({data}) => {
 
   const navigate = useNavigate();
-
-  const { data, isSuccess } = useReservationListQuery();
-  console.log("main reservation data: ", data);
 
   const [dataArr, setDataArr] = useState();
 
@@ -37,9 +34,9 @@ const index = () => {
       const arr = data.filter((_, index) => index !== 0);
       setDataArr(arr);
     }
-  }, [isSuccess]);
+  }, []);
 
-  return isSuccess && data.length !== 0 && (
+  return data.length !== 0 && (
     <Container>
       <Recommendation>
         <Recommendation_Box onClick={()=>navigate(`/reservation/${data[0].reservationId}`)}>

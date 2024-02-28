@@ -18,6 +18,8 @@ import moment from 'moment'
 
 const index = ({info, setInfo, data}) => {
 
+  console.log("applicants: ", data);
+
   const today = {
     year: new Date().getFullYear(), //오늘 연도
     month: new Date().getMonth() + 1, //오늘 월
@@ -50,7 +52,7 @@ const index = ({info, setInfo, data}) => {
 
   useEffect(()=>{
       let arr = [];
-      data.resrvationApplicants.filter(x => {
+      data.resrvationApplicants?.filter(x => {
         if(moment(x.reservationDate).format("MM") == current.getMonth()+1){
           if(moment(x.reservationDate).format("DD") == numberTwo(selectDay.findIndex(x=>x) + today.date) || moment(x.reservationDate).format("DD") == numberTwo(selectDay.findIndex(x=>x)+1)){
             arr.push(x.reservationClock);
@@ -84,7 +86,7 @@ const index = ({info, setInfo, data}) => {
           <div className='border-grey07 border h-11 mr-6'></div>
           <div className='overflow-x-scroll flex'>
             <div className='flex'>
-              {Array.from({ length: today.month == current.getMonth()+1 ?  dateTotalCount - today.date : prevMonthEndDate }).map((_, index) => {
+              {Array.from({ length: today.month == current.getMonth()+1 ?  dateTotalCount - today.date+1 : prevMonthEndDate }).map((_, index) => {
                 const day = new Date(
                   current.getFullYear(),
                   current.getMonth(),

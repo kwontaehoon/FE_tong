@@ -14,6 +14,7 @@ import { signupValidation } from '../../../utill/SignupValidation';
 import { checkBox } from '../../../utill/CheckBox';
 import { useIdCheckMutation, useSignupMutation } from '../../../hooks/queries/api/Account';
 import { useLocation, useNavigate } from 'react-router-dom';
+import Header from '../../../function/header';
 
 const index = () => {
 
@@ -62,9 +63,7 @@ const index = () => {
 
     return (
         <Container>
-            <Top>
-                <img src="/svg/close.svg" className='w-6' onClick={() => navigate('/login', { replace: true })} />
-            </Top>
+            <Header noArrow />
             <Gimpo>김포 운통장에 오신걸 환영합니다!</Gimpo>
             <Enterinformation>
                 아래 정보를 입력하여 회원가입을 완료해주세요.

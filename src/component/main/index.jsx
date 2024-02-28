@@ -7,19 +7,28 @@ import Pick from './pick'
 import Recruitment from './recruitment'
 import Information from './information'
 import Navi from '../../function/navi'
-
+import { useBannerListQuery, usePickListQuery, useReservationListQuery } from '../../hooks/queries/api/Main'
+import Spinner from '../../function/spinner'
 
 const index = () => {
 
+  const { data: bannerList, isSuccess: bannerSuccess } = useBannerListQuery();
+  const { data: reservationList, isSuccess: reservationSuccess } = useReservationListQuery();
+  const { data: pickList, isSuccess: pickSuccess } = usePickListQuery();
+
   return (
-    <div className='p-5 pt-0 bg-bg' style={{marginBottom: "72px"}}>
+    <div className='p-5 pt-0 bg-bg'>
       <Header />
-      <Banner />
-      <Help />
-      <Reservation/>
-      <Pick/>
-      <Recruitment/>
-      <Information/>
+      {bannerSuccess && pickSuccess && reservationSuccess ? 
+      <div>
+        <Banner data={bannerList} />
+        <Help />
+        <Reservation data={reservationList} />
+        <Pick data={pickList} />
+        <Recruitment />
+        <Information />
+      </div> : <Spinner />}
+      <div className='h-20' />
       <Navi />
     </div>
   )

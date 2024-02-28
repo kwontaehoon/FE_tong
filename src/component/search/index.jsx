@@ -5,7 +5,6 @@ import {
     Search_Box,
     Input,
     Input_Box,
-    Magnifier,
     Search_Word,
     Recommendation_Box,
     Tag_Box,

@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 export const Container = styled.div`
     padding: 20px;
+    background-color: white;
+    height: 100%;
 `
 export const Search_Box = styled.div`
     display: flex;
@@ -30,13 +32,6 @@ export const Input = styled.input`
     margin-left: 50px;
     margin-right: 10px;
     background-color:#e9ebed;
-`
-export const Magnifier = styled.div`
-    width: 24px;
-    height: 24px;
-    position: relative;
-    bottom: 55px;
-    left: 5px;
 `
 export const Search_results = styled.div`
     height: 320px;
