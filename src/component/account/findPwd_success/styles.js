@@ -6,7 +6,7 @@ export const Component = styled.div`
 export const Pwd = styled.div`
     font-weight: 700;
     font-size: 24px;
-    margin-top: 58px;
+    margin-top: 78px;
 
 `
 export const Login = styled.div`
