@@ -9,10 +9,11 @@ export const Find_pwd = styled.div`
     margin-top: 30px;
 `
 export const Information = styled.div`
-    margin-top: 7px;
+    margin-top: 12px;
     font-weight: 500;
     color: #9FA4A9;
-    margin-bottom: 43px;
+    margin-bottom: 45px;
+    font-size: 14px;
 `
 export const Input = styled.input`
     width: 100%;
@@ -25,7 +26,8 @@ export const Input = styled.input`
 export const Name = styled.div`
     font-weight: 500;
     color: #73787E;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
+    font-size: 14px;
 `
 
 export const ID = styled.div`

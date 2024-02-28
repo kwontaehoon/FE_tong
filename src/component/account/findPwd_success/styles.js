@@ -6,7 +6,8 @@ export const Component = styled.div`
 export const Pwd = styled.div`
     font-weight: 700;
     font-size: 24px;
-    margin-top: 30px;
+    margin-top: 58px;
+
 `
 export const Login = styled.div`
     height: 51px;
@@ -14,7 +15,7 @@ export const Login = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 66px;
+    margin-top: 50px;
     border-radius: 8px;
     color: #73787E;
 `
