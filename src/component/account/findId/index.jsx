@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import {
   Component,
-  Find_id,
   Information,
   Input,
   Name,
@@ -24,7 +23,6 @@ const index = () => {
   const [validation, setValidation] = useState(false);
 
   const { mutate: findId, data: findIdData } = useFindIdMutation();
-  console.log("findIdData: ", findIdData);
 
   useEffect(()=>{
     if(findIdData){
@@ -38,12 +36,9 @@ const index = () => {
   return (
     <Component>
       
-      <Header noArrow url={"login"}/>
+      <Header title="아이디 찾기" />
 
-      <Find_id>아이디 찾기</Find_id>
-      <Information>
-        아래 정보를 입력하여 아이디 찾기를 완료해주세요.
-      </Information>
+      <Information>아래 정보를 입력하여 아이디 찾기를 완료해주세요.</Information>
 
       <Name>이름</Name>
       <Input placeholder='이름을 입력하세요.' onChange={(e)=>{ setValidation(false); setInfo({...info, name: e.target.value}); }}></Input>
@@ -61,7 +56,7 @@ const index = () => {
         }}>아이디 찾기
       </ID>
       <Pwd>
-        <div className='border-b' onClick={()=>navigate("/findPwd")}>비밀번호 찾기</div>
+        <div className='text-grey04' onClick={()=>navigate("/findPwd")}>비밀번호 찾기</div>
       </Pwd>
     </Component>
   )

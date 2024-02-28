@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {
     Container,
     Recruitment_Box,
@@ -14,19 +14,23 @@ import { useNavigate } from 'react-router-dom';
 import { useBoardListQuery } from '../../../hooks/queries/api/Board';
 import moment from 'moment';
 import { dateDiff } from '../../../utill/DateDiff'
+import { loginFlag } from '../../../utill/LoginFlag';
 
 const index = () => {
 
     const navigate = useNavigate();
-    
-    const { data, isSuccess } = useBoardListQuery();
-    console.log("data: ", data?.content?.filter(x => x.category.includes("용병")));
+
+    const { data, isSuccess, refetch } = useBoardListQuery();
+
+    useEffect(()=>{
+        refetch();
+    }, [navigate]);
 
     return isSuccess && (
         <Container>
             {data?.content?.filter(x => x.category.includes("용병")).map((x, index) => {
                 return (
-                    <Recruitment_Box key={x.boardId} onClick={()=>navigate(`${x.boardId}`)}>
+                    <Recruitment_Box key={x.boardId} onClick={() => navigate(`${x.boardId}`)}>
                         <Recruitment>
                             <Area>장기동</Area>
                             <Title>{x.title}</Title>
@@ -42,6 +46,11 @@ const index = () => {
                     </Recruitment_Box>
                 )
             })}
+            {loginFlag() &&
+                <div className='fixed right-5 bottom-32 flex justify-center items-center bg-grey10 rounded-full' style={{ width: "60px", height: "60px" }}
+                    onClick={() => navigate("/boardWrite", { state: '용병' })}>
+                    <img src="/svg/Pencil_Icon.svg" />
+                </div>}
         </Container>
     )
 }

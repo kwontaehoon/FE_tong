@@ -21,7 +21,6 @@ const index = () => {
     const navigate = useNavigate();
 
     const state = useLocation().state;
-    console.log("state: ", state);
 
     const [info, setInfo] = useState({
         id: '',
@@ -46,7 +45,6 @@ const index = () => {
         name: false,
         birth: false
     });
-    console.log("validation: ", validation);
 
     const [idCheckFlag, setIdCheckFlag] = useState(false);
 
@@ -58,8 +56,12 @@ const index = () => {
     useEffect(() => {
         if (idCheckData?.data?.status == "success") {
             setIdCheckFlag(true);
-        } else if (idCheckData?.data?.status == "fail") setValidation({ ...validation, idCheck: true });
-    }, [idCheckData])
+        } else if (idCheckData?.data?.status == "fail" && info.id == "") {
+            setValidation({ ...validation, id: true });
+        }else if (idCheckData?.data?.status == "fail" && info.id !== "") {
+            setValidation({ ...validation, idDuplicate: true });
+        }
+    }, [idCheckData]);
 
     return (
         <Container>
@@ -72,18 +74,15 @@ const index = () => {
             <Title>아이디</Title>
             <div className='flex'>
                 <div className='w-full relative flex items-center'>
-                    <div className='absolute right-2'>
-                        <img src="/svg/InputClose.svg" onClick={() => setInfo({ ...info, id: "" })} />
-                    </div>
                     <Information maxLength={20} placeholder='아이디를 입력하세요.' value={info.id}
                         onChange={(e) => {
                             setInfo({ ...info, id: e.target.value });
-                            setValidation({ ...validation, id: false, idCheck: false });
+                            setValidation({ ...validation, id: false, idCheck: false, idDuplicate: false });
                             setIdCheckFlag(false);
                         }}>
                     </Information>
                 </div>
-                <IdCheck onClick={() => idCheckFlag ? '' : idCheck({ id: info.id })}>중복확인</IdCheck>
+                <IdCheck $flag={idCheckData?.data?.status} onClick={() => idCheckFlag ? '' : idCheck({ id: info.id })}>중복확인</IdCheck>
             </div>
             {validation.idCheck && <div className='text-xs my-3 text-valid'>이미 가입한 아이디입니다.</div>}
             {validation.id && <div className='text-xs my-3 text-valid'>아이디를 입력해 주세요.</div>}

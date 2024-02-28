@@ -5,17 +5,13 @@ export const Component = styled.div`
     background-color: white;
     height: 100%;
 `
-export const Find_pwd = styled.div`
-    font-weight: 700;
-    font-size: 24px;
-    margin-top: 30px;
-`
 export const Information = styled.div`
-    margin-top: 7px;
     font-weight: 500;
     font-size: 14px;
     color: #9FA4A9;
-    margin-bottom: 50px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: flex;
 `
 export const Input = styled.input`
     width: 100%;

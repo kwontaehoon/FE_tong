@@ -2,7 +2,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { loginFlag } from '../../utill/LoginFlag';
 
-const Header = ({ noBtn, noArrow, padding, title, search, wish, func }) => {
+const Header = ({ noBtn, noArrow, padding, title, search, wish, func, check }) => {
 
   const navigate = useNavigate();
 
@@ -11,9 +11,9 @@ const Header = ({ noBtn, noArrow, padding, title, search, wish, func }) => {
       <div>
         {!noBtn && !noArrow && <img src="/svg/Header_arrow_left.svg" onClick={() => navigate(-1)} />}
       </div>
-      <div className='text-lg font-bold'>{title}</div>
+      <div className='text-lg font-bold text-center'>{title}</div>
       <div>
-        {!noBtn && !wish?.open && <img src="/svg/close.svg"
+        {!noBtn && !wish?.open && !search && !check && <img src="/svg/close.svg"
           onClick={() =>
             // navigate(`/${url}`, { replace: true })
             navigate(-1)
@@ -22,6 +22,10 @@ const Header = ({ noBtn, noArrow, padding, title, search, wish, func }) => {
         {loginFlag() && !noBtn && wish?.open && <div onClick={func}>
           {wish.data ? <img src='/svg/heart_red.svg' /> : <img src='/svg/heart_2.svg' />}
           </div>}
+        
+        {search && <img src='/svg/search.svg' onClick={func} />}
+
+        {check && <img src='/svg/check.svg' onClick={func} />}
       </div>
     </div>
   )

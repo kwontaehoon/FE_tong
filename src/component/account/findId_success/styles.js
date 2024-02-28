@@ -5,14 +5,12 @@ export const Component = styled.div`
     background-color: white;
     height: 100%;
 `
-
 export const ID = styled.div`
     font-weight: 700;
     font-size: 24px;
-    margin-top: 80px;
-    
+    margin-top: 58px;
+    margin-bottom: 50px;
 `
-
 export const FindPwd = styled.div`
     height: 51px;
     border-radius: 8px;

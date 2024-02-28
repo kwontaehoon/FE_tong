@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    padding: 20px;
+    padding: 0px 20px 20px 20px;
     background-color: white;
     height: 100%;
 `
@@ -11,12 +11,12 @@ export const Search_Box = styled.div`
     padding: 20px 0px;
 `
 export const Search = styled.div`
-    width: 85%;
+    width: 100%;
     height:  48px;
     display: flex;
     align-items: center;
     border-radius: 12px;
-    background-color:#e9ebed;
+    background-color:#F4F5FA;
 `
 export const Input_Box = styled.div`
     display: flex;
@@ -31,7 +31,7 @@ export const Input = styled.input`
     height: 30px;
     margin-left: 50px;
     margin-right: 10px;
-    background-color:#e9ebed;
+    background-color:#F4F5FA;
 `
 export const Search_results = styled.div`
     height: 320px;

@@ -65,6 +65,7 @@ const index = () => {
         <div><span className='mb-2 cursor-pointer' onClick={()=>navigate("/weather")}>날씨</span></div>
         <div><span className='mb-2 cursor-pointer' onClick={()=>navigate("/board")}>구하기게시판</span></div>
         <div><span className='mb-2 cursor-pointer' onClick={()=>navigate("/search")}>검색 목록</span></div>
+        <div><span className='mb-2 cursor-pointer' onClick={()=>navigate("/myActive")}>내 활동 기록</span></div>
         <div onClick={()=>openCategoryModal(true)}>카테고리</div>
     </div>
   )

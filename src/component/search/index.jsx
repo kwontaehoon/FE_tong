@@ -12,6 +12,7 @@ import {
 } from './styles'
 import { useSearchRecommendListQuery, useSearchResultListMutation } from '../../hooks/queries/api/Search'
 import { useNavigate } from 'react-router-dom'
+import Header from '../../function/header'
 
 const index = () => {
 
@@ -23,6 +24,8 @@ const index = () => {
 
     const [info, setInfo] = useState('');
 
+    const [closeIcon, setCloseIcon] = useState(false);
+
     useEffect(()=>{
         if(resultList && info !== '' && resultList?.data?.length !== 0){
             navigate(`${info}`);
@@ -31,6 +34,7 @@ const index = () => {
 
     return isSuccess && (
         <Container>
+            <Header title="검색" />
             <Search_Box>
                 <Search>
                     <Input_Box>
@@ -39,6 +43,12 @@ const index = () => {
                         </div>
                         <Input placeholder='검색어를 입력하세요' 
                             value={info}
+                            onFocus={()=>{
+                                setCloseIcon(true);
+                            }}
+                            // onBlur={()=>{
+                            //     setCloseIcon(false);
+                            // }}
                             onChange={(e)=>setInfo(e.target.value)}
                             onKeyDown={(e)=>{
                                 if(e.key === 'Enter'){
@@ -46,14 +56,13 @@ const index = () => {
                                 }
                                 }}>
                         </Input>
-                        <img src="/svg/InputClose.svg" className='mr-4' onClick={()=>setInfo('')}/>
+                        {/* {closeIcon &&<img src="/svg/InputClose.svg" className='mr-4' onClick={()=>{setInfo(''); setCloseIcon(false)}} />} */}
                     </Input_Box>
                 </Search>
-                <Cancellation onClick={()=>navigate(-1)}>취소</Cancellation>
             </Search_Box>
     
             {resultList && resultList?.data?.length == 0 && <div className='flex items-center flex-col mt-12'>  
-                <img src="svg/Frame 169.svg"></img>
+                <img src="/svg/Frame 169.svg"></img>
                 <div className='text-xl text-grey06 my-4'>검색결과가 없습니다.</div>
             </div>}
             {recommendList.length == 0 ? '' : <Search_Word>추천검색어</Search_Word>}

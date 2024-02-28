@@ -1,5 +1,5 @@
-import React from 'react'
-import { Cover,Container,Inner,Bar,Info,Pcoment,Right,Btn1,Btn2,Sec1,Sec2,
+import React, { useEffect } from 'react'
+import { Cover,Container,Inner,Bar,InfoLogin,Info,Pcoment,Right,Btn1,Btn2,Sec1,Sec2,
   Sec3,Sec1H1,List,Icon,Img,P,Weekley,WeekBox,WeekList,Sec4,H4,CsBox,Cs1,CsSpan} from './styles';
 import { ModalSideContainer, ModalSideSubContainer } from '../../../../layout/ModalContainer'
 import { useCategoryStore } from '../../../../store/main/Category';
@@ -15,6 +15,14 @@ const index = () => {
   const openCategoryModal = useCategoryStore((state) => state.setOpen);
   const { data, isSuccess } = usePickListQuery();
 
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+
+    if(!categoryModal){
+      document.body.style.overflow = 'auto';
+    }
+  }, [categoryModal]);
+
   return isSuccess && (
     <ModalSideContainer $show={categoryModal}>
       <ModalSideSubContainer $show={categoryModal}>
@@ -24,7 +32,16 @@ const index = () => {
               <img src="/svg/close.svg" onClick={()=>openCategoryModal(false)} />
             </Bar>
             {/* 로긴박스 */}
-            {loginFlag() ? <Info>{getToken().id}님 안녕하세요!</Info> : <Info>
+            {loginFlag() ?
+              <InfoLogin>
+                <div style={{width: "65px", height: "65px"}} className='rounded-full mr-4 flex justify-center items-center bg-bg'>
+                  <img src="/svg/proflie.png" />
+                </div>
+                <div className='flex justify-center flex-col'>
+                  <div className='text-lg font-bold'>{getToken().id}님</div>
+                  <div className='text-m text-xs font-bold'>오늘로 {"1"}번 로그인 하였습니다!</div>
+                </div>
+              </InfoLogin> : <Info>
               <Pcoment>로그인 해주세요 <span style={{ display: 'block' }}>회원이 아니신가요</span></Pcoment>
               <Right style={{ gap: '10px' }}>
                 <Btn1 onClick={()=>{ 

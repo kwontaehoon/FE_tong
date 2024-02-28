@@ -19,7 +19,9 @@ import Breakdown from '../component/breakdown'
 import Weather from '../component/weather'
 import Category from '../component/category'
 import Board from '../component/board'
+import BoardWrite from '../component/board/boardWrite'
 import Saving_details from '../component/saving_details'
+import MyActive from '../component/myActive'
 import App from "../App"
 
 export const router = createBrowserRouter([
@@ -62,6 +64,8 @@ export const router = createBrowserRouter([
                     { path: ":id", element: <Saving_details /> }
                 ]
             },
+            { path: "/boardWrite", element: <BoardWrite /> },
+            { path: "/myActive", element: <MyActive /> },
         ]
     },
 ])

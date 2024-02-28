@@ -1,5 +1,5 @@
 import { useQuery, useMutation } from "react-query";
-import { getBoardList, getBoardDetails, postBoardRegister } from "../../../service/api/Board";
+import { getBoardList, getBoardDetails, postBoardWrite } from "../../../service/api/Board";
 
 const BOARD_KEYS = {
   boardList: "boardList",
@@ -39,10 +39,10 @@ export const useBoardDetailsQuery = (params) => {
 * 
 */
 
-export const useBoardRegisterMutation = () =>
+export const useBoardWriteMutation = () =>
   useMutation({
     mutationFn: (params) => {
-      return postBoardRegister(params);
+      return postBoardWrite(params);
     },
     onSuccess: () => {
       // 성공 시 실행할 로직 추가

@@ -5,16 +5,11 @@ export const Component = styled.div`
     background-color: white;
     height: 100%;
 `
-export const Find_pwd = styled.div`
-    font-weight: 700;
-    font-size: 24px;
-    margin-top: 30px;
-`
 export const Information = styled.div`
-    margin-top: 12px;
+    margin-top: 20px;
     font-weight: 500;
     color: #9FA4A9;
-    margin-bottom: 45px;
+    margin-bottom: 30px;
     font-size: 14px;
 `
 export const Input = styled.input`
@@ -43,12 +38,4 @@ export const ID = styled.div`
     border-radius: 8px;
     background-color: ${props => props.$ok ? "#007CFF" : "#E9EBED"};
     color: ${props => props.$ok ? "white" : "#73787E"};
-`
-
-export const Pwd = styled.div`
-    font-size: 12px;
-    color: #26282B;
-    margin-top: 20px;
-    display: flex;
-    justify-content: end;
 `

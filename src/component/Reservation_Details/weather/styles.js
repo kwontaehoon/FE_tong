@@ -10,6 +10,7 @@ export const Weather_Box = styled.div`
         padding: 16px 22px;
         margin-bottom: 10px;
         background-color: white;
+        position: relative;
 `
 export const Time_Container = styled.div`
         border-radius: 8px;

@@ -65,7 +65,7 @@ const index = ({info, setInfo, data}) => {
   return (
     <Container>
       <Weather_Box>
-        <WeatherFunc />
+        <WeatherFunc reservation data={data} />
       </Weather_Box>
       <Time_Container>
         <div className='flex items-center mb-8'>

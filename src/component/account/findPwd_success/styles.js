@@ -9,11 +9,10 @@ export const Pwd = styled.div`
     font-weight: 700;
     font-size: 24px;
     margin-top: 58px;
-
 `
 export const Login = styled.div`
     height: 51px;
-    background-color: #F4F5FA;
+    background-color: #E9EBED;
     display: flex;
     align-items: center;
     justify-content: center;

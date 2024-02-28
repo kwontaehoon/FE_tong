@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import {
   Component,
-  Find_pwd,
   Information,
   Input,
   Name,
-  Pwd,
   ID
 } from './styles'
 import Header from '../../../function/header'
@@ -34,9 +32,8 @@ const index = () => {
   return (
     <Component>
       
-      <Header noArrow />
+      <Header title="비밀번호 변경" />
 
-      <Find_pwd>새 비밀번호</Find_pwd>
       <Information>아래 정보를 입력하여 비밀번호를 재설정 해주세요.</Information>
 
       <Name>비밀번호</Name>

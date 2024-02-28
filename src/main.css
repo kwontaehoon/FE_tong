@@ -27,7 +27,7 @@ a {
 li {
     list-style: none;
 }
-input {
+input, textarea {
     outline: none;
 }
 /* HTML5 display-role reset for older browsers */

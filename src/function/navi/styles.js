@@ -2,14 +2,13 @@ import styled from "styled-components";
 
 export const Icon = styled.div`
     width: 100%;
-    height: 72px;
     display: flex;
     position: fixed;
     left: 0;
     bottom: 0;
     background-color: white;
     z-index: 900;
-    padding: 0px 20px;
+    padding: 12px 10px;
 `
 export const Icon_Box = styled.div`
     position: relative;
@@ -18,7 +17,6 @@ export const Icon_Box = styled.div`
     align-items: center;
     justify-content: center;
     width: 20%;
-
 `
 export const Home_Box = styled.div`
     position: relative;

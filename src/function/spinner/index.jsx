@@ -1,6 +1,6 @@
 import React from 'react'
 import { FadeLoader } from 'react-spinners';
-import { Container, SubContainer } from './styles';
+import { Container } from './styles';
 
 const index = () => {
   return (
