@@ -1,8 +1,6 @@
 import React from 'react'
 import {
     Container,
-    Breakdown,
-    Breakdown_Text,
     Lorem,
     Lorem_Text,
     Information_Box,
@@ -10,36 +8,27 @@ import {
     Details,
     Check,
     Besides,
-    Button_Box,
-    Button,
-    Img,
-    Name,
-    Home_Box,
-    Home_Name,
-    Home
 } from './styles'
+import Header from '../../function/header'
+import Navi from '../../function/navi'
+import { useLocation, useParams } from 'react-router'
+import { useReservationDetailsQuery } from '../../hooks/queries/api/Reservation'
 
 const index = () => {
-    return (
+
+    const { id } = useParams();
+    const prevState = useLocation().state;
+
+    const { data, isSuccess } = useReservationDetailsQuery({ id: id });
+
+    return isSuccess && (
         <Container>
-            <Breakdown>
-                <img src="svg/BackArrow.svg"></img>
-                <Breakdown_Text> 
-                    예약내역
-                </Breakdown_Text>
-                <img src="svg/home-16.svg"></img>
-            </Breakdown>
-                <Lorem>
-                    Lorem
-                </Lorem>
-                <Lorem_Text>
-                    Lorem ipsum dolor
-                </Lorem_Text>
+                <Header title="예약내역" />
+                <Lorem>{data.title}</Lorem>
+                <Lorem_Text>{data.location}</Lorem_Text>
             <Information_Box>
                 <Details>
-                    <Reservation_information>
-                        예약정보
-                    </Reservation_information>
+                    <Reservation_information>예약정보</Reservation_information>
                 </Details>
                 <Details>
                     <Check>예약번호</Check>
@@ -48,47 +37,14 @@ const index = () => {
 
                 <Details>
                     <Check>예약자이름</Check>
-                    <Besides>이민희</Besides>
+                    <Besides>{prevState.name}</Besides>
                 </Details>
                 <Details>
                     <Check>안심번호</Check>
-                    <Besides>010-1234-5678</Besides>
+                    <Besides>{prevState.phoneNumber}</Besides>
                 </Details>
             </Information_Box>
-            <Button_Box>
-                <Img>
-                    <Button>
-                        <img src="svg/Calendar.svg"></img>
-                    </Button>
-                    <Name>예약</Name>
-                </Img>
-                <Img>
-                    <Button>
-                        <img style={{ marginTop: "3px" }} src="svg/Smile.svg"></img>
-                    </Button>
-                    <Name>MY</Name>
-                </Img>
-                <Home_Box>
-                    <Home>
-                        <img style={{ width: "32px" }} src="svg/home_4.svg"></img>
-                    </Home>
-                    <Home_Name>홈</Home_Name>
-
-                </Home_Box>
-                <Img>
-                    <Button>
-                        <img src="svg/heart.svg"></img>
-                    </Button>
-                    <Name>찜</Name>
-                </Img>
-                <Img>
-                    <Button>
-                        <img src="svg/rectangles.svg"></img>
-                    </Button>
-                    <Name>카테고리</Name>
-                </Img>
-
-            </Button_Box>
+            <Navi />
         </Container>
     )
 }

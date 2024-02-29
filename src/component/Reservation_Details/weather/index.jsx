@@ -14,9 +14,11 @@ import { setMonth } from 'date-fns'
 import { numberTwo } from '../../../utill/NumberTwo'
 import { dayOfWeek } from '../../../utill/DayOfWeek'
 import { morningClockText, afterNoonClockText } from '../../../constants/text/api/Reservation'
+import moment from 'moment'
 
-const index = ({info, setInfo}) => {
-  console.log("info: ", info);
+const index = ({info, setInfo, data}) => {
+
+  console.log("applicants: ", data);
 
   const today = {
     year: new Date().getFullYear(), //오늘 연도
@@ -38,23 +40,32 @@ const index = ({info, setInfo}) => {
   ).getDate();
 
   const [selectDay, setSelectDay] = useState([]);
-  const [morningClock, setMorningClock] = useState(Array(3).fill(false));
-  const [afterNoonClock, setAfterNoonClock] = useState(Array(6).fill(false));
-
-  console.log("morningClock: ", morningClock);
-  console.log("afterNoonClock: ", afterNoonClock);
+  const [clock, setClock] = useState(Array(9).fill(false));
 
   const [selectBox, setSelectBox] = useState(false);
+  const [blockClock, setBlockClock] = useState([]); // 이미 예약 찬 시간
 
-  useEffect(() => {
-    setSelectDay(Array.from({ length: today.month == current.getMonth()+1 ?  dateTotalCount - today.date : prevMonthEndDate }, () => false));
+  useEffect(()=>{
+    setSelectDay(Array.from({ length: today.month == current.getMonth()+1 ?  dateTotalCount - today.date : prevMonthEndDate }, (_, index) => index === 0));
     setInfo({...info, selectMonth: current.getMonth()+1});
   }, [current]);
+
+  useEffect(()=>{
+      let arr = [];
+      data.resrvationApplicants?.filter(x => {
+        if(moment(x.reservationDate).format("MM") == current.getMonth()+1){
+          if(moment(x.reservationDate).format("DD") == numberTwo(selectDay.findIndex(x=>x) + today.date) || moment(x.reservationDate).format("DD") == numberTwo(selectDay.findIndex(x=>x)+1)){
+            arr.push(x.reservationClock);
+          }
+        }
+      })
+      setBlockClock(arr);
+  }, [selectDay, current]);
 
   return (
     <Container>
       <Weather_Box>
-        <WeatherFunc />
+        <WeatherFunc reservation data={data} />
       </Weather_Box>
       <Time_Container>
         <div className='flex items-center mb-8'>
@@ -75,7 +86,7 @@ const index = ({info, setInfo}) => {
           <div className='border-grey07 border h-11 mr-6'></div>
           <div className='overflow-x-scroll flex'>
             <div className='flex'>
-              {Array.from({ length: today.month == current.getMonth()+1 ?  dateTotalCount - today.date : prevMonthEndDate }).map((_, index) => {
+              {Array.from({ length: today.month == current.getMonth()+1 ?  dateTotalCount - today.date+1 : prevMonthEndDate }).map((_, index) => {
                 const day = new Date(
                   current.getFullYear(),
                   current.getMonth(),
@@ -87,7 +98,7 @@ const index = ({info, setInfo}) => {
                       let arr = Array(selectDay.length).fill(false);
                       arr[index] = true;
                       setSelectDay(arr);
-                      setInfo({...info, selectDay: today.month == current.getMonth()+1 ? index + today.date : index+1});
+                      setInfo({...info, selectDate: today.month == current.getMonth()+1 ? index + today.date : index+1, selectDay: dayOfWeek(day)});
                     }}>
                     {today.month == current.getMonth()+1 ? <div>{numberTwo(index + today.date)}</div> : <div>{numberTwo(index+1)}</div>}
                     <div className={'mt-4' + (!selectDay[index] && day == 0 ? ' text-valid' : !selectDay[index] && day == 6 ? ' text-ms' : '' )}>{dayOfWeek(day)}</div>
@@ -106,11 +117,16 @@ const index = ({info, setInfo}) => {
           <div className='flex flex-wrap mb-5'>
             {morningClockText.map((x, index) => {
               return (
-                <div key={x.id} className='p-4 border rounded-lg mr-2 mb-2'
+                <div key={x.id} className={'p-4 border rounded-lg mr-2 mb-2' + (blockClock.includes(index) ? ' bg-grey07 text-grey05' : clock[index] ? ' bg-m text-white' : '')}
                   onClick={()=>{
-                    const arr = Array(3).fill(false);
-                    arr[index] = true;
-                    setMorningClock(arr);
+                    const arr = Array(9).fill(false);
+                    if(blockClock.includes(index)){
+                      return;
+                    }else{
+                      arr[index] = true;
+                      setClock(arr);
+                      setInfo({...info, selectClock: index});
+                    }
                   }}>{x.clock}
                 </div>
               )
@@ -120,11 +136,16 @@ const index = ({info, setInfo}) => {
           <div className='flex flex-wrap'>
             {afterNoonClockText.map((x, index) => {
               return (
-                <div key={x.id} className={'p-4 border rounded-lg mr-2 mb-2' + (afterNoonClock[index] ? '' : '')}
+                <div key={x.id} className={'p-4 border rounded-lg mr-2 mb-2' + (blockClock.includes(index+3) ? ' bg-grey07 text-grey05' : clock[index+3] ? ' bg-m text-white' : '')}
                   onClick={()=>{
-                    const arr = Array(6).fill(false);
-                    arr[index] = true;
-                    setAfterNoonClock(arr);
+                    const arr = Array(9).fill(false);
+                    if(blockClock.includes(index)){
+                      return;
+                    }else{
+                      arr[index+3] = true;
+                      setClock(arr);
+                      setInfo({...info, selectClock: index+3});
+                    }
                   }}>{x.clock}
                 </div>
               )

@@ -62,10 +62,10 @@ const index = () => {
         <div><span className='mb-2 cursor-pointer' onClick={googleGetCode}>구글 로그인</span></div>
         <div><span className='mb-2 cursor-pointer' onClick={()=>navigate("/admin")}>관리자 페이지</span></div>
         <div><span className='mb-2 cursor-pointer' onClick={()=>navigate("/reservation")}>예약 목록</span></div>
-        <div><span className='mb-2 cursor-pointer' onClick={()=>navigate("/reservation_information")}>예약 정보</span></div>
-        <div><span className='mb-2 cursor-pointer' onClick={()=>navigate("/breakdown")}>예약 내역</span></div>
         <div><span className='mb-2 cursor-pointer' onClick={()=>navigate("/weather")}>날씨</span></div>
+        <div><span className='mb-2 cursor-pointer' onClick={()=>navigate("/board")}>구하기게시판</span></div>
         <div><span className='mb-2 cursor-pointer' onClick={()=>navigate("/search")}>검색 목록</span></div>
+        <div><span className='mb-2 cursor-pointer' onClick={()=>navigate("/myActive")}>내 활동 기록</span></div>
         <div onClick={()=>openCategoryModal(true)}>카테고리</div>
         <div><span className='mb-2 cursor-pointer' onClick={()=>navigate("/mypage_info")}>마이페이지 내정보수정</span></div>
         <div><span className='mb-2 cursor-pointer' onClick={()=>navigate("/expire")}>회원탈퇴</span></div>

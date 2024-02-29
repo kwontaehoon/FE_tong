@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import {
   Component,
-  Find_pwd,
   Information,
   Input,
   Name,
@@ -38,11 +37,14 @@ const index = () => {
   return (
     <Component>
       
-      <Header noArrow url={"login"}/>
+      <Header title="비밀번호 찾기" />
 
-      <Find_pwd>비밀번호 찾기</Find_pwd>
       <Information>
-        아래 정보를 입력하여 비밀번호 찾기를 완료해주세요.
+        <img src="svg/Frame 169.svg" />
+        <div className='flex flex-col justify-center ml-2'>
+          <div>기존에 가입하신 이메일을 입력하시면,</div>
+          <div>비밀번호 변경하실 수 있습니다.</div>
+        </div>
       </Information>
 
       <Name>아이디</Name>
@@ -59,7 +61,7 @@ const index = () => {
           findPassword(info);
         }}}>비밀번호 찾기</ID>
       <Pwd>
-        <div className='border-b' onClick={()=>navigate("/findId")}>아이디 찾기</div>
+        <div className='text-grey04' onClick={()=>navigate("/findId")}>아이디 찾기</div>
       </Pwd>
     </Component>
   )

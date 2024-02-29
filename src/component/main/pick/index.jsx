@@ -7,11 +7,8 @@ import {
   PickContent,
   Scroll
 } from './styles'
-import { usePickListQuery } from '../../../hooks/queries/api/Main'
 
-const index = () => {
-
-  const { data, isSuccess } = usePickListQuery();
+const index = ({data}) => {
 
   const [flag, setFlag] = useState([]);
 
@@ -21,10 +18,9 @@ const index = () => {
       arr[0] = true;
       setFlag(arr);
     }
-    
-  }, [isSuccess]);
+  }, []);
 
-  return isSuccess && (
+  return (
     <Container>
       {data.length == 0 ? '' : <div className='bg-white px-5 py-4 rounded-2xl mb-5'>
         <Ground_Pick>

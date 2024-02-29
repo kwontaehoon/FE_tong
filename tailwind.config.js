@@ -18,6 +18,8 @@ module.exports = {
       "grey06": "#CACDD2",
       "grey07": "#E9EBED",
 
+      "grey10": "#38373D",
+
       "grey-b": "#CACDD2",
 
       "valid": "#FF0000"

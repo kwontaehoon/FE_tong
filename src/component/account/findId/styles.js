@@ -2,18 +2,16 @@ import styled from "styled-components"
 
 export const Component = styled.div`
     padding: 0px 20px 20px 20px;
-`
-export const Find_id = styled.div`
-    font-weight: 700;
-    font-size: 24px;
-    margin-top: 30px;
+    background-color: white;
+    height: 100%;
 `
 export const Information = styled.div`
-    margin-top: 7px;
-    font-size: 12px;
+    margin-top: 12px;
+    font-size: 14px;
     font-weight: 500;
     color: #9FA4A9;
-    margin-bottom: 50px;
+    margin-top: 20px;
+    margin-bottom: 30px;
 `
 export const Input = styled.input`
     width: 100%;
@@ -26,7 +24,8 @@ export const Input = styled.input`
 export const Name = styled.div`
     font-weight: 500;
     color: #73787E;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
+    font-size: 14px;
 `
 
 export const ID = styled.div`
@@ -45,7 +44,7 @@ export const ID = styled.div`
 export const Pwd = styled.div`
     font-size: 12px;
     color: #26282B;
-    margin-top: 20px;
+    margin-top: 10px;
     display: flex;
     justify-content: end;
 `

@@ -19,7 +19,7 @@ const index = () => {
                 <img src="/svg/Nav_reservation.svg"></img>
                 <House>예약</House>
             </Icon_Box>
-            <Icon_Box onClick={()=>navigate("/mypage")}>
+            <Icon_Box onClick={()=>navigate("/mypage")}>    
                 <img src="/svg/Nav_mypage.svg"></img>
                 <House>마이</House>
             </Icon_Box>
@@ -33,7 +33,7 @@ const index = () => {
                 </div>
                 <House></House>
             </Icon_Box>
-            <Icon_Box>
+            <Icon_Box onClick={()=>navigate("/myActive")}>
                 <img src="/svg/Nav_wish.svg"></img>
                 <House>찜</House>
             </Icon_Box>

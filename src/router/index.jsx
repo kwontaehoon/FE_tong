@@ -21,6 +21,10 @@ import Category from '../component/category'
 import Mypage_info from '../component/mypage_info'
 import Expire from '../component/expire'
 
+import Board from '../component/board'
+import BoardWrite from '../component/board/boardWrite'
+import Saving_details from '../component/saving_details'
+import MyActive from '../component/myActive'
 import App from "../App"
 
 export const router = createBrowserRouter([
@@ -52,12 +56,21 @@ export const router = createBrowserRouter([
                     { path: ":id", element: <Reservation_Details /> }
                 ]
             },
-            { path: "/reservation_information", element: <Reservation_information/>},
-            { path: "/breakdown", element: <Breakdown/>},
+            { path: "/reservation_information/:id", element: <Reservation_information />},
+            { path: "/breakdown/:id", element: <Breakdown />},
             { path: "/weather", element: <Weather />},
             { path: "/category", element: <Category />},
             { path: "/mypage_info", element: <Mypage_info />},
             { path: "/expire", element: <Expire />},
+            { 
+                path: "/board",
+                children: [
+                    { index: true, element: <Board /> },
+                    { path: ":id", element: <Saving_details /> }
+                ]
+            },
+            { path: "/boardWrite", element: <BoardWrite /> },
+            { path: "/myActive", element: <MyActive /> },
         ]
     },
 ])

@@ -10,7 +10,7 @@ export const Soccer_Team = styled.div`
     background-color: white;
     display: flex;
     align-items: center;
-    border-radius: 20px;
+    border-radius: 16px;
     padding: 12px 20px;
     margin-bottom: 12px;
 `
@@ -20,6 +20,7 @@ export const Soccer_Team_Box = styled.div`
 export const Soccer = styled.div`
     font-size: 20px;
     font-weight: 700;
+    
 `
 export const Gure = styled.div`
     font-size: 20px;

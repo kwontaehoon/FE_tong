@@ -30,16 +30,16 @@ export const IconBox = styled.div`
 export const Button = styled.div`
     width: 80px;
     height: 80px;
-    border-radius: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+
 `
 
 export const Name = styled.div`
     margin-top: 8px;
     font-size: 13px;
-    font-weight: 800;
+    font-weight: 700;
     white-space: nowrap;
 `

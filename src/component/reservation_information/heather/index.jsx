@@ -12,11 +12,9 @@ const index = () => {
         <img src="svg/BackArrow.svg"></img>
 
         <Reservation>
-          <Reservation_Box>
-            예약
-          </Reservation_Box>
+          <Reservation_Box>예약</Reservation_Box>
         </Reservation>
-        <img src="svg/search.svg"></img>
+        <img src="svg/BackArrow.svg"></img>
       </Heather>
     </Container>
   )

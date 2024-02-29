@@ -2,17 +2,16 @@ import styled from "styled-components"
 
 export const Component = styled.div`
     padding: 0px 20px 20px 20px;
-`
-export const Find_pwd = styled.div`
-    font-weight: 700;
-    font-size: 24px;
-    margin-top: 30px;
+    background-color: white;
+    height: 100%;
 `
 export const Information = styled.div`
-    margin-top: 7px;
     font-weight: 500;
+    font-size: 14px;
     color: #9FA4A9;
-    margin-bottom: 50px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: flex;
 `
 export const Input = styled.input`
     width: 100%;
@@ -24,6 +23,7 @@ export const Input = styled.input`
 `
 export const Name = styled.div`
     font-weight: 500;
+    font-size: 14px;
     color: #73787E;
     margin-bottom: 10px;
 `
@@ -47,4 +47,5 @@ export const Pwd = styled.div`
     margin-top: 20px;
     display: flex;
     justify-content: end;
+    
 `

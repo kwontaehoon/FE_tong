@@ -70,6 +70,7 @@ export const Soccer_Field = styled.div`
     border-radius: 15px;
     font-size: 20px;
     padding: 12px 18px;
+    margin-bottom: 12px;
 `
 export const Popularity = styled.div`
     width: 50%;
@@ -77,7 +78,6 @@ export const Popularity = styled.div`
     border-radius: 13px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
 `
 export const Img = styled.div`
     width: 50px;

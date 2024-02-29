@@ -2,21 +2,21 @@ import styled from "styled-components";
 
 export const Icon = styled.div`
     width: 100%;
-    height: 72px;
     display: flex;
     position: fixed;
     left: 0;
     bottom: 0;
     background-color: white;
     z-index: 900;
+    padding: 12px 10px;
 `
 export const Icon_Box = styled.div`
     position: relative;
-    width: 20%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 20%;
 `
 export const Home_Box = styled.div`
     position: relative;
@@ -42,8 +42,8 @@ export const Home_Name = styled.div`
     margin-top: 8px;
 `
 export const House = styled.div`
-    font-size: 13px;
+    font-size: 14px;
     white-space: nowrap;
     font-weight: 500;
-    margin-top: 5px;
+    margin-top: 2px;
 `

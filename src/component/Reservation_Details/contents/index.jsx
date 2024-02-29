@@ -11,8 +11,6 @@ import {
 
 const index = ({ data }) => {
 
-  console.log("content data: ", data);
-
   return (
     <Container>
       <Contents_Box>

@@ -38,10 +38,15 @@ export const H1Tit = styled.h1`
 color: #BF4F74;
 margin:0 auto;
 `
-
+export const InfoLogin = styled.div`
+padding: 20px 20px;
+display: flex;
+margin: 0 auto;
+align-items: center;
+`
 export const Info = styled.div`
 padding: 30px 20px;
-display:flex;
+display: flex;
 margin: 0 auto;
 justify-content: space-between;
 align-items: center;

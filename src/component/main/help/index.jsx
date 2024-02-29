@@ -35,7 +35,7 @@ const index = () => {
                         <img src="svg/Reservation.svg"></img>
                         <Name>예약</Name>
                     </Button>
-                    <Button>
+                    <Button onClick={()=>navigate("/board")}>
                         <img src="svg/Community.svg"></img>
                         <Name>커뮤니티</Name>
                     </Button>

@@ -27,7 +27,6 @@ const index = () => {
           <Information>
             정보처리 관리자: 홍성혁
           </Information>
-
           <Information>
             사업자등록번호: 000-00-00-00000
           </Information>

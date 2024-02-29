@@ -1,7 +1,9 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    padding: 20px;
+    padding: 0px 20px 20px 20px;
+    background-color: white;
+    height: 100%;
 `
 
 export const Header = styled.div`
@@ -37,12 +39,13 @@ export const Pwd = styled.input`
     padding-left: 13px;
     box-sizing: border-box;
     background-color: #F4F5FA;
+   
 `
 
 export const Login = styled.div`
     width: 100%;
     height: 51px;
-    margin-top: ${props => props.$validation ? '0px' : "21px"};
+    margin-top: ${props => props.$validation ? '0px' : "20px"};
     border-radius: 8px;
     display: flex;
     align-items: center;
@@ -57,7 +60,7 @@ export const Minibox = styled.div`
     margin: 20px 0px;
     justify-content: center;
     font-size: 12px;
-    font-weight: 500;
+    font-weight: 350;
     margin-bottom: 50px;
 `
 
