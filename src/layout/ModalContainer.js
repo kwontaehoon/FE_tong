@@ -43,7 +43,7 @@ const MCS = styled.div`
     display: flex;
     z-index: 999;
     visibility: ${props => props.$show ? 'visible' : 'hidden'};
-    transition: 0.6s;
+    transition: 0.3s;
 `
 const MCSS = styled.div`
     position: absolute;
@@ -53,7 +53,7 @@ const MCSS = styled.div`
     background-color: rgb(255, 255, 255);
     box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
     font-size: 12px;
-    animation: ${props => props.$show ? slideIn : slideOut} 0.5s ease-in-out forwards;
+    animation: ${props => props.$show ? slideIn : slideOut} 0.3s ease-in-out forwards;
 `
 const MCMobile = styled.div`
     position: fixed;

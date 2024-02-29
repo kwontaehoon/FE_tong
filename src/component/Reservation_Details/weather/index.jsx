@@ -18,8 +18,6 @@ import moment from 'moment'
 
 const index = ({info, setInfo, data}) => {
 
-  console.log("applicants: ", data);
-
   const today = {
     year: new Date().getFullYear(), //오늘 연도
     month: new Date().getMonth() + 1, //오늘 월
@@ -46,7 +44,7 @@ const index = ({info, setInfo, data}) => {
   const [blockClock, setBlockClock] = useState([]); // 이미 예약 찬 시간
 
   useEffect(()=>{
-    setSelectDay(Array.from({ length: today.month == current.getMonth()+1 ?  dateTotalCount - today.date : prevMonthEndDate }, (_, index) => index === 0));
+    setSelectDay(Array.from({ length: today.month == current.getMonth()+1 ?  dateTotalCount+1 - today.date : prevMonthEndDate }, (_, index) => index === 0));
     setInfo({...info, selectMonth: current.getMonth()+1});
   }, [current]);
 

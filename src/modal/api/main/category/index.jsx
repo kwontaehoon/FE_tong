@@ -15,14 +15,6 @@ const index = () => {
   const openCategoryModal = useCategoryStore((state) => state.setOpen);
   const { data, isSuccess } = usePickListQuery();
 
-  useEffect(() => {
-    document.body.style.overflow = 'hidden';
-
-    if(!categoryModal){
-      document.body.style.overflow = 'auto';
-    }
-  }, [categoryModal]);
-
   return isSuccess && (
     <ModalSideContainer $show={categoryModal}>
       <ModalSideSubContainer $show={categoryModal}>
@@ -47,15 +39,15 @@ const index = () => {
                 <Btn1 onClick={()=>{ 
                   setTimeout(()=>{
                     navigate("/login"); 
-                  }, 1000);
-                  openCategoryModal(false); 
+                  }, 0);
+                  openCategoryModal("none"); 
                   }}>로그인
                 </Btn1>
                 <Btn2 onClick={()=>{
                   setTimeout(()=>{
                     navigate("/signup"); 
-                  }, 1000);
-                  openCategoryModal(false);
+                  }, 0);
+                  openCategoryModal("none");
                   }}>회원가입
                 </Btn2>
               </Right>
