@@ -16,6 +16,7 @@ export const Sec1 = styled.div`
 `
 export const Section2 = styled(Sec1)`
 background: #F4F5FA;
+justify-content: flex-start;
 `
 
 export const H1 = styled.h1`
@@ -38,7 +39,8 @@ font-weight: 500;
 letter-spacing: -0.07px;
 padding: 0;
 margin: 0;
-margin-bottom: 4px;
+margin-bottom: 20px;
+text-align: center;
 `
 export const Ul = styled.ul`
 width: ${props => props.$wd};
@@ -69,7 +71,7 @@ color: #007CFF;
 `
 export const BtnOut = styled.button`
 display: flex;
-width: 390px;
+width: 95%;
 padding: 21px 10px;
 justify-content: center;
 align-items: center;
@@ -78,7 +80,7 @@ font-size: 20px;
 font-weight: 700;
 border-radius: 8px;
 background: #E9EBED;
-color: #73787E;
+color: #9FA4A9;
 box-shadow: 4px 4px 20px 0px rgba(0, 0, 0, 0.05);
 border: 1px solid var(--point-Grayscale-07, #E9EBED);
 `
