@@ -21,6 +21,9 @@ import Category from '../component/category'
 import Mypage_info from '../component/mypage_info'
 import Expire from '../component/expire'
 
+import Privacy from '../component/policy/privacy'
+import Team from '../component/policy/term'
+
 import Board from '../component/board'
 import BoardWrite from '../component/board/boardWrite'
 import Saving_details from '../component/saving_details'
@@ -71,6 +74,8 @@ export const router = createBrowserRouter([
             },
             { path: "/boardWrite", element: <BoardWrite /> },
             { path: "/myActive", element: <MyActive /> },
+            { path: "/privacy", element: <Privacy /> },
+            { path: "/term", element: <Team /> },
         ]
     },
 ])

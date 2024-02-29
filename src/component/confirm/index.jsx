@@ -69,6 +69,8 @@ const index = () => {
         <div onClick={()=>openCategoryModal(true)}>카테고리</div>
         <div><span className='mb-2 cursor-pointer' onClick={()=>navigate("/mypage_info")}>마이페이지 내정보수정</span></div>
         <div><span className='mb-2 cursor-pointer' onClick={()=>navigate("/expire")}>회원탈퇴</span></div>
+        <div><span className='mb-2 cursor-pointer' onClick={()=>navigate("/privacy")}>개인정보처리방침</span></div>
+        <div><span className='mb-2 cursor-pointer' onClick={()=>navigate("/term")}>이용약관</span></div>
     </div>
   )
 }
