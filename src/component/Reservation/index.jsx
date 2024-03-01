@@ -30,12 +30,6 @@ const index = () => {
 
   const { mutateAsync: wish } = useWishMutation();
 
-  useEffect(()=>{
-    window.scrollTo({
-      top: 0,
-  });
-  }, []);
-
   return reservationListSuccess && (
     <Container>
 

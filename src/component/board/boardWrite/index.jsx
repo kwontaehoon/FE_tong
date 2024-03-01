@@ -22,12 +22,6 @@ const index = () => {
 
   const { mutateAsync: write } = useBoardWriteMutation();
 
-  useEffect(()=>{
-    window.scrollTo({
-      top: 0,
-  })
-}, []);
-
   return (
     <Container>
       <Header title="글쓰기" check 

@@ -20,18 +20,14 @@ const index = () => {
     name: '',
     phoneNumber: ''
   });
-  console.log("info: ", info);
 
   const { data, isSuccess } = useReservationDetailsQuery({ id: id });
 
   const { mutateAsync: reservation } = useReservationMutation();
 
   useEffect(()=>{
-    window.scrollTo({
-      top: 0,
-  });
 
-  setInfo({ ...prevState, ...info });
+    setInfo({ ...prevState, ...info });
   }, []);
 
   return isSuccess && (

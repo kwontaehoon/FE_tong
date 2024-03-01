@@ -15,7 +15,6 @@ import { Pagination } from 'swiper/modules';
 const index = () => {
 
   const { data, isSuccess } = useBannerListQuery();
-  console.log("bannerList: ", data);
 
   return isSuccess && (
     <Container>

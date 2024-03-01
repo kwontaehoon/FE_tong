@@ -25,7 +25,7 @@ const index = () => {
             </Icon_Box>
             <Icon_Box>
                 <div className='absolute left-25% -top-6 flex justify-center items-center flex-col'
-                    onClick={()=>navigate("/main")}>
+                    onClick={()=>navigate("/")}>
                     <Home>
                         <img src="/svg/Nav_home.svg"></img>
                     </Home>

@@ -37,9 +37,6 @@ const index = () => {
         if (id) {
             result({ title: id });
         }
-        window.scrollTo({
-            top: 0,
-        });
     }, []);
 
     return resultListSuccess && (

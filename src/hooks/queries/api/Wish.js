@@ -1,8 +1,8 @@
 import { useQuery, useMutation } from "react-query";
-import { postWish } from "../../../service/api/Wish";
+import { postMyWishList, postWish } from "../../../service/api/Wish";
 
 const WISH_KEYS = {
-
+  myWishList: "myWishList"
 }
 
 /**
@@ -19,3 +19,18 @@ export const useWishMutation = () =>
       // 성공 시 실행할 로직 추가
     }
   });
+
+
+/**
+* 내가 찜한 시설
+* 
+*/
+
+export const useMyWishListQuery = (params) => {
+  return useQuery(WISH_KEYS.myWishList, async () => {
+    const { data } = await postMyWishList(params);
+    return data;
+  }, {
+    staleTime: Infinity,
+  });
+};

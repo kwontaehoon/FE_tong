@@ -15,7 +15,7 @@ const index = () => {
     <Container>
         <Header title={myTabText[tab.findIndex(x=>x)].content} padding />
         <TabBox>
-        <div className='h-full flex'>
+        <div className='h-full flex mb-5'>
           {myTabText.map((x, index) => {
             return (
               <Tab key={x.id} $border={tab[index]} 

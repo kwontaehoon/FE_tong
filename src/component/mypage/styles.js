@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Div = styled.div`
     background: #F4F5FA;
-    height: 100vh;
+    padding-bottom: 102px;
 `
 export const Reservation = styled.div`
     font-size: 20px;
@@ -169,9 +169,7 @@ export const Bottom = styled.div`
     display: flex;
     justify-content: start;
     align-items: center;
-    padding: 20px 20px 30px;
+    padding: 0px 20px;
     gap: 10px;
     margin-bottom: 0px;
-    position: fixed;
-    bottom: 0px;
 `

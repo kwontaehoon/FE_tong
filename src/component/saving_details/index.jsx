@@ -16,12 +16,6 @@ const index = () => {
 
   const { data: commentList, isSuccess: commentSuccess } = useCommentListQuery();
 
-  useEffect(()=>{
-    window.scrollTo({
-      top: 0,
-  })
-}, []);
-
   return boardSuccess && commentSuccess && (
     <div className='bg-bg'>
         <Header padding />

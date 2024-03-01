@@ -29,13 +29,6 @@ const index = () => {
     year: new Date().getFullYear(),
     peopleCount: 0,
   });
-  console.log("info: ", info);
-
-  useEffect(()=>{
-    window.scrollTo({
-      top: 0,
-  });
-  }, []);
 
   return isSuccess && (
     <div className='bg-bg'>

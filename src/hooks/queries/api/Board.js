@@ -1,9 +1,10 @@
 import { useQuery, useMutation } from "react-query";
-import { getBoardList, getBoardDetails, postBoardWrite } from "../../../service/api/Board";
+import { getBoardList, getBoardDetails, postBoardWrite, postMyBoardList } from "../../../service/api/Board";
 
 const BOARD_KEYS = {
   boardList: "boardList",
-  boardDetails: "boardDetails"
+  boardDetails: "boardDetails",
+  myBoardList: "/myBoardList"
 }
 
 /**
@@ -48,3 +49,18 @@ export const useBoardWriteMutation = () =>
       // 성공 시 실행할 로직 추가
     }
   });
+
+
+/**
+* 내가 쓴 게시글
+* 
+*/
+
+export const useMyBoardListQuery = (params) => {
+  return useQuery(BOARD_KEYS.myBoardList, async () => {
+    const { data } = await postMyBoardList(params);
+    return data;
+  }, {
+    staleTime: Infinity,
+  });
+};
