@@ -30,6 +30,10 @@ const index = () => {
 
   const { mutateAsync: wish } = useWishMutation();
 
+  useEffect(()=>{
+    reservationRefetch();
+  }, []);
+
   return reservationListSuccess && (
     <Container>
 

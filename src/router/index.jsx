@@ -20,6 +20,7 @@ import Weather from '../component/weather'
 import Category from '../component/category'
 import Mypage_info from '../component/mypage_info'
 import Expire from '../component/expire'
+import MyInfo from '../component/mypage/myInfo'
 
 import Board from '../component/board'
 import BoardWrite from '../component/board/boardWrite'
@@ -34,6 +35,7 @@ export const router = createBrowserRouter([
             { index: true, element: <Main /> },
             // { path: "/main", element: <Main /> },
             { path: "/mypage", element: <Mypage/> },
+            { path: "/myInfo", element: <MyInfo />},
             { path: "/signup", element: <Signup /> },
             { path: "/login", element: <Login /> },
             { path: "/findId", element: <FindId/>},

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {
   Div, Info, Left, Icon, H3, P, P2, Reservation,
   InfoBox, List1, Icon2, Icon1, Icon3, P3, P4, Comment, Span, H4,
@@ -7,12 +7,30 @@ import {
 import Header from '../../function/header'
 import Navi from '../../function/navi'
 import { useNavigate } from 'react-router-dom'
+import { useExpireStore } from '../../store/Expire'
+import { useMyWishListQuery } from '../../hooks/queries/api/Wish'
+import { useMyBoardListQuery } from '../../hooks/queries/api/Board'
+import { useMyCommentListQuery } from '../../hooks/queries/api/Comment'
+import { getToken } from '../../utill/GetToken'
+import { numberTwo } from '../../utill/NumberTwo'
 
 const index = () => {
 
   const navigate = useNavigate();
 
-  return (
+  const openExpireModal = useExpireStore((state) => state.setOpen);
+
+  const { data: myWish, isSuccess: wishSuc, refetch } = useMyWishListQuery({ users: { userId: getToken().userId }});
+
+  const { data: myBoard, isSuccess: boardSuc } = useMyBoardListQuery({ user: { userId: getToken().userId }});
+
+  const { data: myComments, isSuccess: commentsSuc } = useMyCommentListQuery({ user: { userId: getToken().userId }});
+
+  useEffect(()=>{
+    refetch();
+  }, []);
+
+  return wishSuc && boardSuc && commentsSuc && (
     <Div>
       <Header Arrow title={"MY"} padding />
 
@@ -24,7 +42,7 @@ const index = () => {
             <P>오늘로 00번 로그인 하였습니다!</P>
           </div>
         </Left>
-        <P2>내정보관리</P2>
+        <P2 onClick={()=>navigate("/myInfo")}>내 정보 관리</P2>
       </Info>
       {/*  예약기록<상단순서변경*/}
       <Wrap>
@@ -43,35 +61,35 @@ const index = () => {
 
       <InfoBox>
         {/* 리스트1 */}
-        <List1>
+        <List1 onClick={()=>navigate("/myActive", {state: "board"})}>
           <Left style={{ gap: '4px' }}>
             <Icon1 src="./svg/uil_comment-alt-plus.png" alt='게시글아이콘'></Icon1>
             <P3>게시글</P3>
           </Left>
           <Left style={{ gap: '4px' }}>
-            <P3>02</P3>
+            <P3>{numberTwo(myBoard.length)}</P3>
             <Icon3 src="./svg/gravity-ui_chevron-right.png" alt='더보기아이콘'></Icon3>
           </Left>
         </List1>
         {/* 리스트2 */}
-        <List1>
+        <List1 onClick={()=>navigate("/myActive", {state: "comments"})}>
           <Left style={{ gap: '4px' }}>
             <Icon1 src="./svg/uil_comment-search.png" alt='댓글'></Icon1>
             <P3>댓글</P3>
           </Left>
           <Left style={{ gap: '4px' }}>
-            <P3>00</P3>
+            <P3>{numberTwo(myComments.length)}</P3>
             <Icon3 src="./svg/gravity-ui_chevron-right.png" alt='더보기아이콘'></Icon3>
           </Left>
         </List1>
         {/* 리스트3 */}
-        <List1>
+        <List1 onClick={()=>navigate("/myActive", {state: "wish"})}>
           <Left style={{ gap: '4px' }}>
             <Icon1 src="./svg/uil_comment-city.png" alt='찜한 시설'></Icon1>
             <P3>찜한 시설</P3>
           </Left>
           <Left style={{ gap: '4px' }}>
-            <P3>00</P3>
+            <P3>{numberTwo(myWish.length)}</P3>
             <Icon3 src="./svg/gravity-ui_chevron-right.png" alt='더보기아이콘'></Icon3>
           </Left>
         </List1>
@@ -81,12 +99,12 @@ const index = () => {
         <Icon3 src="./svg/gravity-ui_chevron-right.png" alt='더보기아이콘' onClick={()=>navigate("/board")}></Icon3>
       </Comment>
       <Bottom>
-        <P4>회원탈퇴</P4>
+        <P4 onClick={()=>openExpireModal(true)}>회원탈퇴</P4>
         <Left style={{ gap: '4px', alignItems: 'end' }}>
           <P4>로그아웃</P4>
           <Icon3 src="./svg/line-md_arrow-close-right.png" alt='로그아웃아이콘'></Icon3>
         </Left>
-      </Bottom>
+      </Bottom> 
       <Navi />
     </Div>
   )

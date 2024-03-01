@@ -3,6 +3,9 @@ import styled from "styled-components";
 export const Div = styled.div`
     background: #F4F5FA;
     padding-bottom: 102px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 `
 export const Reservation = styled.div`
     font-size: 20px;
@@ -167,9 +170,10 @@ color: #007CFF;
 `
 export const Bottom = styled.div`
     display: flex;
-    justify-content: start;
-    align-items: center;
+    height: 100%;
+    align-items: end;
     padding: 0px 20px;
     gap: 10px;
     margin-bottom: 0px;
+    flex: 1;
 `

@@ -31,7 +31,6 @@ const index = () => {
         name: '',
         birth: ''
     });
-    console.log("info: ", info);
 
     const [validation, setValidation] = useState({
         id: false,

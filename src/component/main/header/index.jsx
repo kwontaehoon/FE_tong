@@ -4,7 +4,7 @@ import {
     Gimpo,
     Playground,
 } from './styles'
-import { useCategoryStore } from '../../../store/main/Category';
+import { useCategoryStore } from '../../../store/Category';
 import { useNavigate } from 'react-router-dom';
 
 const index = () => {

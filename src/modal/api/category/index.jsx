@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react'
 import { Cover,Container,Inner,Bar,InfoLogin,Info,Pcoment,Right,Btn1,Btn2,Sec1,Sec2,
   Sec3,Sec1H1,List,Icon,Img,P,Weekley,WeekBox,WeekList,Sec4,H4,CsBox,Cs1,CsSpan} from './styles';
-import { ModalSideContainer, ModalSideSubContainer } from '../../../../layout/ModalContainer'
-import { useCategoryStore } from '../../../../store/main/Category';
-import { usePickListQuery } from '../../../../hooks/queries/api/Main'
+import { ModalSideContainer, ModalSideSubContainer } from '../../../layout/ModalContainer'
+import { useCategoryStore } from '../../../store/Category';
+import { usePickListQuery } from '../../../hooks/queries/api/Main'
 import { useNavigate } from 'react-router-dom';
-import { loginFlag } from '../../../../utill/LoginFlag'
-import { getToken } from '../../../../utill/GetToken'
+import { loginFlag } from '../../../utill/LoginFlag'
+import { getToken } from '../../../utill/GetToken'
 
 const index = () => {
 

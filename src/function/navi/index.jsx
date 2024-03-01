@@ -6,7 +6,7 @@ import {
     House
 } from './styles'
 import { useNavigate } from 'react-router-dom'
-import { useCategoryStore } from '../../store/main/Category'
+import { useCategoryStore } from '../../store/Category'
 
 const index = () => {
 
