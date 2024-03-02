@@ -54,7 +54,7 @@ font-size: 18px;
 font-weight: 700;
 letter-spacing: -0.09px;
 line-height: 22px;
-margin: 0px;
+margin-bottom: 5px;
 font-family: "Noto Sans KR", sans-serif;
 `
 

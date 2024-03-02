@@ -15,6 +15,7 @@ import { getToken } from '../../utill/GetToken'
 import { numberTwo } from '../../utill/NumberTwo'
 
 const index = () => {
+  console.log(getToken());
 
   const navigate = useNavigate();
 
@@ -38,7 +39,7 @@ const index = () => {
         <Left>
           <Icon src="./svg/proflie.png" alt='이미지'></Icon>
           <div style={{ marginBottom: '10px' }}>
-            <H3>000님</H3>
+            <H3>{getToken().id}님</H3>
             <P>오늘로 00번 로그인 하였습니다!</P>
           </div>
         </Left>
@@ -46,13 +47,13 @@ const index = () => {
       </Info>
       {/*  예약기록<상단순서변경*/}
       <Wrap>
-        <H4>나의 활동 기록</H4>
+        <H4>나의 예약 기록</H4>
 
         <P4 style={{ textAlign: 'center', color: '#9FA4A9', fontWeight: '500' }}>*최근 90일 이내의 활동만 조회됩니다.</P4>
         <ListBox>
           {/* 수정필요 태그분리 */}
           <List2><Icon2 src="./svg/Reserve.png" alt='예약'></Icon2><P3>예약 1</P3></List2>
-          <List2><Icon2 src="./svg/Manual.png" alt='대기'></Icon2><P3>대기 0</P3></List2>
+          <List2><Icon2 src="./svg/Manual.png" alt='대기'></Icon2><P3>취소 0</P3></List2>
           <List2><Icon2 src="./svg/Completed.png" alt='완료'></Icon2><P3>완료 10</P3></List2>
         </ListBox>
 
@@ -101,7 +102,7 @@ const index = () => {
       <Bottom>
         <P4 onClick={()=>openExpireModal(true)}>회원탈퇴</P4>
         <Left style={{ gap: '4px', alignItems: 'end' }}>
-          <P4>로그아웃</P4>
+          <P4 onClick={()=>{ localStorage.removeItem("token"); navigate("/"); window.location.reload();}}>로그아웃</P4>
           <Icon3 src="./svg/line-md_arrow-close-right.png" alt='로그아웃아이콘'></Icon3>
         </Left>
       </Bottom> 

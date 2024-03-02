@@ -20,7 +20,6 @@ const index = ({ info, data }) => {
         <Gimpo>{data.location}</Gimpo>
         <Check_Box>
           <Check_inout>
-            <Handwriting>체크인</Handwriting>
             <Day_Box>
               <Day>{numberTwo(info.selectMonth)}.{numberTwo(info.selectDate)} {info.selectDay}</Day>
                 <div className='border h-3' style={{ margin: '0px 6px', color: "#CDCDCD" }}></div>
@@ -30,7 +29,6 @@ const index = ({ info, data }) => {
           </Check_inout>
 
           <Check_inout>
-            <Handwriting>체크아웃</Handwriting>
             <Day_Box>
               <Day>{numberTwo(info.selectMonth)}.{numberTwo(info.selectDate)} {info.selectDay}</Day>
                 <div className='border h-3' style={{ margin: '0px 6px', color: "#CDCDCD" }}></div>

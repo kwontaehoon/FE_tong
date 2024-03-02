@@ -145,7 +145,7 @@ const index = () => {
             <div className='flex text-sm text-grey04 mb-3'>
                 <div className='flex flex-1 items-center'>
                     <div className='border w-4 h-4 rounded-full mr-2 flex justify-center items-center' onClick={() => checkBox(check, setCheck, 0, true)}>
-                        {check[0] && <div className='rounded bg-m' style={{ width: "10px", height: "10px" }}></div>}
+                        {check[0] && <div className='rounded-full bg-m' style={{ width: "10px", height: "10px" }}></div>}
                     </div>
                     <div>모두 동의 합니다.</div>
                 </div>
@@ -155,7 +155,7 @@ const index = () => {
             <div className='flex text-sm text-grey05 mb-3'>
                 <div className='flex flex-1 items-center'>
                     <div className='border w-4 h-4 rounded-full mr-2 flex justify-center items-center' onClick={() => checkBox(check, setCheck, 1, false)}>
-                        {check[1] && <div className='rounded bg-m' style={{ width: "10px", height: "10px" }}></div>}
+                        {check[1] && <div className='rounded-full bg-m' style={{ width: "10px", height: "10px" }}></div>}
                     </div>
                     <div>(필수) 모두 동의 합니다.</div>
                 </div>
@@ -165,7 +165,7 @@ const index = () => {
             <div className='flex text-sm text-grey05 mb-3'>
                 <div className='flex flex-1 items-center'>
                     <div className='border w-4 h-4 rounded-full mr-2 flex justify-center items-center' onClick={() => checkBox(check, setCheck, 2, false)}>
-                        {check[2] && <div className='rounded bg-m' style={{ width: "10px", height: "10px" }}></div>}
+                        {check[2] && <div className='rounded-full bg-m' style={{ width: "10px", height: "10px" }}></div>}
                     </div>
                     <div>(필수) 개인정보 수집 및 동의</div>
                 </div>
@@ -175,7 +175,7 @@ const index = () => {
             <div className='flex text-sm text-grey05 mb-3'>
                 <div className='flex flex-1 items-center'>
                     <div className='border w-4 h-4 rounded-full mr-2 flex justify-center items-center' onClick={() => checkBox(check, setCheck, 3, false)}>
-                        {check[3] && <div className='rounded bg-m' style={{ width: "10px", height: "10px" }}></div>}
+                        {check[3] && <div className='rounded-full bg-m' style={{ width: "10px", height: "10px" }}></div>}
                     </div>
                     <div>(필수) 마케팅 수신 동의</div>
                 </div>

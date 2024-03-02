@@ -19,6 +19,7 @@ export const Input = styled.input`
     background-color: #F4F5FA;
     margin-bottom: 20px;
     padding-left: 13px;
+    font-size: 10px;
 `
 export const Name = styled.div`
     font-weight: 500;

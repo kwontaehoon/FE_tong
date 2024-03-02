@@ -29,6 +29,7 @@ const index = () => {
     year: new Date().getFullYear(),
     peopleCount: 0,
   });
+  console.log("info: ", info);
 
   return isSuccess && (
     <div className='bg-bg'>

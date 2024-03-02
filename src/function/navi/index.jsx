@@ -7,11 +7,14 @@ import {
 } from './styles'
 import { useNavigate } from 'react-router-dom'
 import { useCategoryStore } from '../../store/Category'
+import { useLoginStore } from '../../store/LoginFlag'
+import { loginFlag } from '../../utill/LoginFlag'
 
 const index = () => {
 
     const navigate = useNavigate();
     const openCategoryModal = useCategoryStore((state) => state.setOpen);
+    const openLoginModal = useLoginStore((state) => state.setOpen);
 
     return (
         <Icon>
@@ -19,7 +22,11 @@ const index = () => {
                 <img src="/svg/Nav_reservation.svg"></img>
                 <House>예약</House>
             </Icon_Box>
-            <Icon_Box onClick={()=>navigate("/mypage")}>    
+            <Icon_Box onClick={()=>{
+                if(loginFlag()){
+                    navigate("/mypage")
+                }else openLoginModal(true);
+            }}>    
                 <img src="/svg/Nav_mypage.svg"></img>
                 <House>마이</House>
             </Icon_Box>
@@ -33,7 +40,11 @@ const index = () => {
                 </div>
                 <House></House>
             </Icon_Box>
-            <Icon_Box onClick={()=>navigate("/myActive")}>
+            <Icon_Box onClick={()=>{
+                if(loginFlag()){
+                    navigate("/myActive");
+                }else openLoginModal(true);
+            }}>
                 <img src="/svg/Nav_wish.svg"></img>
                 <House>찜</House>
             </Icon_Box>

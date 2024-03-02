@@ -24,7 +24,7 @@ const index = () => {
         <Bottom commentList={commentList.content.filter(x=>x.board.boardId == id)}/>
         <div className='bg-white flex items-center py-4 px-3'>
           <div className='flex relative w-full items-center'>
-            <input className='bg-grey07 w-full h-14 rounded-full p-4'
+            <input className='bg-bg w-full h-14 rounded-full p-4 text-xs'
               placeholder='답글을 입력하세요.'>
             </input>
             <img src="/svg/Send.svg" className='absolute right-4' />

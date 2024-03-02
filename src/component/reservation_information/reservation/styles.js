@@ -15,7 +15,7 @@ export const Information_Container = styled.div`
     border-radius: 8px;
 `
 export const Information = styled.div`
-    font-size: 14px;
+    font-size: 10px;
     color: #73787E;
     margin-bottom: 8px;
 `
@@ -24,14 +24,14 @@ export const Input = styled.input`
     height:20px;
     font-size: 14px;
     margin-left: 10px;
-    background: #E9EBED;
+    background: #F4F5FA;
     
 `
 export const Input_Box = styled.div`
     border-radius: 8px;
     display: flex;
     align-items: center;
-    background: #E9EBED;
+    background: #F4F5FA;
     height: 46px;
     margin-bottom: 8px;
 `
