@@ -23,7 +23,7 @@ const Header = ({ noBtn, noArrow, noClose, padding, title, search, wish, func, c
           {wish.data ? <img src='/svg/heart_red.svg' /> : <img src='/svg/heart_2.svg' />}
           </div>}
         
-        {search && <img src='/svg/search.svg' onClick={func} />}
+        {search && <img src='/svg/search.svg' onClick={()=>navigate("/search")} />}
 
         {check && <img src='/svg/check.svg' onClick={func} />}
       </div>

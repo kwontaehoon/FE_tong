@@ -100,12 +100,13 @@ const index = () => {
         <Icon3 src="./svg/gravity-ui_chevron-right.png" alt='더보기아이콘' onClick={()=>navigate("/board")}></Icon3>
       </Comment>
       <Bottom>
-        <P4 onClick={()=>openExpireModal(true)}>회원탈퇴</P4>
+        <P4 onClick={()=>navigate("/expire")}>회원탈퇴</P4>
         <Left style={{ gap: '4px', alignItems: 'end' }}>
           <P4 onClick={()=>{ localStorage.removeItem("token"); navigate("/"); window.location.reload();}}>로그아웃</P4>
           <Icon3 src="./svg/line-md_arrow-close-right.png" alt='로그아웃아이콘'></Icon3>
         </Left>
       </Bottom> 
+      <div className='h-24' />
       <Navi />
     </Div>
   )

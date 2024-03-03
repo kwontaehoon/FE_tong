@@ -13,6 +13,7 @@ import {
 import { useSearchRecommendListQuery, useSearchResultListMutation } from '../../hooks/queries/api/Search'
 import { useNavigate } from 'react-router-dom'
 import Header from '../../function/header'
+import Spinner from '../../function/spinner'
 
 const index = () => {
 
@@ -20,7 +21,7 @@ const index = () => {
 
     const { data: recommendList, isSuccess } = useSearchRecommendListQuery();
 
-    const { mutateAsync: result, data: resultList } = useSearchResultListMutation();
+    const { mutateAsync: result, data: resultList, isLoading: resultLoading } = useSearchResultListMutation();
 
     const [info, setInfo] = useState('');
 
@@ -32,7 +33,7 @@ const index = () => {
         }
     }, [resultList]);
 
-    return isSuccess && (
+    return resultLoading ? <Spinner /> : isSuccess && (
         <Container>
             <Header title="검색" />
             <Search_Box>

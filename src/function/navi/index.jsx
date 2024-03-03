@@ -18,13 +18,13 @@ const index = () => {
 
     return (
         <Icon>
-            <Icon_Box onClick={()=>navigate("/reservation")}>
+            <Icon_Box onClick={()=>navigate("/reservation", { replace: true })}>
                 <img src="/svg/Nav_reservation.svg"></img>
                 <House>예약</House>
             </Icon_Box>
             <Icon_Box onClick={()=>{
                 if(loginFlag()){
-                    navigate("/mypage")
+                    navigate("/mypage", { replace: true })
                 }else openLoginModal(true);
             }}>    
                 <img src="/svg/Nav_mypage.svg"></img>
@@ -32,7 +32,7 @@ const index = () => {
             </Icon_Box>
             <Icon_Box>
                 <div className='absolute left-25% -top-6 flex justify-center items-center flex-col'
-                    onClick={()=>navigate("/")}>
+                    onClick={()=>navigate("/", { replace: true })}>
                     <Home>
                         <img src="/svg/Nav_home.svg"></img>
                     </Home>
@@ -42,7 +42,7 @@ const index = () => {
             </Icon_Box>
             <Icon_Box onClick={()=>{
                 if(loginFlag()){
-                    navigate("/myActive");
+                    navigate("/myActive", { replace: true });
                 }else openLoginModal(true);
             }}>
                 <img src="/svg/Nav_wish.svg"></img>

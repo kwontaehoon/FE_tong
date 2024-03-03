@@ -23,7 +23,7 @@ export const FAQ_Box = styled.div`
 `
 export const Besides = styled.div`
     border: 1px solid;
-    padding: 8px 8px;
+    padding: 8px 12px;
     border-radius: 40px;
     margin-right: 8px;
     font-size: 14px;

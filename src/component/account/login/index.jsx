@@ -100,13 +100,19 @@ const index = () => {
             <Logo><img src="/svg/Logo.svg" className='w-44' /></Logo>
 
             <Id placeholder='아이디' onChange={(e) => setInfo({ ...info, id: e.target.value })}></Id>
-            <Pwd type='password' placeholder='비밀번호' onChange={(e) => setInfo({ ...info, password: e.target.value })}></Pwd>
+            <Pwd type='password' placeholder='비밀번호' onChange={(e) => setInfo({ ...info, password: e.target.value })}
+                onKeyPress={(e)=>{
+                    if (e.key === 'Enter') {
+                        login(info);
+                    }}}>
+            </Pwd>
             {validation && <div className='text-xs my-3 text-valid'>아이디 또는 비밀번호를 잘못 입력했습니다. 다시 확인해주세요.</div>}
             <Login $validation={validation} onClick={()=>login(info)}>로그인</Login>
             <Minibox>
                 <ID_find onClick={() => navigate("/findId")}>아이디</ID_find>
                 <img src="/svg/Line 2.svg" />
-                <Pwd_find onClick={() => navigate("/findPwd")}>비밀번호</Pwd_find>
+                <Pwd_find onClick={() => navigate("/findPwd")}>비밀번호
+                </Pwd_find>
                 <img src="/svg/Line 2.svg" />
                 <Signup onClick={() => navigate("/signup")}>회원가입</Signup>
             </Minibox>

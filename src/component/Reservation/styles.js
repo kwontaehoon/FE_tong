@@ -4,13 +4,15 @@ export const Container = styled.div`
     padding-bottom: 102px;
     background-color: #F4F5FA;
 `
-export const Jangi = styled.div`
+export const Scroll = styled.div`
     display: flex;
-    align-items: end;
-    font-size: 24px;
-    font-weight: 700;
-    background-color: white;
-    padding: 20px;
+    overflow-x: scroll;
+    white-space: nowrap;
+    padding: 0px 20px;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
 `
 export const IMG = styled.div`
     border-top-right-radius: 20px;

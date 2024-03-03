@@ -2,6 +2,9 @@ import styled from "styled-components";
 
 export const Cotainer = styled.div`
 width: 100%;
+display: flex;
+flex-direction: column;
+height: 100%;
 
 background: #F4F5FA;
 `
@@ -48,8 +51,7 @@ margin: 0;
 padding: ${props => props.$pa};
 border-radius: 8px;
 background: #F4F5FA;
-margin-top: ${ props => props.mt};
-
+margin-top: ${props => props.mt};
 `
 export const Li = styled.li`
 color: #73787E;
@@ -65,22 +67,24 @@ list-style: none;
 `
 export const Li2 = styled(Li)`
 margin-bottom: 6px;
+display: flex;
+align-items: center;
 `
 export const Span = styled.span`
 color: #007CFF;
 `
 export const BtnOut = styled.button`
 display: flex;
-width: 95%;
-padding: 21px 10px;
+width: 100%;
+height: 51px;
 justify-content: center;
 align-items: center;
 font-family: "Noto Sans KR";
 font-size: 20px;
 font-weight: 700;
 border-radius: 8px;
-background: #E9EBED;
-color: #9FA4A9;
+background-color: ${props => props.$bg ? "#007CFF" : "#E9EBED"};
+color: ${props => props.$bg ? 'white' : '#9FA4A9'};
 box-shadow: 4px 4px 20px 0px rgba(0, 0, 0, 0.05);
 border: 1px solid var(--point-Grayscale-07, #E9EBED);
 `
