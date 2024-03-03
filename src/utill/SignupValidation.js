@@ -27,6 +27,10 @@ export const signupValidation = (info, validation, setValidation, idCheckFlag, c
         arr = { ...arr, email: false, emailForm: true};
     }
 
+    if(info.birth.length !== 6){
+        arr = { ...arr, birthLength: true};
+    }
+
     // if(info.name == ''){
     //     arr = { ...arr, name: true };
     // }

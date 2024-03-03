@@ -32,7 +32,7 @@ const index = () => {
   return (
     <Component>
       
-      <Header title="비밀번호 변경" />
+      <Header noClose title="비밀번호 변경" />
 
       <Information>아래 정보를 입력하여 비밀번호를 재설정 해주세요.</Information>
 

@@ -23,7 +23,6 @@ const index = () => {
   const [validation, setValidation] = useState(false);
 
   const { mutate: findPassword, data: findPasswordData } = useFindPasswordMutation();
-  console.log(findPasswordData);
 
   useEffect(()=>{
     if(findPasswordData){
@@ -37,7 +36,7 @@ const index = () => {
   return (
     <Component>
       
-      <Header title="비밀번호 찾기" />
+      <Header noClose title="비밀번호 찾기" closeUrl="/login" />
 
       <Information>
         <img src="svg/Frame 169.svg" />

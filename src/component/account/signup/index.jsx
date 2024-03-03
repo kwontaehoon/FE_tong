@@ -15,12 +15,16 @@ import { checkBox } from '../../../utill/CheckBox';
 import { useIdCheckMutation, useSignupMutation } from '../../../hooks/queries/api/Account';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Header from '../../../function/header';
+import { useTermStore, usePrivacyStore } from '../../../store/Account';
 
 const index = () => {
 
     const navigate = useNavigate();
 
     const state = useLocation().state;
+
+    const openTermModal = useTermStore((state) => state.setOpen);
+    const openPrivacyModal = usePrivacyStore((state) => state.setOpen);
 
     const [info, setInfo] = useState({
         id: '',
@@ -29,7 +33,7 @@ const index = () => {
         email: state ? state : '',
         user_role: 'user',
         name: '',
-        birth: ''
+        birth: '',
     });
 
     const [validation, setValidation] = useState({
@@ -42,7 +46,8 @@ const index = () => {
         email: false,
         emailForm: false,
         name: false,
-        birth: false
+        birth: false,
+        birthLength: false
     });
 
     const [idCheckFlag, setIdCheckFlag] = useState(false);
@@ -64,7 +69,7 @@ const index = () => {
 
     return (
         <Container>
-            <Header noArrow />
+            <Header noClose />
             <Gimpo>김포 운통장에 오신걸 환영합니다!</Gimpo>
             <Enterinformation>
                 아래 정보를 입력하여 회원가입을 완료해주세요.
@@ -81,7 +86,7 @@ const index = () => {
                         }}>
                     </Information>
                 </div>
-                <IdCheck $flag={idCheckData?.data?.status} onClick={() => idCheckFlag ? '' : idCheck({ id: info.id })}>중복확인</IdCheck>
+                <IdCheck $flag={idCheckFlag && idCheckData?.data?.status} onClick={() => idCheckFlag ? '' : idCheck({ id: info.id })}>중복확인</IdCheck>
             </div>
             {validation.idCheck && <div className='text-xs my-3 text-valid'>이미 가입한 아이디입니다.</div>}
             {validation.id && <div className='text-xs my-3 text-valid'>아이디를 입력해 주세요.</div>}
@@ -136,59 +141,51 @@ const index = () => {
             <Information placeholder='6자리 입력' maxLength={6}
                 onChange={(e) => {
                     setInfo({ ...info, birth: e.target.value });
-                    setValidation({ ...validation, birth: false });
+                    setValidation({ ...validation, birth: false, birthLength: false });
                 }}>
             </Information>
             {validation.birth && <div className='text-xs my-3 text-valid'>생년월일을 입력해 주세요.</div>}
+            {validation.birthLength && <div className='text-xs my-3 text-valid'>생년월일을 다시 확인해주세요.</div>}
 
             <Terms>이용약관</Terms>
             <div className='flex text-sm text-grey04 mb-3'>
                 <div className='flex flex-1 items-center'>
-                    <div className='border w-4 h-4 rounded-full mr-2 flex justify-center items-center' onClick={() => checkBox(check, setCheck, 0, true)}>
-                        {check[0] && <div className='rounded-full bg-m' style={{ width: "10px", height: "10px" }}></div>}
+                    <div className='mr-1' onClick={() => checkBox(check, setCheck, 0, true)}>
+                        {check[0] ? <img src="/svg/check_blue.svg" /> : <img src="/svg/check.svg" />}
                     </div>
                     <div>모두 동의 합니다.</div>
                 </div>
-                <div className='mr-2'>보기</div>
-                <img src="/svg/Arrow_right.svg" />
             </div>
             <div className='flex text-sm text-grey05 mb-3'>
                 <div className='flex flex-1 items-center'>
-                    <div className='border w-4 h-4 rounded-full mr-2 flex justify-center items-center' onClick={() => checkBox(check, setCheck, 1, false)}>
-                        {check[1] && <div className='rounded-full bg-m' style={{ width: "10px", height: "10px" }}></div>}
+                    <div className='mr-1' onClick={() => checkBox(check, setCheck, 1, false)}>
+                        {check[1] ? <img src="/svg/check_blue.svg" /> : <img src="/svg/check.svg" />}
                     </div>
-                    <div>(필수) 모두 동의 합니다.</div>
+                    <div>(필수) 이용약관</div>
                 </div>
                 <div className='mr-2'>보기</div>
-                <img src="/svg/Arrow_right.svg" />
+                <img src="/svg/Arrow_right.svg" onClick={()=>openTermModal(true)} />
             </div>
             <div className='flex text-sm text-grey05 mb-3'>
                 <div className='flex flex-1 items-center'>
-                    <div className='border w-4 h-4 rounded-full mr-2 flex justify-center items-center' onClick={() => checkBox(check, setCheck, 2, false)}>
-                        {check[2] && <div className='rounded-full bg-m' style={{ width: "10px", height: "10px" }}></div>}
+                    <div className='mr-1' onClick={() => checkBox(check, setCheck, 2, false)}>
+                        {check[2] ? <img src="/svg/check_blue.svg" /> : <img src="/svg/check.svg"/>}
                     </div>
                     <div>(필수) 개인정보 수집 및 동의</div>
                 </div>
                 <div className='mr-2'>보기</div>
-                <img src="/svg/Arrow_right.svg" />
-            </div>
-            <div className='flex text-sm text-grey05 mb-3'>
-                <div className='flex flex-1 items-center'>
-                    <div className='border w-4 h-4 rounded-full mr-2 flex justify-center items-center' onClick={() => checkBox(check, setCheck, 3, false)}>
-                        {check[3] && <div className='rounded-full bg-m' style={{ width: "10px", height: "10px" }}></div>}
-                    </div>
-                    <div>(필수) 마케팅 수신 동의</div>
-                </div>
-                <div className='mr-2'>보기</div>
-                <img src="/svg/Arrow_right.svg" />
+                <img src="/svg/Arrow_right.svg" onClick={()=>openPrivacyModal(true)} />
             </div>
 
             {<Signup $ok={Object.values(info).every(value => value !== "" && check.every(element => element === true) && idCheckFlag)}
                 onClick={() => {
                     if(Object.values(info).every(value => value !== "" && check.every(element => element === true) && idCheckFlag)){
+                        window.scrollTo({
+                            top: 0,
+                        });
                         signupValidation(info, validation, setValidation, idCheckFlag, () => {
                             signup(info);
-                            navigate("/main");
+                            navigate("/login");
                         });
                     }
                 }}>회원가입

@@ -95,7 +95,7 @@ const index = () => {
     return (
         <Container>
 
-            <Header noArrow />
+            <Header noArrow closeUrl="/" />
 
             <Logo><img src="/svg/Logo.svg" className='w-44' /></Logo>
 

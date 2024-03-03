@@ -10,6 +10,17 @@ const slideOut = keyframes`
   to { transform: translateX(100%); }
 `;
 
+const slideYIn = keyframes`
+  from { transform: translateY(100%); }
+  to { transform: translateY(0%); }
+`;
+
+const slideYOut = keyframes`
+  from { transform: translateY(0%); }
+  to { transform: translateY(100%); }
+`;
+
+
 const MC = styled.div`
     position: fixed;
     top: 0;
@@ -66,17 +77,23 @@ const MCMobile = styled.div`
     display: flex;
     justify-content: center;
     align-items: end;
-    z-index: 900;
+    z-index: 999;
+    visibility: ${props => props.$show ? 'visible' : 'hidden'};
+    transition: 0.3s;
 `
 const MSCMobile = styled.div`
     position: absolute;
+    bottom: 0;
     width: 100%;
-    padding: 30px 20px;
-    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
     background-color: rgb(255, 255, 255);
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+    font-size: 12px;
+    animation: ${props => props.$show ? slideYIn : slideYOut} 0.3s ease-in-out forwards;
 `
 const MCCMobile = styled.div`
     position: fixed;

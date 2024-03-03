@@ -36,7 +36,7 @@ const index = () => {
   return (
     <Component>
       
-      <Header noArrow title="아이디 찾기" />
+      <Header noClose title="아이디 찾기" closeUrl="/login" />
 
       <Information>아래 정보를 입력하여 아이디 찾기를 완료해주세요.</Information>
 
