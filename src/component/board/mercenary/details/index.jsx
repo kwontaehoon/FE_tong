@@ -2,17 +2,16 @@ import React, { useEffect } from 'react'
 import Title from './title'
 import Center from './center'
 import Bottom from './bottom'
-import Header from '../../function/header'
-import { useBoardDetailsQuery } from '../../hooks/queries/api/Board'
+import Header from '../../../../function/header'
+import { useBoardDetailsQuery } from '../../../../hooks/queries/api/Board'
 import { useParams } from 'react-router-dom'
-import { useCommentListQuery } from '../../hooks/queries/api/Comment'
+import { useCommentListQuery } from '../../../../hooks/queries/api/Comment'
 
 const index = () => {
 
   const { id } = useParams();
 
   const { data: boardList, isSuccess: boardSuccess} = useBoardDetailsQuery(id);
-  console.log("boardList: ", boardList);
 
   const { data: commentList, isSuccess: commentSuccess } = useCommentListQuery();
 

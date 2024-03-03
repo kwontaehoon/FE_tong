@@ -47,7 +47,7 @@ const index = () => {
       {tab[1] && <Board />}
       {tab[2] && <Comment />}
       
-      <div className='h-20' />
+      <div className='h-24' />
       <Navi />
     </Container>
   )

@@ -22,9 +22,16 @@ import Mypage_info from '../component/mypage_info'
 import Expire from '../component/expire'
 import MyInfo from '../component/mypage/myInfo'
 
-import Board from '../component/board'
+import Board from '../component/board/team'
+import Board_details from '../component/board/team/details'
+import Mercenary from '../component/board/mercenary'
+import Mercenary_details from '../component/board/mercenary/details'
+import Notice from '../component/board/notice'
+import Notice_details from '../component/board/notice/details'
+import Faq from '../component/board/faq'
+
 import BoardWrite from '../component/board/boardWrite'
-import Saving_details from '../component/saving_details'
+
 import MyActive from '../component/myActive'
 import App from "../App"
 
@@ -68,11 +75,27 @@ export const router = createBrowserRouter([
                 path: "/board",
                 children: [
                     { index: true, element: <Board /> },
-                    { path: ":id", element: <Saving_details /> }
+                    { path: ":id", element: <Board_details /> }
                 ]
             },
+            {
+                path: "/mercenary",
+                children: [
+                    { index: true, element: <Mercenary /> },
+                    { path: ":id", element: <Mercenary_details /> }
+                ]
+            },
+            { 
+                path: "/notice",
+                children: [
+                    { index: true, element: <Notice /> },
+                    { path: ":id", element: <Notice_details /> }
+                ]
+            },
+            { path: "/faq", element: <Faq /> },
             { path: "/boardWrite", element: <BoardWrite /> },
             { path: "/myActive", element: <MyActive /> },
+            
         ]
     },
 ])

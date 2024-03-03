@@ -28,7 +28,7 @@ const index = () => {
         <Recruitment />
         <Information />
       </div> : <Spinner />}
-      <div className='h-20' />
+      <div className='h-24' />
       <Navi />
     </div>
   )

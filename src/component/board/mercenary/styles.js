@@ -1,10 +1,34 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    padding: 20px 0px;
+    background-color: #F4F5FA;
 ` 
+export const TabBox = styled.div`
+    height: 68px;
+    padding: 10px 10px 0px 10px;
+    background-color: white;
+`
+export const Tab = styled.div`
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: ${props => props.$border ? '3px solid #007CFF' : ''};
+`
+export const Choice_Box = styled.div`
+    display: flex;
+    justify-content: right;
+    align-items: end;
+    margin-top: 10px;
+    margin-right: 20px;
+`
+export const Choice = styled.div`
+    color: #73787E;
+    font-size: 14px;
+    margin-right: 4px;
+`
 export const Recruitment_Box = styled.div`
-    margin-bottom: 10px;
+    margin-top: 10px;
     background-color: white;
     padding: 20px 20px 12px 20px;
 `

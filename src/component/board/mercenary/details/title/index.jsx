@@ -9,7 +9,7 @@ import {
   TongTong,
   Days
 } from './styles'
-import { dateDiff } from '../../../utill/DateDiff';
+import { dateDiff } from '../../../../../utill/DateDiff';
 
 const index = ({boardList}) => {
 

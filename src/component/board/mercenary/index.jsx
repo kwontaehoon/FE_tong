@@ -1,6 +1,10 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
     Container,
+    TabBox,
+    Tab,
+    Choice_Box,
+    Choice,
     Recruitment_Box,
     Recruitment,
     Text,
@@ -15,19 +19,46 @@ import { useBoardListQuery } from '../../../hooks/queries/api/Board';
 import moment from 'moment';
 import { dateDiff } from '../../../utill/DateDiff'
 import { loginFlag } from '../../../utill/LoginFlag';
+import Header from '../../../function/header';
+import { boardTabText } from '../../../constants/text/api/Board';
+import Navi from '../../../function/navi'
 
 const index = () => {
 
     const navigate = useNavigate();
 
+    const tab = Array(4).fill().map((_, index) => index === 1);
+
     const { data, isSuccess, refetch } = useBoardListQuery();
 
-    useEffect(()=>{
+    useEffect(() => {
         refetch();
     }, [navigate]);
 
     return isSuccess && (
         <Container>
+            <Header padding title="게시판" />
+            <TabBox>
+                <div className='h-full flex'>
+                    {boardTabText.map((x, index) => {
+                        return (
+                            <Tab key={x.id} $border={tab[index]}
+                                onClick={() => {
+                                    switch (index) {
+                                        case 0: return navigate("/board");
+                                        case 2: return navigate("/notice");
+                                        case 3: return navigate("/faq");
+                                    }
+                                }}>{x.content}
+                            </Tab>
+                        )
+                    })}
+                </div>
+            </TabBox>
+            <Choice_Box>
+                <Choice>최신순</Choice>
+                <img src="svg/down_arrow.svg"></img>
+            </Choice_Box>
             {data?.content?.filter(x => x.category.includes("용병")).map((x, index) => {
                 return (
                     <Recruitment_Box key={x.boardId} onClick={() => navigate(`${x.boardId}`)}>
@@ -51,6 +82,8 @@ const index = () => {
                     onClick={() => navigate("/boardWrite", { state: '용병' })}>
                     <img src="/svg/Pencil_Icon.svg" />
                 </div>}
+            <div className='h-24' />
+            <Navi />
         </Container>
     )
 }
