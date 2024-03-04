@@ -16,28 +16,27 @@ const index = () => {
 
     return (
         <Container>
-            <Help>
+            <Help> 
                 <Help_Question>
-                    <Question>운통장</Question>
-                    <div className='ml-2 text-xl text-ms font-bold'>MENU</div>
+                    <Question>MENU</Question>
+                    <div className='ml-1 text-xs flex flex-col justify-end'>카테고리</div>
                 </Help_Question>
                 <IconBox>
                     <Button>
-                        <img src="svg/Playground_1.svg"></img>
-                        <Name>운동장</Name>
-                    </Button>
-
-                    <Button>
-                        <img src="svg/Cloud.svg"></img>
-                        <Name>스케쥴</Name>
-                    </Button>
-                    <Button onClick={()=>navigate("/reservation")}>
-                        <img src="svg/Reservation.svg"></img>
+                        <img src="/svg/main_reservation.svg"></img>
                         <Name>예약</Name>
                     </Button>
+                    <Button>
+                        <img src="/svg/main_ground.svg"></img>
+                        <Name>운동장찾기</Name>
+                    </Button>
+                    <Button onClick={()=>navigate("/reservation")}>
+                        <img src="/svg/main_team.svg" style={{width: "36px", height: "36px"}}></img>
+                        <Name>팀구하기</Name>
+                    </Button>
                     <Button onClick={()=>navigate("/board")}>
-                        <img src="svg/Community.svg"></img>
-                        <Name>커뮤니티</Name>
+                        <img src="/svg/main_mercenary.svg"></img>
+                        <Name>용병구하기</Name>
                     </Button>
                 </IconBox>
             </Help>

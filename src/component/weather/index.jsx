@@ -32,11 +32,11 @@ const index = ({reservation, data}) => {
     }, [])
 
     return (
-        <div className='flex font-sm'>
-            {!reservation && <div className='flex'>
+        <div className='flex'>
+            {!reservation && <div className='flex items-center'>
                 {weatherList && weatherStatus(weatherList)}
-                {<div className='text-grey05 ml-2 mr-1'>현재날씨</div>}
-                <div>{weatherList?.temp}º</div>
+                {<div className='ml-2 text-sm font-medium' style={{marginRight: "6px"}}>현재온도</div>}
+                <div className='text-sm'>{weatherList?.temp}º</div>
                 {/* <div>강수: {weatherList?.rain}</div>
                 <div>하늘: {weatherList?.sky}</div> */}
             </div>}

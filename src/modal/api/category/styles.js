@@ -9,7 +9,7 @@ background:rgba(0,0,0,0.5);
 `
 export const Bar = styled.div`
 width: 100%;
-height:50px;
+height:46px;
 background:#f5f5f5;
 display: flex;
 align-items: center;

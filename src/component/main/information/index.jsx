@@ -16,8 +16,6 @@ const index = () => {
     <Container>
       <Information_Box>
         <Policy>
-          <Inquiry>고객센터</Inquiry>
-          <div className='text-grey06' style={{margin: "0px 10px"}}>|</div>
           <Inquiry>이용약관</Inquiry>
           <div className='text-grey06' style={{margin: "0px 10px"}}>|</div>
           <PrivatePolicy>개인정보처리방침</PrivatePolicy>

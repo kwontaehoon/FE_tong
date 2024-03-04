@@ -2,28 +2,26 @@ import styled from "styled-components";
 
 export const Container = styled.div`
     background-color: white;
-    border-radius: 16px;
-    padding: 18px 20px;
-    margin-top: 12px;
+    border-radius: 8px;
+    padding: 18px;
+    margin-top: 18px;
 `
 
 export const Help = styled.div`
-    margin-top: 12px;
 `
 
 export const Help_Question = styled.div`
     display: flex;
-    align-items: center;
 `
 
 export const Question = styled.div`
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 700;
 `
 
 export const IconBox = styled.div`
     display: flex;
-    margin-top: 20px;
+    margin-top: 10px;
     justify-content: space-between;
 `
 
@@ -34,12 +32,11 @@ export const Button = styled.div`
     align-items: center;
     justify-content: center;
     flex-direction: column;
-
+    border-radius: 8px;
 `
 
 export const Name = styled.div`
     margin-top: 8px;
-    font-size: 13px;
-    font-weight: 700;
+    font-size: 12px;
     white-space: nowrap;
 `
