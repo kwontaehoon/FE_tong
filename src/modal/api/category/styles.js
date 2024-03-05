@@ -120,9 +120,10 @@ export const Sec3 = styled(Sec1)`
 export const List = styled.ul`
 list-style: none;
 display: flex;
-justify-content: space-between;
+justify-content: center;
 flex-wrap: wrap;
 padding: 0px;
+gap: 20px;
 `
 
 export const Icon = styled.li`
@@ -131,10 +132,10 @@ font-size: 12px;
 margin-bottom: 8px;
 `
 export const Img = styled.div`
-width: 80px;
-height: 80px;
+width: 70px;
+height: 70px;
 border-radius: 16px;
-background: #f5f5f5;
+background: ${props => props.$none ? "white" : "#f5f5f5"};
 margin-bottom: 5px;
 display: flex;
 align-items: center;
@@ -145,6 +146,7 @@ color:#1B1D1F;
 font-size: 12px;
 text-align: center;
 text-decoration: none;
+margin-top: 2px;
 `
 // 검색어
 export const Weekley = styled.div`

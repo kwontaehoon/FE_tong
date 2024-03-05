@@ -13,6 +13,8 @@ import { dateDiff } from '../../../../../utill/DateDiff';
 
 const index = ({boardList}) => {
 
+  console.log("boardList: ", boardList)
+
   return (
     <Container>
         <Recruitment>{boardList.title}</Recruitment>

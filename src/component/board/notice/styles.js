@@ -19,7 +19,7 @@ export const Tab = styled.div`
 `
 export const Announcement_Box = styled.div`
     padding: 20px;
-    margin-bottom: 10px;
+    margin: 10px 0px;
     border-radius: 8px;
     background-color: white;
 `
@@ -34,12 +34,12 @@ export const Update_Box = styled.div`
 `
 export const Update = styled.div`
     color: #00D4EA;
-    font-size: 14px;
+    font-size: 11px;
 ` 
 export const Update_in = styled.div`
     flex: 1;
 `
 export const Days = styled.div`
     color: #9FA4A9;
-    font-size: 12px;
+    font-size: 11px;
 `

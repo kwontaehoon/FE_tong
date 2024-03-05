@@ -20,19 +20,20 @@ export const Tab = styled.div`
 export const Choice_Box = styled.div`
     display: flex;
     justify-content: right;
-    align-items: end;
+    align-items: center;
     margin-top: 10px;
-    margin-right: 20px;
+    margin-right: 24px;
 `
 export const Choice = styled.div`
     color: #73787E;
-    font-size: 14px;
+    font-size: 12px;
     margin-right: 4px;
 `
 export const Recruitment_Box = styled.div`
-    margin-top: 10px;
+    margin: 10px 20px 10px 20px;
     background-color: white;
-    padding: 20px 20px 12px 20px;
+    padding: 16px 18px;
+    border-radius: 8px;
 `
 export const Recruitment = styled.div`
     display: flex;
@@ -47,23 +48,25 @@ export const Area = styled.div`
 `
 export const Title = styled.div`
     margin-left: 4px;
+    font-size: 13px;
     font-weight: 600;
 `
 export const Text = styled.div`
-    padding: 16px 0px;
+    padding: 6px 0px;
+    padding-left: 6px;
     border-bottom: 1px solid #E9EBED;
     color: #9FA4A9;
-    font-size: 14px;
+    font-size: 11px;
 `
 export const Time_Box = styled.div`
     display: flex;
     align-items: center;
-    margin: 12px 0px;
+    margin-top: 12px;
 `
 export const Time = styled.div`
     flex: 1;
     color: #9FA4A9;
-    font-size: 14px;
+    font-size: 11px;
     padding-left: 6px;
 `
 export const Comment = styled.div`

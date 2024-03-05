@@ -69,7 +69,8 @@ const index = () => {
 
     return (
         <Container>
-            <Header noClose />
+            <Header borderB noClose padding title="회원가입" />
+            <div className='px-5'>
             <Gimpo>김포 운통장에 오신걸 환영합니다!</Gimpo>
             <Enterinformation>아래 정보를 입력하여 회원가입을 완료해주세요.</Enterinformation>
 
@@ -188,6 +189,7 @@ const index = () => {
                     }
                 }}>회원가입
             </Signup>}
+            </div>
         </Container>
     )
 }

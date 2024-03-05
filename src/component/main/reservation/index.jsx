@@ -59,7 +59,7 @@ const index = ({data}) => {
         <div className='flex'>
         {dataArr?.map(x=>{
           return(
-            <div key={x.reservationId} className='flex shadow-custom mr-3 h-24 rounded-lg' style={{padding: "12px 18px", width: "207px"}}>
+            <div key={x.reservationId} className='flex shadow-custom mr-3 ml-1 h-24 rounded-lg' style={{padding: "12px 18px", width: "207px"}}>
                 <img src={`https://tong-bucket.s3.ap-northeast-2.amazonaws.com/${x.reservationFiles[0]?.fileName}`} className='w-16 h-16' />
               <div className='font-bold ml-3 flex-1 flex flex-col justify-center'>
                 <div>{x.title}</div>

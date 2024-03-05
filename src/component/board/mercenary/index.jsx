@@ -57,7 +57,7 @@ const index = () => {
             </TabBox>
             <Choice_Box>
                 <Choice>최신순</Choice>
-                <img src="svg/down_arrow.svg"></img>
+                <img src="svg/down_arrow.svg" className='w-3' />
             </Choice_Box>
             {data?.content?.filter(x => x.category.includes("용병")).map((x, index) => {
                 return (

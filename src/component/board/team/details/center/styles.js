@@ -5,9 +5,6 @@ export const Container = styled.div`
     background-color: white;
     margin-bottom: 10px;
 ` 
-export const Bulletin_Box = styled.div`
-    padding-top: 20px;
-`
 export const Bulletin = styled.div`
 `
 export const Notification = styled.div`

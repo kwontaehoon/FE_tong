@@ -69,7 +69,7 @@ const index = () => {
                 {dummy[index] ? <img src="svg/false_arrow.svg" /> : <img src="/svg/Arrow_bottom.svg" />}
               </div>
             </div>
-            {dummy[index] && <div className='mt-5 rounded-lg bg-bg px-4 py-5'>
+            {dummy[index] && <div className='mt-5 rounded-lg bg-bg px-4 py-5 text-xs text-grey10'>
               <div>123123</div>
               <div>321</div>
             </div>}

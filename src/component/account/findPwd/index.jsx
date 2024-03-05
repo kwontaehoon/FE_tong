@@ -40,7 +40,7 @@ const index = () => {
 
       <div className='px-5'>
         <Information>
-          <img src="svg/Frame 169.svg" className='w-8' />
+          <img src="/svg/find_pwd.svg" className='w-8' />
           <div className='flex flex-col justify-center ml-2 text-xs'>
             <div>기존에 가입하신 이메일을 입력하시면,</div>
             <div>비밀번호 변경하실 수 있습니다.</div>

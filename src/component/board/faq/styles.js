@@ -20,10 +20,12 @@ export const Tab = styled.div`
 export const FAQ_Box = styled.div`
     display: flex;
     align-items: center;
+    justify-content: center;
     padding: 20px;
     background-color: white;
     border-bottom: 1px solid #E9EBED;
     border-top: 1px solid #E9EBED;
+    background-color: #F4F5FA;
 `
 export const Besides = styled.div`
     padding: 8px 12px;
@@ -36,8 +38,8 @@ export const Besides = styled.div`
 export const Reservation_Box = styled.div`
     padding: 20px 36px;
     border-bottom: 1px solid #E9EBED;
-
 `
 export const Reservation = styled.div`
     flex: 1;
+    font-size: 13px;
 `

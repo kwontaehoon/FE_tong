@@ -6,8 +6,8 @@ export const Container = styled.div`
     background-color: white;
 ` 
 export const Recruitment = styled.div`
-    font-size: 22px;
-    font-weight: 600;
+    font-size: 18px;
+    font-weight: 700;
 `
 export const Comment_Box = styled.div`
     margin-top: 15px;
@@ -28,10 +28,11 @@ export const TongTong_Box = styled.div`
 `
 export const TongTong = styled.div`
     font-weight: 600;
+    font-size: 14px;
     margin-left: 10px;
     margin-right: 8px;
 `
 export const Days = styled.div`
     color: #9FA4A9;
-    font-size: 14px;
+    font-size: 12px;
 `

@@ -110,9 +110,7 @@ const index = () => {
             <Login $validation={validation} onClick={()=>login(info)}>로그인</Login>
             <Minibox>
                 <ID_find onClick={() => navigate("/findId")}>아이디</ID_find>
-                <div className='border-grey05 border-l'/>
                 <Pwd_find onClick={() => navigate("/findPwd")}>비밀번호</Pwd_find>
-                <div className='border-grey05 border-l' />
                 <Signup onClick={() => navigate("/signup")}>회원가입</Signup>
             </Minibox>
 

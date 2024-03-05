@@ -12,7 +12,7 @@ const index = () => {
   return (
     <ModalContainer>
         <ModalSubContainer>
-            <div className='text-lg font-bold my-5'>로그인 후 이용해주세요.</div>
+            <div className='text-lg font-bold my-5 flex justify-center'>로그인 후 이용해주세요.</div>
             <div className='flex'>
                 <div className='flex-1 flex items-center justify-center p-4 bg-grey07 mr-2 rounded-lg text-grey05'
                   onClick={()=>openLoginModal(false)}>닫기

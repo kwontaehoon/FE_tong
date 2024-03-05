@@ -6,12 +6,13 @@ import {
     Choice_Box,
     Choice,
     Recruitment_Box,
-    FC,
-    FC_Box,
-    Jangi_FC,
-    Comments_Box,
-    Comment,
-    Activity,
+    Recruitment,
+    Text,
+    Area,
+    Title,
+    Time_Box,
+    Time,
+    Comment
 } from './styles'
 import { useNavigate } from 'react-router-dom';
 import { useBoardListQuery } from '../../../hooks/queries/api/Board';
@@ -56,25 +57,24 @@ const index = () => {
             </TabBox>
             <Choice_Box>
                 <Choice>최신순</Choice>
-                <img src="svg/down_arrow.svg"></img>
+                <img src="/svg/down_arrow.svg" className='w-3' />
             </Choice_Box>
-            <div className='mx-5'>
                 {data?.content?.filter(x => x.category.includes("팀")).map((x, index) => {
                     return (
-                        <Recruitment_Box key={index} onClick={() => navigate(`${x.boardId}`)}>
-                            <FC_Box>
-                                <FC>{x.title}</FC>
-                                <Jangi_FC>{x.content}</Jangi_FC>
-                                <Comments_Box>
-                                    <img src="/svg/eye.svg" className='mr-1' />
-                                    <Comment>{x.hits}</Comment>
-                                    <img src="/svg/comment.svg" className='mr-1' />
-                                    <Comment>{x.recommend}</Comment>
-                                    <Activity>{dateDiff(x.createDate)}</Activity>
-                                </Comments_Box>
-                            </FC_Box>
-                            <img src="svg/Teamwork_5.svg"></img>
-                        </Recruitment_Box>
+                        <Recruitment_Box key={x.boardId} onClick={() => navigate(`${x.boardId}`)}>
+                        <Recruitment>
+                            <Area>장기동</Area>
+                            <Title>{x.title}</Title>
+                        </Recruitment>
+                        <Text>{x.content}</Text>
+                        <Time_Box>
+                            <Time>{dateDiff(x.createDate)}</Time>
+                            <img src="svg/eye.svg" className='mr-1'></img>
+                            <Comment>{x.hits}</Comment>
+                            <img src="svg/comment.svg" className='mr-1'></img>
+                            <Comment>{x.recommend}</Comment>
+                        </Time_Box>
+                    </Recruitment_Box>
                     )
                 })}
                 {loginFlag() &&
@@ -82,7 +82,6 @@ const index = () => {
                         onClick={() => navigate("/boardWrite", { state: '팀' })}>
                         <img src="/svg/Pencil_Icon.svg" />
                     </div>}
-            </div>
             <div className='h-24' />
             <Navi />
         </Container>

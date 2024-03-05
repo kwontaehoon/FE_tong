@@ -55,7 +55,7 @@ const index = () => {
                   </Update_Box>
                   <Days>2024.02.23</Days>
                 </Update_in>
-                <img src="/svg/Arrow_right.svg" onClick={() => navigate(`${index}`)} />
+                <img src="/svg/Arrow_right.svg" className='w-3' onClick={() => navigate(`${index}`)} />
               </div>
             </Announcement_Box>
           )

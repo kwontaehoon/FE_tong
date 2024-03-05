@@ -1,5 +1,5 @@
 import { useQuery, useMutation } from "react-query";
-import { getBoardList, getBoardDetails, postBoardWrite, postMyBoardList } from "../../../service/api/Board";
+import { getBoardList, getBoardDetails, postBoardWrite, postMyBoardList, putBoardUpdate, delBoardDelete } from "../../../service/api/Board";
 
 const BOARD_KEYS = {
   boardList: "boardList",
@@ -44,6 +44,36 @@ export const useBoardWriteMutation = () =>
   useMutation({
     mutationFn: (params) => {
       return postBoardWrite(params);
+    },
+    onSuccess: () => {
+      // 성공 시 실행할 로직 추가
+    }
+  });
+
+/**
+* 게시판 수정
+* 
+*/
+
+export const useBoardUpdateMutation = () =>
+  useMutation({
+    mutationFn: (params) => {
+      return putBoardUpdate(params);
+    },
+    onSuccess: () => {
+      // 성공 시 실행할 로직 추가
+    }
+  });
+
+/**
+* 게시판 삭제
+* 
+*/
+
+export const useBoardDeleteMutation = () =>
+  useMutation({
+    mutationFn: (params) => {
+      return delBoardDelete(params);
     },
     onSuccess: () => {
       // 성공 시 실행할 로직 추가

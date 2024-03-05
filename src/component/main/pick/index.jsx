@@ -14,8 +14,6 @@ const index = ({data}) => {
 
   const [dataArr, setDataArr] = useState();
 
-  console.log(data);
-
   useEffect(()=>{
   }, []);
 

@@ -39,9 +39,7 @@ export const Pwd = styled.input`
     padding-left: 13px;
     box-sizing: border-box;
     background-color: #F4F5FA;
-   
 `
-
 export const Login = styled.div`
     width: 100%;
     height: 51px;
@@ -53,8 +51,7 @@ export const Login = styled.div`
     font-size: 16px;
     color: white;
     background-color: #007CFF;
-` 
-
+`
 export const Minibox = styled.div`
     display: flex;
     margin: 20px 0px;
@@ -69,14 +66,34 @@ export const ID_find = styled.div`
     margin-right: 14px;
 `
 export const Pwd_find = styled.div`
+    position: relative;
     margin-right: 14px;
     margin-left: 14px;
+    &::before {
+    content: '';
+    width: 1px;
+    height: 10px;
+    background: #73787E;
+    position: absolute;
+    left: -30%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+} 
 `
-
 export const Signup = styled.div`
+    position: relative;
     margin-left: 14px;
-` 
-
+    &::before {
+    content: '';
+    width: 1px;
+    height: 10px;
+    background: #73787E;
+    position: absolute;
+    left: -30%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+`
 export const Social_button = styled.div`
     margin: 0px 16px;
 `

@@ -1,7 +1,6 @@
 import styled from "styled-components"
 
 export const Container = styled.div`
-    padding: 0px 20px 20px 20px;
     background-color: white;
 `
 export const Top = styled.div`
@@ -45,7 +44,7 @@ export const IdCheck = styled.div`
     justify-content: center;
     border-radius: 8px;
     background-color: ${props => props.$flag == "success" ? '#007CFF' : '#E9EBED'};
-    font-size: 16px;
+    font-size: 14px;
     color: ${props => props.$flag == "success" ? 'white' : '#9FA4A9'};
 `
 export const Terms = styled.div`
