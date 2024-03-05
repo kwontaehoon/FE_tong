@@ -1,12 +1,11 @@
 import styled from "styled-components"
 
 export const Component = styled.div`
-    padding: 0px 20px 20px 20px;
     background-color: white;
     height: 100%;
 `
 export const Information = styled.div`
-    margin-top: 20px;
+    margin-top: 40px;
     font-weight: 500;
     color: #9FA4A9;
     margin-bottom: 30px;

@@ -78,5 +78,5 @@ export const Signup = styled.div`
 ` 
 
 export const Social_button = styled.div`
-    margin: 0px 20px;
+    margin: 0px 16px;
 `

@@ -32,8 +32,9 @@ const index = () => {
   return (
     <Component>
       
-      <Header noClose title="비밀번호 변경" />
+      <Header noClose title="비밀번호 변경" borderB padding />
 
+      <div className='px-5'>
       <Information>아래 정보를 입력하여 비밀번호를 재설정 해주세요.</Information>
 
       <Name>비밀번호</Name>
@@ -52,7 +53,7 @@ const index = () => {
           }
         }}>변경하기
       </ID>
-
+      </div>
     </Component>
   )
 }

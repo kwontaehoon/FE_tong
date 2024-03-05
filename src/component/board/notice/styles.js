@@ -7,10 +7,11 @@ export const TabBox = styled.div`
     height: 68px;
     padding: 10px 10px 0px 10px;
     background-color: white;
-    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
 `
 export const Tab = styled.div`
-    width: 25%;
+    padding: 0px 16px;
     display: flex;
     justify-content: center;
     align-items: center;

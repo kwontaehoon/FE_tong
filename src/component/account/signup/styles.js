@@ -11,12 +11,12 @@ export const Top = styled.div`
 `
 export const Gimpo = styled.div`
     margin-top: 30px;
-    font-size: 24px;
+    font-size: 18px;
     font-weight: 700;
 `
 export const Enterinformation = styled.div`
     width: 257px;
-    margin-top: 12px;
+    margin-top: 10px;
     margin-bottom: 30px;
     font-size: 13px;
     font-weight: 500;
@@ -34,7 +34,7 @@ export const Information = styled.input`
 export const Title = styled.div`
     font-size: 14px;
     margin-top: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 8px;
     color: #73787E;
 `
 export const IdCheck = styled.div`
@@ -44,13 +44,13 @@ export const IdCheck = styled.div`
     align-items: center;
     justify-content: center;
     border-radius: 8px;
-    background-color: ${props => props.$flag == "success" ? '#007CFF' : ' #F4F5FA'};
+    background-color: ${props => props.$flag == "success" ? '#007CFF' : '#E9EBED'};
     font-size: 16px;
     color: ${props => props.$flag == "success" ? 'white' : '#9FA4A9'};
 `
 export const Terms = styled.div`
     margin-top: 30px;
-    margin-bottom: 30px;
+    margin-bottom: 12px;
     font-size: 16px;
 `
 export const Signup = styled.div`

@@ -1,16 +1,13 @@
 import styled from "styled-components"
 
 export const Component = styled.div`
-    padding: 0px 20px 20px 20px;
     background-color: white;
     height: 100%;
 `
 export const Information = styled.div`
-    margin-top: 12px;
-    font-size: 14px;
-    font-weight: 500;
+    font-size: 12px;
     color: #9FA4A9;
-    margin-top: 20px;
+    margin-top: 40px;
     margin-bottom: 30px;
 `
 export const Input = styled.input`
@@ -18,7 +15,7 @@ export const Input = styled.input`
     height: 46px;
     border-radius: 8px;
     background-color: #F4F5FA;
-    margin-bottom: 20px;
+    margin-bottom: ${props => props.$validation ? '8px' : '20px'};
     padding-left: 13px;
     font-size: 10px;
 `
@@ -26,7 +23,7 @@ export const Name = styled.div`
     font-weight: 500;
     color: #73787E;
     margin-bottom: 8px;
-    font-size: 14px;
+    font-size: 12px;
 `
 
 export const ID = styled.div`

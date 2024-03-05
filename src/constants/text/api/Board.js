@@ -12,7 +12,7 @@ export const myTabText = [
 ];
 
 export const faqCategoryText = [
-    {id: 1, content: "자주찾는 FAQ"},
+    {id: 1, content: "자주찾는질문"},
     {id: 2, content: "회원정보"},
     {id: 3, content: "예약"},
     {id: 4, content: "기타"}

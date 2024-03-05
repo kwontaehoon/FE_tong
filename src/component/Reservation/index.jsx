@@ -53,7 +53,7 @@ const index = () => {
       <Scroll className='flex overflow-scroll whitespace-nowrap bg-white mb-5'>
         {locationText.map((x, index) => {
           return (
-            <div key={x.id} className={'my-5 px-3 py-2 border rounded-full mr-2 text-sm' + (category[index] ? ' bg-m text-white' : '')}
+            <div key={x.id} className={'my-5 px-3 py-2 rounded-full mr-2 text-sm' + (category[index] ? ' bg-grey07' : '')}
               onClick={()=>{
                 let arr = Array(7).fill(false);
                 arr[index] = true;

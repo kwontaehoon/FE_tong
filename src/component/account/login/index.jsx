@@ -97,7 +97,7 @@ const index = () => {
 
             <Header noArrow closeUrl="/" />
 
-            <Logo><img src="/svg/Logo.svg" className='w-44' /></Logo>
+            <Logo><img src="/svg/Logo.svg" className='w-36' /></Logo>
 
             <Id placeholder='아이디' onChange={(e) => setInfo({ ...info, id: e.target.value })}></Id>
             <Pwd type='password' placeholder='비밀번호' onChange={(e) => setInfo({ ...info, password: e.target.value })}
@@ -106,21 +106,20 @@ const index = () => {
                         login(info);
                     }}}>
             </Pwd>
-            {validation && <div className='text-xs my-3 text-valid'>아이디 또는 비밀번호를 잘못 입력했습니다. 다시 확인해주세요.</div>}
+            {validation && <div className='text-xs pl-1 my-3 text-valid'>아이디 또는 비밀번호를 잘못 입력했습니다. 다시 확인해주세요.</div>}
             <Login $validation={validation} onClick={()=>login(info)}>로그인</Login>
             <Minibox>
                 <ID_find onClick={() => navigate("/findId")}>아이디</ID_find>
-                <img src="/svg/Line 2.svg" />
-                <Pwd_find onClick={() => navigate("/findPwd")}>비밀번호
-                </Pwd_find>
-                <img src="/svg/Line 2.svg" />
+                <div className='border-grey05 border-l'/>
+                <Pwd_find onClick={() => navigate("/findPwd")}>비밀번호</Pwd_find>
+                <div className='border-grey05 border-l' />
                 <Signup onClick={() => navigate("/signup")}>회원가입</Signup>
             </Minibox>
 
             <div className='flex justify-center items-center mb-8'>
-                <div className='border w-32 h-0 text-grey-b'></div>
+                <div className='border-b w-32 h-0 text-grey-b'></div>
                 <div className='mx-4 whitespace-nowrap text-grey05' style={{ fontSize: "13px" }}>SNS 계정으로 로그인</div>
-                <div className='border w-32 h-0 text-grey-b'></div>
+                <div className='border-b w-32 h-0 text-grey-b'></div>
             </div>
             <div className='flex justify-center'>
                 <Social_button><img src="/svg/Naver.svg" className='w-12' onClick={naverLogin} /></Social_button>

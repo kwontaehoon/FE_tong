@@ -2,12 +2,12 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { loginFlag } from '../../utill/LoginFlag';
 
-const Header = ({ noBtn, noArrow, noClose, padding, title, search, wish, func, check, closeUrl }) => {
+const Header = ({ noBtn, noArrow, noClose, padding, title, search, wish, func, check, closeUrl, borderB }) => {
 
   const navigate = useNavigate();
 
   return (
-    <div className={'h-12 flex items-center justify-center bg-white relative' + (padding ? ' p-5' : '')}>
+    <div className={'h-12 flex items-center justify-center bg-white relative' + (padding ? ' p-5' : '') + (borderB ? ' border-b border-grey07' : '')}>
       <div className={'absolute' + (padding ? ' left-5' : ' left-0')}>
         {!noBtn && !noArrow && <img src="/svg/Header_arrow_left.svg" onClick={() => navigate(-1)} />}
       </div>

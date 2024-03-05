@@ -7,9 +7,11 @@ export const TabBox = styled.div`
     height: 68px;
     padding: 10px 10px 0px 10px;
     background-color: white;
+    display: flex;
+    justify-content: center;
 `
 export const Tab = styled.div`
-    width: 25%;
+    padding: 0px 16px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,16 +21,17 @@ export const FAQ_Box = styled.div`
     display: flex;
     align-items: center;
     padding: 20px;
-    background-color: #F4F5FA;
+    background-color: white;
+    border-bottom: 1px solid #E9EBED;
+    border-top: 1px solid #E9EBED;
 `
 export const Besides = styled.div`
-    border: 1px solid;
     padding: 8px 12px;
     border-radius: 40px;
     margin-right: 8px;
     font-size: 14px;
-    background-color: ${props => props.$category ? ' #007CFF' : ''};
-    color: ${props => props.$category ? 'white' : ''};
+    background-color: ${props => props.$category ? ' #E9EBED' : ' white'};
+    color: ${props => props.$category ? '' : ''};
 `
 export const Reservation_Box = styled.div`
     padding: 20px 36px;
