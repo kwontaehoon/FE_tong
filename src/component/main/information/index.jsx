@@ -1,7 +1,6 @@
 import React from 'react'
 import {
   Container,
-  Information_Box,
   Inquiry,
   Policy,
   Gimpo,
@@ -14,7 +13,6 @@ import {
 const index = () => {
   return (
     <Container>
-      <Information_Box>
         <Policy>
           <Inquiry>이용약관</Inquiry>
           <div className='text-grey06' style={{margin: "0px 10px"}}>|</div>
@@ -37,7 +35,6 @@ const index = () => {
             by TongTong
           </English>
         </Personal_information>
-      </Information_Box>
     </Container>
   )
 }

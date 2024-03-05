@@ -120,24 +120,25 @@ export const Sec3 = styled(Sec1)`
 export const List = styled.ul`
 list-style: none;
 display: flex;
-justify-content: center;
-/* border: 1px solid red; */
+justify-content: space-between;
+flex-wrap: wrap;
 padding: 0px;
-gap: 40px;
 `
 
 export const Icon = styled.li`
-width: 56px;
 color:#1B1D1F;
 font-size: 12px;
-
+margin-bottom: 8px;
 `
 export const Img = styled.div`
-width: 56px;
-height: 56px;
-border-radius: 999px;
+width: 80px;
+height: 80px;
+border-radius: 16px;
 background: #f5f5f5;
 margin-bottom: 5px;
+display: flex;
+align-items: center;
+justify-content: center;
 `
 export const P = styled.p`
 color:#1B1D1F;

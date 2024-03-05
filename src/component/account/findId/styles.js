@@ -15,8 +15,7 @@ export const Input = styled.input`
     height: 46px;
     border-radius: 8px;
     background-color: #F4F5FA;
-    margin-bottom: ${props => props.$validation ? '8px' : '20px'};
-    padding-left: 13px;
+    padding-left: 10px;
     font-size: 10px;
 `
 export const Name = styled.div`

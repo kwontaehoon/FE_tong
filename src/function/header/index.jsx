@@ -9,23 +9,23 @@ const Header = ({ noBtn, noArrow, noClose, padding, title, search, wish, func, c
   return (
     <div className={'h-12 flex items-center justify-center bg-white relative' + (padding ? ' p-5' : '') + (borderB ? ' border-b border-grey07' : '')}>
       <div className={'absolute' + (padding ? ' left-5' : ' left-0')}>
-        {!noBtn && !noArrow && <img src="/svg/Header_arrow_left.svg" onClick={() => navigate(-1)} />}
+        {!noBtn && !noArrow && <img src="/svg/Header_arrow_left.svg" className='w-5' onClick={() => navigate(-1)} />}
       </div>
       <div className='text-lg font-bold text-center whitespace-nowrap'>{title}</div>
       <div className={'absolute' + (padding ? ' right-5' : ' right-0')}>
-        {!noClose && !noBtn && !wish?.open && !search && !check && <img src="/svg/close.svg"
+        {!noClose && !noBtn && !wish?.open && !search && !check && <img src="/svg/close.svg" style={{width: '18px'}}
           onClick={() =>
             navigate(closeUrl, { replace: true })
             // navigate(`/${closeUrl}`, { replace: true })
           }
         />}
         {loginFlag() && wish?.open && <div onClick={func}>
-          {wish.data ? <img src='/svg/heart_red.svg' /> : <img src='/svg/heart_2.svg' />}
+          {wish.data ? <img src='/svg/heart_red.svg' className='w-5' /> : <img src='/svg/heart_2.svg' className='w-5' />}
           </div>}
         
-        {search && <img src='/svg/search.svg' onClick={()=>navigate("/search")} />}
+        {search && <img src='/svg/search.svg' className='w-5' onClick={()=>navigate("/search")} />}
 
-        {check && <img src='/svg/check.svg' onClick={func} />}
+        {check && <img src='/svg/check.svg' className='w-5' onClick={func} />}
       </div>
     </div>
   )

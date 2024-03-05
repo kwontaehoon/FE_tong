@@ -3,59 +3,59 @@ import {
   Container,
   Ground_Pick,
   Ground,
-  Pick,
   PickContent,
-  Scroll
 } from './styles'
 
 const index = ({data}) => {
 
-  const [flag, setFlag] = useState([]);
+  const set = new Set(data.map(x => x.title));
+
+  const [flag, setFlag] = useState(Array([...set].length).fill(false).map((_, index) => index === 0));
+
+  const [dataArr, setDataArr] = useState();
+
+  console.log(data);
 
   useEffect(()=>{
-    if(data){
-      const arr = Array.from({length: data.length} , ()=>false);
-      arr[0] = true;
-      setFlag(arr);
-    }
   }, []);
 
   return (
     <Container>
-      {data.length == 0 ? '' : <div className='bg-white px-5 py-4 rounded-2xl mb-5'>
+      {data.length == 0 ? '' : <div className='px-5 pt-7 pb-2'>
         <Ground_Pick>
-          <Ground>운통장</Ground>
-          <Pick>MANU</Pick>
+          <Ground>PICK📌</Ground>
+          <div className='flex flex-col justify-end text-xs font-semibold'>운동장 금주 트렌드</div>
         </Ground_Pick>
+        <div className='mb-3 text-grey04 text-xxs'>운통장에서 김포를 이모저모를 소개해 드립니다.</div>
         <div className='flex flex-wrap'>
-          {data.map((x, index) => {
+          {[...set].map((x, index) => {
             return (
-              <PickContent $flag={flag[index]} key={x.pickId} 
+              <PickContent $flag={flag[index]} key={index} 
                 onClick={()=>{
                   const arr = Array(data.length).fill(false);
                   arr[index] = true;
                   setFlag(arr);
-                }}>{x.title}
+                }}>{x}
               </PickContent>
             )
           })}
         </div>
       </div>}
-      <Scroll>
-        <div className='flex'>
-          {data[flag.findIndex(x=>x)]?.pickFiles?.map(x => {
-            return (
-              <div key={x.pickFileId} style={{ height: "244px" }} className='w-44 mr-3 rounded-2xl overflow-hidden'>
-                <div className='h-44'><img src={`https://tong-bucket.s3.ap-northeast-2.amazonaws.com/${x.fileName}`}/></div>
-                <div className='h-16 flex flex-col justify-center p-3 bg-white'>
-                  <div>#제목</div>
-                  <div className='text-grey05' style={{fontSize: "13px"}}>#내용</div>
+        <div className='flex px-5 pb-10'>
+          {data.map((x, index) => {
+            if(x.title == [...set][flag.findIndex(x=>x)]){
+              return (
+                <div key={x.pickId} className={'w-1/2 rounded-2xl overflow-hidden' + (index % 2 == 0 ? ' mr-5' : '')}>
+                  <img src={`https://tong-bucket.s3.ap-northeast-2.amazonaws.com/${x.pickFiles[0].fileName}`} className='w-full h-36' />
+                  <div className='px-4 py-ten flex flex-col justify-center bg-white'>
+                    <div className='text-sm font-semibold'>{x.title}</div>
+                    <div className='text-grey05 text-xs'>{x.content}</div>
+                  </div>
                 </div>
-              </div>
-            )
+              )
+            }
           })}
         </div>
-      </Scroll>
     </Container>
   )
 }

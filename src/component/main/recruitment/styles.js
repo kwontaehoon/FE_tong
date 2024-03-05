@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    
+    margin: 20px 20px 0px 20px;
 `
 export const Recruitment = styled.div`
-    margin-top: 20px;
+    
 `
 export const Soccer_Team = styled.div`
     background-color: white;
@@ -15,22 +15,20 @@ export const Soccer_Team = styled.div`
     margin-bottom: 12px;
 `
 export const Soccer_Team_Box = styled.div`
-    margin-left: 20px;
+    margin-left: 12px;
 `
 export const Soccer = styled.div`
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 700;
-    
 `
 export const Gure = styled.div`
     font-size: 20px;
     font-weight: 700;
 `
 export const Rescue = styled.div`
-    font-size: 13px;
-    color: gray;
-    white-space: pre-wrap;
-    margin-top: 6px;
+    font-size: 12px;
+    color: #9FA4A9;
+    margin-top: 4px;
 `
 export const Icon = styled.div`
     width: 100%;

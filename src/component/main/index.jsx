@@ -8,6 +8,7 @@ import Recruitment from './recruitment'
 import Information from './information'
 import Navi from '../../function/navi'
 import { useBannerListQuery, usePickListQuery, useReservationListQuery } from '../../hooks/queries/api/Main'
+import { useBoardListQuery } from '../../hooks/queries/api/Board'
 import Spinner from '../../function/spinner'
 
 const index = () => {
@@ -15,17 +16,18 @@ const index = () => {
   const { data: bannerList, isSuccess: bannerSuccess } = useBannerListQuery();
   const { data: reservationList, isSuccess: reservationSuccess } = useReservationListQuery();
   const { data: pickList, isSuccess: pickSuccess } = usePickListQuery();
+  const { data: boardList, isSuccess: boardSuccess } = useBoardListQuery();
 
   return (
-    <div className='p-5 pt-0 bg-bg'>
+    <div className='pt-0 bg-bg'>
       <Header />
-      {bannerSuccess && pickSuccess && reservationSuccess ? 
+      {bannerSuccess && pickSuccess && reservationSuccess && boardSuccess ? 
       <div>
         <Banner data={bannerList} />
         <Help />
         <Reservation data={reservationList} />
         <Pick data={pickList} />
-        <Recruitment />
+        <Recruitment data={boardList} />
         <Information />
       </div> : <Spinner />}
       <div className='h-24' />

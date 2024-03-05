@@ -21,7 +21,7 @@ const index = () => {
         <Container>
           <Inner>
             <Bar>
-              <img src="/svg/close.svg" onClick={()=>openCategoryModal(false)} />
+              <img src="/svg/close.svg" style={{width: "18px"}} onClick={()=>openCategoryModal(false)} />
             </Bar>
             {/* 로긴박스 */}
             {loginFlag() ?
@@ -60,19 +60,19 @@ const index = () => {
               <List>
                 <Icon>
                   <a href='#' style={{ textDecoration: 'none' }}>
-                    <Img></Img>
+                    <Img><img src="/svg/main_reservation.svg" /></Img>
                     <P>운통장</P>
                   </a>
                 </Icon>
                 <Icon>
                   <a href='#' style={{ textDecoration: 'none' }}>
-                    <Img></Img>
+                    <Img><img src="/svg/main_ground.svg"/></Img>
                     <P>예약</P>
                   </a>
                 </Icon>
                 <Icon>
                   <a href='#' style={{ textDecoration: 'none' }}>
-                    <Img></Img>
+                    <Img><img src="/svg/category_pick.svg" /></Img>
                     <P>이벤트</P>
                   </a>
                 </Icon>
@@ -85,20 +85,26 @@ const index = () => {
               <List>
                 <Icon>
                   <a href='#'>
-                    <Img></Img>
-                    <P>NOTICE</P>
+                    <Img><img src="/svg/main_team.svg" /></Img>
+                    <P>팀구하기</P>
                   </a>
                 </Icon>
                 <Icon>
                   <a href='#'>
-                    <Img></Img>
-                    <P>FAQ</P>
+                    <Img><img src="/svg/main_mercenary.svg" /></Img>
+                    <P>용병구하기</P>
                   </a>
                 </Icon>
                 <Icon>
                   <a href='#'>
-                    <Img></Img>
-                    <P>FREE</P>
+                    <Img><img src="/svg/category_notice.svg" /></Img>
+                    <P>공지사항</P>
+                  </a>
+                </Icon>
+                <Icon>
+                  <a href='#'>
+                    <Img><img src="/svg/category_faq.svg" /></Img>
+                    <P>F&Q</P>
                   </a>
                 </Icon>
               </List>

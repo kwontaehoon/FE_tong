@@ -21,6 +21,14 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
 }
+.swiper-pagination {
+	position: absolute;
+	bottom: 15px !important;
+	width: auto;
+	left: 20px;
+	font-size: 12px;
+	color: white;
+  }
 a {
     text-decoration: none;
 }

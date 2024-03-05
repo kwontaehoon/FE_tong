@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    padding: 18px 0px;
+    padding: 18px 20px;
 `
 export const Gimpo = styled.div`
     display: flex;
