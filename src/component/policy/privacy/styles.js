@@ -12,7 +12,7 @@ height: 45px;
 border-bottom: 1px solid #E9EBED;
 `
 export const Img = styled.img`
-width: 80px;
+width: ${props => props.$wd};
 `
 
 export const MallTerm = styled.div`
@@ -31,16 +31,12 @@ position: fixed;
     right: 5%;
     z-index: 100;
     margin: 0 0 0 -36px;
-    border: 1px solid #d6d6d7;
     border-top: 0;
-    border-radius: 999px;
-    opacity: 0.8;
-    background: #616161 ;
-    background-size: 12px 12px;
-    padding: 2px 12px;
+    opacity: 0.6;
+    padding: 4px;
     color: #fff;
     font-size: 10px;
-    
+    background: #E9EBED;
 `
 export const BtnArea = styled.div`
     display: flex;

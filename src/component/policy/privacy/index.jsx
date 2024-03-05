@@ -8,7 +8,7 @@ const index = () => {
       <Top><Img src='./svg/Logo.svg' alt='로고'></Img></Top>
        <Header Arrow title={"개인정보처리방침"} padding/>
        <Quick id="btnTop" >
-          <a href="#">TOP ▲</a>
+          <a href="#"><Img src='./images/upload.png' alt='탑' $wd={'30px'}></Img></a>
        </Quick>
       <div class="wrap">
         <MallTerm>
