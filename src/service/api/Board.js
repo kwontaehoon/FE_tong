@@ -1,7 +1,7 @@
 import { client } from "../";
 
 const BOARD_URL = {
-    boardList: '/api/board/getBoardList',
+    boardList: '/api/board/totalBoardList',
     boardDetails: '/api/board/getBoard',
     boardWrite: '/api/board/write',
     boardUpdate: '/api/board/updateBoard',

@@ -23,7 +23,7 @@ const index = () => {
 
     return isSuccess && (
         <Container>
-                <Header title="예약내역" />
+                <Header title="예약내역" noArrow closeUrl={'/'} />
                 <Lorem>{data.title}</Lorem>
                 <Lorem_Text>{data.location}</Lorem_Text>
             <Information_Box>

@@ -41,14 +41,14 @@ const index = () => {
 
         <Name>비밀번호</Name>
         <div className={'flex bg-bg' + (validation ? ' mb-3' : ' mb-5')}>
-          <img src='/svg/account_pwd.svg' className='ml-ten' />
+          <img src='/svg/account_pwd.svg' className='w-3 ml-ten' />
           <Input placeholder='비밀번호를 입력하세요.' onChange={(e) => { setValidation(false); setInfo({ ...info, password: e.target.value }); }}></Input>
         </div>
         {validation && <div className='text-xs mt-2 mb-5 pl-1 text-valid'>비밀번호: 8~16자의 영문 대/소문자, 숫자, 특수문자를 사용해 주세요.</div>}
 
         <Name>비밀번호 확인</Name>
         <div className='flex bg-bg'>
-          <img src='/svg/account_pwd.svg' className='ml-ten' />
+          <img src='/svg/account_pwdCheck.svg' className='w-3 ml-ten' />
           <Input placeholder='비밀번호를 한번더 입력하세요.' onChange={(e) => { setValidation(false); setInfo({ ...info, passwordCheck: e.target.value }); }}></Input>
         </div>
 

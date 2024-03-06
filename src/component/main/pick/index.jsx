@@ -22,7 +22,7 @@ const index = ({data}) => {
       {data.length == 0 ? '' : <div className='px-5 pt-7 pb-2'>
         <Ground_Pick>
           <Ground>PICK📌</Ground>
-          <div className='flex flex-col justify-end text-xs font-semibold'>운동장 금주 트렌드</div>
+          <div className='flex flex-col justify-end text-xs font-semibold text-grey04'>운동장 금주 트렌드</div>
         </Ground_Pick>
         <div className='mb-3 text-grey04 text-xxs'>운통장에서 김포를 이모저모를 소개해 드립니다.</div>
         <div className='flex flex-wrap'>
@@ -39,11 +39,11 @@ const index = ({data}) => {
           })}
         </div>
       </div>}
-        <div className='flex px-5 pb-10'>
+        <div className='flex px-5' style={{paddingBottom: "30px"}}>
           {data.map((x, index) => {
             if(x.title == [...set][flag.findIndex(x=>x)]){
               return (
-                <div key={x.pickId} className={'w-1/2 rounded-2xl overflow-hidden' + (index % 2 == 0 ? ' mr-5' : '')}>
+                <div key={x.pickId} className={'w-1/2 rounded-2xl overflow-hidden shadow-custom' + (index % 2 == 0 ? ' mr-5' : '')}>
                   <img src={`https://tong-bucket.s3.ap-northeast-2.amazonaws.com/${x.pickFiles[0].fileName}`} className='w-full h-36' />
                   <div className='px-4 py-ten flex flex-col justify-center bg-white'>
                     <div className='text-sm font-semibold'>{x.title}</div>

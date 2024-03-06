@@ -37,7 +37,7 @@ const index = () => {
 
     return isSuccess && (
         <Container>
-            <Header padding title="게시판" />
+            <Header padding title="게시판"  arrowUrl={"/"} />
             <TabBox>
                 <div className='h-full flex'>
                     {boardTabText.map((x, index) => {

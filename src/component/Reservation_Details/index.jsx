@@ -29,7 +29,10 @@ const index = () => {
     year: new Date().getFullYear(),
     peopleCount: 0,
   });
-  console.log("info: ", info);
+
+  useEffect(()=>{
+    refetch();
+  }, []);
 
   return isSuccess && (
     <div className='bg-bg'>

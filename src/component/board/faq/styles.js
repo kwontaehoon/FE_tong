@@ -21,7 +21,7 @@ export const FAQ_Box = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px;
+    padding: 12px 20px;
     background-color: white;
     border-bottom: 1px solid #E9EBED;
     border-top: 1px solid #E9EBED;

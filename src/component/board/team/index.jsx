@@ -30,6 +30,7 @@ const index = () => {
     const tab = Array(4).fill().map((_, index) => index === 0);
 
     const { data, isSuccess, refetch } = useBoardListQuery();
+    console.log("data: ", data);
 
     useEffect(() => {
         refetch();
@@ -37,7 +38,7 @@ const index = () => {
 
     return !isSuccess ? <Spinner /> : (
         <Container>
-            <Header padding title="게시판" />
+            <Header padding title="게시판" arrowUrl={"/"} />
             <TabBox>
                 <div className='h-full flex'>
                     {boardTabText.map((x, index) => {

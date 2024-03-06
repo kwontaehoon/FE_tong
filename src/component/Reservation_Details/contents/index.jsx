@@ -8,6 +8,7 @@ import {
   Star,
   Score
 } from './styles'
+import { star } from '../../../function/star'
 
 const index = ({ data }) => {
 
@@ -18,11 +19,7 @@ const index = ({ data }) => {
         <Jangi>{data.subTitle}</Jangi>
         <Introduction>{data.location}</Introduction>
         <Star>
-          <img src="/svg/Star.svg"></img>
-          <img src="/svg/Star.svg"></img>
-          <img src="/svg/Star.svg"></img>
-          <img src="/svg/Star.svg"></img>
-          <img src="/svg/Star.svg"></img>
+          {star(data.score)}
           <Score>{data.score}</Score>
         </Star>
       </Contents_Box>

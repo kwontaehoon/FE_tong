@@ -48,12 +48,12 @@ const index = () => {
   return (
     <Container>
 
-      <Header padding title="예약" search />
+      <Header padding title="예약" search arrowUrl={"/"} />
 
       <Scroll className='flex overflow-scroll whitespace-nowrap bg-white mb-5'>
         {locationText.map((x, index) => {
           return (
-            <div key={x.id} className={'my-5 px-3 py-2 rounded-full mr-2 text-sm' + (category[index] ? ' bg-grey07' : '')}
+            <div key={x.id} className={'my-5 px-4 leading-6 py-six rounded-full mr-1 text-sm' + (category[index] ? ' bg-grey06.5' : '')}
               onClick={()=>{
                 let arr = Array(7).fill(false);
                 arr[index] = true;
@@ -68,9 +68,9 @@ const index = () => {
         return (
           <div key={x.reservationId} className='bg-bg mb-5'>
             <div className='px-5'>
-              <div className='rounded-lg overflow-hidden'>
+              <div className='rounded-xl overflow-hidden'>
                 <Swiper pagination={true} modules={[Pagination]}>
-                  <SwiperSlide style={{ height: "230px", position: "relative" }} key={index}>
+                  <SwiperSlide style={{ height: "200px", position: "relative" }} key={index}>
                     {loginFlag() && <div className='absolute top-6 right-6'
                       onClick={async () => {
                         await wish({
@@ -87,7 +87,11 @@ const index = () => {
                 </Swiper>
 
                 <Tong_Tong onClick={() => navigate(`${x.reservationId}`)}>
-                  <Lorem>{x.title}</Lorem>
+                  <div className='flex items-center'>
+                    <Lorem>{x.title}</Lorem>
+                    <div className='ml-2 border border-m text-xs rounded text-m' style={{padding: "2px 4px"}}>금주 예약 가능</div>
+                    <div className='ml-1 border border-m text-m text-xs rounded' style={{padding: "2px 4px"}}>0 ~ 5명</div>
+                  </div>
                   <Lorem_Text>{x.subTitle}</Lorem_Text>
                 </Tong_Tong>
               </div>

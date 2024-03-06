@@ -18,7 +18,7 @@ export const postCommentWrite = (params) => client.post(COMMENT_URL.commentWrite
 export const putCommentUpdate = (params) => client.put(COMMENT_URL.commentUpdate, params);
 
 // 댓글 삭제
-export const delCommentDelete = (params) => client.delete(COMMENT_URL.commentDelete, params);
+export const delCommentDelete = (params) => client.delete(COMMENT_URL.commentDelete, { params: params });
 
 // 내가 쓴 댓글
 export const postMyCommentList = (params) => client.post(COMMENT_URL.mycommentList, params);

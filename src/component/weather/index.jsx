@@ -41,18 +41,18 @@ const index = ({reservation, data}) => {
                 <div>하늘: {weatherList?.sky}</div> */}
             </div>}
             {reservation && 
-            <div className='flex'>
+            <div className='flex items-center'>
                 <div className='flex flex-1'>
                     {weatherList && weatherStatus(weatherList)}
-                    <div className='ml-1' style={{marginRight: "10px"}}>{weatherList?.temp}º</div>
-                    <div>{data.location}</div>
+                    <div className='ml-1 text-xl text-grey10 font-bold' style={{marginRight: "10px"}}>{weatherList?.temp}º</div>
+                    <div className='text-grey04'>{data.location}</div>
                 </div>
-                {/* <div className='flex absolute right-5'>
+                <div className='flex absolute right-5'>
                     <div>최저</div>
-                    <div></div>
+                    <div className='font-bold mx-1'>3º</div>
                     <div>최고</div>
-                    <div></div>
-                </div> */}
+                    <div className='font-bold ml-1'>8º</div>
+                </div>
             </div>}
         </div>
     )

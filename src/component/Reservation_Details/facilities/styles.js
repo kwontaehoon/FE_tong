@@ -4,10 +4,10 @@ export const Container = styled.div`
     margin-top: 12px;
     background-color: white;
     padding: 20px;
+    border-radius: 8px;
 `
 export const Facilities_Box = styled.div`
     font-weight: 700;
-    font-size: 16px;
     margin-bottom: 16px;
 `
 export const Ikon_Box = styled.div`
@@ -38,4 +38,5 @@ export const Rule = styled.div`
 `
 export const Description = styled.div`
     margin-top: 20px;
+    font-size: 12px;
 `

@@ -58,7 +58,7 @@ const index = ({info, setInfo, data}) => {
         }
       })
       setBlockClock(arr);
-  }, [selectDay, current]);
+  }, [selectDay, current, data]);
 
   return (
     <Container>
@@ -66,10 +66,11 @@ const index = ({info, setInfo, data}) => {
         <WeatherFunc reservation data={data} />
       </Weather_Box>
       <Time_Container>
-        <div className='flex items-center mb-8'>
+        <div className='flex-1 font-bold mb-5'>날짜를 선택하세요.</div>
+        <div className='flex items-center mb-5'>
           <div className='flex relative mr-4 shrink-0'>
-            {selectBox && <div className='absolute border bg-white top-8 left-0 flex-col z-50 w-full flex justify-center items-center py-2'>
-              {Array.from({ length: 12-today.month+1 }).map((_, index)=>{
+            {selectBox && <div className='absolute border rounded-lg bg-white top-8 left-0 flex-col z-50 w-full flex justify-center items-center py-2'>
+              {Array.from({ length: today.month-1 }).map((_, index)=>{
                 return(
                   <div key={index} onClick={()=>{
                       setSelectBox(false);
@@ -78,8 +79,8 @@ const index = ({info, setInfo, data}) => {
                   </div>
               )})}
             </div>}
-            <div className='mr-2'>{current.getMonth()+1}월</div>
-            <img src="/svg/Arrow_bottom.svg" onClick={()=>setSelectBox(!selectBox)}/>
+            <div className='mr-2 font-bold'>{current.getMonth()+1}월</div>
+            <img src="/svg/Arrow_bottom.svg" style={{width: "14px"}} onClick={()=>setSelectBox(!selectBox)}/>
           </div>
           <div className='border-grey07 border h-11 mr-6'></div>
           <div className='overflow-x-scroll flex'>
@@ -91,15 +92,15 @@ const index = ({info, setInfo, data}) => {
                   today.month == current.getMonth()+1 ? index + today.date : index+1
                 ).getDay();
                 return (
-                  <div key={index} className={'rounded-full' + (selectDay[index] ? ' bg-m text-white' : '')} style={{padding: "10px", marginRight: "10px"}}
+                  <div key={index} className={'rounded-full flex flex-col items-center justify-center' + (selectDay[index] ? ' bg-m text-white' : '')} style={{padding: "11px", marginRight: "10px"}}
                     onClick={()=>{
                       let arr = Array(selectDay.length).fill(false);
                       arr[index] = true;
                       setSelectDay(arr);
                       setInfo({...info, selectDate: today.month == current.getMonth()+1 ? index + today.date : index+1, selectDay: dayOfWeek(day)});
                     }}>
-                    {today.month == current.getMonth()+1 ? <div>{numberTwo(index + today.date)}</div> : <div>{numberTwo(index+1)}</div>}
-                    <div className={'mt-4' + (!selectDay[index] && day == 0 ? ' text-valid' : !selectDay[index] && day == 6 ? ' text-ms' : '' )}>{dayOfWeek(day)}</div>
+                    {today.month == current.getMonth()+1 ? <div className='font-bold'>{numberTwo(index + today.date)}</div> : <div className='font-bold'>{numberTwo(index+1)}</div>}
+                    <div className={'mt-six' + (!selectDay[index] && day == 0 ? ' text-valid' : !selectDay[index] && day == 6 ? ' text-ms' : '' )}>{dayOfWeek(day)}</div>
                   </div>
                 )
               })}
@@ -107,15 +108,14 @@ const index = ({info, setInfo, data}) => {
           </div>
         </div>
         <div className='flex py-5 border-b border-grey07 mb-5'>
-          <div className='flex-1 text-lg font-bold'>시간을 선택하세요.</div>
-          <img src="/svg/Arrow_bottom.svg" />
+          <div className='flex-1 font-bold'>시간을 선택하세요.</div>
         </div>
         <div>
           <div style={{marginBottom: '10px'}}>오전</div>
           <div className='flex flex-wrap mb-5'>
             {morningClockText.map((x, index) => {
               return (
-                <div key={x.id} className={'p-4 border rounded-lg mr-2 mb-2' + (blockClock.includes(index) ? ' bg-grey07 text-grey05' : clock[index] ? ' bg-m text-white' : '')}
+                <div key={x.id} style={{padding: "8px 13px"}} className={'border rounded-lg mr-six mb-2 text-xs' + (blockClock.includes(index) ? ' bg-grey07 text-grey05' : clock[index] ? ' bg-m text-white' : '')}
                   onClick={()=>{
                     const arr = Array(9).fill(false);
                     if(blockClock.includes(index)){
@@ -134,7 +134,7 @@ const index = ({info, setInfo, data}) => {
           <div className='flex flex-wrap'>
             {afterNoonClockText.map((x, index) => {
               return (
-                <div key={x.id} className={'p-4 border rounded-lg mr-2 mb-2' + (blockClock.includes(index+3) ? ' bg-grey07 text-grey05' : clock[index+3] ? ' bg-m text-white' : '')}
+                <div key={x.id} style={{padding: "8px 13px"}} className={'border rounded-lg mr-six mb-2 text-xs' + (blockClock.includes(index+3) ? ' bg-grey07 text-grey05' : clock[index+3] ? ' bg-m text-white' : '')}
                   onClick={()=>{
                     const arr = Array(9).fill(false);
                     if(blockClock.includes(index)){
@@ -155,11 +155,11 @@ const index = ({info, setInfo, data}) => {
       <Personnel_Box>
         <Personnel>인원선택</Personnel>
         <Max_Box>
-          <Max>(최대 5명)</Max>
+          <Max>(최대 {data.peopleCount}명)</Max>
         </Max_Box>
-        <img src="/svg/Minus.svg" onClick={()=>info.peopleCount > 0 ? setInfo({...info, peopleCount: info.peopleCount-1}) : ''}></img>
+        <img src="/svg/minus.svg" className='w-5' onClick={()=>info.peopleCount > 0 ? setInfo({...info, peopleCount: info.peopleCount-1}) : ''}></img>
         <Number>{info.peopleCount}명</Number>
-        <img src="/svg/Plus.svg" onClick={()=>info.peopleCount < 5 ? setInfo({...info, peopleCount: info.peopleCount+1}) : ''}></img>
+        <img src="/svg/plus.svg" className='w-5' onClick={()=>info.peopleCount < data.peopleCount ? setInfo({...info, peopleCount: info.peopleCount+1}) : ''}></img>
       </Personnel_Box>
     </Container>
   )

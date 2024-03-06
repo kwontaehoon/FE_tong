@@ -39,16 +39,12 @@ const index = () => {
                 <Pcoment>로그인 해주세요 <span style={{ display: 'block' }}>회원이 아니신가요</span></Pcoment>
                 <Right style={{ gap: '10px' }}>
                   <Btn1 onClick={() => {
-                    setTimeout(() => {
-                      navigate("/login");
-                    }, 0);
+                    navigate("/login");
                     openCategoryModal("none");
                   }}>로그인
                   </Btn1>
                   <Btn2 onClick={() => {
-                    setTimeout(() => {
-                      navigate("/signup");
-                    }, 0);
+                    navigate("/signup");
                     openCategoryModal("none");
                   }}>회원가입
                   </Btn2>
@@ -61,22 +57,22 @@ const index = () => {
               <Sec1H1>Category<span style={{ color: '#9FA4A9', fontSize: '12px', marginLeft: '4px' }}>카테고리</span></Sec1H1>
               <List>
                 <Icon>
-                  <a href='#' style={{ textDecoration: 'none' }}>
+                  <div onClick={()=>{ navigate("/reservation"); openCategoryModal("none"); }}>
                     <Img><img src="/svg/main_reservation.svg" /></Img>
-                    <P>운통장</P>
-                  </a>
-                </Icon>
-                <Icon>
-                  <a href='#' style={{ textDecoration: 'none' }}>
-                    <Img><img src="/svg/main_ground.svg" /></Img>
                     <P>예약</P>
-                  </a>
+                  </div>
                 </Icon>
                 <Icon>
-                  <a href='#' style={{ textDecoration: 'none' }}>
+                  <div onClick={()=>{ navigate("/reservation"); openCategoryModal("none"); }}>
+                    <Img><img src="/svg/main_ground.svg" /></Img>
+                    <P>운동장찾기</P>
+                  </div>
+                </Icon>
+                <Icon>
+                  <div>
                     <Img><img src="/svg/category_pick.svg" /></Img>
                     <P>이벤트</P>
-                  </a>
+                  </div>
                 </Icon>
               </List>
             </Sec1>
@@ -86,30 +82,30 @@ const index = () => {
               <Sec1H1>Customer Center<span style={{ color: '#9FA4A9', fontSize: '12px', marginLeft: '4px' }}>고객센터</span></Sec1H1>
               <List style={{marginBottom: "12px"}}>
                 <Icon>
-                  <a href='#'>
+                  <div onClick={()=>{ navigate("/board"); openCategoryModal("none"); }}>
                     <Img><img src="/svg/main_team.svg" /></Img>
                     <P>팀구하기</P>
-                  </a>
+                  </div>
                 </Icon>
                 <Icon>
-                  <a href='#'>
+                  <div onClick={()=>{ navigate("/mercenary"); openCategoryModal("none"); }}>
                     <Img><img src="/svg/main_mercenary.svg" /></Img>
                     <P>용병구하기</P>
-                  </a>
+                  </div>
                 </Icon>
                 <Icon>
-                  <a href='#'>
+                  <div onClick={()=>{ navigate("/notice"); openCategoryModal("none"); }}>
                     <Img><img src="/svg/category_notice.svg" /></Img>
                     <P>공지사항</P>
-                  </a>
+                  </div>
                 </Icon>
               </List>
               <List>
                 <Icon>
-                  <a href='#'>
+                  <div onClick={()=>{ navigate("/faq"); openCategoryModal("none"); }}>
                     <Img><img src="/svg/category_faq.svg" /></Img>
                     <P>F&Q</P>
-                  </a>
+                  </div>
                 </Icon>
                 <Icon>
                   <a href='#'>

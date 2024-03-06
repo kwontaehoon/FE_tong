@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-        margin-top: 16px;
+        margin-top: 12px;
 `
 export const Weather_Box = styled.div`
         display: flex;

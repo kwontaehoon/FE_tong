@@ -21,6 +21,9 @@ import Category from '../component/category'
 import Mypage_info from '../component/mypage_info'
 import Expire from '../component/expire'
 import MyInfo from '../component/mypage/myInfo'
+import MyReservation_ing from '../component/myReservation/ing'
+import MyReservation_cancel from '../component/myReservation/cancel'
+import MyReservation_finish from '../component/myReservation/finish'
 
 import Board from '../component/board/team'
 import Board_details from '../component/board/team/details'
@@ -95,6 +98,9 @@ export const router = createBrowserRouter([
             { path: "/faq", element: <Faq /> },
             { path: "/boardWrite", element: <BoardWrite /> },
             { path: "/myActive", element: <MyActive /> },
+            { path: "/myReservation_ing", element: <MyReservation_ing /> },
+            { path: "/myReservation_cancel", element: <MyReservation_cancel /> },
+            { path: "/myReservation_finish", element: <MyReservation_finish /> }
             
         ]
     },

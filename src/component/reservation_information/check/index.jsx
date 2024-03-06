@@ -20,15 +20,16 @@ const index = ({ info, data }) => {
         <Gimpo>{data.location}</Gimpo>
         <Check_Box>
           <Check_inout>
+          <div>예약시작</div>
             <Day_Box>
               <Day>{numberTwo(info.selectMonth)}.{numberTwo(info.selectDate)} {info.selectDay}</Day>
                 <div className='border h-3' style={{ margin: '0px 6px', color: "#CDCDCD" }}></div>
               <Day>{clockText[info.selectClock]?.startClock}</Day>
             </Day_Box>
-
           </Check_inout>
 
           <Check_inout>
+          <div>예약마감</div>
             <Day_Box>
               <Day>{numberTwo(info.selectMonth)}.{numberTwo(info.selectDate)} {info.selectDay}</Day>
                 <div className='border h-3' style={{ margin: '0px 6px', color: "#CDCDCD" }}></div>

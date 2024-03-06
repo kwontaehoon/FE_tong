@@ -11,6 +11,12 @@ export const myTabText = [
     {id: 3, content: "댓글"},
 ];
 
+export const myReservationTabText = [
+    {id: 1, content: "예약내역"},
+    {id: 2, content: "취소내역"},
+    {id: 3, content: "완료"},
+]
+
 export const faqCategoryText = [
     {id: 1, content: "자주찾는질문"},
     {id: 2, content: "회원정보"},

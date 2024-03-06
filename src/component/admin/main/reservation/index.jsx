@@ -7,12 +7,18 @@ import Select from '@mui/material/Select';
 import { locationText } from '../../../../constants/text/admin/Reservation';
 import { useReservationAddMutation, useReservationListQuery, useReservationModifyMutation, useReservationDeleteMutation } from '../../../../hooks/queries/admin/Main';
 
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import dayjs from 'dayjs';
+
+
 const index = () => {
 
     const imgRef = useRef();
     const { data, isSuccess } = useReservationListQuery();
     const [dataArr, setDataArr] = useState(data);
-    console.log("dataArr: ", dataArr);
+    console.log("dateArr: ", dataArr);
     const [addFlag, setAddFlag] = useState(false);
     const [location, setLocation] = useState('');
     const [info, setInfo] = useState({
@@ -20,11 +26,12 @@ const index = () => {
         subTitle: "",
         location: "",
         score: "",
-        peopleCount: ""
+        peopleCount: "",
+        deadLine: "",
     });
+    console.log("info: ", info);
     const [imgFileList, setImgFileList] = useState([]); // 업로드된 이미지 파일 저장
     const [reservationFileIds, setReservationFileIds] = useState([]); // reservationFileIds
-    console.log("reservationFileIds: ", reservationFileIds);
     const { mutateAsync: modify } = useReservationModifyMutation();
     const { mutateAsync: add } = useReservationAddMutation();
     const { mutateAsync: remove } = useReservationDeleteMutation();
@@ -43,7 +50,7 @@ const index = () => {
 
     const submit = async () => {
         let formData = new FormData();
-        for(let i of imgFileList){
+        for (let i of imgFileList) {
             formData.append("files", i);
         }
         !addFlag && formData.append("reservationId", info.reservationId);
@@ -55,6 +62,7 @@ const index = () => {
         formData.append("peopleCount", info.peopleCount);
         formData.append("xCoordinate", !addFlag ? info.xcoordinate : location.x);
         formData.append("yCoordinate", !addFlag ? info.ycoordinate : location.y);
+        formData.append("deadLine", info.deadLine);
 
         if (addFlag) {
             await add(formData);
@@ -75,8 +83,8 @@ const index = () => {
                         <div className='flex mb-4 items-center'>
                             <div className='flex-1'>이미지</div>
                             <Button sx={{ backgroundColor: '#FF0000', marginRight: "8px" }} variant="contained"
-                                onClick={()=>{
-                                    remove({reservationId: x.reservationId});
+                                onClick={() => {
+                                    remove({ reservationId: x.reservationId });
                                     window.alert("삭제했습니다.");
                                     window.location.reload();
                                 }}>삭제
@@ -97,61 +105,61 @@ const index = () => {
                             </Button>
                         </div>
                         <div className='flex overflow-x-scroll'>
-                        {x.reservationFiles.map((y, imgIndex) => {
-                            return (<div key={imgIndex}>
-                                <label className={"border-grey200 mr-5 w-52 h-40 rounded flex cursor-pointer mb-5" + (x.reservationFiles[imgIndex].fileName == "" ? ' border' : '')} htmlFor={modifyFlag[index] ? `reservationImage-${index}-${imgIndex}` : ''}>
-                                    {x.reservationFiles[imgIndex].fileName ? x.reservationFiles[imgIndex].imgPath ? <img src={x.reservationFiles[imgIndex].imgPath}/> : <img src={`https://tong-bucket.s3.ap-northeast-2.amazonaws.com/${x?.reservationFiles[imgIndex]?.fileName}`} /> : <img src={x.reservationFiles[imgIndex].imgPath}/>}
-                                </label>
-                                <input
-                                    type="file" 
-                                    accept="image/*"
-                                    id={`reservationImage-${index}-${imgIndex}`}
-                                    multiple
-                                    ref={imgRef}
-                                    style={{ display: 'none' }}
-                                    onChange={(e) => {
-                                        let arr = [...imgFileList];
-                                        arr[imgIndex] = e.target.files[0]; 
+                            {x.reservationFiles.map((y, imgIndex) => {
+                                return (<div key={imgIndex}>
+                                    <label className={"border-grey200 mr-5 w-52 h-40 rounded flex cursor-pointer mb-5" + (x.reservationFiles[imgIndex].fileName == "" ? ' border' : '')} htmlFor={modifyFlag[index] ? `reservationImage-${index}-${imgIndex}` : ''}>
+                                        {x.reservationFiles[imgIndex].fileName ? x.reservationFiles[imgIndex].imgPath ? <img src={x.reservationFiles[imgIndex].imgPath} /> : <img src={`https://tong-bucket.s3.ap-northeast-2.amazonaws.com/${x?.reservationFiles[imgIndex]?.fileName}`} /> : <img src={x.reservationFiles[imgIndex].imgPath} />}
+                                    </label>
+                                    <input
+                                        type="file"
+                                        accept="image/*"
+                                        id={`reservationImage-${index}-${imgIndex}`}
+                                        multiple
+                                        ref={imgRef}
+                                        style={{ display: 'none' }}
+                                        onChange={(e) => {
+                                            let arr = [...imgFileList];
+                                            arr[imgIndex] = e.target.files[0];
 
-                                        const ids = [...reservationFileIds];
-                                        if(!ids.includes(y.reservationFileId)){
-                                            ids.push(y.reservationFileId);
-                                        }
-                                        setReservationFileIds(ids);
-                                        setImgFileList(arr);
-                                        const reader = new FileReader();
-                                        reader.readAsDataURL(e.target.files[0]);
-                                        reader.onload = () => {
-                                            let arr = [...dataArr];
-                                            arr[index].reservationFiles[imgIndex].imgPath = reader.result;
-                                            setDataArr(arr);
-                                        };
-                                    }}
-                                />
-                            </div>)
-                        })}
+                                            const ids = [...reservationFileIds];
+                                            if (!ids.includes(y.reservationFileId)) {
+                                                ids.push(y.reservationFileId);
+                                            }
+                                            setReservationFileIds(ids);
+                                            setImgFileList(arr);
+                                            const reader = new FileReader();
+                                            reader.readAsDataURL(e.target.files[0]);
+                                            reader.onload = () => {
+                                                let arr = [...dataArr];
+                                                arr[index].reservationFiles[imgIndex].imgPath = reader.result;
+                                                setDataArr(arr);
+                                            };
+                                        }}
+                                    />
+                                </div>)
+                            })}
                         </div>
                         {modifyFlag[index] &&
-                        <div className='my-5'>
-                        <Button sx={{ backgroundColor: '#007CFF', marginRight: "12px" }} variant="contained"
-                            onClick={()=>{
-                                const arr = [...dataArr];
-                                arr[index].reservationFiles.push({
-                                    fileName: "",
-                                    fileSize: "",
-                                    reservationFileId: dataArr?.map(x => x.reservationFiles.length).reduce((a, b) => a + b)+1,
-                                });
-                                setDataArr(arr);
-                            }} >이미지 추가
-                        </Button>
-                        {/* <Button sx={{ backgroundColor: '#007CFF' }} variant="contained"
+                            <div className='my-5'>
+                                <Button sx={{ backgroundColor: '#007CFF', marginRight: "12px" }} variant="contained"
+                                    onClick={() => {
+                                        const arr = [...dataArr];
+                                        arr[index].reservationFiles.push({
+                                            fileName: "",
+                                            fileSize: "",
+                                            reservationFileId: dataArr?.map(x => x.reservationFiles.length).reduce((a, b) => a + b) + 1,
+                                        });
+                                        setDataArr(arr);
+                                    }} >이미지 추가
+                                </Button>
+                                {/* <Button sx={{ backgroundColor: '#007CFF' }} variant="contained"
                             onClick={()=>{
                                const arr = [...dataArr];
                                arr[index].reservationFiles.pop();
                                setDataArr(arr);
                             }} >이미지 삭제
                         </Button> */}
-                        </div>}
+                            </div>}
 
                         {x.reservationId ? "" : <FormControl fullWidth>
                             <InputLabel id="demo-simple-select-label">지역 선택</InputLabel>
@@ -167,7 +175,7 @@ const index = () => {
                                 })}
                             </Select>
                         </FormControl>}
-                        
+
                         <div className='w-full mt-5'>
                             <div className='mb-5'>
                                 <div>제목</div>
@@ -204,6 +212,15 @@ const index = () => {
                                         setInfo({ ...info, peopleCount: e.target.value });
                                     }} />
                             </div>
+                            {!modifyFlag[index] ? '' : <LocalizationProvider dateAdapter={AdapterDayjs}>
+                                <DatePicker onChange={(date)=>{
+                                     const selectedDate = dayjs(date);
+        
+                                     // 선택된 날짜를 "YYYY-MM-DD" 형식의 문자열로 가공
+                                     const formattedDate = selectedDate.format('YYYY-MM-DD');
+                                     setInfo({...info, deadLine: formattedDate});
+                                }} />
+                            </LocalizationProvider>}
                         </div>
                     </div>
                 })}

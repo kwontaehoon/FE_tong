@@ -17,7 +17,7 @@ const index = ({ data }) => {
         {data.reservationFiles.map(x => {
           return (
             <SwiperSlide key={x.reservationFileId}>
-              <img src={`https://tong-bucket.s3.ap-northeast-2.amazonaws.com/${x.fileName}`} style={{height: "262px"}} className='w-full'/>
+              <img src={`https://tong-bucket.s3.ap-northeast-2.amazonaws.com/${x.fileName}`} style={{height: "250px"}} className='w-full rounded-lg overflow-hidden'/>
             </SwiperSlide>
           )
         })}

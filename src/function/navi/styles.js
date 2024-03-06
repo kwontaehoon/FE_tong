@@ -8,7 +8,8 @@ export const Icon = styled.div`
     bottom: 0;
     background-color: white;
     z-index: 900;
-    padding: 12px 10px;
+    padding: 21px 10px;
+    box-shadow: 0px -2px 20px 0px rgba(0, 0, 0, 0.05);
 `
 export const Icon_Box = styled.div`
     position: relative;
@@ -34,7 +35,6 @@ export const Home = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: black;
 `
 export const Home_Name = styled.div`
     font-size: 14px;

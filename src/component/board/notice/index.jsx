@@ -25,7 +25,7 @@ const index = () => {
 
   return (
     <Container>
-      <Header padding title="공지사항" />
+      <Header padding title="공지사항"  arrowUrl={"/"} />
       <TabBox>
         <div className='h-full flex'>
           {boardTabText.map((x, index) => {
@@ -34,7 +34,7 @@ const index = () => {
                 onClick={() => {
                   switch (index) {
                     case 0: return navigate("/board");
-                    case 2: return navigate("/notice");
+                    case 1: return navigate("/mercenary");
                     case 3: return navigate("/faq");
                   }
                 }}>{x.content}

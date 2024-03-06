@@ -12,7 +12,6 @@ export const Soccer_Team = styled.div`
     align-items: center;
     border-radius: 16px;
     padding: 12px 20px;
-    margin-bottom: 12px;
 `
 export const Soccer_Team_Box = styled.div`
     margin-left: 12px;

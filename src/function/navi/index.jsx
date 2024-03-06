@@ -19,24 +19,24 @@ const index = () => {
     return (
         <Icon>
             <Icon_Box onClick={()=>navigate("/reservation", { replace: true })}>
-                <img src="/svg/Nav_reservation.svg"></img>
-                <House>예약</House>
+                <img src="/svg/nav_reservation_grey.svg" className='w-6'/>
+                {/* <House>예약</House> */}
             </Icon_Box>
             <Icon_Box onClick={()=>{
                 if(loginFlag()){
                     navigate("/mypage", { replace: true })
                 }else openLoginModal(true);
             }}>    
-                <img src="/svg/Nav_mypage.svg"></img>
-                <House>마이</House>
+                <img src="/svg/nav_mypage.svg" className='w-6' />
+                {/* <House>마이</House> */}
             </Icon_Box>
             <Icon_Box>
-                <div className='absolute left-25% -top-6 flex justify-center items-center flex-col'
+                <div className='absolute left-25% -top-9 flex justify-center items-center flex-col'
                     onClick={()=>navigate("/", { replace: true })}>
                     <Home>
-                        <img src="/svg/Nav_home.svg"></img>
+                        <img src="/svg/nav_home.svg" className='w-16' />
                     </Home>
-                    <House>홈</House>
+                    {/* <House>홈</House> */}
                 </div>
                 <House></House>
             </Icon_Box>
@@ -45,13 +45,12 @@ const index = () => {
                     navigate("/myActive", { replace: true });
                 }else openLoginModal(true);
             }}>
-                <img src="/svg/Nav_wish.svg"></img>
-                <House>찜</House>
+                <img src="/svg/nav_wish_grey.svg" className='w-6' />
+                {/* <House>찜</House> */}
             </Icon_Box>
-
             <Icon_Box onClick={()=>openCategoryModal(true)}>
-                <img src="/svg/Nav_category.svg"></img>
-                <House>카테고리</House>
+                <img src="/svg/nav_category_grey.svg" className='w-6' />
+                {/* <House>카테고리</House> */}
             </Icon_Box>
         </Icon>
     )

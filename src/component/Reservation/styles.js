@@ -14,22 +14,16 @@ export const Scroll = styled.div`
         display: none;
     }
 `
-export const IMG = styled.div`
-    border-top-right-radius: 20px;
-    border-top-left-radius: 20px;
-    margin-top: 20px;
-    display: flex;
-`
 export const Tong_Tong = styled.div`
     padding: 20px;
     background-color: white;
 `
 export const Lorem = styled.div`
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 700;
 `
 export const Lorem_Text = styled.div`
-     margin: 10px 0px 0px 0px;
-     font-size: 14px;
+     margin: 6px 0px 0px 0px;
+     font-size: 12px;
      color: #737373;
 `
