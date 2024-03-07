@@ -33,6 +33,10 @@ import Notice from '../component/board/notice'
 import Notice_details from '../component/board/notice/details'
 import Faq from '../component/board/faq'
 
+import Privacy from '../component/policy/privacy'
+import Team from '../component/policy/term'
+
+import Board from '../component/board'
 import BoardWrite from '../component/board/boardWrite'
 
 import MyActive from '../component/myActive'
@@ -102,6 +106,8 @@ export const router = createBrowserRouter([
             { path: "/myReservation_cancel", element: <MyReservation_cancel /> },
             { path: "/myReservation_finish", element: <MyReservation_finish /> }
             
+            { path: "/privacy", element: <Privacy /> },
+            { path: "/term", element: <Team /> },
         ]
     },
 ])
