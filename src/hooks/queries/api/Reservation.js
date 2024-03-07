@@ -1,8 +1,9 @@
 import { useQuery, useMutation } from "react-query";
-import { getReservationDetails, getReservationList, postReservation } from "../../../service/api/Reservation";
+import { getReservationCancelList, getReservationDetails, getReservationList, postReservation, postReservationCancel } from "../../../service/api/Reservation";
 
 const RESERVATION_KEYS = {
   reservationList: "reservationList",
+  reservationCancelList: "reservationCancelList",
   reservationDetails: "reservationDetails"
 }
 
@@ -48,3 +49,32 @@ export const useReservationMutation = () =>
       // 성공 시 실행할 로직 추가
     }
   });
+
+/**
+* 예약 취소 하기
+* 
+*/
+
+export const useReservationCancelMutation = () =>
+  useMutation({
+    mutationFn: (params) => {
+      return postReservationCancel(params);
+    },
+    onSuccess: () => {
+      // 성공 시 실행할 로직 추가
+    }
+  });
+
+/**
+* 예약 취소 목록
+* 
+*/
+
+export const useReservationCancelListQuery = () => {
+  return useQuery(RESERVATION_KEYS.reservationCancelList, async () => {
+    const { data } = await getReservationCancelList();
+    return data;
+  }, {
+    staleTime: Infinity,
+  });
+};

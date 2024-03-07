@@ -20,10 +20,10 @@ const index = ({ data }) => {
       </div>
       {data.content.slice(0, 3).map((x, index) => {
         return (
-          <div className='mb-3 flex relative items-center'>
+          <div key={x.boardId} className='mb-3 flex relative items-center'>
             <div className='flex-1'>
-              <Soccer_Team key={x.boardId}>
-                <img src={`/svg/main_boardTeam${index + 1}.svg`} />
+              <Soccer_Team>
+                {index == 0 ? <img src="/svg/main_team.svg" /> : <img src={`/svg/main_boardTeam${index + 1}.svg`} />}
                 <Soccer_Team_Box>
                   <Soccer>{x.title}</Soccer>
                   <Rescue>{x.content}</Rescue>

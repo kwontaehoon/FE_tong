@@ -28,6 +28,7 @@ const index = () => {
   const navigate = useNavigate();
 
   const { data: reservationList, isSuccess: reservationListSuccess, refetch: reservationRefetch } = useReservationListQuery();
+  console.log("reservationList: ", reservationList);
 
   const [info, setInfo] = useState();
 
