@@ -39,6 +39,9 @@ const index = ({data}) => {
             <div className='ml-1'>{data[0].score}</div>
           </div>
           <WeatherFuc />
+          <div className='text-xs mt-six'>
+            <span className='bg-grey07 rounded' style={{padding: "2px 4px"}}>금주 예약 가능</span>
+          </div>
         </div>
       </div>
       <div className='flex mt-3' style={{marginBottom: "18px"}}>
@@ -53,6 +56,9 @@ const index = ({data}) => {
             <div className='ml-1'>{data[1]?.score}</div>
           </div>
           <WeatherFuc />
+          <div className='text-xs mt-six'>
+            <span className='bg-grey07 rounded' style={{padding: "2px 4px"}}>5명~10명</span>
+          </div>
         </div>
       </div>
       <Scroll>

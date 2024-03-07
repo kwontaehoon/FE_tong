@@ -27,7 +27,7 @@ const index = () => {
                     navigate("/mypage", { replace: true })
                 }else openLoginModal(true);
             }}>    
-                <img src="/svg/nav_mypage.svg" className='w-6' />
+                <img src="/svg/nav_mypage_grey.svg" className='w-6' />
                 {/* <House>마이</House> */}
             </Icon_Box>
             <Icon_Box>

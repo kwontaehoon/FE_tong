@@ -36,7 +36,6 @@ import Faq from '../component/board/faq'
 import Privacy from '../component/policy/privacy'
 import Team from '../component/policy/term'
 
-import Board from '../component/board'
 import BoardWrite from '../component/board/boardWrite'
 
 import MyActive from '../component/myActive'
@@ -104,7 +103,7 @@ export const router = createBrowserRouter([
             { path: "/myActive", element: <MyActive /> },
             { path: "/myReservation_ing", element: <MyReservation_ing /> },
             { path: "/myReservation_cancel", element: <MyReservation_cancel /> },
-            { path: "/myReservation_finish", element: <MyReservation_finish /> }
+            { path: "/myReservation_finish", element: <MyReservation_finish /> },
             
             { path: "/privacy", element: <Privacy /> },
             { path: "/term", element: <Team /> },

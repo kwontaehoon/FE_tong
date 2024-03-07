@@ -6,8 +6,11 @@ import {
   Soccer,
   Rescue,
 } from './styles'
+import { useNavigate } from 'react-router-dom'
 
 const index = ({ data }) => {
+
+  const navigate = useNavigate();
 
   return (
     <Container>
@@ -27,7 +30,8 @@ const index = ({ data }) => {
                 </Soccer_Team_Box>
               </Soccer_Team>
             </div>
-            <div className='absolute right-5 border-b' style={{fontSize: "11px", paddingBottom: "2px"}}>더보기</div>
+            <div className='absolute right-5 border-b' style={{fontSize: "11px", paddingBottom: "2px"}}
+              onClick={()=>navigate("/board")}>더보기</div>
           </div>
         )
       })}

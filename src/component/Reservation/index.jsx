@@ -89,8 +89,14 @@ const index = () => {
                 <Tong_Tong onClick={() => navigate(`${x.reservationId}`)}>
                   <div className='flex items-center'>
                     <Lorem>{x.title}</Lorem>
-                    <div className='ml-2 border border-m text-xs rounded text-m' style={{padding: "2px 4px"}}>금주 예약 가능</div>
-                    <div className='ml-1 border border-m text-m text-xs rounded' style={{padding: "2px 4px"}}>0 ~ 5명</div>
+                    {index == 0 && <div className='flex'>
+                      <div className='ml-2 border border-m text-xs rounded text-m' style={{padding: "2px 4px"}}>역세권</div>
+                      <div className='ml-1 border border-m text-m text-xs rounded' style={{padding: "2px 4px"}}>시설 청결</div>
+                    </div>}
+                    {index == 1 && <div className='flex'>
+                      <div className='ml-2 border border-m text-xs rounded text-m' style={{padding: "2px 4px"}}>금주 예약 가능</div>
+                      <div className='ml-1 border border-m text-m text-xs rounded' style={{padding: "2px 4px"}}>0 ~ 5명</div>
+                    </div>}
                   </div>
                   <Lorem_Text>{x.subTitle}</Lorem_Text>
                 </Tong_Tong>
