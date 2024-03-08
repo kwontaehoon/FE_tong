@@ -20,6 +20,7 @@ import Weather from '../component/weather'
 import Category from '../component/category'
 import Mypage_info from '../component/mypage_info'
 import Expire from '../component/expire'
+import Comment from '../component/comment'
 
 import Privacy from '../component/policy/privacy'
 import Team from '../component/policy/term'
@@ -76,6 +77,7 @@ export const router = createBrowserRouter([
             { path: "/myActive", element: <MyActive /> },
             { path: "/privacy", element: <Privacy /> },
             { path: "/term", element: <Team /> },
+            { path: "/comment", element: <Comment /> },
         ]
     },
 ])
