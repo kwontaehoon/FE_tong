@@ -19,7 +19,7 @@ const index = () => {
                     <img src="/svg/Logo.svg" />
                 </Playground>
                     <img src="/svg/search.svg" className='w-5' style={{marginRight: "6px"}} onClick={()=>navigate("/search")}/>
-                    <img src="/svg/menu.svg" className='w-5' onClick={()=>openCategoryModal(true)} />
+                    <img src="/svg/Menu.svg" className='w-5' onClick={()=>openCategoryModal(true)} />
             </Gimpo>
         </Container>
     )

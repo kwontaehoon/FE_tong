@@ -36,7 +36,7 @@ const index = () => {
                 <div className='absolute left-25% -top-9 flex justify-center items-center flex-col'
                     onClick={()=>navigate("/", { replace: true })}>
                     <Home>
-                        <img src="/svg/nav_home.svg" className='w-16' />
+                        <img src="/svg/Nav_home.svg" className='w-16' />
                     </Home>
                     {/* <House>홈</House> */}
                 </div>

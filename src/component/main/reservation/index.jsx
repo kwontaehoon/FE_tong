@@ -48,7 +48,7 @@ const index = ({data}) => {
         <img className='w-3/5 rounded-xl border-grey05 border-2' style={{height: "135px"}} src={`https://tong-bucket.s3.ap-northeast-2.amazonaws.com/${data[1]?.reservationFiles[0]?.fileName}`} />
         <div className='ml-3 flex flex-col justify-center' onClick={()=>navigate(`/reservation/${data[1].reservationId}`)}>
           <div className='flex font-bold'>
-            <div>🥉</div>
+            <div>🥈</div>
             <div>{data[1]?.title}</div>
           </div>
           <div className='flex items-center font-bold'>
