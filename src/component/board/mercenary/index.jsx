@@ -22,6 +22,7 @@ import { loginFlag } from '../../../utill/LoginFlag';
 import Header from '../../../function/header';
 import { boardTabText } from '../../../constants/text/api/Board';
 import Navi from '../../../function/navi'
+import Spinner from '../../../function/spinner'
 
 const index = () => {
 
@@ -35,9 +36,9 @@ const index = () => {
         refetch();
     }, [navigate]);
 
-    return isSuccess && (
+    return (
         <Container>
-            <Header padding title="게시판"  arrowUrl={"/"} />
+            <Header padding title="용병 구하기"  arrowUrl={"/"} />
             <TabBox>
                 <div className='h-full flex'>
                     {boardTabText.map((x, index) => {
@@ -59,7 +60,7 @@ const index = () => {
                 <Choice>최신순</Choice>
                 <img src="svg/down_arrow.svg" className='w-3' />
             </Choice_Box>
-            {data?.content?.filter(x => x.category.includes("용병")).map((x, index) => {
+            {!isSuccess ? <Spinner /> : data?.content?.filter(x => x.category.includes("용병")).map((x, index) => {
                 return (
                     <Recruitment_Box key={x.boardId} onClick={() => navigate(`${x.boardId}`)}>
                         <Recruitment>
@@ -69,9 +70,9 @@ const index = () => {
                         <Text>{x.content}</Text>
                         <Time_Box>
                             <Time>{dateDiff(x.createDate)}</Time>
-                            <img src="svg/eye.svg" className='mr-1'></img>
+                            <img src="/svg/eye.svg" className='mr-1 w-3' />
                             <Comment>{x.hits}</Comment>
-                            <img src="svg/comment.svg" className='mr-1'></img>
+                            <img src="/svg/comment.svg" className='mr-1 w-3' />
                             <Comment>{x.recommend}</Comment>
                         </Time_Box>
                     </Recruitment_Box>

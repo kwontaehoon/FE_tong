@@ -14,6 +14,7 @@ import { useNavigate } from 'react-router-dom'
 import { getToken } from '../../../utill/GetToken'
 import moment from 'moment'
 import { useReservationCancelListQuery } from '../../../hooks/queries/api/Reservation'
+import Spinner from '../../../function/spinner'
 
 const index = () => {
 
@@ -27,8 +28,7 @@ const index = () => {
 
     const [Ing, setIng] = useState([]);
 
-    const { data, isSuccess } = useReservationCancelListQuery();
-    console.log("data: ", data);
+    const { data, isSuccess, refetch } = useReservationCancelListQuery();
 
     useEffect(() => {
         if (data) {
@@ -40,9 +40,10 @@ const index = () => {
             });
             setIng(arr.reduce((acc, cur) => acc.concat(cur), []));
         }
-    }, [isSuccess]);
+        refetch();
+    }, [data]);
 
-    return isSuccess && (
+    return (
         <Container>
             <Header padding title="취소내역" arrowUrl={'/mypage'} />
             <TabBox>
@@ -63,7 +64,7 @@ const index = () => {
                 </div>
             </TabBox>
             <ListBox>
-                {data.map((x, index) => {
+                {!isSuccess ? <Spinner /> : data.map((x, index) => {
                     return (
                         <Reservation_Box key={index}>
                             <div className='flex items-center'>

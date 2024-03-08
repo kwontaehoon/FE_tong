@@ -10,7 +10,7 @@ import {
 } from './styles'
 import Header from '../../../function/header';
 import Navi from '../../../function/navi'
-import { boardTabText, faqCategoryText } from '../../../constants/text/api/Board';
+import { boardTabText, faqCategoryText, faqText } from '../../../constants/text/api/Board';
 import { useNavigate } from 'react-router-dom';
 
 const index = () => {
@@ -19,7 +19,8 @@ const index = () => {
 
   const tab = Array(4).fill().map((_, index) => index === 3);
 
-  const [category, setCategory] = useState(Array(4).fill().map((_, index) => index === 0))
+  const [category, setCategory] = useState(Array(8).fill().map((_, index) => index === 0));
+  const [categoryContent, setCategoryContent] = useState("자주찾는질문");
 
   const [dummy, setDummy] = useState(Array(8).fill(false));
 
@@ -51,16 +52,17 @@ const index = () => {
                 let arr = Array(4).fill(false);
                 arr[index] = true;
                 setCategory(arr);
+                setCategoryContent(x.content);
               }}>{x.content}
             </Besides>
           )
         })}
       </FAQ_Box>
-      {dummy.map((_, index) => {
+      {faqText.filter(x => x.category == categoryContent).map((x, index) => {
         return (
           <Reservation_Box key={index}>
             <div className='flex items-center'>
-              <Reservation>[예약] 취소하고 싶어요.</Reservation>
+              <Reservation>{x.title}</Reservation>
               <div onClick={() => {
                 let arr = [...dummy];
                 arr[index] = !arr[index];
@@ -70,8 +72,7 @@ const index = () => {
               </div>
             </div>
             {dummy[index] && <div className='mt-5 rounded-lg bg-bg px-4 py-5 text-xs text-grey10'>
-              <div>123123</div>
-              <div>321</div>
+              {x.content}
             </div>}
           </Reservation_Box>
         )

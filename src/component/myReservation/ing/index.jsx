@@ -17,22 +17,26 @@ import moment from 'moment'
 import { useReservationCancelStore } from '../../../store/ReservationCancel'
 import { clockText } from '../../../constants/text/api/Reservation'
 import { useReservationCancelMutation } from '../../../hooks/queries/api/Reservation'
+import Spinner from '../../../function/spinner'
 
 const index = () => {
 
     const navigate = useNavigate();
 
     const openReservationCancelModal = useReservationCancelStore((state) => state.setOpen);
+    const funcReservationFunc = useReservationCancelStore((state) => state.setFunc);
 
     const [tab, setTab] = useState(Array(3).fill().map((_, index) => index === 0));
 
     const [dummy, setDummy] = useState(Array(5).fill(false));
 
-    const { data, isSuccess, refetch } = useReservationListQuery();
+    const { data, isSuccess: listSuccess, refetch } = useReservationListQuery();
+    console.log("data: ", data);
 
     const [Ing, setIng] = useState([]);
+    console.log("ING: ", Ing);
 
-    const { mutate: cancel } = useReservationCancelMutation();
+    const { mutateAsync: cancel, isLoading: cancelLoading } = useReservationCancelMutation();
 
     useEffect(() => {
         if (data) {
@@ -44,9 +48,10 @@ const index = () => {
             });
             setIng(arr.reduce((acc, cur) => acc.concat(cur), []));
         }
-    }, [isSuccess]);
+        refetch();
+    }, [data]);
 
-    return isSuccess && (
+    return (
         <Container>
             <Header padding title="예약내역" arrowUrl={'/mypage'} />
             <TabBox>
@@ -67,7 +72,7 @@ const index = () => {
                 </div>
             </TabBox>
             <ListBox>
-                {Ing.map((x, index) => {
+                {!listSuccess || cancelLoading ? <Spinner /> : Ing.map((x, index) => {
                     return (
                         <Reservation_Box key={index}>
                             <div className='flex items-center'>
@@ -98,7 +103,20 @@ const index = () => {
                                                     <div>인원수: {x.peopleCount}명</div>
                                                 </div>
                                             </div>
-                                            <div className='bg-grey07 flex justify-center items-center px-2 py-1 rounded-lg' onClick={() => openReservationCancelModal(true)}>예약취소</div>
+                                            <div className='bg-grey07 flex justify-center items-center px-2 py-1 rounded-lg'
+                                                onClick={() => {
+                                                    openReservationCancelModal(true);
+                                                    funcReservationFunc(async()=>{
+                                                        await cancel({ 
+                                                            reservation: {
+                                                                reservationId: x.reservationId
+                                                            },
+                                                            reservationApplicantsId: y.reservationApplicantsId
+                                                    });
+                                                        refetch();
+                                                    });
+                                                    }}>예약취소
+                                            </div>
                                         </div>
                                     )
                                 })}

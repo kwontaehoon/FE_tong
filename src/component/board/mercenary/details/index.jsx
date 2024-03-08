@@ -34,8 +34,8 @@ const index = () => {
   return boardSuccess && commentSuccess && (
     <div className='bg-bg h-full flex flex-col'>
         <Header padding title="용병 구하기" noClose />
-        <Title boardList={boardList}/>
-        <Center id={id} boardList={boardList} />
+        <Title id={id} boardList={boardList}/>
+        <Center boardList={boardList} />
         <Bottom inputRef={inputRef} boardList={boardList} commentList={commentList?.content?.filter(x=>x.board?.boardId == id)} commentRefetch={commentRefetch}/>
         <div className='bg-white flex items-end py-4 px-3 flex-1'>
           <div className='flex relative w-full items-center'>

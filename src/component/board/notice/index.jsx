@@ -14,6 +14,9 @@ import { useNavigate } from 'react-router-dom';
 import Header from '../../../function/header';
 import { boardTabText } from '../../../constants/text/api/Board';
 import Navi from '../../../function/navi'
+import { useNoticeListQuery } from '../../../hooks/queries/api/Notice';
+import Spinner from '../../../function/spinner'
+import moment from 'moment';
 
 const index = () => {
 
@@ -21,7 +24,7 @@ const index = () => {
 
   const tab = Array(4).fill().map((_, index) => index === 2);
 
-  const [dummy, setDummy] = useState(Array(10).fill(false));
+  const { data, isSuccess } = useNoticeListQuery();
 
   return (
     <Container>
@@ -44,18 +47,18 @@ const index = () => {
         </div>
       </TabBox>
       <div className='mx-5'>
-        {dummy.map((_, index) => {
+        {!isSuccess ? <Spinner /> : data.map((x, index) => {
           return (
             <Announcement_Box key={index}>
               <div className='flex items-center w-full'>
                 <Update_in>
                   <Update_Box>
-                    <Update>[업데이트]</Update>
-                    <Announcement>v5.13.0업데이트 안내</Announcement>
+                    <Update>[{x.category}]</Update>
+                    <Announcement>{x.title}</Announcement>
                   </Update_Box>
-                  <Days>2024.02.23</Days>
+                  <Days>{moment(x.createDate).format("YYYY.MM.DD")}</Days>
                 </Update_in>
-                <img src="/svg/Arrow_right.svg" className='w-3' onClick={() => navigate(`${index}`)} />
+                <img src="/svg/Arrow_right.svg" className='w-3' onClick={() => navigate(`${index}`, { state: x})} />
               </div>
             </Announcement_Box>
           )

@@ -19,8 +19,6 @@ const index = () => {
 
   const navigate = useNavigate();
 
-  const openExpireModal = useExpireStore((state) => state.setOpen);
-
   const { data: myWish, isSuccess: wishSuc, refetch } = useMyWishListQuery({ users: { userId: getToken().userId }});
 
   const { data: myBoard, isSuccess: boardSuc } = useMyBoardListQuery({ user: { userId: getToken().userId }});

@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
     background-color: white;
+    height: 100%;
 ` 
 export const TabBox = styled.div`
     height: 68px;

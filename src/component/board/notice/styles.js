@@ -34,7 +34,8 @@ export const Update_Box = styled.div`
 `
 export const Update = styled.div`
     color: #00D4EA;
-    font-size: 11px;
+    font-size: 12px;
+    font-weight: 500;
 ` 
 export const Update_in = styled.div`
     flex: 1;

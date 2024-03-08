@@ -40,10 +40,10 @@ export const Recruitment = styled.div`
     align-items: center;
 `
 export const Area = styled.div`
-    background-color: #F4F5FA;
+    background-color: #E7F3FF;
     font-size: 13px;
     border-radius: 8px;
-    color: #9FA4A9;
+    color: #007CFF;
     padding: 4px 8px;
 `
 export const Title = styled.div`

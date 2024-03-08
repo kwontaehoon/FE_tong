@@ -30,15 +30,14 @@ const index = () => {
     const tab = Array(4).fill().map((_, index) => index === 0);
 
     const { data, isSuccess, refetch } = useBoardListQuery();
-    console.log("data: ", data);
 
     useEffect(() => {
         refetch();
     }, [navigate]);
 
-    return !isSuccess ? <Spinner /> : (
+    return (
         <Container>
-            <Header padding title="게시판" arrowUrl={"/"} />
+            <Header padding title="팀 구하기" arrowUrl={"/"} />
             <TabBox>
                 <div className='h-full flex'>
                     {boardTabText.map((x, index) => {
@@ -60,29 +59,29 @@ const index = () => {
                 <Choice>최신순</Choice>
                 <img src="/svg/down_arrow.svg" className='w-3' />
             </Choice_Box>
-                {data?.content?.filter(x => x.category.includes("팀")).map((x, index) => {
-                    return (
-                        <Recruitment_Box key={x.boardId} onClick={() => navigate(`${x.boardId}`)}>
+            {!isSuccess ? <Spinner /> : data?.content?.filter(x => x.category.includes("팀")).map((x, index) => {
+                return (
+                    <Recruitment_Box key={x.boardId} onClick={() => navigate(`${x.boardId}`)}>
                         <Recruitment>
-                            <Area>장기동</Area>
+                            <Area>팀</Area>
                             <Title>{x.title}</Title>
                         </Recruitment>
                         <Text>{x.content}</Text>
                         <Time_Box>
                             <Time>{dateDiff(x.createDate)}</Time>
-                            <img src="svg/eye.svg" className='mr-1'></img>
+                            <img src="/svg/eye.svg" className='w-3 mr-1' />
                             <Comment>{x.hits}</Comment>
-                            <img src="svg/comment.svg" className='mr-1'></img>
+                            <img src="/svg/comment.svg" className='w-3 mr-1' />
                             <Comment>{x.recommend}</Comment>
                         </Time_Box>
                     </Recruitment_Box>
-                    )
-                })}
-                {loginFlag() &&
-                    <div className='fixed right-5 bottom-32 flex justify-center items-center bg-grey10 rounded-full' style={{ width: "60px", height: "60px" }}
-                        onClick={() => navigate("/boardWrite", { state: '팀' })}>
-                        <img src="/svg/Pencil_Icon.svg" />
-                    </div>}
+                )
+            })}
+            {loginFlag() &&
+                <div className='fixed right-5 bottom-32 flex justify-center items-center bg-grey10 rounded-full' style={{ width: "60px", height: "60px" }}
+                    onClick={() => navigate("/boardWrite", { state: '팀' })}>
+                    <img src="/svg/Pencil_Icon.svg" />
+                </div>}
             <div className='h-24' />
             <Navi />
         </Container>

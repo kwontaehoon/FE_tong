@@ -28,7 +28,6 @@ const index = () => {
   const navigate = useNavigate();
 
   const { data: reservationList, isSuccess: reservationListSuccess, refetch: reservationRefetch } = useReservationListQuery();
-  console.log("reservationList: ", reservationList);
 
   const [info, setInfo] = useState();
 
@@ -44,7 +43,7 @@ const index = () => {
     if(!category[0] && reservationList){
       setInfo(reservationList.filter(x=>x.location == locationText[category.findIndex(x => x)].location));
     }else setInfo(reservationList);
-  }, [category, reservationListSuccess]);
+  }, [category, reservationList]);
 
   return (
     <Container>

@@ -8,6 +8,7 @@ const index = () => {
   const navigate = useNavigate();
 
   const openReservationCancelModal = useReservationCancelStore((state) => state.setOpen);
+  const reservationFunc = useReservationCancelStore((state) => state.func);
 
   return (
     <ModalContainer>
@@ -18,7 +19,7 @@ const index = () => {
                   onClick={()=>openReservationCancelModal(false)}>닫기
                 </div>
                 <div className='flex-1 flex items-center justify-center p-4 bg-m ml-2 rounded-lg text-white'
-                  onClick={()=>{openReservationCancelModal(false); navigate("/login")}}
+                  onClick={()=>{ openReservationCancelModal(false); reservationFunc(); }}
                 >취소
                 </div>
             </div>

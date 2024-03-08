@@ -21,7 +21,7 @@ const index = ({ inputRef, boardList, commentList, commentRefetch }) => {
       <Exchange>
         <img src="/svg/Whiteheart.svg" className='mr-1' />
         <Exchange_Text>좋아요 {boardList.recommend}</Exchange_Text>
-        <img src="/svg/comment.svg" className='mr-1' />
+        <img src="/svg/comment.svg" className='mr-1 w-4' />
         <Exchange_Text>댓글 {commentList.length}</Exchange_Text>
       </Exchange>
       {commentList.length == 0 ?
@@ -53,16 +53,16 @@ const index = ({ inputRef, boardList, commentList, commentRefetch }) => {
                     setCommentEdit(arr);
                   }}/>
                 {commentEdit[index] &&
-                <div className='absolute px-4 py-2 -left-14 -bottom-6 whitespace-nowrap rounded-lg shadow-lg'>
-                  <div onClick={()=>{
-                        inputRef.current.focus();
-                        setCommentEdit(Array(commentList.length).fill(false));
-                    }}>수정</div>
-                  <div onClick={async()=>{
+                <div className='absolute right-5 bg-white w-50 w-28 top-6 whitespace-nowrap font-bold text-xs rounded-lg shadow-lg'>
+                  <div className='px-4 py-2' onClick={async()=>{
                     setCommentEdit(Array(commentList.length).fill(false));
                     await commentDel({ commentsId: x.commentsId });
                     commentRefetch();
                   }}>삭제</div>
+                  <div className='px-4 py-2' onClick={()=>{
+                        inputRef.current.focus();
+                        setCommentEdit(Array(commentList.length).fill(false));
+                    }}>수정</div>
                 </div>}
               </div>
             </Comment_Box>

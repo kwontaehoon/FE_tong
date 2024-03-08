@@ -24,7 +24,7 @@ import Banner from './main/banner'
 import Pick from './main/pick'
 import Reservation from './main/reservation'
 import SearchRecommend from './search/searchRecommend'
-
+import Notice from './customerCenter/notice'
 
 const index = (props) => {
 
@@ -155,6 +155,25 @@ const index = (props) => {
                         </ListItemButton>
                     </List>
                 </Collapse>
+
+                <ListItemButton onClick={handleClick}>
+                    <ListItemIcon>
+                        <InboxIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="고객센터" />
+                    {open ? <ExpandLess /> : <ExpandMore />}
+                </ListItemButton>
+
+                <Collapse in={open} timeout="auto" unmountOnExit onClick={() => setContent("notice")}>
+                    <List component="div" disablePadding>
+                        <ListItemButton sx={{ pl: 4 }}>
+                            <ListItemIcon>
+                                <StarBorder />
+                            </ListItemIcon>
+                            <ListItemText primary="공지사항" />
+                        </ListItemButton>
+                    </List>
+                </Collapse>
             </List>
         </div>
     );
@@ -229,6 +248,7 @@ const index = (props) => {
                     {content == "pick" && <Pick />}
                     {content == "reservation" && <Reservation />}
                     {content == "searchRecommend" && <SearchRecommend />}
+                    {content == "notice" && <Notice />}
                 </Box>
             </Box>
         </div>

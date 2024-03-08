@@ -16,6 +16,7 @@ import { getToken } from '../../../utill/GetToken'
 import moment from 'moment'
 import { useReservationCancelStore } from '../../../store/ReservationCancel'
 import { clockText } from '../../../constants/text/api/Reservation'
+import Spinner from '../../../function/spinner'
 
 const index = () => {
 
@@ -27,8 +28,8 @@ const index = () => {
 
     const { data, isSuccess } = useReservationListQuery();
 
-    const [Ing, setIng] = useState([]);
-    console.log("Ing: ", Ing);
+    const [finish, setFinish] = useState([]);
+    console.log("finish: ", finish);
 
 
     useEffect(() => {
@@ -39,11 +40,11 @@ const index = () => {
                     arr.push(x);
                 }
             });
-            setIng(arr.reduce((acc, cur) => acc.concat(cur), []));
+            setFinish(arr.reduce((acc, cur) => acc.concat(cur), []));
         }
-    }, [isSuccess]);
+    }, [data]);
 
-    return isSuccess && (
+    return (
         <Container>
             <Header padding title="완료내역" arrowUrl={'/mypage'} />
             <TabBox>
@@ -64,7 +65,7 @@ const index = () => {
                 </div>
             </TabBox>
             <ListBox>
-                {Ing.map((x, index) => {
+                {!isSuccess ? <Spinner /> : finish.map((x, index) => {
                     return (
                         <Reservation_Box key={index}>
                             <div className='flex items-center'>
