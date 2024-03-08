@@ -16,5 +16,5 @@ export const Exchange_Text = styled.div`
 `
 export const Comment_Box = styled.div`
     display: flex;
-    padding: 16px 12px;
+    padding: 16px 0px;
 `  

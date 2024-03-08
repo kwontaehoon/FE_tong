@@ -17,8 +17,7 @@ import Reservation_Details from '../component/Reservation_Details'
 import Reservation_information from '../component/reservation_information'
 import Breakdown from '../component/breakdown'
 import Weather from '../component/weather'
-import Category from '../component/category'
-import Mypage_info from '../component/mypage_info'
+import Mypage_info from '../component/mypage/myInfo'
 import Expire from '../component/expire'
 import MyInfo from '../component/mypage/myInfo'
 import MyReservation_ing from '../component/myReservation/ing'
@@ -74,7 +73,6 @@ export const router = createBrowserRouter([
             { path: "/reservation_information/:id", element: <Reservation_information />},
             { path: "/breakdown/:id", element: <Breakdown />},
             { path: "/weather", element: <Weather />},
-            { path: "/category", element: <Category />},
             { path: "/mypage_info", element: <Mypage_info />},
             { path: "/expire", element: <Expire />},
             { 

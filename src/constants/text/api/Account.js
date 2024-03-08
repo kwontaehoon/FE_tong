@@ -4,4 +4,11 @@ export const expireText = [
     {id: 3, content: "쓸만한 서비스가 없어요."},
     {id: 4, content: "다른 계정이 있어요."},
     {id: 5, content: "다른 서비스를 이용할게요."},
+];
+
+export const positionText = [
+    {id: 1, content: "FW"},
+    {id: 2, content: "MF"},
+    {id: 3, content: "DF"},
+    {id: 4, content: "GK"},
 ]

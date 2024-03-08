@@ -1,9 +1,23 @@
 import { useQuery, useMutation } from "react-query";
-import { postSignup, postLogin, postIdCheck, postFindId, postFindPassword, postNewPassword, postSocialLogin } from "../../../service/api/Account";
+import { postSignup, postLogin, postIdCheck, postFindId, postFindPassword, postNewPassword, postSocialLogin, postProfileUpdate, getInfo, postWithdraw } from "../../../service/api/Account";
 
 const ACCOUNT_KEYS = {
-
+  info: "info"
 }
+
+/**
+* 게시판 목록
+* 
+*/
+
+export const useInfoQuery = (params) => {
+  return useQuery(ACCOUNT_KEYS.info, async () => {
+    const { data } = await getInfo(params);
+    return data;
+  }, {
+    staleTime: Infinity,
+  });
+};
 
 /**
  * 회원가입
@@ -26,14 +40,14 @@ export const useSignupMutation = () =>
  */
 
 export const useSocialLoginMutation = () =>
-useMutation({
-  mutationFn: (params) => {
-    return postSocialLogin(params);
-  },
-  onSuccess: () => {
-    // 성공 시 실행할 로직 추가
-  }
-});
+  useMutation({
+    mutationFn: (params) => {
+      return postSocialLogin(params);
+    },
+    onSuccess: () => {
+      // 성공 시 실행할 로직 추가
+    }
+  });
 
 /**
  * 로그인
@@ -104,6 +118,36 @@ export const useNewPasswordMutation = () =>
   useMutation({
     mutationFn: (params) => {
       return postNewPassword(params);
+    },
+    onSuccess: () => {
+      // 성공 시 실행할 로직 추가
+    }
+  });
+
+/**
+ * 회원 탈퇴
+ * 
+ */
+
+export const useWithdrawMutation = () =>
+  useMutation({
+    mutationFn: (params) => {
+      return postWithdraw(params);
+    },
+    onSuccess: () => {
+      // 성공 시 실행할 로직 추가
+    }
+  });
+
+/**
+* 프로필 변경
+* 
+*/
+
+export const useProfileUpdateMutation = () =>
+  useMutation({
+    mutationFn: (params) => {
+      return postProfileUpdate(params);
     },
     onSuccess: () => {
       // 성공 시 실행할 로직 추가

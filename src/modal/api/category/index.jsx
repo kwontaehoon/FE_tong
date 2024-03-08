@@ -9,6 +9,8 @@ import { usePickListQuery } from '../../../hooks/queries/api/Main'
 import { useNavigate } from 'react-router-dom';
 import { loginFlag } from '../../../utill/LoginFlag'
 import { getToken } from '../../../utill/GetToken'
+import { useInfoQuery } from '../../../hooks/queries/api/Account';
+import { profile } from '../../../function/profile';
 
 const index = () => {
 
@@ -17,7 +19,13 @@ const index = () => {
   const openCategoryModal = useCategoryStore((state) => state.setOpen);
   const { data, isSuccess } = usePickListQuery();
 
-  return isSuccess && (
+  const { data: info, isSuccess: infoSuccess, refetch } = useInfoQuery({ userId: !getToken().userId ? 0 : getToken().userId });
+
+  useEffect(()=>{
+    refetch();
+  }, []);
+
+  return isSuccess && infoSuccess && (
     <ModalSideContainer $show={categoryModal}>
       <ModalSideSubContainer $show={categoryModal}>
         <Container>
@@ -29,10 +37,10 @@ const index = () => {
             {loginFlag() ?
               <InfoLogin>
                 <div style={{ width: "65px", height: "65px" }} className='rounded-full mr-4 flex justify-center items-center bg-bg'>
-                  <img src="/svg/proflie.png" />
+                  {profile(info?.profile)}
                 </div>
                 <div className='flex justify-center flex-col'>
-                  <div className='text-lg font-bold'>{getToken().id}님</div>
+                  <div className='text-sm font-bold mb-six'>{getToken().id}님</div>
                   <div className='text-m text-xs font-bold'>오늘로 {"1"}번 로그인 하였습니다!</div>
                 </div>
               </InfoLogin> : <Info>

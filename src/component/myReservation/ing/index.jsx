@@ -31,10 +31,8 @@ const index = () => {
     const [dummy, setDummy] = useState(Array(5).fill(false));
 
     const { data, isSuccess: listSuccess, refetch } = useReservationListQuery();
-    console.log("data: ", data);
 
     const [Ing, setIng] = useState([]);
-    console.log("ING: ", Ing);
 
     const { mutateAsync: cancel, isLoading: cancelLoading } = useReservationCancelMutation();
 
@@ -96,7 +94,7 @@ const index = () => {
                                             <div className='flex flex-col flex-1'>
                                                 <div>{x.title}</div>
                                                 <div className='flex'>
-                                                    <div>{x.deadLine}</div>
+                                                    <div>{moment(y.reservationDate).format("YYYY-MM-DD")}</div>
                                                     <div className='mx-1'>|</div>
                                                     <div>{clockText[y.reservationClock].startClock}~{clockText[y.reservationClock].endClock}</div>
                                                     <div className='mx-1'>|</div>
@@ -106,16 +104,19 @@ const index = () => {
                                             <div className='bg-grey07 flex justify-center items-center px-2 py-1 rounded-lg'
                                                 onClick={() => {
                                                     openReservationCancelModal(true);
-                                                    funcReservationFunc(async()=>{
-                                                        await cancel({ 
+                                                    funcReservationFunc(async () => {
+                                                        await cancel({
                                                             reservation: {
                                                                 reservationId: x.reservationId
                                                             },
-                                                            reservationApplicantsId: y.reservationApplicantsId
-                                                    });
+                                                            reservationApplicantsId: y.reservationApplicantsId,
+                                                            peopleCount: x.peopleCount,
+                                                            reservationDate: moment(y.reservationDate).format("YYYY-MM-DD"),
+                                                            reservationClock: y.reservationClock
+                                                        });
                                                         refetch();
                                                     });
-                                                    }}>예약취소
+                                                }}>예약취소
                                             </div>
                                         </div>
                                     )

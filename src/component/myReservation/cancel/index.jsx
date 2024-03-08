@@ -15,10 +15,9 @@ import { getToken } from '../../../utill/GetToken'
 import moment from 'moment'
 import { useReservationCancelListQuery } from '../../../hooks/queries/api/Reservation'
 import Spinner from '../../../function/spinner'
+import { clockText } from '../../../constants/text/api/Reservation'
 
 const index = () => {
-
-    console.log(getToken().userId);
 
     const navigate = useNavigate();
 
@@ -72,11 +71,17 @@ const index = () => {
                                 </div>
                             </div>
                             {dummy[index] && <div className='mt-5 rounded-lg bg-bg px-4 pt-5 text-xs text-grey10'>
-                                <div key={x.reservationCancelId} className='flex pb-5'>
+                                <div key={x.reservationCancelId} className='pb-5'>
                                     <div>{x.reservation.title}</div>
-                                    <div className='mx-1'>|</div>
-                                    <div>{x.reservation.deadLine}</div>
+                                    <div className='flex'>
+                                        <div>{moment(x.reservationDate).format("YYYY-MM-DD")}</div>
+                                        <div className='mx-1'>|</div>
+                                        <div>{clockText[x.reservationClock].startClock}~{clockText[x.reservationClock].endClock}</div>
+                                        <div className='mx-1'>|</div>
+                                        <div>인원수: {x.peopleCount}명</div>
+                                    </div>
                                 </div>
+
                             </div>}
                         </Reservation_Box>
                     )

@@ -1,14 +1,18 @@
 import React from 'react'
 import {Div,MallTerm,Top,Img,Quick,BtnArea,Button } from './styles'
 import Header from '../../../function/header'
+import { useNavigate } from 'react-router-dom'
 
 const index = () => {
+
+  const navigate = useNavigate();
+
   return (
     <Div>
       <Top><Img src='./svg/Logo.svg' alt='로고'></Img></Top>
-       <Header Arrow title={"이용약관"} padding/>
+       <Header arrowUrl={"/"} title={"이용약관"} padding closeUrl={"/"}/>
        <Quick id="btnTop" >
-          <a href="#"><Img src='./images/upload.png' alt='탑' $wd={'30px'}></Img></a>
+          <Img src='./images/upload.png' alt='탑' $wd={'30px'} onClick={()=>scrollTo({ top: 0, behavior: "smooth"})}></Img>
        </Quick>
       <div class="wrap">
         <MallTerm>
@@ -126,7 +130,7 @@ const index = () => {
         </MallTerm>
       </div>
       <BtnArea>
-      <Button type="button" class="btnNormal" onclick="self.close();">닫기</Button>
+      <Button class="btnNormal" onClick={()=>navigate("/")}>닫기</Button>
       </BtnArea>
       
       </Div>

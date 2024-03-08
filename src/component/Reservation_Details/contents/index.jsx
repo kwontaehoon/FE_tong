@@ -17,7 +17,7 @@ const index = ({ data }) => {
       <Contents_Box>
         <Title>{data.title}</Title>
         <Jangi>{data.subTitle}</Jangi>
-        <Introduction>{data.location}</Introduction>
+        <Introduction>{data.locationDetails}</Introduction>
         <Star>
           {star(data.score)}
           <Score>{data.score}</Score>

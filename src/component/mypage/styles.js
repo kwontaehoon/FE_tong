@@ -40,11 +40,14 @@ justify-content: space-between;
 align-items: center;
 gap: 10px;
 `
-export const Icon = styled.img`
+export const Icon = styled.div`
 width: 65px;
 height: 65px;
 border-radius: 999px;
 background: #E9EBED;
+display: flex;
+align-items: center;
+justify-content: center;
 `
 export const H3 = styled.h3`
 color: #26282B;

@@ -2,12 +2,13 @@ import React, { useEffect } from 'react'
 import ReservationModify from './admin/ReservationModify'
 import Category from './api/category'
 import Expire from './api/expire'
+import ExpireLogin from './api/expire/expireLogin'
 import LoginFlag from './api/login'
 import Term from './api/account/term'
 import Privacy from './api/account/privacy'
 import ReservationCancel from './api/reservationCancel'
 import { useCategoryStore } from '../store/Category';
-import { useExpireStore } from '../store/Expire';
+import { useExpireLoginStore, useExpireStore } from '../store/Expire';
 import { useLoginStore } from '../store/LoginFlag'
 import { usePrivacyStore, useTermStore } from '../store/Account'
 import { useReservationCancelStore } from '../store/ReservationCancel'
@@ -16,6 +17,7 @@ const index = () => {
 
   const categoryModal = useCategoryStore((state) => state.open);
   const expireModal = useExpireStore((state) => state.open);
+  const expireLoginModal = useExpireLoginStore((state) => state.open);
   const loginModal = useLoginStore((state) => state.open);
   const termModal = useTermStore((state) => state.open);
   const privacyModal = usePrivacyStore((state) => state.open);
@@ -37,6 +39,7 @@ const index = () => {
         {termModal && <Term />}
         {privacyModal && <Privacy />}
         {reservationCancelModal && <ReservationCancel />}
+        {expireLoginModal && <ExpireLogin />}
     </>
   )
 }

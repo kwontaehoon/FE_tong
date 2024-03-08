@@ -19,6 +19,8 @@ const index = () => {
 
   const { data, isSuccess, refetch } = useReservationDetailsQuery({ id: id });
 
+  const [selectBox, setSelectBox] = useState(false);
+
   const { mutateAsync: wish } = useWishMutation();
 
   const [info, setInfo] = useState({
@@ -30,28 +32,33 @@ const index = () => {
     peopleCount: 0,
   });
 
-  useEffect(()=>{
+  useEffect(() => {
     refetch();
   }, []);
 
   return isSuccess && (
-    <div className='bg-bg'>
+    <div className='bg-bg'
+      onClick={() => {
+        if (selectBox) {
+          setSelectBox(false);
+        }
+      }}>
       <Header
         padding title={"예약 상세"}
-        wish={{open: true , data: data.userIdsOfWishes.includes(getToken().id) }}
-        func={async()=>{ await wish({users: { userId: getToken().userId}, reservation: { reservationId: id}}); refetch(); }}
-        />
+        wish={{ open: true, data: data.userIdsOfWishes.includes(getToken().id) }}
+        func={async () => { await wish({ users: { userId: getToken().userId }, reservation: { reservationId: id } }); refetch(); }}
+      />
       <Banner data={data} />
       <div className='p-5 pt-0'>
         <Contents data={data} />
-        <Weather_Box info={info} setInfo={setInfo} data={data} />
+        <Weather_Box selectBox={selectBox} setSelectBox={setSelectBox} info={info} setInfo={setInfo} data={data} />
         <Facilities />
         <div className={'py-5 px-2 flex items-center justify-center rounded-lg bg-grey07 text-grey05'
           + (Object.values(info).every(value => value !== "") && info.peopleCount !== 0 ? ' bg-m text-white' : '')}
-          style={{marginTop: "30px"}}
-          onClick={()=>{
-            if(Object.values(info).every(value => value !== "") && info.peopleCount !== 0){
-              navigate(`/reservation_information/${id}`, {state: info, data: data});
+          style={{ marginTop: "30px" }}
+          onClick={() => {
+            if (Object.values(info).every(value => value !== "") && info.peopleCount !== 0) {
+              navigate(`/reservation_information/${id}`, { state: info, data: data });
             }
           }}>예약하기
         </div>

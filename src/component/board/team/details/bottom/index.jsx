@@ -7,6 +7,8 @@ import {
 } from './styles'
 import moment from 'moment';
 import { useCommentDeleteMutation, useCommentUpdateMutation } from '../../../../../hooks/queries/api/Comment';
+import { profile } from '../../../../../function/profile';
+import { getToken } from '../../../../../utill/GetToken';
 
 const index = ({ inputRef, boardList, commentList, commentRefetch }) => {
 
@@ -30,9 +32,11 @@ const index = ({ inputRef, boardList, commentList, commentRefetch }) => {
           return (
             <Comment_Box key={x.commentsId}>
               <div className='flex flex-1'>
-                <img src="/svg/Ikon.svg" className='mr-1 w-12' />
+                <div className='mr-2 flex items-center justify-center'>
+                  {profile(x.user.profile)}
+                </div>
                 <div>
-                  <div className='flex items-center mb-2'>
+                  <div className='flex items-center'>
                     <div className='text-lg mr-2 font-bold'>{x.user.name}</div>
                     <div>{x.content}</div>
                   </div>
@@ -43,7 +47,7 @@ const index = ({ inputRef, boardList, commentList, commentRefetch }) => {
                 </div>
               </div>
               <div className='flex items-center relative'>
-                <img src="/svg/details.svg"
+                {x.user.userId !== getToken().userId ? '' : <img src="/svg/details.svg"
                   onClick={()=>{
                     let arr = [...commentEdit];
                     if(!arr[index]){
@@ -51,7 +55,7 @@ const index = ({ inputRef, boardList, commentList, commentRefetch }) => {
                     }
                     arr[index] = !arr[index];
                     setCommentEdit(arr);
-                  }}/>
+                  }}/>}
                 {commentEdit[index] &&
                 <div className='absolute right-5 bg-white w-50 w-28 top-6 whitespace-nowrap font-bold text-xs rounded-lg shadow-lg'>
                   <div className='px-4 py-2' onClick={async()=>{

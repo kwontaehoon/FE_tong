@@ -45,7 +45,7 @@ export const BtnArea = styled.div`
     margin-top: 12px;
     height: 30px;
 `
-export const Button = styled.button`
+export const Button = styled.div`
     color: #222;
     background-color: #F7F8FE;
     padding: 4px 16px;

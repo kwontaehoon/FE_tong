@@ -28,6 +28,7 @@ const index = () => {
         score: "",
         peopleCount: "",
         deadLine: "",
+        locationDetails: ""
     });
     console.log("info: ", info);
     const [imgFileList, setImgFileList] = useState([]); // 업로드된 이미지 파일 저장
@@ -63,6 +64,7 @@ const index = () => {
         formData.append("xCoordinate", !addFlag ? info.xcoordinate : location.x);
         formData.append("yCoordinate", !addFlag ? info.ycoordinate : location.y);
         formData.append("deadLine", info.deadLine);
+        formData.append("locationDetails", info.locationDetails);
 
         if (addFlag) {
             await add(formData);
@@ -185,14 +187,21 @@ const index = () => {
                                     }} />
                             </div>
                             <div className='mb-5'>
-                                <div>내용</div>
+                                <div>주소</div>
                                 <input className='border p-3 w-full rounded mt-2' disabled={!modifyFlag[index]} placeholder={x.subTitle}
                                     onChange={(e) => {
                                         setInfo({ ...info, subTitle: e.target.value });
                                     }} />
                             </div>
                             <div className='mb-5'>
-                                <div>상세 위치</div>
+                                <div>상세 주소</div>
+                                <input className='border p-3 w-full rounded mt-2' disabled={!modifyFlag[index]} placeholder={x.locationDetails}
+                                    onChange={(e) => {
+                                        setInfo({ ...info, locationDetails: e.target.value });
+                                    }} />
+                            </div>
+                            <div className='mb-5'>
+                                <div>위치</div>
                                 <input className='border p-3 w-full rounded mt-2' disabled={!modifyFlag[index]} placeholder={x.location}
                                     onChange={(e) => {
                                         setInfo({ ...info, location: e.target.value });

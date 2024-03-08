@@ -18,11 +18,14 @@ import { useGoogleLogin } from '@react-oauth/google'
 import { naverLogin, naverToken } from '../../../hooks/sns/Naver'
 import { kakaoInfo, kakaoLogin, kakaoToken } from '../../../hooks/sns/Kakao'
 import { googleLogin } from '../../../hooks/sns/Google'
+import { useExpireLoginStore } from '../../../store/Expire'
 
 const index = () => {
 
     const code = new URL(window.location.href).searchParams.get("code");
     const state = new URL(window.location.href).searchParams.get('state');
+
+    const openExpireLoginModal = useExpireLoginStore((state) => state.setOpen);
 
     const navigate = useNavigate();
 
@@ -31,7 +34,7 @@ const index = () => {
         password: ''
     });
     const [validation, setValidation] = useState(false); // 유효성 검사
-    const { mutateAsync: login, data } = useLoginMutation();
+    const { mutateAsync: login, data, isLoading } = useLoginMutation();
     const { mutateAsync: sociallLogin } = useSocialLoginMutation();
 
     const googleGetCode = useGoogleLogin({
@@ -86,6 +89,8 @@ const index = () => {
     useEffect(() => {
         if (data?.data?.status == 400) {
             setValidation(true);
+        } else if (data?.data?.status == 100) {
+            openExpireLoginModal(true);
         } else if (data?.data?.status == 200) {
             localStorage.setItem("token", data.data.token);
             navigate("/")

@@ -9,14 +9,18 @@ import {
   PrivatePolicy,
   English
 } from './styles'
+import { useNavigate } from 'react-router-dom'
 
 const index = () => {
+
+  const navigate = useNavigate();
+
   return (
     <Container>
         <Policy>
-          <Inquiry>이용약관</Inquiry>
+          <Inquiry onClick={()=>navigate("/term")}>이용약관</Inquiry>
           <div className='text-grey06' style={{margin: "0px 10px"}}>|</div>
-          <PrivatePolicy>개인정보처리방침</PrivatePolicy>
+          <PrivatePolicy onClick={()=>navigate("/privacy")}>개인정보처리방침</PrivatePolicy>
         </Policy>
         <Gimpo>김포운통장</Gimpo>
         <Personal_information>

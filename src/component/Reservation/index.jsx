@@ -80,7 +80,7 @@ const index = () => {
                         reservationRefetch();
                       }}>
                       {loginFlag() && x?.userIdsOfWishes?.includes(getToken().id) ?
-                        <img src="/svg/heart_red.svg" /> : <img src="/svg/heart_2.svg" />}
+                        <img src="/svg/heart_red.svg" className='w-4' /> : <img src="/svg/heart_2.svg" className='w-4' />}
                     </div>}
                     <img src={`https://tong-bucket.s3.ap-northeast-2.amazonaws.com/${x.reservationFiles[0].fileName}`} className='w-full h-full' />
                   </SwiperSlide>

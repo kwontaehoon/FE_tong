@@ -6,10 +6,16 @@ import {
 import Header from '../../function/header'
 import { expireText } from '../../constants/text/api/Account'
 import { getToken } from '../../utill/GetToken'
+import { useWithdrawMutation } from '../../hooks/queries/api/Account'
+import { useNavigate } from 'react-router-dom'
 
 const index = () => {
 
+  const navigate = useNavigate();
+
   const [check, setCheck] = useState(Array(5).fill(false));
+
+  const { mutateAsync: withdraw } = useWithdrawMutation();
 
   return (
     <Cotainer>
@@ -49,7 +55,12 @@ const index = () => {
         </Ul>
       </Section2>
       <div className='flex-1 flex items-end m-5'>
-        <BtnOut $bg={check.filter(x=>x).length !== 0}>탈퇴하기</BtnOut>
+        <BtnOut $bg={check.filter(x=>x).length !== 0}
+        onClick={async()=>{
+          await withdraw({ userId: getToken().userId, expire_reason: expireText[check.findIndex(x=>x)].content });
+          localStorage.removeItem("token");
+          navigate("/");
+        }}>탈퇴하기</BtnOut>
       </div>
     </Cotainer>
   )

@@ -13,12 +13,15 @@ import { dateDiff } from '../../../../../utill/DateDiff';
 import { getToken } from '../../../../../utill/GetToken';
 import { useBoardDeleteMutation } from '../../../../../hooks/queries/api/Board';
 import { useNavigate } from 'react-router-dom';
+import { profile } from '../../../../../function/profile';
 
 const index = ({id, boardList}) => {
+  console.log("boardList: ", boardList);
 
   const navigate = useNavigate();
 
   const [popupFlag, setPopupFlag] = useState(false);
+
   const { mutateAsync: boardDel } = useBoardDeleteMutation();
 
   return (
@@ -31,7 +34,7 @@ const index = ({id, boardList}) => {
         <Comment>{boardList.commentCount}</Comment>
       </Comment_Box>
       <Anonymous>
-        <img style={{ width: "36px" }} src="/svg/Ikon.svg" />
+        {profile(boardList.user.profile)}
         <TongTong_Box>
           <TongTong>{boardList?.user?.name}</TongTong>
           <Days>{dateDiff(boardList.createDate)}</Days>

@@ -16,7 +16,7 @@ import { dayOfWeek } from '../../../utill/DayOfWeek'
 import { morningClockText, afterNoonClockText } from '../../../constants/text/api/Reservation'
 import moment from 'moment'
 
-const index = ({info, setInfo, data}) => {
+const index = ({selectBox, setSelectBox, info, setInfo, data}) => {
 
   const today = {
     year: new Date().getFullYear(), //오늘 연도
@@ -40,7 +40,6 @@ const index = ({info, setInfo, data}) => {
   const [selectDay, setSelectDay] = useState([]);
   const [clock, setClock] = useState(Array(9).fill(false));
 
-  const [selectBox, setSelectBox] = useState(false);
   const [blockClock, setBlockClock] = useState([]); // 이미 예약 찬 시간
 
   useEffect(()=>{
