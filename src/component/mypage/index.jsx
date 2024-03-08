@@ -1,5 +1,5 @@
 import React from 'react'
-import {Div,Info,Left,Icon,H3,P,P2,Reservation,
+import {Div,Info,Left,ProBox,Icon,H3,P,P2,Reservation,
   InfoBox,List1,Icon2,Icon1,Icon3,P3,P4,Comment,Span,H4,
   Wrap,ListBox,List2,Bottom} from './styles'
 import Header from '../../function/header'
@@ -11,7 +11,7 @@ const index = () => {
 
     <Info>
       <Left>
-        <Icon src="./svg/proflie.png" alt='이미지'></Icon>
+        <ProBox><Icon src="./svg/profile_01.svg" alt='프로필'></Icon></ProBox>
           <div style={{marginBottom:'10px'}}>
             <H3>000님</H3>
             <P>오늘로 00번 로그인 하였습니다!</P>
@@ -26,9 +26,9 @@ const index = () => {
       <P4 style={{textAlign:'center',color:'#9FA4A9',fontWeight:'500'}}>*최근 90일 이내의 활동만 조회됩니다.</P4>
       <ListBox>
         {/* 수정필요 태그분리 */}
-      <List2><Icon2 src="./svg/Reserve.png" alt='예약'></Icon2><P3>예약 1</P3></List2>
-      <List2><Icon2 src="./svg/Manual.png" alt='대기'></Icon2><P3>대기 0</P3></List2>    
-      <List2><Icon2 src="./svg/Completed.png" alt='완료'></Icon2><P3>완료 10</P3></List2>
+      <List2><Icon2 src="./svg/Reserve.png" alt='예약'></Icon2><P3>예약<span>1</span></P3></List2>
+      <List2><Icon2 src="./svg/Manual.png" alt='대기'></Icon2><P3>취소 <span>1</span></P3></List2>    
+      <List2><Icon2 src="./svg/Completed.png" alt='완료'></Icon2><P3>완료 <span>10</span></P3></List2>
       </ListBox>
      
    

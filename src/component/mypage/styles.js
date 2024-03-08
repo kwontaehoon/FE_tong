@@ -38,11 +38,15 @@ justify-content: space-between;
 align-items: center;
 gap: 17px;
 `
-export const Icon = styled.img`
-width: 65px;
-height: 65px;
+export const ProBox = styled.div`
 border-radius: 999px;
 background: #E9EBED;
+padding: 10px;
+`
+export const Icon = styled.img`
+width: 40px;
+height: 40px;
+
 `
 export const H3 = styled.h3`
 color: #26282B;
