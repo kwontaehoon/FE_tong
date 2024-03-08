@@ -7,7 +7,7 @@ const Header = ({ noBtn, noArrow, noClose, padding, title, search, wish, func, c
   const navigate = useNavigate();
 
   return (
-    <div className={'h-12 flex items-center justify-center bg-white relative' + (padding ? ' p-5' : '') + (borderB ? ' border-b border-grey07' : '')}>
+    <div className={'h-12 flex items-center justify-center bg-white relative border-b border-grey07' + (padding ? ' p-5' : '') + (borderB ? ' border-b border-grey07' : '')}>
       <div className={'absolute' + (padding ? ' left-5' : ' left-0')}>
         {!noBtn && !noArrow && <img src="/svg/Header_arrow_left.svg" className='w-5' onClick={() => arrowUrl ? navigate(arrowUrl) : navigate(-1)} />}
       </div>
@@ -23,7 +23,7 @@ const Header = ({ noBtn, noArrow, noClose, padding, title, search, wish, func, c
           {wish.data ? <img src='/svg/heart_red.svg' className='w-4' /> : <img src='/svg/heart_2.svg' className='w-4' />}
           </div>}
         
-        {search && <img src='/svg/search.svg' className='w-5' onClick={()=>navigate("/search")} />}
+        {search && <img src='/svg/search_grey.svg' className='w-5' onClick={()=>navigate("/search")} />}
 
         {check && <img src='/svg/check.svg' className='w-5' onClick={func} />}
       </div>

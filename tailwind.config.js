@@ -30,6 +30,7 @@ module.exports = {
     colors: {
       "m": "#007CFF",
       "ms": "#00D4EA",
+      "point": "#FF2A6D",
 
       "white": "#FFFFFF",
 

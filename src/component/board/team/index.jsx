@@ -78,9 +78,9 @@ const index = () => {
                 )
             })}
             {loginFlag() &&
-                <div className='fixed right-5 bottom-32 flex justify-center items-center bg-grey10 rounded-full' style={{ width: "60px", height: "60px" }}
+                <div className='fixed right-5 bottom-32 flex justify-center items-center bg-grey10 rounded-full w-12 h-12'
                     onClick={() => navigate("/boardWrite", { state: '팀' })}>
-                    <img src="/svg/Pencil_Icon.svg" />
+                    <img src="/svg/Pencil_Icon.svg" className='w-5' />
                 </div>}
             <div className='h-24' />
             <Navi />

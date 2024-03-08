@@ -53,7 +53,7 @@ const index = () => {
       <Scroll className='flex overflow-scroll whitespace-nowrap bg-white mb-5'>
         {locationText.map((x, index) => {
           return (
-            <div key={x.id} className={'my-5 px-4 leading-6 py-six rounded-full mr-1 text-sm' + (category[index] ? ' bg-grey06.5' : '')}
+            <div key={x.id} className={'my-3 px-4 leading-6 py-six border-grey06.5 rounded-full mr-1 text-sm' + (category[index] ? ' bg-grey07 border' : '')}
               onClick={()=>{
                 let arr = Array(7).fill(false);
                 arr[index] = true;
@@ -94,7 +94,7 @@ const index = () => {
                       <div className='ml-1 border border-m text-m text-xs rounded' style={{padding: "2px 4px"}}>시설 청결</div>
                     </div>}
                     {index == 1 && <div className='flex'>
-                      <div className='ml-2 border border-m text-xs rounded text-m' style={{padding: "2px 4px"}}>금주 예약 가능</div>
+                      <div className='ml-2 border border-point text-xs rounded text-point' style={{padding: "2px 4px"}}>금주 예약 마감</div>
                       <div className='ml-1 border border-m text-m text-xs rounded' style={{padding: "2px 4px"}}>0 ~ 5명</div>
                     </div>}
                   </div>

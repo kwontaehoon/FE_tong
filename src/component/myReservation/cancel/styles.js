@@ -22,7 +22,7 @@ export const Reservation_Box = styled.div`
 `
 export const Reservation = styled.div`
     flex: 1;
-    font-size: 13px;
+    font-size: 14px;
     display: flex;
     align-items: center;
 `

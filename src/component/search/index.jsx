@@ -35,7 +35,7 @@ const index = () => {
 
     return resultLoading ? <Spinner /> : isSuccess && (
         <Container>
-            <Header title="검색" />
+            <Header title="검색" noClose />
             <Search_Box>
                 <Search>
                     <Input_Box>
@@ -63,7 +63,7 @@ const index = () => {
             </Search_Box>
     
             {resultList && resultList?.data?.length == 0 && <div className='flex items-center flex-col mt-12'>  
-                <img src="/svg/Frame 169.svg"></img>
+                <img src="/svg/find_pwd.svg" className='w-16' />
                 <div className='text-xl text-grey06 my-4'>검색결과가 없습니다.</div>
             </div>}
             {recommendList.length == 0 ? '' : <Search_Word>추천검색어</Search_Word>}

@@ -7,7 +7,6 @@ export const Container = styled.div`
     border-radius: 8px;
 `
 export const Facilities_Box = styled.div`
-    font-weight: 700;
     margin-bottom: 16px;
 `
 export const Ikon_Box = styled.div`
@@ -34,7 +33,6 @@ export const Ikon_name = styled.div`
 export const Rule = styled.div`
     margin-top: 30px;
     font-size: 16px;
-    font-weight: 700;
 `
 export const Description = styled.div`
     margin-top: 20px;

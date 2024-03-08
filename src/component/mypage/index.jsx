@@ -33,7 +33,7 @@ const index = () => {
 
   useEffect(()=>{
 
-  });
+  }, []);
 
   useEffect(()=>{
     refetch();
@@ -113,7 +113,7 @@ const index = () => {
           <P4 onClick={()=>{ localStorage.removeItem("token"); navigate("/"); window.location.reload();}}>로그아웃</P4>
           <Icon3 src="./svg/line-md_arrow-close-right.png" alt='로그아웃아이콘'></Icon3>
         </Left>
-      </Bottom> 
+      </Bottom>
       <div className='h-24' />
       <Navi />
     </Div>

@@ -14,7 +14,6 @@ const index = () => {
 
     const navigate = useNavigate();
     const pathName = useLocation().pathname;
-    console.log("pathName: ", pathName.includes('reservation'));
     const openCategoryModal = useCategoryStore((state) => state.setOpen);
     const openLoginModal = useLoginStore((state) => state.setOpen);
 

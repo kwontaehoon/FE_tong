@@ -13,7 +13,7 @@ const index = ({ data }) => {
 
   return (
     <Container>
-      <Swiper pagination={true} modules={[Pagination]}>
+      <Swiper pagination={{type: 'fraction'}} effect="fade" modules={[Pagination]}>
         {data.reservationFiles.map(x => {
           return (
             <SwiperSlide key={x.reservationFileId}>

@@ -66,8 +66,8 @@ const index = ({info, setInfo, data}) => {
         <WeatherFunc reservation data={data} />
       </Weather_Box>
       <Time_Container>
-        <div className='flex-1 font-bold mb-5'>날짜를 선택하세요.</div>
-        <div className='flex items-center mb-5'>
+        <div className='flex-1 mt-1 font-bold'>날짜를 선택하세요.</div>
+        <div className='flex items-center mb-5 border-b py-5 border-grey06'>
           <div className='flex relative mr-4 shrink-0'>
             {selectBox && <div className='absolute border rounded-lg bg-white top-8 left-0 flex-col z-50 w-full flex justify-center items-center py-2'>
               {Array.from({ length: today.month-1 }).map((_, index)=>{
@@ -107,12 +107,12 @@ const index = ({info, setInfo, data}) => {
             </div>
           </div>
         </div>
-        <div className='flex py-5 border-b border-grey07 mb-5'>
+        <div className='flex mb-3 mt-2'>
           <div className='flex-1 font-bold'>시간을 선택하세요.</div>
         </div>
         <div>
           <div style={{marginBottom: '10px'}}>오전</div>
-          <div className='flex flex-wrap mb-5'>
+          <div className='flex flex-wrap mb-3'>
             {morningClockText.map((x, index) => {
               return (
                 <div key={x.id} style={{padding: "8px 13px"}} className={'border rounded-lg mr-six mb-2 text-xs' + (blockClock.includes(index) ? ' bg-grey07 text-grey05' : clock[index] ? ' bg-m text-white' : '')}

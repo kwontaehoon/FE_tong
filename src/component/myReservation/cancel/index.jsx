@@ -26,20 +26,10 @@ const index = () => {
 
     const [dummy, setDummy] = useState(Array(5).fill(false));
 
-    const [Ing, setIng] = useState([]);
-
     const { data, isSuccess, refetch } = useReservationCancelListQuery();
+    console.log("data: ", data);
 
     useEffect(() => {
-        if (data) {
-            let arr = [];
-            data?.map(x => {
-                if (moment(new Date()).diff(x.deadLine, 'hour') > 24 && x?.resrvationApplicants?.filter(x => x.userId == getToken().userId).length > 0) {
-                    arr.push(x);
-                }
-            });
-            setIng(arr.reduce((acc, cur) => acc.concat(cur), []));
-        }
         refetch();
     }, [data]);
 
@@ -69,7 +59,7 @@ const index = () => {
                         <Reservation_Box key={index}>
                             <div className='flex items-center'>
                                 <Reservation>
-                                    <img src="/svg/myReservation_delete.svg" className='w-4' />
+                                    <img src="/svg/myReservation_delete.svg" className='w-3' />
                                     <div className='mx-six'>취소내역</div>
                                     <div className='text-xs'>(90일간 내역을 확인할 수 있습니다)</div>
                                 </Reservation>
@@ -78,7 +68,7 @@ const index = () => {
                                     arr[index] = !arr[index];
                                     setDummy(arr);
                                 }}>
-                                    {dummy[index] ? <img src="svg/false_arrow.svg" /> : <img src="/svg/Arrow_bottom.svg" />}
+                                    {dummy[index] ? <img src="svg/false_arrow.svg" className='w-3' /> : <img src="/svg/Arrow_bottom.svg" className='w-3' />}
                                 </div>
                             </div>
                             {dummy[index] && <div className='mt-5 rounded-lg bg-bg px-4 pt-5 text-xs text-grey10'>

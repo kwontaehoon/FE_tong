@@ -16,6 +16,7 @@ export const Sec1 = styled.div`
     padding: 30px 20px;
     background: #fff;
     margin-top: ${props => props.$mt};
+    padding-bottom: ${props => props.$pb ? '40px' : ''};
 `
 export const Section2 = styled(Sec1)`
 background: #F4F5FA;
@@ -26,7 +27,7 @@ export const H1 = styled.h1`
 color: #1B1D1F;
 text-align: center;
 font-family: "Noto Sans KR";
-font-size: 20px;
+font-size: 18px;
 font-style: normal;
 font-weight: 700;
 line-height: 26px;
@@ -54,11 +55,9 @@ background: #F4F5FA;
 margin-top: ${props => props.mt};
 `
 export const Li = styled.li`
-color: #73787E;
 font-family: "Noto Sans KR";
-font-size: 13px;
+font-size: 12px;
 font-style: normal;
-font-weight: 700;
 letter-spacing: -0.07px;
 padding: 0;
 margin: 0;
@@ -66,12 +65,13 @@ margin-bottom: 2px;
 list-style: none;
 `
 export const Li2 = styled(Li)`
-margin-bottom: 6px;
+margin-bottom: 12px;
 display: flex;
 align-items: center;
 `
 export const Span = styled.span`
-color: #007CFF;
+    line-height: 30px;
+    color: ${props => props.$main ? '#007CFF' : ''};
 `
 export const BtnOut = styled.button`
 display: flex;
@@ -80,8 +80,6 @@ height: 51px;
 justify-content: center;
 align-items: center;
 font-family: "Noto Sans KR";
-font-size: 20px;
-font-weight: 700;
 border-radius: 8px;
 background-color: ${props => props.$bg ? "#007CFF" : "#E9EBED"};
 color: ${props => props.$bg ? 'white' : '#9FA4A9'};

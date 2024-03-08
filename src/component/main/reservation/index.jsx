@@ -25,7 +25,7 @@ const index = ({data}) => {
     <Container>
       <div className='flex'>
         <div className='text-xl font-bold'>Best Ground</div>
-        <div className='ml-1 text-xs flex justify-end flex-col'>추천 운동장</div>
+        <div className='ml-1 text-xs flex justify-end flex-col text-grey04'>추천 운동장</div>
       </div>
       <div className='flex mt-3' style={{marginBottom: "18px"}}>
         <img className='w-3/5 rounded-xl border-grey05 border-2' style={{height: "135px"}} src={`https://tong-bucket.s3.ap-northeast-2.amazonaws.com/${data[0].reservationFiles[0]?.fileName}`} />

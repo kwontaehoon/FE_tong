@@ -8,7 +8,7 @@ export const Contents_Box = styled.div`
     padding: 20px;
 `
 export const Title = styled.div`
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 700;
 `
 export const Introduction = styled.div`
@@ -20,7 +20,7 @@ export const Introduction = styled.div`
 `
 export const Jangi = styled.div`
     font-size: 12px;
-    margin: 6px 0px;
+    margin: 4px 0px;
 `
 export const Star = styled.div`
     display: flex;

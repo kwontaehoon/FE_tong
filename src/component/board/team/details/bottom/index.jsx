@@ -19,8 +19,8 @@ const index = ({ inputRef, boardList, commentList, commentRefetch }) => {
   return (
     <Container>
       <Exchange>
-        <img src="/svg/Whiteheart.svg" className='mr-1' />
-        <Exchange_Text>좋아요 {boardList.recommend}</Exchange_Text>
+        {/* <img src="/svg/Whiteheart.svg" className='mr-1' />
+        <Exchange_Text>좋아요 {boardList.recommend}</Exchange_Text> */}
         <img src="/svg/comment.svg" className='mr-1 w-4' />
         <Exchange_Text>댓글 {commentList.length}</Exchange_Text>
       </Exchange>
@@ -38,7 +38,7 @@ const index = ({ inputRef, boardList, commentList, commentRefetch }) => {
                   </div>
                   <div className='flex items-center text-sm'>
                     <div className='mr-2 text-grey05'>{moment(x.createDate).format("YYYY.MM.DD")}</div>
-                    <div className='text-grey04'>답글달기</div>
+                    {/* <div className='text-grey04'>답글달기</div> */}
                   </div>
                 </div>
               </div>

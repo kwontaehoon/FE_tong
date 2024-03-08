@@ -16,7 +16,7 @@ const index = ({ data }) => {
     <Container>
       <div className='flex ml-5 mb-3'>
         <div className='text-lg font-bold mr-1'>구합니다</div>
-        <div className='flex flex-col justify-end text-xs font-semibold'>동호회 및 개인용병을 서치</div>
+        <div className='flex flex-col justify-end text-xs text-grey04'>동호회 및 개인용병을 서치</div>
       </div>
       {data.content.slice(0, 3).map((x, index) => {
         return (

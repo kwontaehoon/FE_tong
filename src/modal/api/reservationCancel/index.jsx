@@ -16,11 +16,11 @@ const index = () => {
             <div className='text-lg font-bold my-5 flex justify-center'>예약을 취소합니다.</div>
             <div className='flex'>
                 <div className='flex-1 flex items-center justify-center p-4 bg-grey07 mr-2 rounded-lg text-grey05'
-                  onClick={()=>openReservationCancelModal(false)}>닫기
+                  onClick={()=>openReservationCancelModal(false)}>취소
                 </div>
                 <div className='flex-1 flex items-center justify-center p-4 bg-m ml-2 rounded-lg text-white'
                   onClick={()=>{ openReservationCancelModal(false); reservationFunc(); }}
-                >취소
+                >확인
                 </div>
             </div>
         </ModalSubContainer>

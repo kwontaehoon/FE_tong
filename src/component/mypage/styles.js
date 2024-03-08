@@ -4,6 +4,7 @@ export const Div = styled.div`
     background: #F4F5FA;
     display: flex;
     flex-direction: column;
+    height: 100%;
 `
 export const Reservation = styled.div`
     font-size: 20px;
@@ -37,7 +38,7 @@ export const Left =styled.div`
 display: flex;
 justify-content: space-between;
 align-items: center;
-gap: 17px;
+gap: 10px;
 `
 export const Icon = styled.img`
 width: 65px;
@@ -48,17 +49,17 @@ background: #E9EBED;
 export const H3 = styled.h3`
 color: #26282B;
 text-align: left;
-font-size: 18px;
+font-size: 14px;
 font-weight: 700;
 letter-spacing: -0.09px;
-line-height: 22px;
+line-height: 16px;
 margin-bottom: 5px;
 font-family: "Noto Sans KR", sans-serif;
 `
 
 export const P = styled.p`
 color: #FF2A6D;
-font-size: 12px;
+font-size: 11px;
 font-style: normal;
 font-weight: 700;
 line-height: 16px; 
@@ -107,8 +108,7 @@ width: 17px;
 height: 17px;
 `
 export const Icon3 = styled.img`
-width: 13px;
-height: 13px;
+width: 11px;
 `
 export const P3 = styled.p`
 color: #424242;
@@ -123,6 +123,7 @@ font-family: "Noto Sans KR";
 font-size: 12px;
 font-weight: 500;
 letter-spacing: -0.24px;
+margin-left: 10px;
 `
 export const Comment = styled.div`
     display: flex;
@@ -137,7 +138,7 @@ export const Wrap = styled.div`
     width: 100%;
     padding: 30px 20px 20px;
     background: #fff;
-    margin-top: 20px;
+    margin-top: 12px;
 `
 export const ListBox = styled.div`
 display: flex;
@@ -171,5 +172,5 @@ export const Bottom = styled.div`
     align-items: end;
     padding: 0px 20px;
     gap: 10px;
-    flex: 1;    
+    flex: 1;
 `
