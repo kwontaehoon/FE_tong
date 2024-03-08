@@ -16,7 +16,7 @@ const index = () => {
   const inputRef = useRef(null);
   const openLoginModal = useLoginStore((state) => state.setOpen);
 
-  const { data: boardList, isSuccess: boardSuccess, refetch: boardRefetch } = useBoardDetailsQuery({ boardId: id, userId: getToken().userId ? getToken().userId : 0 });
+  const { data: boardList, isSuccess: boardSuccess, refetch: boardRefetch } = useBoardDetailsQuery({ boardId: id, userId: getToken() ? getToken().userId : 0 });
 
   const { data: commentList, isSuccess: commentSuccess, refetch: commentRefetch } = useCommentListQuery();
 

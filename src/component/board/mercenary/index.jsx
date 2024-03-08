@@ -73,7 +73,7 @@ const index = () => {
                             <img src="/svg/eye.svg" className='mr-1 w-3' />
                             <Comment>{x.hits}</Comment>
                             <img src="/svg/comment.svg" className='mr-1 w-3' />
-                            <Comment>{x.recommend}</Comment>
+                            <Comment>{x.commentCount}</Comment>
                         </Time_Box>
                     </Recruitment_Box>
                 )

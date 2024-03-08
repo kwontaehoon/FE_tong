@@ -2,6 +2,7 @@ import styled from "styled-components"
 
 export const Container = styled.div`
     background-color: white;
+    padding-bottom: 20px;
 `
 export const Top = styled.div`
     height: 45px;

@@ -28,7 +28,7 @@ const index = ({id, boardList}) => {
         <img style={{ width: "16px" }} src="/svg/eye.svg" className='mr-1' />
         <Comment>{boardList.hits}</Comment>
         <img style={{ width: "16px" }} src="/svg/comment.svg" className='mr-1' />
-        <Comment>{boardList.recommend}</Comment>
+        <Comment>{boardList.commentCount}</Comment>
       </Comment_Box>
       <Anonymous>
         <img style={{ width: "36px" }} src="/svg/Ikon.svg" />
