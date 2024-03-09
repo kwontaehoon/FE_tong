@@ -15,11 +15,10 @@ import { useBoardDeleteMutation } from '../../../../../hooks/queries/api/Board';
 import { useNavigate } from 'react-router-dom';
 import { profile } from '../../../../../function/profile';
 
-const index = ({id, boardList}) => {
+const index = ({popupFlag, setPopupFlag, id, boardList}) => {
 
   const navigate = useNavigate();
 
-  const [popupFlag, setPopupFlag] = useState(false);
   const { mutateAsync: boardDel } = useBoardDeleteMutation();
 
   return (
@@ -40,7 +39,7 @@ const index = ({id, boardList}) => {
         {boardList.user.userId == getToken().userId && <div className='relative'>
           <img src="/svg/details.svg" onClick={()=>setPopupFlag(!popupFlag)} />
           {popupFlag && <div className='absolute flex-1 right-2 w-28 text-xs shadow-custom rounded-lg overflow-hidden top-8 font-bold bg-white z-50 whitespace-nowrap'>
-            <div className='px-4 py-2 bg-grey07'
+            <div className='px-4 py-2'
               onClick={async()=>{
                 await boardDel({ boardId: id });
                 navigate(-1);

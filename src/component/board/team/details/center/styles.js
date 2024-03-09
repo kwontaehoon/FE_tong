@@ -6,6 +6,7 @@ export const Container = styled.div`
     margin-bottom: 10px;
 ` 
 export const Bulletin = styled.div`
+    white-space: pre-wrap;
 `
 export const Notification = styled.div`
     font-size: 12px;

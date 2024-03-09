@@ -45,11 +45,15 @@ export const Area = styled.div`
     border-radius: 8px;
     color: #007CFF;
     padding: 4px 8px;
+    white-space: nowrap;
 `
 export const Title = styled.div`
     margin-left: 4px;
     font-size: 13px;
     font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 `
 export const Text = styled.div`
     padding: 6px 0px;

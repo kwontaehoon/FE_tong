@@ -1,7 +1,9 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+    margin-top: 32px;
     padding: 20px 20px 0px 20px;
+    border-top: 1px solid #E4E6E8;
 `
 export const Inquiry = styled.div`
     font-size: 10px;

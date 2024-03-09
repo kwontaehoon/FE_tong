@@ -26,22 +26,30 @@ const index = () => {
 
   const [info, setInfo] = useState();
 
+  const [popupFlag, setPopupFlag] = useState(false);
+
   useEffect(()=>{
     boardRefetch();
     commentRefetch();
   }, []);
 
   return boardSuccess && commentSuccess && (
-    <div className='bg-bg h-full flex flex-col'>
+    <div className='bg-bg h-full flex flex-col' 
+      onClick={()=>{
+        if(popupFlag){
+          setPopupFlag(false);
+        }
+      }}>
         <Header padding title="용병 구하기" noClose />
-        <Title id={id} boardList={boardList}/>
+        <Title popupFlag={popupFlag} setPopupFlag={setPopupFlag} id={id} boardList={boardList}/>
         <Center boardList={boardList} />
         <Bottom inputRef={inputRef} boardList={boardList} commentList={commentList?.content?.filter(x=>x.board?.boardId == id)} commentRefetch={commentRefetch}/>
         <div className='bg-white flex items-end py-4 px-3 flex-1'>
           <div className='flex relative w-full items-center'>
-            <input className='bg-bg w-full h-14 rounded-full p-4 text-xs' 
+            <input className='bg-bg w-full h-14 rounded-full pl-4 text-xs pr-11' 
               ref={inputRef}
               placeholder='답글을 입력하세요.'
+              value={info}
               onChange={(e)=>setInfo(e.target.value)} />
             <img src="/svg/Send.svg" className='absolute right-4'
               onClick={async()=>{

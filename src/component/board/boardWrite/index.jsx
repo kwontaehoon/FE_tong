@@ -26,11 +26,10 @@ const index = () => {
 
   return (
     <Container>
-      <Header title="글쓰기" check 
+      <Header title="글쓰기" write={state[0] !== "수정"} update={state[0] == "수정"}
         func={async()=>{
           if(state[0] == "수정"){
             const { user, ...infoToSend } = info;
-            console.log("infoToSend: ", infoToSend);
             await update({...infoToSend, boardId: state[1].boardId});
           }else await write(info);
           
@@ -39,12 +38,12 @@ const index = () => {
 
       <div className='mt-10 border-b border-grey06 pb-4 text-lg'>
         <div className='mb-2'>제목</div>
-        <input className='text-sm pl-3' placeholder={state[0] == "수정" ? state[1].title : '제목을 입력해주세요'} onChange={(e)=>setInfo({...info, title: e.target.value})} />
+        <input className='text-sm px-3 w-full' placeholder={state[0] == "수정" ? state[1].title : '제목을 입력해주세요'} onChange={(e)=>setInfo({...info, title: e.target.value})} />
       </div>
 
       <div className='mt-10 pb-4 text-lg'>
         <div className='mb-2'>내용</div>
-        <textarea className='w-full pt-4 pl-3 text-sm border border-grey06' style={{height: "400px"}}
+        <textarea className='w-full pt-4 px-3 text-sm border border-grey06' style={{height: "400px"}}
           placeholder={state[0] == "수정" ? state[1].content : '지역의 축구/풋살, 소식, 정보를 공유해보세요.'}
           onChange={(e)=>setInfo({...info, content: e.target.value})} />
       </div>

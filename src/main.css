@@ -24,6 +24,7 @@ time, mark, audio, video {
 .swiper-pagination {
 	position: absolute;
 	bottom: 15px !important;
+	height: 18px;
 	width: auto;
 	left: 20px;
 	font-size: 12px;
@@ -32,6 +33,7 @@ time, mark, audio, video {
 	background-color: grey;
 	border-radius: 16px;
 	opacity: 0.9;
+	line-height: 16px;
   }
 a {
     text-decoration: none;

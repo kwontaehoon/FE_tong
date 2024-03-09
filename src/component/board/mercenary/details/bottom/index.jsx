@@ -32,22 +32,17 @@ const index = ({ inputRef, boardList, commentList, commentRefetch }) => {
           return (
             <Comment_Box key={x.commentsId}>
               <div className='flex flex-1'>
-                <div className='mr-2 flex items-center justify-center'>
-                  {profile(x.user.profile)}
-                </div>
-                <div>
+                {profile(x.user.profile)}
+                <div className='ml-1'>
                   <div className='flex items-center'>
-                    <div className='text-lg mr-2 font-bold'>{x.user.name}</div>
-                    <div>{x.content}</div>
+                    <div className='mr-2 font-bold whitespace-nowrap'>{x.user.name}</div>
+                    <div className='text-grey05 text-xs'>{moment(x.createDate).format("YYYY.MM.DD")}</div>
                   </div>
-                  <div className='flex items-center text-sm'>
-                    <div className='mr-2 text-grey05'>{moment(x.createDate).format("YYYY.MM.DD")}</div>
-                    {/* <div className='text-grey04'>답글달기</div> */}
-                  </div>
+                  <div className='text-xs'>{x.content}</div>
                 </div>
               </div>
               <div className='flex items-center relative'>
-                {x.user.userId !== getToken().userId ? '' : <img src="/svg/details.svg"
+                {x.user.userId !== getToken().userId ? '' : <img src="/svg/details.svg" className='ml-2'
                   onClick={() => {
                     let arr = [...commentEdit];
                     if (!arr[index]) {

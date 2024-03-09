@@ -36,7 +36,7 @@ const index = () => {
             {/* 로긴박스 */}
             {loginFlag() ?
               <InfoLogin>
-                <div style={{ width: "65px", height: "65px" }} className='rounded-full mr-4 flex justify-center items-center bg-bg'>
+                <div style={{ width: "65px", height: "65px" }} className='rounded-full mr-2 flex justify-center items-center bg-bg'>
                   {profile(info?.profile)}
                 </div>
                 <div className='flex justify-center flex-col'>

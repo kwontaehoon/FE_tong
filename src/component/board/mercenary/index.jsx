@@ -64,7 +64,7 @@ const index = () => {
                 return (
                     <Recruitment_Box key={x.boardId} onClick={() => navigate(`${x.boardId}`)}>
                         <Recruitment>
-                            <Area>장기동</Area>
+                            <Area>용병</Area>
                             <Title>{x.title}</Title>
                         </Recruitment>
                         <Text>{x.content}</Text>
