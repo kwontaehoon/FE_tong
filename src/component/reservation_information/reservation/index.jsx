@@ -25,7 +25,7 @@ const index = ({ info, setInfo }) => {
 
         <div className='flex bg-bg mb-5 rounded-lg overflow-hidden'>
           <img src="/svg/account_phone.svg" className='ml-ten w-3 mr-1' />
-          <Input placeholder='번호를 입력하세요' onChange={(e) => setInfo({ ...info, phoneNumber: e.target.value })}></Input>
+          <Input type='number' placeholder='번호를 입력하세요(-생략)' onChange={(e) => setInfo({ ...info, phoneNumber: e.target.value })}></Input>
         </div>
       </Information_Container>
     </Container>

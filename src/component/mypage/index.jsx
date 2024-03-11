@@ -39,7 +39,7 @@ const index = () => {
 
   const { data: myComments, isSuccess: commentsSuc } = useMyCommentListQuery({ user: { userId: getToken().userId }});
 
-  const { data: myReservationData, isSuccess: myReservationDataSuc } = useReservationListQuery();
+  const { data: myReservationData, isSuccess: myReservationDataSuc, refetch: myReservationRefetch } = useReservationListQuery();
 
   const { data: info, isSuccess: infoSuccess, refetch: infoRefetch } = useInfoQuery({ userId: getToken().userId} );
   
@@ -62,7 +62,7 @@ const index = () => {
       setMyReservation({
         ...myReservation,
         myReservation: arr.reduce((acc, cur) => acc.concat(cur), []),
-        myCancel: myCancel,
+        myCancel: myCancel.filter(x => x.userId === getToken().userId),
         myFinish: arr2.reduce((acc, cur) => acc.concat(cur), [])
       })
   }
@@ -71,6 +71,7 @@ const index = () => {
   useEffect(()=>{
     refetch();
     infoRefetch();
+    myReservationRefetch();
   }, []);
 
   return (
@@ -82,7 +83,7 @@ const index = () => {
       <Header title={"MY"} padding noClose arrowUrl={"/"} />
       {!(wishSuc && boardSuc && commentsSuc && infoSuccess && !isLoading && myReservationDataSuc && myCancleSuc) ? <Spinner />
       :
-      <div className='flex flex-col h-full'>
+      <div className='flex flex-col h-full pb-5'>
       <Info>
         <Left>
           <div className='relative flex flex-col items-center'>
@@ -99,12 +100,12 @@ const index = () => {
               })}
               </div>}
             <Icon>
-              {profile(info.profile)}
+              {profile(info?.profile)}
             </Icon>
             <div className='mt-2 rounded-lg bg-grey07' style={{padding: "2px 4px", fontSize: "10px"}} onClick={()=>setProfileFlag(!profileFlag)}>프로필 변경</div>
           </div>
           <div style={{ marginBottom: '10px' }}>
-            <H3>{getToken().id}님</H3>
+            <H3>{info.name}님</H3>
             <P>오늘로 1번 로그인 하였습니다!</P>
           </div>
         </Left>
@@ -127,7 +128,7 @@ const index = () => {
 
       <InfoBox>
         {/* 리스트1 */}
-        <List1 onClick={()=>navigate("/myActive", {state: "wish"})}>
+        <List1 onClick={()=>navigate("/myActive/wish")}>
           <Left style={{ gap: '4px' }}>
             <Icon1 src="./svg/uil_comment-city.png" alt='찜한 시설'></Icon1>
             <P3>찜한 시설</P3>
@@ -138,7 +139,7 @@ const index = () => {
           </Left>
         </List1>
         {/* 리스트2 */}
-        <List1 onClick={()=>navigate("/myActive", {state: "board"})}>
+        <List1 onClick={()=>navigate("/myActive/board")}>
           <Left style={{ gap: '4px' }}>
             <Icon1 src="./svg/uil_comment-alt-plus.png" alt='게시글아이콘'></Icon1>
             <P3>게시글</P3>
@@ -149,7 +150,7 @@ const index = () => {
           </Left>
         </List1>
         {/* 리스트3 */}
-        <List1 onClick={()=>navigate("/myActive", {state: "comments"})}>
+        <List1 onClick={()=>navigate("/myActive/comment")}>
           <Left style={{ gap: '4px' }}>
             <Icon1 src="./svg/uil_comment-search.png" alt='댓글'></Icon1>
             <P3>댓글</P3>
@@ -172,8 +173,6 @@ const index = () => {
         </Left>
       </Bottom>
       </div>}
-      <div className='h-24' />
-      <Navi />
     </Div>
   )
 }

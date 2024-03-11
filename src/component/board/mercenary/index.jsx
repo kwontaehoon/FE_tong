@@ -31,6 +31,7 @@ const index = () => {
     const tab = Array(4).fill().map((_, index) => index === 1);
 
     const { data, isSuccess, refetch } = useBoardListQuery();
+    console.log("data: ", data);
 
     useEffect(() => {
         refetch();

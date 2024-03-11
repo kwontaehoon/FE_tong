@@ -6,7 +6,7 @@ import {
 import Header from '../../function/header'
 import { expireText } from '../../constants/text/api/Account'
 import { getToken } from '../../utill/GetToken'
-import { useWithdrawMutation } from '../../hooks/queries/api/Account'
+import { useInfoQuery, useWithdrawMutation } from '../../hooks/queries/api/Account'
 import { useNavigate } from 'react-router-dom'
 
 const index = () => {
@@ -16,14 +16,16 @@ const index = () => {
   const [check, setCheck] = useState(Array(5).fill(false));
 
   const { mutateAsync: withdraw } = useWithdrawMutation();
+ 
+  const { data, isSuccess } = useInfoQuery({userId: getToken().userId});
 
-  return (
+  return isSuccess && (
     <Cotainer>
 
       <Header padding noClose title="회원탈퇴" />
       {/* 섹션1 */}
       <Sec1 $pb>
-        <H1 $mb={"20px"}><Span>{getToken().id}</Span><br />님이 떠나신다니 아쉬워요!</H1>
+        <H1 $mb={"20px"}><Span>{data.name}</Span><br />님이 떠나신다니 아쉬워요!</H1>
         <P1>탈퇴일 포함 3일 동안 재가입이 불가하며,<br />재가입 시에도 이용 내역을 복구되지 않습니다.</P1>
         <Ul $pa={"16px"} $wd={"90%"} $mt={"20px"}>
           <Li>- 회원 탈퇴 후 30일간 재가입이 불가능합니다.</Li>

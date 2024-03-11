@@ -16,8 +16,6 @@ const index = ({ commentModify, setCommentModify, inputRef, boardList, commentLi
 
   const [commentEdit, setCommentEdit] = useState(Array(commentList.length).fill(false));
 
-  console.log("commentList: ", commentList);
-
   return (
     <Container>
       <Exchange>

@@ -37,7 +37,9 @@ import Team from '../component/policy/term'
 
 import BoardWrite from '../component/board/boardWrite'
 
-import MyActive from '../component/myActive'
+import MyActiveBoard from '../component/myActive/board'
+import MyActiveWish from '../component/myActive/wish'
+import MyActiveComment from '../component/myActive/comment'
 import App from "../App"
 
 export const router = createBrowserRouter([
@@ -98,7 +100,9 @@ export const router = createBrowserRouter([
             },
             { path: "/faq", element: <Faq /> },
             { path: "/boardWrite", element: <BoardWrite /> },
-            { path: "/myActive", element: <MyActive /> },
+            { path: "/myActive/board", element: <MyActiveBoard /> },
+            { path: "/myActive/wish", element: <MyActiveWish /> },
+            { path: "/myActive/comment", element: <MyActiveComment /> },
             { path: "/myReservation_ing", element: <MyReservation_ing /> },
             { path: "/myReservation_cancel", element: <MyReservation_cancel /> },
             { path: "/myReservation_finish", element: <MyReservation_finish /> },

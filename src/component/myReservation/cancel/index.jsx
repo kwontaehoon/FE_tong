@@ -26,7 +26,6 @@ const index = () => {
     const [dummy, setDummy] = useState(Array(5).fill(false));
 
     const { data, isSuccess, refetch } = useReservationCancelListQuery();
-    console.log("data: ", data);
 
     useEffect(() => {
         refetch();
@@ -54,6 +53,10 @@ const index = () => {
             </TabBox>
             <ListBox>
                 {!isSuccess ? <Spinner /> : data.map((x, index) => {
+                    if(x.userId !== getToken().userId){
+                        return 
+                    }
+                    else
                     return (
                         <Reservation_Box key={index}>
                             <div className='flex items-center'>

@@ -63,7 +63,9 @@ const index = () => {
 
     useEffect(() => {
         if (idCheckData?.data?.status == "success") {
-            setIdCheckFlag(true);
+            if(info.id.indexOf(" ") !== -1){
+                setValidation({ ...validation, idDuplicate: true });
+            }else setIdCheckFlag(true);
         } else if (idCheckData?.data?.status == "fail" && info.id == "") {
             setValidation({ ...validation, id: true });
         } else if (idCheckData?.data?.status == "fail" && info.id !== "") {
@@ -114,10 +116,10 @@ const index = () => {
                 </Information>
                 {validation.passwordCheck && <div className='text-xs my-3 pl-1 text-valid'>비밀번호를 확인해 주세요.</div>}
 
-                <Title maxLength={20}>이메일</Title>
+                <Title maxLength={30}>이메일</Title>
                 <div className='flex items-center text-sm text-grey05'>
                     <input className='w-full bg-bg rounded-lg' style={{ height: "46px", padding: "0px 13px" }}
-                        maxLength={20}
+                        maxLength={30}
                         placeholder={state ? state : '이메일'}
                         disabled={state ? true : false}
                         onChange={(e) => {
@@ -132,7 +134,7 @@ const index = () => {
                 {validation.emailForm && <div className='text-xs my-2 pl-1 text-valid'>이메일을 다시 확인해주세요.</div>}
 
                 <Title>이름</Title>
-                <Information placeholder='실명을 입력해 주세요'
+                <Information placeholder='실명을 입력해 주세요' maxLength={4}
                     onChange={(e) => {
                         setInfo({ ...info, name: e.target.value });
                         setValidation({ ...validation, name: false });
@@ -204,9 +206,9 @@ const index = () => {
                     </div>
                 </div>
 
-                {<Signup $ok={Object.values(info).every(value => value !== "" && check.every(element => element === true) && idCheckFlag && positionCheck.findIndex(x=>x).length !== 0)}
+                {<Signup $ok={Object.values(info).every(value => value !== "" && check[0] || (check[1] && check[2]) && idCheckFlag && positionCheck.findIndex(x=>x).length !== 0)}
                     onClick={() => {
-                        if (Object.values(info).every(value => value !== "" && check.every(element => element === true) && idCheckFlag && positionCheck.findIndex(x=>x).length !== 0)) {
+                        if (Object.values(info).every(value => value !== "" && check[0] || (check[1] && check[2]) && idCheckFlag && positionCheck.findIndex(x=>x).length !== 0)) {
                             window.scrollTo({
                                 top: 0,
                             });

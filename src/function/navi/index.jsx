@@ -43,7 +43,7 @@ const index = () => {
             </Icon_Box>
             <Icon_Box onClick={()=>{
                 if(loginFlag()){
-                    navigate("/myActive", { replace: true });
+                    navigate("/myActive/wish", { replace: true });
                 }else openLoginModal(true);
             }}>
                 {pathName.includes('myActive') ? <img src="/svg/nav_wish.svg" className='w-6' /> : <img src="/svg/nav_wish_grey.svg" className='w-6' />}

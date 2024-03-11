@@ -2,9 +2,9 @@ import styled from "styled-components";
 
 export const Div = styled.div`
     background: #F4F5FA;
+    height: 100%;
     display: flex;
     flex-direction: column;
-    height: 100%;
 `
 export const Reservation = styled.div`
     font-size: 20px;

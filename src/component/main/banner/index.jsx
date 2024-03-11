@@ -21,7 +21,7 @@ const index = () => {
       <Gimpo_Playground>
         <Swiper pagination={{type: 'fraction'}} slidesPerView={"auto"} loop={true} modules={[Autoplay, Pagination]} autoplay={{delay: 3000}}>
           {data.map((x, index)=>{
-            return <SwiperSlide style={{height: "auto"}} key={index}><img src={`https://tong-bucket.s3.ap-northeast-2.amazonaws.com/${x.fileName}`} className='w-full h-full' /></SwiperSlide>
+            return <SwiperSlide style={{height: "170px"}} key={index}><img src={`https://tong-bucket.s3.ap-northeast-2.amazonaws.com/${x.fileName}`} className='w-full h-full' /></SwiperSlide>
           })}
         </Swiper>
       </Gimpo_Playground>

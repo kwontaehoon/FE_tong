@@ -31,20 +31,29 @@ const index = () => {
     const [dummy, setDummy] = useState(Array(5).fill(false));
 
     const { data, isSuccess: listSuccess, refetch } = useReservationListQuery();
+    console.log("data: ", data);
 
     const [Ing, setIng] = useState([]);
+    console.log("Ing: ", Ing);
 
     const { mutateAsync: cancel, isLoading: cancelLoading } = useReservationCancelMutation();
 
     useEffect(() => {
         if (data) {
-            let arr = [];
-            data?.map(x => {
-                if (moment(new Date()).diff(x.deadLine, 'hour') < 24 && x?.resrvationApplicants?.filter(x => x.userId == getToken().userId).length > 0) {
-                    arr.push(x);
+            let reservation = [...data];
+            let applicants = [];
+            data?.map((x, index) => {
+                if (moment(new Date()).diff(x.deadLine, 'hour') < 24){
+                    x?.resrvationApplicants?.filter(y => {
+                        if(y.userId == getToken().userId){
+                            applicants.push(y);
+                        }
+                    })
                 }
+                reservation[index] = {...reservation[index], resrvationApplicants: applicants};
+                applicants = [];
             });
-            setIng(arr.reduce((acc, cur) => acc.concat(cur), []));
+            setIng(reservation);
         }
         refetch();
     }, [data]);
@@ -71,6 +80,10 @@ const index = () => {
             </TabBox>
             <ListBox>
                 {!listSuccess || cancelLoading ? <Spinner /> : Ing.map((x, index) => {
+                    if(x.resrvationApplicants.length === 0){
+                        return;
+                    }
+                    else
                     return (
                         <Reservation_Box key={index}>
                             <div className='flex items-center'>
@@ -109,6 +122,7 @@ const index = () => {
                                                             reservation: {
                                                                 reservationId: x.reservationId
                                                             },
+                                                            userId: getToken().userId,
                                                             reservationApplicantsId: y.reservationApplicantsId,
                                                             peopleCount: x.peopleCount,
                                                             reservationDate: moment(y.reservationDate).format("YYYY-MM-DD"),

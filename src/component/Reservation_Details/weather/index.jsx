@@ -88,7 +88,7 @@ const index = ({selectBox, setSelectBox, info, setInfo, data}) => {
                 const day = new Date(
                   current.getFullYear(),
                   current.getMonth(),
-                  today.month == current.getMonth()+1 ? index + today.date : index+1
+                  today.month == current.getMonth()+1 ? index + today.date+1 : index+1
                 ).getDay();
                 return (
                   <div key={index} className={'rounded-full flex flex-col items-center justify-center' + (selectDay[index] ? ' bg-m text-white' : '')} style={{padding: "11px", marginRight: "10px"}}
@@ -96,9 +96,9 @@ const index = ({selectBox, setSelectBox, info, setInfo, data}) => {
                       let arr = Array(selectDay.length).fill(false);
                       arr[index] = true;
                       setSelectDay(arr);
-                      setInfo({...info, selectDate: today.month == current.getMonth()+1 ? index + today.date : index+1, selectDay: dayOfWeek(day)});
+                      setInfo({...info, selectDate: today.month == current.getMonth()+1 ? index + today.date+1 : index+1, selectDay: dayOfWeek(day)});
                     }}>
-                    {today.month == current.getMonth()+1 ? <div className='font-bold'>{numberTwo(index + today.date)}</div> : <div className='font-bold'>{numberTwo(index+1)}</div>}
+                    {today.month == current.getMonth()+1 ? <div className='font-bold'>{numberTwo(index + today.date+1)}</div> : <div className='font-bold'>{numberTwo(index+1)}</div>}
                     <div className={'mt-six' + (!selectDay[index] && day == 0 ? ' text-valid' : !selectDay[index] && day == 6 ? ' text-ms' : '' )}>{dayOfWeek(day)}</div>
                   </div>
                 )

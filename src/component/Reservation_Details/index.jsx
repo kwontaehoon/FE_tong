@@ -10,10 +10,14 @@ import { useWishMutation } from '../../hooks/queries/api/Wish'
 import { getToken } from '../../utill/GetToken'
 import { dayOfWeek } from '../../utill/DayOfWeek'
 import moment from 'moment'
+import { loginFlag } from '../../utill/LoginFlag'
+import { useLoginStore } from '../../store/LoginFlag'
 
 const index = () => {
 
   const navigate = useNavigate();
+
+  const openLoginModal = useLoginStore((state) => state.setOpen);
 
   const { id } = useParams();
 
@@ -25,8 +29,8 @@ const index = () => {
 
   const [info, setInfo] = useState({
     selectMonth: new Date().getMonth(),
-    selectDate: moment(new Date()).format("DD"),
-    selectDay: dayOfWeek(new Date().getDay()),
+    selectDate: moment().add(1, 'days').format("DD"),
+    selectDay: dayOfWeek(new Date().getDay()+1),
     selectClock: '',
     year: new Date().getFullYear(),
     peopleCount: 0,
@@ -58,7 +62,9 @@ const index = () => {
           style={{ marginTop: "30px" }}
           onClick={() => {
             if (Object.values(info).every(value => value !== "") && info.peopleCount !== 0) {
-              navigate(`/reservation_information/${id}`, { state: info, data: data });
+              if(loginFlag()){
+                navigate(`/reservation_information/${id}`, { state: info, data: data });
+              }else openLoginModal(true);
             }
           }}>예약하기
         </div>

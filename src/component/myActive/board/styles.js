@@ -2,6 +2,20 @@ import styled from "styled-components";
 
 export const Container = styled.div`
     background-color: #F4F5FA;
+    padding-bottom: 20px;
+`
+export const TabBox = styled.div`
+    height: 68px;
+    padding: 10px 10px 0px 10px;
+    background-color: white;
+    margin-bottom: 20px;
+`
+export const Tab = styled.div`
+    width: 33.4%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: ${props => props.$border ? '3px solid #007CFF' : ''};
 `
 export const Choice_Box = styled.div`
     display: flex;
@@ -16,7 +30,7 @@ export const Choice = styled.div`
     margin-right: 4px;
 `
 export const Recruitment_Box = styled.div`
-    margin: 10px 20px 10px 20px;
+    margin: 0px 20px 10px 20px;
     background-color: white;
     padding: 16px 18px;
     border-radius: 8px;
