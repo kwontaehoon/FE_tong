@@ -37,9 +37,11 @@ const index = () => {
 
             <Rule>이용규칙</Rule>
             <Description>
-                Lorem ipsum dolor sit amet consectetur.
-                Auctor vestibulum pharetra enim id feugiat arcu felis ac.
-                Ipsum arcu sit facilisis tristique.Lorem ipsum dolor
+                <div>1. 예약시간을 꼭 준수해주세요.</div>
+                <div>2. 음식물 반입 금지합니다.(물, 음료만 가능)</div>
+                <div>3. 주차장은 별도로 없으니 도모로 이용해주세요.</div>
+                <div>4. 공용시설로 정리정돈 부탁합니다.</div>
+                <div>5. 시설내 흡연 및 음주행위는 금지합니다.</div>
             </Description>
         </Container>
     )

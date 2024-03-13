@@ -33,16 +33,16 @@ const index = () => {
 
   const { mutateAsync: wish } = useWishMutation();
 
-  const [category, setCategory] = useState(Array.from({length: 7}, () => false).map((_, index) => index === 0));
+  const [category, setCategory] = useState(Array.from({ length: 7 }, () => false).map((_, index) => index === 0));
 
-  useEffect(()=>{
+  useEffect(() => {
     reservationRefetch();
   }, []);
 
-  useEffect(()=>{
-    if(!category[0] && reservationList){
-      setInfo(reservationList.filter(x=>x.location == locationText[category.findIndex(x => x)].location));
-    }else setInfo(reservationList);
+  useEffect(() => {
+    if (!category[0] && reservationList) {
+      setInfo(reservationList.filter(x => x.location == locationText[category.findIndex(x => x)].location));
+    } else setInfo(reservationList);
   }, [category, reservationList]);
 
   return (
@@ -54,7 +54,7 @@ const index = () => {
         {locationText.map((x, index) => {
           return (
             <div key={x.id} className={'my-3 px-4 leading-6 py-six border-grey06.5 rounded-full mr-1 text-sm' + (category[index] ? ' bg-grey07 border' : '')}
-              onClick={()=>{
+              onClick={() => {
                 let arr = Array(7).fill(false);
                 arr[index] = true;
                 setCategory(arr);
@@ -68,35 +68,36 @@ const index = () => {
         return (
           <div key={x.reservationId} className='bg-bg mb-5'>
             <div className='px-5'>
-              <div className='rounded-xl overflow-hidden'>
+              <div className='rounded-xl overflow-hidden' onClick={() => navigate(`${x.reservationId}`)}>
                 <Swiper pagination={true} modules={[Pagination]}>
                   <SwiperSlide style={{ height: "200px", position: "relative" }} key={index}>
-                    {loginFlag() && <div className='absolute top-6 right-6'
-                      onClick={async () => {
-                        await wish({
-                          users: { userId: getToken().userId },
-                          reservation: { reservationId: x.reservationId }
-                        });
-                        reservationRefetch();
-                      }}>
-                      {loginFlag() && x?.userIdsOfWishes?.includes(getToken().id) ?
-                        <img src="/svg/heart_red.svg" className='w-4' /> : <img src="/svg/heart_2.svg" className='w-4' />}
-                    </div>}
                     <img src={`https://tong-bucket.s3.ap-northeast-2.amazonaws.com/${x.reservationFiles[0].fileName}`} className='w-full h-full' />
                   </SwiperSlide>
                 </Swiper>
 
-                <Tong_Tong onClick={() => navigate(`${x.reservationId}`)}>
+                <Tong_Tong>
                   <div className='flex items-center'>
-                    <Lorem>{x.title}</Lorem>
-                    {index == 0 && <div className='flex'>
-                      <div className='ml-2 border border-m text-xs rounded text-m' style={{padding: "2px 4px"}}>역세권</div>
-                      <div className='ml-1 border border-m text-m text-xs rounded' style={{padding: "2px 4px"}}>시설 청결</div>
+                    <Lorem $category={index}>{x.title}</Lorem>
+                    {index == 0 && <div className='flex flex-1'>
+                      <div className='ml-2 border border-m text-xs rounded text-m' style={{ padding: "2px 4px" }}>역세권</div>
+                      <div className='ml-1 border border-m text-m text-xs rounded' style={{ padding: "2px 4px" }}>시설 청결</div>
                     </div>}
-                    {index == 1 && <div className='flex'>
-                      <div className='ml-2 border border-point text-xs rounded text-point' style={{padding: "2px 4px"}}>금주 예약 마감</div>
-                      <div className='ml-1 border border-m text-m text-xs rounded' style={{padding: "2px 4px"}}>0 ~ 5명</div>
+                    {index == 1 && <div className='flex flex-1'>
+                      <div className='ml-2 border border-point text-xs rounded text-point' style={{ padding: "2px 4px" }}>금주 예약 마감</div>
+                      <div className='ml-1 border border-m text-m text-xs rounded' style={{ padding: "2px 4px" }}>0 ~ 5명</div>
                     </div>}
+                    {loginFlag() && <div
+                    onClick={async (e) => {
+                      e.stopPropagation();
+                      await wish({
+                        users: { userId: getToken().userId },
+                        reservation: { reservationId: x.reservationId }
+                      });
+                      reservationRefetch();
+                    }}>
+                    {loginFlag() && x?.userIdsOfWishes?.includes(getToken().id) ?
+                      <img src="/svg/heart_red.svg" className='w-4' /> : <img src="/svg/heart_2.svg" className='w-4' />}
+                  </div>}
                   </div>
                   <Lorem_Text>{x.subTitle}</Lorem_Text>
                 </Tong_Tong>

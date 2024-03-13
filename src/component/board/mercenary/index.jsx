@@ -31,7 +31,6 @@ const index = () => {
     const tab = Array(4).fill().map((_, index) => index === 1);
 
     const { data, isSuccess, refetch } = useBoardListQuery();
-    console.log("data: ", data);
 
     useEffect(() => {
         refetch();
@@ -39,7 +38,7 @@ const index = () => {
 
     return (
         <Container>
-            <Header padding title="용병 구하기"  arrowUrl={"/"} />
+            <Header padding title="용병 구하기"  arrowUrl={"/"} closeUrl={"/"} />
             <TabBox>
                 <div className='h-full flex'>
                     {boardTabText.map((x, index) => {
@@ -61,7 +60,7 @@ const index = () => {
                 <Choice>최신순</Choice>
                 <img src="svg/down_arrow.svg" className='w-3' />
             </Choice_Box>
-            {!isSuccess ? <Spinner /> : data?.content?.filter(x => x.category.includes("용병")).map((x, index) => {
+            {!isSuccess ? <Spinner /> : data.filter(x => x.category.includes("용병")).map((x, index) => {
                 return (
                     <Recruitment_Box key={x.boardId} onClick={() => navigate(`${x.boardId}`)}>
                         <Recruitment>

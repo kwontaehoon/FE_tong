@@ -5,8 +5,8 @@ export const Container = styled.div`
     padding-bottom: 20px;
 `
 export const TabBox = styled.div`
-    height: 68px;
-    padding: 10px 10px 0px 10px;
+    height: 58px;
+    padding: 0px 10px 0px 10px;
     background-color: white;
     margin-bottom: 20px;
 `
@@ -16,6 +16,7 @@ export const Tab = styled.div`
     justify-content: center;
     align-items: center;
     border-bottom: ${props => props.$border ? '3px solid #007CFF' : ''};
+    padding-top: ${props => props.$border ? '3px' : ''};
 `
 export const Choice_Box = styled.div`
     display: flex;

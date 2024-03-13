@@ -21,6 +21,7 @@ import { useNavigate } from 'react-router-dom'
 import Spinner from '../../../function/spinner'
 import Header from '../../../function/header'
 import { myTabText } from '../../../constants/text/api/Board'
+import Navi from '../../../function/navi'
 
 const index = () => {
 
@@ -30,9 +31,9 @@ const index = () => {
 
   const { data, isSuccess } = useMyBoardListQuery({ user: { userId: getToken().userId } });
 
-  return isSuccess ? (
+  return (
     <Container>
-      <Header title={myTabText[tab.findIndex(x => x)].content} padding search arrowUrl={'/mypage'} />
+      <Header title={myTabText[tab.findIndex(x => x)].content} padding search />
       <TabBox>
         <div className='h-full flex mb-5'>
           {myTabText.map((x, index) => {
@@ -50,7 +51,7 @@ const index = () => {
           })}
         </div>
       </TabBox>
-      {data.map(x => {
+      {!isSuccess ? <Spinner /> : data.map(x => {
         return (
           <Recruitment_Box key={x.boardId} onClick={() => navigate(x.category.includes("팀") ? `/board/${x.boardId}` : `/mercenary/${x.boardId}`)}>
             <Recruitment>
@@ -68,8 +69,10 @@ const index = () => {
           </Recruitment_Box>
         )
       })}
+      <div className='h-20' />
+      <Navi />
     </Container>
-  ) : <Spinner />
+  )
 }
 
 export default index

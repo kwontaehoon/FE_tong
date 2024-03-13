@@ -120,10 +120,9 @@ export const Sec3 = styled(Sec1)`
 export const List = styled.ul`
 list-style: none;
 display: flex;
-justify-content: center;
+justify-content: space-around;
 flex-wrap: wrap;
 padding: 0px;
-gap: 20px;
 `
 
 export const Icon = styled.li`

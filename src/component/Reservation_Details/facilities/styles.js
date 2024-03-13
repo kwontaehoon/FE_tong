@@ -37,4 +37,8 @@ export const Rule = styled.div`
 export const Description = styled.div`
     margin-top: 20px;
     font-size: 12px;
+
+    div {
+        margin-bottom: 4px;
+    }
 `

@@ -7,12 +7,13 @@ import Spinner from '../../../function/spinner'
 import { useNavigate } from 'react-router-dom'
 import { star } from '../../../function/star'
 import { myTabText } from '../../../constants/text/api/Board'
+import Navi from '../../../function/navi'
 
 const index = () => {
 
   const navigate = useNavigate();
 
-  const [tab, setTab] = useState(Array(3).fill().map((_, index)=>index === 0));
+  const [tab, setTab] = useState(Array(3).fill().map((_, index) => index === 0));
 
   const { data, isSuccess, refetch } = useMyWishListQuery({ users: { userId: getToken().userId } });
 
@@ -22,18 +23,18 @@ const index = () => {
     refetch();
   }, []);
 
-  return isSuccess ? (
+  return (
     <Container>
-       <Header title={myTabText[tab.findIndex(x=>x)].content} padding search arrowUrl={'/mypage'} />
-        <TabBox>
+      <Header title={myTabText[tab.findIndex(x => x)].content} padding search />
+      <TabBox>
         <div className='h-full flex'>
           {myTabText.map((x, index) => {
             return (
-              <Tab key={x.id} $border={tab[index]} 
-                onClick={()=>{
-                  if(index == 1){
+              <Tab key={x.id} $border={tab[index]}
+                onClick={() => {
+                  if (index == 1) {
                     navigate('/myActive/board');
-                  }else if(index == 2){
+                  } else if (index == 2) {
                     navigate('/myActive/comment');
                   }
                 }}>{x.content}
@@ -42,7 +43,7 @@ const index = () => {
           })}
         </div>
       </TabBox>
-      {data.map((x, index) => {
+      {!isSuccess ? <Spinner /> : data.map((x, index) => {
         return (
           <div key={x.reservationId} className='flex bg-white p-4 mb-ten mx-5 rounded-lg'>
             <div className='flex-1 mr-4 relative'>
@@ -74,9 +75,10 @@ const index = () => {
           </div>
         )
       })}
-
+      <div className='h-20' />
+      <Navi />
     </Container>
-  ) : <Spinner />
+  )
 }
 
 export default index

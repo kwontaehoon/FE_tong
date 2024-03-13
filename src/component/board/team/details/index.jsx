@@ -52,10 +52,10 @@ const index = () => {
       <Header padding title="팀 구하기" noClose />
       <Title popupFlag={popupFlag} setPopupFlag={setPopupFlag} id={id} boardList={boardList} />
       <Center boardList={boardList} />
-      <Bottom commentModify={commentModify} setCommentModify={setCommentModify} inputRef={inputRef} boardList={boardList} commentList={commentList?.content?.filter(x => x.board?.boardId == id)} commentRefetch={commentRefetch} />
+      <Bottom setInfo={setInfo} commentModify={commentModify} setCommentModify={setCommentModify} inputRef={inputRef} boardList={boardList} commentList={commentList?.content?.filter(x => x.board?.boardId == id)} commentRefetch={commentRefetch} />
       <div className='bg-white flex items-end py-4 px-3 flex-1'>
         <div className='flex relative w-full items-center'>
-          {(commentModify.commentFlag || commentModify.comment2Flag) && <div className='absolute left-5 border text-xs p-1 rounded'>수정</div>}
+          {(commentModify.commentFlag || commentModify.comment2Flag) && <div className='absolute left-5 border text-xs py-1 px-2 rounded-xl bg-grey05 text-white'>수정</div>}
           <input className={'bg-bg w-full h-14 rounded-full pr-11 text-xs' + (commentModify.commentFlag || commentModify.comment2Flag ? ' pl-16' : ' pl-4')}
             ref={inputRef}
             placeholder='답글을 입력하세요.'

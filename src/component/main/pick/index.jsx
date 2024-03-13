@@ -12,8 +12,6 @@ const index = ({data}) => {
 
   const [flag, setFlag] = useState(Array([...set].length).fill(false).map((_, index) => index === 0));
 
-  const [dataArr, setDataArr] = useState();
-
   useEffect(()=>{
   }, []);
 
@@ -43,8 +41,8 @@ const index = ({data}) => {
           {data.map((x, index) => {
             if(x.title == [...set][flag.findIndex(x=>x)]){
               return (
-                <div key={x.pickId} className={'w-1/2 rounded-2xl overflow-hidden shadow-custom' + (index % 2 == 0 ? ' mr-5' : '')}>
-                  <img src={`https://tong-bucket.s3.ap-northeast-2.amazonaws.com/${x.pickFiles[0].fileName}`} className='w-full h-36' />
+                <div key={x.pickId} className='w-1/2 rounded-2xl overflow-hidden shadow-custom mx-2'>
+                  <img src={`https://tong-bucket.s3.ap-northeast-2.amazonaws.com/${x.pickFiles[0].fileName}`} className='w-full h-36 object-center' />
                   <div className='px-4 py-ten flex flex-col justify-center bg-white'>
                     <div className='text-sm font-semibold'>{x.title}</div>
                     <div className='text-grey05 text-xs'>{x.content}</div>

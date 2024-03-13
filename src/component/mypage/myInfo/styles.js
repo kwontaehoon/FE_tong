@@ -1,9 +1,10 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    padding: 0px 20px 20px 20px;
     background-color: white;
     height: 100%;
+    display: flex;
+    flex-direction: column;
 `
 export const Information = styled.input`
     width: 100%;
@@ -15,8 +16,8 @@ export const Information = styled.input`
 `
 export const Title = styled.div`
     font-size: 14px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: ${props => props.$top ? '30px' : '20px'};
+    margin-bottom: 8px;
     color: #73787E;
 `
 export const Modify = styled.div`

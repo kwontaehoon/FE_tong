@@ -9,6 +9,8 @@ import { useNavigate } from 'react-router-dom'
 
 const index = ({ data }) => {
 
+  console.log("data: ", data);
+
   const navigate = useNavigate();
 
   return (
@@ -17,7 +19,7 @@ const index = ({ data }) => {
         <div className='text-lg font-bold mr-1'>구합니다</div>
         <div className='flex flex-col justify-end text-xs text-grey04'>동호회 및 개인용병을 서치</div>
       </div>
-      {data.content.slice(0, 3).map((x, index) => {
+      {data.slice(0, 3).map((x, index) => {
         return (
           <div key={x.boardId} className='mb-3 flex relative items-center'>
             <div className='flex w-full items-center bg-white rounded-2xl px-3 py-5'>

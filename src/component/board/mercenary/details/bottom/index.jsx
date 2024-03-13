@@ -10,7 +10,7 @@ import { useCommentDeleteMutation, useCommentUpdateMutation } from '../../../../
 import { profile } from '../../../../../function/profile';
 import { getToken } from '../../../../../utill/GetToken';
 
-const index = ({ commentModify, setCommentModify, inputRef, boardList, commentList, commentRefetch }) => {
+const index = ({ setInfo, commentModify, setCommentModify, inputRef, boardList, commentList, commentRefetch }) => {
 
   const { mutateAsync: commentDel } = useCommentDeleteMutation();
 
@@ -60,6 +60,7 @@ const index = ({ commentModify, setCommentModify, inputRef, boardList, commentLi
                       inputRef.current.focus();
                       setCommentEdit(Array(commentList.length).fill(false));
                       setCommentModify({...commentModify, commentFlag: true, commentsId: x.commentsId});
+                      setInfo(x.content);
                     }}>수정</div>
                   </div>}
               </div>

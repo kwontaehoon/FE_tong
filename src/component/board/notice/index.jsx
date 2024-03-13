@@ -28,7 +28,7 @@ const index = () => {
 
   return (
     <Container>
-      <Header padding title="공지사항"  arrowUrl={"/"} />
+      <Header padding title="공지사항"  arrowUrl={"/"} closeUrl={"/"} />
       <TabBox>
         <div className='h-full flex'>
           {boardTabText.map((x, index) => {

@@ -37,7 +37,7 @@ const index = () => {
 
     return (
         <Container>
-            <Header padding title="팀 구하기" arrowUrl={"/"} />
+            <Header padding title="팀 구하기" arrowUrl={"/"} closeUrl={"/"} />
             <TabBox>
                 <div className='h-full flex'>
                     {boardTabText.map((x, index) => {
@@ -59,7 +59,7 @@ const index = () => {
                 <Choice>최신순</Choice>
                 <img src="/svg/down_arrow.svg" className='w-3' />
             </Choice_Box>
-            {!isSuccess ? <Spinner /> : data?.content?.filter(x => x.category.includes("팀")).map((x, index) => {
+            {!isSuccess ? <Spinner /> : data.filter(x => x.category.includes("팀")).map((x, index) => {
                 return (
                     <Recruitment_Box key={x.boardId} onClick={() => navigate(`${x.boardId}`)}>
                         <Recruitment>

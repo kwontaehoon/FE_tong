@@ -21,6 +21,7 @@ export const Tong_Tong = styled.div`
 export const Lorem = styled.div`
     font-size: 18px;
     font-weight: 700;
+    flex: ${props => props.$category == 0 || props.$category == 1 ? '' : '1'};
 `
 export const Lorem_Text = styled.div`
      margin: 6px 0px 0px 0px;
