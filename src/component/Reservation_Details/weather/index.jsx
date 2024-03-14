@@ -51,7 +51,7 @@ const index = ({selectBox, setSelectBox, info, setInfo, data}) => {
       let arr = [];
       data.resrvationApplicants?.filter(x => {
         if(moment(x.reservationDate).format("MM") == current.getMonth()+1){
-          if(moment(x.reservationDate).format("DD") == numberTwo(selectDay.findIndex(x=>x) + today.date) || moment(x.reservationDate).format("DD") == numberTwo(selectDay.findIndex(x=>x)+1)){
+          if(moment(x.reservationDate).format("DD") == numberTwo(selectDay.findIndex(x=>x) + today.date+1) || moment(x.reservationDate).format("DD") == numberTwo(selectDay.findIndex(x=>x)+1)){
             arr.push(x.reservationClock);
           }
         }

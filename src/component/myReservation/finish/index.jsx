@@ -93,7 +93,7 @@ const index = () => {
                                                     <div className='mx-1'>|</div>
                                                     <div>{clockText[y.reservationClock].startClock}~{clockText[y.reservationClock].endClock}</div>
                                                     <div className='mx-1'>|</div>
-                                                    <div>인원수: {x.peopleCount}명</div>
+                                                    <div>인원수: {y.peopleCount}명</div>
                                                 </div>
                                             </div>
                                         </div>
