@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import Modal from './modal'
+import Introduce from './component/introduce'
 
 const App = () => {
 
@@ -13,9 +14,31 @@ const App = () => {
   }, [pathName]);
 
   return (
-    <div className='bg-bg h-screen'>
-      <Modal />
-      <Outlet />
+    <div>
+
+      <div className='block md:hidden bg-bg h-screen'>
+        <Modal />
+        <Outlet />
+      </div>
+
+      {pathName.includes("admin") ?  <div>
+        <Modal />
+        <Outlet />
+      </div>
+      
+      :
+
+      <div className='md:flex hidden h-screen'>
+        <div className='w-full mx-10 my-10 flex'>
+          <div className='w-pc border-4 rounded-2xl overflow-scroll shadow-custom shrink-0'>
+            <Modal />
+            <Outlet />
+          </div>
+          <div className='md:ml-10 lg:ml-40'>
+            <Introduce />
+          </div>
+        </div>
+      </div>}
     </div>
   )
 }

@@ -10,6 +10,15 @@ export const Icon = styled.div`
     z-index: 900;
     padding: 21px 10px;
     box-shadow: 0px -2px 20px 0px rgba(0, 0, 0, 0.05);
+
+    @media (min-width: 768px) {
+        width: 400px;
+        margin-left: 40px;
+        margin-bottom: 35px;
+        border-bottom-left-radius: 16px;
+        border-bottom-right-radius: 16px;
+        position: absolute;
+    }
 `
 export const Icon_Box = styled.div`
     position: relative;

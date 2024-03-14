@@ -79,7 +79,7 @@ const index = () => {
                 )
             })}
             {loginFlag() &&
-                <div className='fixed right-5 bottom-32 flex justify-center items-center bg-grey10 rounded-full w-12 h-12'
+                <div className='fixed right-5 bottom-32 md:hidden flex justify-center items-center bg-grey10 rounded-full w-12 h-12'
                     onClick={() => navigate("/boardWrite", { state: '용병' })}>
                     <img src="/svg/Pencil_Icon.svg" className='w-5' />
                 </div>}

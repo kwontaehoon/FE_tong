@@ -38,7 +38,7 @@ const index = ({data}) => {
             {star(data[0].score)}
             <div className='ml-1'>{data[0].score}</div>
           </div>
-          <WeatherFuc />
+          <WeatherFuc data={data[0]}/>
           <div className='text-xs mt-six'>
             <span className='bg-grey07 rounded' style={{padding: "2px 4px"}}>금주 예약 가능</span>
           </div>
@@ -55,7 +55,7 @@ const index = ({data}) => {
             {star(data[1]?.score)}
             <div className='ml-1'>{data[1]?.score}</div>
           </div>
-          <WeatherFuc />
+          <WeatherFuc data={data[1]}/>
           <div className='text-xs mt-six'>
             <span className='bg-grey07 rounded' style={{padding: "2px 4px"}}>5명~10명</span>
           </div>

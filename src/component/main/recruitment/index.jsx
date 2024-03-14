@@ -9,8 +9,6 @@ import { useNavigate } from 'react-router-dom'
 
 const index = ({ data }) => {
 
-  console.log("data: ", data);
-
   const navigate = useNavigate();
 
   return (

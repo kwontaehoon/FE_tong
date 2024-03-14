@@ -13,7 +13,8 @@ module.exports = {
         '500': '500'
       },
       width: {
-        'ten': '10px'
+        'ten': '10px',
+        'pc': '400px'
       },
       fontSize: {
         'xxs': '11px',
