@@ -25,7 +25,7 @@ export const weather = async (serviceKey, data) => {
             numOfRows: 30,
             pageNo: 1,
             base_date: t < 2 ? moment().subtract(1, 'days').format("YYYYMMDD") : moment().format("YYYYMMDD"),
-            base_time: Number(baseTime),
+            base_time: baseTime,
             nx: data.xcoordinate,
             ny: data.ycoordinate,
             dataType: "JSON"
