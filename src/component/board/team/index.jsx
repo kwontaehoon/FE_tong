@@ -55,10 +55,10 @@ const index = () => {
                     })}
                 </div>
             </TabBox>
-            <Choice_Box>
+            {/* <Choice_Box>
                 <Choice>최신순</Choice>
                 <img src="/svg/down_arrow.svg" className='w-3' />
-            </Choice_Box>
+            </Choice_Box> */}
             {!isSuccess ? <Spinner /> : data.filter(x => x.category.includes("팀")).map((x, index) => {
                 return (
                     <Recruitment_Box key={x.boardId} onClick={() => navigate(`${x.boardId}`)}>

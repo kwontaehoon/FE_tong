@@ -1,19 +1,23 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import {
   Container,
   Ground_Pick,
   Ground,
   PickContent,
 } from './styles'
+import { useNavigate } from 'react-router';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const index = ({data}) => {
+
+  AOS.init();
+
+  const navigate = useNavigate();
 
   const set = new Set(data.map(x => x.title));
 
   const [flag, setFlag] = useState(Array([...set].length).fill(false).map((_, index) => index === 0));
-
-  useEffect(()=>{
-  }, []);
 
   return (
     <Container>
@@ -41,7 +45,11 @@ const index = ({data}) => {
           {data.map((x, index) => {
             if(x.title == [...set][flag.findIndex(x=>x)]){
               return (
-                <div key={x.pickId} className='w-1/2 rounded-2xl overflow-hidden shadow-custom mx-2'>
+                <div key={x.pickId} className='w-1/2 rounded-2xl overflow-hidden shadow-custom mx-2' 
+                  onClick={()=>navigate("/event")}
+                  data-aos-anchor=".other-element"
+                  data-aos="flip-left"
+                  >
                   <img src={`https://tong-bucket.s3.ap-northeast-2.amazonaws.com/${x.pickFiles[0].fileName}`} className='w-full h-36 object-center' />
                   <div className='px-4 py-ten flex flex-col justify-center bg-white'>
                     <div className='text-sm font-semibold mb-1'>{x.title}</div>

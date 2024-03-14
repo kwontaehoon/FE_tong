@@ -22,7 +22,7 @@ export const weather = async (serviceKey, data) => {
         method: 'GET',
         params: {
             serviceKey: serviceKey,
-            numOfRows: 30,
+            numOfRows: 50,
             pageNo: 1,
             base_date: t < 2 ? moment().subtract(1, 'days').format("YYYYMMDD") : moment().format("YYYYMMDD"),
             base_time: baseTime,

@@ -32,6 +32,8 @@ import Notice from '../component/board/notice'
 import Notice_details from '../component/board/notice/details'
 import Faq from '../component/board/faq'
 
+import Event from '../component/event'
+
 import Privacy from '../component/policy/privacy'
 import Team from '../component/policy/term'
 
@@ -100,6 +102,7 @@ export const router = createBrowserRouter([
             },
             { path: "/faq", element: <Faq /> },
             { path: "/boardWrite", element: <BoardWrite /> },
+            { path: "/event", element: <Event /> },
             { path: "/myActive/board", element: <MyActiveBoard /> },
             { path: "/myActive/wish", element: <MyActiveWish /> },
             { path: "/myActive/comment", element: <MyActiveComment /> },

@@ -85,7 +85,7 @@ const index = () => {
                     <div className='w-full relative flex items-center'>
                         <Information maxLength={20} placeholder='아이디를 입력하세요.' value={info.id}
                             onChange={(e) => {
-                                setInfo({ ...info, id: e.target.value });
+                                setInfo({ ...info, id: e.target.value.trim() });
                                 setValidation({ ...validation, id: false, idCheck: false, idDuplicate: false });
                                 setIdCheckFlag(false);
                             }}>
@@ -136,7 +136,7 @@ const index = () => {
                 <Title>이름</Title>
                 <Information placeholder='실명을 입력해 주세요' maxLength={4}
                     onChange={(e) => {
-                        setInfo({ ...info, name: e.target.value });
+                        setInfo({ ...info, name: e.target.value.trim() });
                         setValidation({ ...validation, name: false });
                     }}>
                 </Information>

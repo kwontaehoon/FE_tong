@@ -10,7 +10,8 @@ const ACCOUNT_URL = {
     findPassword: "/api/findPassword",
     newPassword: "/api/newPassword",
     withdraw: "/api/withdraw",
-    profileUpdate: "/api/profile/update"
+    profileUpdate: "/api/profile/update",
+    infoUpdate: "/api/info/modify"
 }
 
 // 내 정보
@@ -42,3 +43,6 @@ export const postWithdraw = (params) => client.post(ACCOUNT_URL.withdraw, params
 
 // 프로필 변경
 export const postProfileUpdate = (params) => client.post(ACCOUNT_URL.profileUpdate, params);
+
+// 내 정보 변경
+export const postUserInfoUpdate = (params) => client.post(ACCOUNT_URL.infoUpdate, params);

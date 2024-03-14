@@ -1,5 +1,5 @@
 import { useQuery, useMutation } from "react-query";
-import { postSignup, postLogin, postIdCheck, postFindId, postFindPassword, postNewPassword, postSocialLogin, postProfileUpdate, getInfo, postWithdraw } from "../../../service/api/Account";
+import { postSignup, postLogin, postIdCheck, postFindId, postFindPassword, postNewPassword, postSocialLogin, postProfileUpdate, getInfo, postWithdraw, postUserInfoUpdate } from "../../../service/api/Account";
 
 const ACCOUNT_KEYS = {
   info: "info"
@@ -148,6 +148,21 @@ export const useProfileUpdateMutation = () =>
   useMutation({
     mutationFn: (params) => {
       return postProfileUpdate(params);
+    },
+    onSuccess: () => {
+      // 성공 시 실행할 로직 추가
+    }
+  });
+
+/**
+* 내 정보 변경
+* 
+*/
+
+export const useUserInfoUpdateMutation = () =>
+  useMutation({
+    mutationFn: (params) => {
+      return postUserInfoUpdate(params);
     },
     onSuccess: () => {
       // 성공 시 실행할 로직 추가

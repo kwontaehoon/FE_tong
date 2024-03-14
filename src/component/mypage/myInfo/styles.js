@@ -29,6 +29,6 @@ export const Modify = styled.div`
     align-items: center;
     justify-content: center;
     font-size: 16px;
-    color: white;
-    background-color: #007CFF;
+    background-color: ${props => props.$ok ? "#007CFF" : "#E9EBED"};
+    color: ${props => props.$ok ? "white" : "#73787E"};
 ` 

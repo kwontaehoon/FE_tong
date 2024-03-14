@@ -25,7 +25,6 @@ import { useWishMutation } from '../../hooks/queries/api/Wish';
 const index = () => {
 
     const { id } = useParams();
-    console.log("id: ", id);
 
     const navigate = useNavigate();
 
@@ -47,7 +46,6 @@ const index = () => {
             {resultList?.data.map((x, index) => {
                 return (
                     <div key={x.reservationId} className='bg-bg'>
-                        <Jangi>{x.location}</Jangi>
                         <div className='p-5'>
                             <div className='rounded-lg overflow-hidden'>
                                 <Swiper pagination={true} modules={[Pagination]}>

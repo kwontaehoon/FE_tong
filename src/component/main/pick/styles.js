@@ -18,7 +18,7 @@ export const PickContent = styled.div`
     color: ${props => props.$flag ? 'white' : ''};
     font-size: 16px;
     border-radius: 30px;
-    padding: 10px 20px;
+    padding: 6px 16px;
     margin-right: 10px;
     margin-bottom: 12px;
 `
