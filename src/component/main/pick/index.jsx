@@ -44,7 +44,7 @@ const index = ({data}) => {
                 <div key={x.pickId} className='w-1/2 rounded-2xl overflow-hidden shadow-custom mx-2'>
                   <img src={`https://tong-bucket.s3.ap-northeast-2.amazonaws.com/${x.pickFiles[0].fileName}`} className='w-full h-36 object-center' />
                   <div className='px-4 py-ten flex flex-col justify-center bg-white'>
-                    <div className='text-sm font-semibold'>{x.title}</div>
+                    <div className='text-sm font-semibold mb-1'>{x.title}</div>
                     <div className='text-grey05 text-xs'>{x.content}</div>
                   </div>
                 </div>

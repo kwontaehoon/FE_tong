@@ -16,9 +16,7 @@ const index = () => {
         peopleCount: ""
     });
     const [imgFileList, setImgFileList] = useState([]); // 업로드된 이미지 파일 저장
-    console.log("imgFileList: ", imgFileList);
     const [pickFileIds, setPickFileIds] = useState([]); // pickFileIds
-    console.log("pickFileIds: ", pickFileIds);
     const { mutateAsync: modify } = usePickModifyMutation();
     const { mutateAsync: add } = usePickAddMutation();
     const { mutateAsync: remove } = usePickDeleteMutation();

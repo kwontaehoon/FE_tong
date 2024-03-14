@@ -3,7 +3,7 @@ import { useBannerListQuery, useBannerModifyMutation } from '../../../../hooks/q
 
 const index = () => {
 
-    const count = Array.from({ length: 5 }, () => "");
+    const count = Array.from({ length: 3 }, () => "");
     const imgRef = useRef();
     const { data, isSuccess, refetch } = useBannerListQuery();
     const { mutateAsync: modify } = useBannerModifyMutation();
