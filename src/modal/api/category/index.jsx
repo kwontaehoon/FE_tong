@@ -78,7 +78,7 @@ const index = () => {
                   </div>
                 </Icon>
                 <Icon>
-                  <div>
+                  <div onClick={()=>{ navigate("/event"); openCategoryModal("none"); }}>
                     <Img><img src="/svg/category_pick.svg" /></Img>
                     <P>이벤트</P>
                   </div>
