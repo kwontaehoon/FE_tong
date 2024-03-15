@@ -1,39 +1,30 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
-    padding: 16px 20px;
-    background-color: white;
-` 
-export const Exchange = styled.div`
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid #E9EBED;
-    padding-bottom: 16px;
-`
-export const Exchange_Text = styled.div`
-    font-size: 14px;
-    margin-right: 8px;
-`
-export const Comment_Box = styled.div`
-    display: flex;
-    padding: 16px 0px;
-`  
 export const Div = styled.div`
 width: 100%;
-padding: 16px 0px;
+background: #F4F5FA;
+
+padding-top: 50px;
 `
 export const Inner = styled.div`
 width: 100%;
+border-radius: 30px 30px var(--num, 0px) var(--num, 0px);
 background: #fff;
+margin-top: 50px;
 height: 100%;
+padding-bottom: 50px;
 `
 export const Wrap = styled.div`
 display: flex;
 justify-content: flex-start;
 gap: 9px;
+margin: 0 20px;
+padding-top: 50px;
 `
 export const Left = styled.div`
 `
+
+
 export const Img = styled.img`
 width: 100%;
 `
@@ -43,6 +34,7 @@ border-radius: 999px;
 background: #E9F8F5;
 width: 48px;
 `
+
 export const Right = styled.div`
 
 `
@@ -71,6 +63,7 @@ right: -6px;
 top: 50%;
 transform: translateY(-50%);
 }
+
 `
 export const ComenBox = styled.div`
 padding: 16px;
@@ -105,7 +98,6 @@ display: flex;
 gap: 4px;
 height: 18px;
 margin-top: 10px;
-position: relative;
 `
 export const IcoBox = styled.div`
 display: flex;
@@ -116,6 +108,7 @@ export const Img2 = styled.img`
 width: 18px;
 height: 18px;
 `
+
 export const Count = styled.div`
 font-size: 11px;
 font-style: normal;

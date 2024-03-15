@@ -23,7 +23,7 @@ const index = () => {
                             <PickBox
                                 key={x.pickId}
                                 data-aos="flip-up"
-                                className={'w-1/2 mb-4 h-48' + (index % 2 === 0 ? ' pr-2' : ' pl-2')}>
+                                className={'w-1/2 mb-4 h-48 shadow-custom' + (index % 2 === 0 ? ' pr-2' : ' pl-2')}>
                                 <div className='absolute w-full text-white py-4 px-2 text-center bottom-0 text-xs flex justify-center flex-col items-center'>
                                     <div>{x.title}</div>
                                     <div>{x.content}</div>

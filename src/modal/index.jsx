@@ -7,11 +7,13 @@ import LoginFlag from './api/login'
 import Term from './api/account/term'
 import Privacy from './api/account/privacy'
 import ReservationCancel from './api/reservationCancel'
+import Recomments from './api/recomments'
 import { useCategoryStore } from '../store/Category';
 import { useExpireLoginStore, useExpireStore } from '../store/Expire';
 import { useLoginStore } from '../store/LoginFlag'
 import { usePrivacyStore, useTermStore } from '../store/Account'
 import { useReservationCancelStore } from '../store/ReservationCancel'
+import { useRecommentsStore } from '../store/Recomments'
 
 const index = () => {
 
@@ -22,6 +24,7 @@ const index = () => {
   const termModal = useTermStore((state) => state.open);
   const privacyModal = usePrivacyStore((state) => state.open);
   const reservationCancelModal = useReservationCancelStore((state) => state.open);
+  const recommentsModal = useRecommentsStore((state) => state.open);
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -40,6 +43,7 @@ const index = () => {
         {privacyModal && <Privacy />}
         {reservationCancelModal && <ReservationCancel />}
         {expireLoginModal && <ExpireLogin />}
+        {recommentsModal && <Recomments />}
     </>
   )
 }

@@ -29,7 +29,8 @@ const index = () => {
 
   const { data: reservationList, isSuccess: reservationListSuccess, refetch: reservationRefetch } = useReservationListQuery();
 
-  const [info, setInfo] = useState();
+  const [info, setInfo] = useState([]);
+  console.log("info: ", info);
 
   const { mutateAsync: wish } = useWishMutation();
 
@@ -64,48 +65,52 @@ const index = () => {
         })}
       </Scroll>
 
-      {!reservationListSuccess ? <Spinner /> : info?.map((x, index) => {
-        return (
-          <div key={x.reservationId} className='bg-bg mb-5'>
-            <div className='px-5'>
-              <div className='rounded-xl overflow-hidden' onClick={() => navigate(`${x.reservationId}`)}>
-                <Swiper pagination={true} modules={[Pagination]}>
-                  <SwiperSlide style={{ height: "200px", position: "relative" }} key={index}>
-                    <img src={`https://tong-bucket.s3.ap-northeast-2.amazonaws.com/${x.reservationFiles[0].fileName}`} className='w-full h-full' />
-                  </SwiperSlide>
-                </Swiper>
+      {!reservationListSuccess ? <Spinner /> : info?.length === 0 ?
+        <div className='mt-40 flex items-center flex-col'>
+          <img src="/svg/listNull.svg" />
+          <div className='mt-4 text-grey04'>예약 시설이 없습니다.</div>
+        </div> : info?.map((x, index) => {
+          return (
+            <div key={x.reservationId} className='bg-bg mb-5'>
+              <div className='px-5'>
+                <div className='rounded-xl overflow-hidden' onClick={() => navigate(`${x.reservationId}`)}>
+                  <Swiper pagination={true} modules={[Pagination]}>
+                    <SwiperSlide style={{ height: "200px", position: "relative" }} key={index}>
+                      <img src={`https://tong-bucket.s3.ap-northeast-2.amazonaws.com/${x.reservationFiles[0].fileName}`} className='w-full h-full' />
+                    </SwiperSlide>
+                  </Swiper>
 
-                <Tong_Tong>
-                  <div className='flex items-center'>
-                    <Lorem $category={index}>{x.title}</Lorem>
-                    {index == 0 && <div className='flex flex-1'>
-                      <div className='ml-2 border border-m text-xs rounded text-m' style={{ padding: "2px 4px" }}>역세권</div>
-                      <div className='ml-1 border border-m text-m text-xs rounded' style={{ padding: "2px 4px" }}>시설 청결</div>
-                    </div>}
-                    {index == 1 && <div className='flex flex-1'>
-                      <div className='ml-2 border border-point text-xs rounded text-point' style={{ padding: "2px 4px" }}>금주 예약 마감</div>
-                      <div className='ml-1 border border-m text-m text-xs rounded' style={{ padding: "2px 4px" }}>0 ~ 5명</div>
-                    </div>}
-                    {loginFlag() && <div
-                    onClick={async (e) => {
-                      e.stopPropagation();
-                      await wish({
-                        users: { userId: getToken().userId },
-                        reservation: { reservationId: x.reservationId }
-                      });
-                      reservationRefetch();
-                    }}>
-                    {loginFlag() && x?.userIdsOfWishes?.includes(getToken().id) ?
-                      <img src="/svg/heart_red.svg" className='w-4' /> : <img src="/svg/heart_2.svg" className='w-4' />}
-                  </div>}
-                  </div>
-                  <Lorem_Text>{x.subTitle}</Lorem_Text>
-                </Tong_Tong>
+                  <Tong_Tong>
+                    <div className='flex items-center'>
+                      <Lorem $category={index}>{x.title}</Lorem>
+                      {index == 0 && <div className='flex flex-1'>
+                        <div className='ml-2 border border-m text-xs rounded text-m' style={{ padding: "2px 4px" }}>역세권</div>
+                        <div className='ml-1 border border-m text-m text-xs rounded' style={{ padding: "2px 4px" }}>시설 청결</div>
+                      </div>}
+                      {index == 1 && <div className='flex flex-1'>
+                        <div className='ml-2 border border-point text-xs rounded text-point' style={{ padding: "2px 4px" }}>금주 예약 마감</div>
+                        <div className='ml-1 border border-m text-m text-xs rounded' style={{ padding: "2px 4px" }}>0 ~ 5명</div>
+                      </div>}
+                      {loginFlag() && <div
+                        onClick={async (e) => {
+                          e.stopPropagation();
+                          await wish({
+                            users: { userId: getToken().userId },
+                            reservation: { reservationId: x.reservationId }
+                          });
+                          reservationRefetch();
+                        }}>
+                        {loginFlag() && x?.userIdsOfWishes?.includes(getToken().id) ?
+                          <img src="/svg/heart_red.svg" className='w-4' /> : <img src="/svg/heart_2.svg" className='w-4' />}
+                      </div>}
+                    </div>
+                    <Lorem_Text>{x.subTitle}</Lorem_Text>
+                  </Tong_Tong>
+                </div>
               </div>
             </div>
-          </div>
-        )
-      })}
+          )
+        })}
       <Navi />
     </Container>
   )

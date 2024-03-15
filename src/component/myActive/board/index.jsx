@@ -51,24 +51,28 @@ const index = () => {
           })}
         </div>
       </TabBox>
-      {!isSuccess ? <Spinner /> : data.map(x => {
-        return (
-          <Recruitment_Box key={x.boardId} onClick={() => navigate(x.category.includes("팀") ? `/board/${x.boardId}` : `/mercenary/${x.boardId}`)}>
-            <Recruitment>
-              <Area $category={x.category.includes("팀")}>{x.category.includes("팀") ? '팀' : '용병'}</Area>
-              <Title>{x.title}</Title>
-            </Recruitment>
-            <Text>{x.content}</Text>
-            <Time_Box>
-              <Time>{dateDiff(x.createDate)}</Time>
-              <img src="/svg/eye.svg" className='w-3 mr-1' />
-              <Comment>{x.hits}</Comment>
-              <img src="/svg/comment.svg" className='w-3 mr-1' />
-              <Comment>{x.commentCount}</Comment>
-            </Time_Box>
-          </Recruitment_Box>
-        )
-      })}
+      {!isSuccess ? <Spinner /> : data.length === 0 ?
+        <div className='mt-40 flex items-center flex-col'>
+          <img src="/svg/listNull.svg" />
+          <div className='mt-4 text-grey04'>업로드한 게시글이 없습니다.</div>
+        </div> : data.map(x => {
+          return (
+            <Recruitment_Box key={x.boardId} onClick={() => navigate(x.category.includes("팀") ? `/board/${x.boardId}` : `/mercenary/${x.boardId}`)}>
+              <Recruitment>
+                <Area $category={x.category.includes("팀")}>{x.category.includes("팀") ? '팀' : '용병'}</Area>
+                <Title>{x.title}</Title>
+              </Recruitment>
+              <Text>{x.content}</Text>
+              <Time_Box>
+                <Time>{dateDiff(x.createDate)}</Time>
+                <img src="/svg/eye.svg" className='w-3 mr-1' />
+                <Comment>{x.hits}</Comment>
+                <img src="/svg/comment.svg" className='w-3 mr-1' />
+                <Comment>{x.commentCount}</Comment>
+              </Time_Box>
+            </Recruitment_Box>
+          )
+        })}
       <div className='h-20' />
       <Navi />
     </Container>

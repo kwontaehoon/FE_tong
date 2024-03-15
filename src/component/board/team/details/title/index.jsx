@@ -16,8 +16,7 @@ import { useNavigate } from 'react-router-dom';
 import { profile } from '../../../../../function/profile';
 
 const index = ({popupFlag, setPopupFlag, id, boardList}) => {
-  console.log("boardList: ", boardList);
-
+  
   const navigate = useNavigate();
 
   const { mutateAsync: boardDel } = useBoardDeleteMutation();

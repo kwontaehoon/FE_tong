@@ -34,16 +34,20 @@ const index = () => {
           })}
         </div>
       </TabBox>
-      {!isSuccess ? <Spinner /> : data.map(x => {
-        return (
-          <div key={x.commentsId} className='p-4 mx-5 rounded-lg bg-white mb-2' onClick={() => navigate(x.board.category.includes("팀") ? `/board/${x.board.boardId}` : `/mercenary/${x.board.boardId}`)}>
-            <div className='flex items-center'>
-              <Area $category={x.board.category.includes("팀")}>{x.board.category.includes("팀") ? '팀' : '용병'}</Area>
-              <Title>{x.content}</Title>
+      {!isSuccess ? <Spinner /> : data.length === 0 ?
+        <div className='mt-40 flex items-center flex-col'>
+          <img src="/svg/listNull.svg" />
+          <div className='mt-4 text-grey04'>업로드한 댓글이 없습니다.</div>
+        </div> : data.map(x => {
+          return (
+            <div key={x.commentsId} className='p-4 mx-5 rounded-lg bg-white mb-2' onClick={() => navigate(x.board.category.includes("팀") ? `/board/${x.board.boardId}` : `/mercenary/${x.board.boardId}`)}>
+              <div className='flex items-center'>
+                <Area $category={x.board.category.includes("팀")}>{x.board.category.includes("팀") ? '팀' : '용병'}</Area>
+                <Title>{x.content}</Title>
+              </div>
             </div>
-          </div>
-        )
-      })}
+          )
+        })}
       <div className='h-20' />
       <Navi />
     </Container>

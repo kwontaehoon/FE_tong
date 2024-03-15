@@ -1,5 +1,5 @@
 import { useQuery, useMutation } from "react-query";
-import { delCommentDelete, getCommentList, postCommentWrite, postMyCommentList, putCommentUpdate } from "../../../service/api/Comment";
+import { delCommentDelete, getCommentList, postCommentResponse, postCommentWrite, postMyCommentList, putCommentUpdate } from "../../../service/api/Comment";
 
 const COMMENT_KEYS = {
   commentList: "commentList",
@@ -78,3 +78,18 @@ export const useMyCommentListQuery = (params) => {
     staleTime: Infinity,
   });
 };
+
+/**
+* 댓글 반응
+* 
+*/
+
+export const useCommentResponseMutation = () =>
+  useMutation({
+    mutationFn: (params) => {
+      return postCommentResponse(params);
+    },
+    onSuccess: () => {
+      // 성공 시 실행할 로직 추가
+    }
+  });

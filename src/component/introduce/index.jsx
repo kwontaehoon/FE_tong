@@ -4,7 +4,7 @@ import { functionText } from '../../constants/text/api/Introduce'
 const index = () => {
     return (
         <div className='leading-6 text-sm pb-10'>
-            <div className='text-2xl font-bold mb-2'>TongTong</div>
+            <div className='text-2xl font-bold mb-2'>⚽TongTong</div>
             <div>기간: 2024.01.28 ~ 2024~03.09</div>
             <div>김포 축구 예약 서비스 Web-based Application</div>
 
@@ -20,17 +20,17 @@ const index = () => {
             {/* <div className='mt-4 font-semibold'>[팀 소개]</div> */}
 
             <div className='mt-4 font-semibold'>[기술 스택]</div>
-            <div>Front-end</div>
+            <div>- Front-end</div>
             <div className='flex items-center ml-4'>
                 <div className='w-2 h-2 rounded-full mr-2 bg-m'></div>
                 <div>React.js, TailwindCSS, MUI, React-Query, Zustand, Vite</div>
             </div>
-            <div className='mt-2'>Back-end</div>
+            <div className='mt-2'>- Back-end</div>
             <div className='flex items-center ml-4'>
                 <div className='w-2 h-2 rounded-full mr-2 bg-m'></div>
                 <div>Java, SpringBoot, JPA, MySQL, AWS EC2 / RDS / S3</div>
             </div>
-            <div className='mt-2'>ETC</div>
+            <div className='mt-2'>- ETC</div>
             <div className='flex items-center ml-4'>
                 <div className='w-2 h-2 rounded-full mr-2 bg-m'></div>
                 <div>Figma, Git, Github, Postman</div>
@@ -45,7 +45,7 @@ const index = () => {
                     </div>
                 )
             })}
-            <div className='mt-4 mb-1 font-semibold'>[Git]</div>
+            <div className='mt-4 mb-1 font-semibold'>[GitHub]</div>
             <span onClick={()=>window.open('https://github.com/kwontaehoon/FE_tong', '_blank')} className='bg-grey07 mr-4 px-1 cursor-pointer'>Front-end</span>
             <span onClick={()=>window.open('https://github.com/kwontaehoon/BE_tong', '_blank')} className='bg-grey07 px-1 cursor-pointer'>Back-end</span>
         </div>

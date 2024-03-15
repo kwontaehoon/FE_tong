@@ -29,6 +29,8 @@ const index = () => {
 
   const [popupFlag, setPopupFlag] = useState(false);
 
+  const [responseFlag, setResponseFlag] = useState([]);
+
   const [commentModify, setCommentModify] = useState({
     commentsId: 0,
     commentFlag: false,
@@ -42,17 +44,26 @@ const index = () => {
     commentRefetch();
   }, []);
 
+  useEffect(()=>{
+    if(commentList){
+      setResponseFlag(Array(commentList?.length).fill(false));
+    }
+  }, [commentList]);
+
   return boardSuccess && commentSuccess && (
     <div className='bg-bg h-full flex flex-col'
       onClick={() => {
         if (popupFlag) {
           setPopupFlag(false);
         }
+        if(responseFlag.findIndex(x=>x) !== -1){
+          setResponseFlag(Array(commentList?.length).fill(false));
+        }
       }}>
       <Header padding title="팀 구하기" noClose />
       <Title popupFlag={popupFlag} setPopupFlag={setPopupFlag} id={id} boardList={boardList} />
       <Center boardList={boardList} />
-      <Bottom setInfo={setInfo} commentModify={commentModify} setCommentModify={setCommentModify} inputRef={inputRef} boardList={boardList} commentList={commentList?.content?.filter(x => x.board?.boardId == id)} commentRefetch={commentRefetch} />
+      <Bottom responseFlag={responseFlag} setResponseFlag={setResponseFlag} setInfo={setInfo} commentModify={commentModify} setCommentModify={setCommentModify} inputRef={inputRef} boardList={boardList} commentList={commentList?.content?.filter(x => x.board?.boardId == id)} commentRefetch={commentRefetch} />
       <div className='bg-white flex items-end py-4 px-3 flex-1'>
         <div className='flex relative w-full items-center'>
           {(commentModify.commentFlag || commentModify.comment2Flag) && <div className='absolute left-5 border text-xs py-1 px-2 rounded-xl bg-grey05 text-white'>수정</div>}

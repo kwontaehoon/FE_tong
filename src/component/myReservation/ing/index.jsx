@@ -41,14 +41,14 @@ const index = () => {
             let reservation = [...data];
             let applicants = [];
             data?.map((x, index) => {
-                if (moment(new Date()).diff(x.deadLine, 'hour') < 24){
+                if (moment(new Date()).diff(x.deadLine, 'hour') < 24) {
                     x?.resrvationApplicants?.filter(y => {
-                        if(y.userId == getToken().userId){
+                        if (y.userId == getToken().userId) {
                             applicants.push(y);
                         }
                     })
                 }
-                reservation[index] = {...reservation[index], resrvationApplicants: applicants};
+                reservation[index] = { ...reservation[index], resrvationApplicants: applicants };
                 applicants = [];
             });
             setIng(reservation);
@@ -77,66 +77,70 @@ const index = () => {
                 </div>
             </TabBox>
             <ListBox>
-                {!listSuccess || cancelLoading ? <Spinner /> : Ing.map((x, index) => {
-                    if(x.resrvationApplicants.length === 0){
-                        return;
-                    }
-                    else
-                    return (
-                        <Reservation_Box key={index}>
-                            <div className='flex items-center'>
-                                <Reservation>
-                                    <img src="/svg/myReservation_ing.svg" className='w-3' />
-                                    <div className='mx-six'>예약내역</div>
-                                    <div className='text-xs'>(90일간 내역을 확인할 수 있습니다)</div>
-                                </Reservation>
-                                <div onClick={() => {
-                                    let arr = [...dummy];
-                                    arr[index] = !arr[index];
-                                    setDummy(arr);
-                                }}>
-                                    {dummy[index] ? <img src="svg/false_arrow.svg" className='w-3' /> : <img src="/svg/Arrow_bottom.svg" className='w-3' />}
-                                </div>
-                            </div>
-                            {dummy[index] && <div className='mt-5 rounded-lg bg-bg px-4 pt-5 text-xs text-grey10'>
-                                {x.resrvationApplicants.map(y => {
-                                    return (
-                                        <div key={y.reservationApplicantsId} className='flex pb-5'>
-                                            <div className='flex flex-col flex-1'>
-                                                <div>{x.title}</div>
-                                                <div className='flex'>
-                                                    <div>{moment(y.reservationDate).format("YYYY-MM-DD")}</div>
-                                                    <div className='mx-1'>|</div>
-                                                    <div>{clockText[y.reservationClock].startClock}~{clockText[y.reservationClock].endClock}</div>
-                                                    <div className='mx-1'>|</div>
-                                                    <div>인원수: {y.peopleCount}명</div>
-                                                </div>
-                                            </div>
-                                            <div className='bg-grey07 flex justify-center items-center px-2 py-1 rounded-lg'
-                                                onClick={() => {
-                                                    openReservationCancelModal(true);
-                                                    funcReservationFunc(async () => {
-                                                        await cancel({
-                                                            reservation: {
-                                                                reservationId: x.reservationId
-                                                            },
-                                                            userId: getToken().userId,
-                                                            reservationApplicantsId: y.reservationApplicantsId,
-                                                            peopleCount: y.peopleCount,
-                                                            reservationDate: moment(y.reservationDate).format("YYYY-MM-DD"),
-                                                            reservationClock: y.reservationClock
-                                                        });
-                                                        refetch();
-                                                    });
-                                                }}>예약취소
-                                            </div>
+                {!listSuccess || cancelLoading ? <Spinner /> : Ing?.length === 0 ?
+                    <div className='mt-40 flex items-center flex-col'>
+                        <img src="/svg/listNull.svg" />
+                        <div className='mt-4 text-grey04'>예약내역이 없습니다.</div>
+                    </div> : Ing.map((x, index) => {
+                        if (x.resrvationApplicants.length === 0) {
+                            return;
+                        }
+                        else
+                            return (
+                                <Reservation_Box key={index}>
+                                    <div className='flex items-center'>
+                                        <Reservation>
+                                            <img src="/svg/myReservation_ing.svg" className='w-3' />
+                                            <div className='mx-six'>예약내역</div>
+                                            <div className='text-xs'>(90일간 내역을 확인할 수 있습니다)</div>
+                                        </Reservation>
+                                        <div onClick={() => {
+                                            let arr = [...dummy];
+                                            arr[index] = !arr[index];
+                                            setDummy(arr);
+                                        }}>
+                                            {dummy[index] ? <img src="svg/false_arrow.svg" className='w-3' /> : <img src="/svg/Arrow_bottom.svg" className='w-3' />}
                                         </div>
-                                    )
-                                })}
-                            </div>}
-                        </Reservation_Box>
-                    )
-                })}
+                                    </div>
+                                    {dummy[index] && <div className='mt-5 rounded-lg bg-bg px-4 pt-5 text-xs text-grey10'>
+                                        {x.resrvationApplicants.map(y => {
+                                            return (
+                                                <div key={y.reservationApplicantsId} className='flex pb-5'>
+                                                    <div className='flex flex-col flex-1'>
+                                                        <div>{x.title}</div>
+                                                        <div className='flex'>
+                                                            <div>{moment(y.reservationDate).format("YYYY-MM-DD")}</div>
+                                                            <div className='mx-1'>|</div>
+                                                            <div>{clockText[y.reservationClock].startClock}~{clockText[y.reservationClock].endClock}</div>
+                                                            <div className='mx-1'>|</div>
+                                                            <div>인원수: {y.peopleCount}명</div>
+                                                        </div>
+                                                    </div>
+                                                    <div className='bg-grey07 flex justify-center items-center px-2 py-1 rounded-lg'
+                                                        onClick={() => {
+                                                            openReservationCancelModal(true);
+                                                            funcReservationFunc(async () => {
+                                                                await cancel({
+                                                                    reservation: {
+                                                                        reservationId: x.reservationId
+                                                                    },
+                                                                    userId: getToken().userId,
+                                                                    reservationApplicantsId: y.reservationApplicantsId,
+                                                                    peopleCount: y.peopleCount,
+                                                                    reservationDate: moment(y.reservationDate).format("YYYY-MM-DD"),
+                                                                    reservationClock: y.reservationClock
+                                                                });
+                                                                refetch();
+                                                            });
+                                                        }}>예약취소
+                                                    </div>
+                                                </div>
+                                            )
+                                        })}
+                                    </div>}
+                                </Reservation_Box>
+                            )
+                    })}
             </ListBox>
             <div className='h-24' />
             <Navi />

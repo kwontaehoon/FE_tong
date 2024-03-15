@@ -10,7 +10,7 @@ const index = () => {
   return (
     <ModalMobileContainer $show={privacyModal}>
     <ModalMobileSubContainer $show={privacyModal}>
-        <div>개인 정보 처리방침</div>
+        <div className='text-base font-bold'>개인 정보 처리방침</div>
         <div className='my-5 h-40 overflow-scroll'>내용</div>
         <div className='flex-1 flex items-end'>
             <div className='h-12 flex justify-center items-center bg-m text-white w-full rounded-lg'

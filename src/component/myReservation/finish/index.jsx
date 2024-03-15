@@ -65,44 +65,48 @@ const index = () => {
                 </div>
             </TabBox>
             <ListBox>
-                {!isSuccess ? <Spinner /> : finish.map((x, index) => {
-                    return (
-                        <Reservation_Box key={index}>
-                            <div className='flex items-center'>
-                                <Reservation>
-                                    <img src="/svg/myReservation_finish.svg" className='w-3' />
-                                    <div className='mx-six'>완료내역</div>
-                                    <div className='text-xs'>(90일간 내역을 확인할 수 있습니다)</div>
-                                </Reservation>
-                                <div onClick={() => {
-                                    let arr = [...dummy];
-                                    arr[index] = !arr[index];
-                                    setDummy(arr);
-                                }}>
-                                    {dummy[index] ? <img src="svg/false_arrow.svg" className='w-3' /> : <img src="/svg/Arrow_bottom.svg" className='w-3' />}
+                {!isSuccess ? <Spinner /> : finish?.length === 0 ?
+                    <div className='mt-40 flex items-center flex-col'>
+                        <img src="/svg/listNull.svg" />
+                        <div className='mt-4 text-grey04'>완료내역이 없습니다.</div>
+                    </div> : finish.map((x, index) => {
+                        return (
+                            <Reservation_Box key={index}>
+                                <div className='flex items-center'>
+                                    <Reservation>
+                                        <img src="/svg/myReservation_finish.svg" className='w-3' />
+                                        <div className='mx-six'>완료내역</div>
+                                        <div className='text-xs'>(90일간 내역을 확인할 수 있습니다)</div>
+                                    </Reservation>
+                                    <div onClick={() => {
+                                        let arr = [...dummy];
+                                        arr[index] = !arr[index];
+                                        setDummy(arr);
+                                    }}>
+                                        {dummy[index] ? <img src="svg/false_arrow.svg" className='w-3' /> : <img src="/svg/Arrow_bottom.svg" className='w-3' />}
+                                    </div>
                                 </div>
-                            </div>
-                            {dummy[index] && <div className='mt-5 rounded-lg bg-bg px-4 pt-5 text-xs text-grey10'>
-                                {x.resrvationApplicants.map(y => {
-                                    return (
-                                        <div key={y.reservationApplicantsId} className='flex pb-5'>
-                                            <div className='flex flex-col flex-1'>
-                                                <div>{x.title}</div>
-                                                <div className='flex'>
-                                                    <div>{x.deadLine}</div>
-                                                    <div className='mx-1'>|</div>
-                                                    <div>{clockText[y.reservationClock].startClock}~{clockText[y.reservationClock].endClock}</div>
-                                                    <div className='mx-1'>|</div>
-                                                    <div>인원수: {y.peopleCount}명</div>
+                                {dummy[index] && <div className='mt-5 rounded-lg bg-bg px-4 pt-5 text-xs text-grey10'>
+                                    {x.resrvationApplicants.map(y => {
+                                        return (
+                                            <div key={y.reservationApplicantsId} className='flex pb-5'>
+                                                <div className='flex flex-col flex-1'>
+                                                    <div>{x.title}</div>
+                                                    <div className='flex'>
+                                                        <div>{x.deadLine}</div>
+                                                        <div className='mx-1'>|</div>
+                                                        <div>{clockText[y.reservationClock].startClock}~{clockText[y.reservationClock].endClock}</div>
+                                                        <div className='mx-1'>|</div>
+                                                        <div>인원수: {y.peopleCount}명</div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    )
-                                })}
-                            </div>}
-                        </Reservation_Box>
-                    )
-                })}
+                                        )
+                                    })}
+                                </div>}
+                            </Reservation_Box>
+                        )
+                    })}
             </ListBox>
             <div className='h-24' />
             <Navi />

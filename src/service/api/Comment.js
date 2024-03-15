@@ -5,7 +5,8 @@ const COMMENT_URL = {
     commentWrite: '/api/comments/write',
     commentUpdate: '/api/comments/updateComment',
     commentDelete: '/api/comments/deleteComment',
-    mycommentList: '/api/myCommentList'
+    mycommentList: '/api/myCommentList',
+    commentResponse: '/api/comments/response'
 }
 
 // 댓글 전체 보기
@@ -22,3 +23,6 @@ export const delCommentDelete = (params) => client.delete(COMMENT_URL.commentDel
 
 // 내가 쓴 댓글
 export const postMyCommentList = (params) => client.post(COMMENT_URL.mycommentList, params);
+
+// 댓글 반응
+export const postCommentResponse = (params) => client.post(COMMENT_URL.commentResponse, params);
