@@ -1,5 +1,15 @@
 import { useQuery, useMutation } from "react-query";
-import { delCommentDelete, getCommentList, postCommentResponse, postCommentWrite, postMyCommentList, putCommentUpdate } from "../../../service/api/Comment";
+import {
+  delCommentDelete,
+  delRecommentsDelete,
+  getCommentList,
+  postCommentResponse,
+  postCommentWrite,
+  postMyCommentList,
+  postRecommentsWrite,
+  putCommentUpdate,
+  putRecommentsUpdate
+} from "../../../service/api/Comment";
 
 const COMMENT_KEYS = {
   commentList: "commentList",
@@ -88,6 +98,51 @@ export const useCommentResponseMutation = () =>
   useMutation({
     mutationFn: (params) => {
       return postCommentResponse(params);
+    },
+    onSuccess: () => {
+      // 성공 시 실행할 로직 추가
+    }
+  });
+
+/**
+* 대댓글 등록
+* 
+*/
+
+export const useRecommentsWriteMutation = () =>
+  useMutation({
+    mutationFn: (params) => {
+      return postRecommentsWrite(params);
+    },
+    onSuccess: () => {
+      // 성공 시 실행할 로직 추가
+    }
+  });
+
+/**
+* 대댓글 수정
+* 
+*/
+
+export const useRecommentsUpdateMutation = () =>
+  useMutation({
+    mutationFn: (params) => {
+      return putRecommentsUpdate(params);
+    },
+    onSuccess: () => {
+      // 성공 시 실행할 로직 추가
+    }
+  });
+
+/**
+* 대댓글 삭제
+* 
+*/
+
+export const useRecommentsDeleteMutation = () =>
+  useMutation({
+    mutationFn: (params) => {
+      return delRecommentsDelete(params);
     },
     onSuccess: () => {
       // 성공 시 실행할 로직 추가

@@ -18,10 +18,8 @@ const index = ({ responseFlag, setResponseFlag, setInfo, commentModify, setComme
   const { mutateAsync: commentDel } = useCommentDeleteMutation();
 
   const { mutateAsync: response } = useCommentResponseMutation();
-  console.log(commentList);
 
   const openRecommentsModal = useRecommentsStore((state) => state.setOpen);
-  const setRecommentsCommentsModal = useRecommentsStore((state) => state.setComments);
 
   return (
     <Container
@@ -37,7 +35,9 @@ const index = ({ responseFlag, setResponseFlag, setInfo, commentModify, setComme
         <Exchange_Text>댓글 {commentList.length}</Exchange_Text>
       </Exchange>
       {commentList.length === 0 ?
-        <div className='mt-14 mb-10 flex-1 text-xs text-grey05 flex justify-center'>등록된 댓글이 없습니다.</div> : commentList.map((x, index) => {
+        <div className='mt-14 mb-10 flex-1 text-xs text-grey05 flex justify-center'>등록된 댓글이 없습니다.</div>
+        : 
+        commentList.map((x, index) => {
           return (
             <Div key={x.commentsId}>
               <Inner>
@@ -137,7 +137,6 @@ const index = ({ responseFlag, setResponseFlag, setInfo, commentModify, setComme
                       <IcoBox2>
                         <img src='/svg/comment_comment.svg' alt='대댓글아이콘'></img>
                         <P3 onClick={() => {
-                          setRecommentsCommentsModal(x);
                           openRecommentsModal(true);
                         }}>{x.recomments.length == 0 ? '답글쓰기' : `${x.recomments.length}개의 댓글`}
                         </P3>

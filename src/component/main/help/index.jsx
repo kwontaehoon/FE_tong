@@ -19,7 +19,7 @@ const index = () => {
             <Help> 
                 <Help_Question>
                     <Question>MENU</Question>
-                    <div className='ml-1 text-xs flex flex-col justify-end'>카테고리</div>
+                    <div className='ml-1 mt-2 text-xs flex flex-col text-grey04'>카테고리</div>
                 </Help_Question>
                 <IconBox>
                     <Button onClick={()=>navigate("/reservation")}>

@@ -6,6 +6,7 @@ export const Container = styled.div`
 `
 export const Ground_Pick = styled.div`
     display: flex;
+    align-items: center;
 `
 export const Ground = styled.div`
     font-size: 20px;

@@ -35,8 +35,6 @@ const index = () => {
     commentsId: 0,
     commentFlag: false,
     comment: '', // 댓글 수정
-    comment2Flag: false,
-    comment2: '' // 대댓글 수정
   });
 
   useEffect(() => {
@@ -66,8 +64,8 @@ const index = () => {
       <Bottom responseFlag={responseFlag} setResponseFlag={setResponseFlag} setInfo={setInfo} commentModify={commentModify} setCommentModify={setCommentModify} inputRef={inputRef} boardList={boardList} commentList={commentList?.content?.filter(x => x.board?.boardId == id)} commentRefetch={commentRefetch} />
       <div className='bg-white flex items-end py-4 px-3 flex-1'>
         <div className='flex relative w-full items-center'>
-          {(commentModify.commentFlag || commentModify.comment2Flag) && <div className='absolute left-5 border text-xs py-1 px-2 rounded-xl bg-grey05 text-white'>수정</div>}
-          <input className={'bg-bg w-full h-14 rounded-full pr-11 text-xs' + (commentModify.commentFlag || commentModify.comment2Flag ? ' pl-16' : ' pl-4')}
+          {(commentModify.commentFlag) && <div className='absolute left-5 border text-xs py-1 px-2 rounded-xl bg-grey05 text-white'>수정</div>}
+          <input className={'bg-bg w-full h-14 rounded-full pr-11 text-xs' + (commentModify.commentFlag ? ' pl-16' : ' pl-4')}
             ref={inputRef}
             placeholder='답글을 입력하세요.'
             value={info}
@@ -75,7 +73,7 @@ const index = () => {
             onKeyDown={(e) => {
               if (e.key === 'Backspace' || e.keyCode === 8) {
                 if(info == ''){
-                    setCommentModify({...commentModify, commentFlag: false, comment2Flag: false});
+                    setCommentModify({...commentModify, commentFlag: false});
                 }
                 // Backspace 키를 눌렀을 때 수행할 작업을 여기에 추가합니다.
               }
@@ -83,7 +81,7 @@ const index = () => {
           <img src="/svg/Send.svg" className='absolute right-4'
             onClick={async () => {
               setInfo('');
-              if(commentModify.commentFlag || commentModify.comment2Flag){
+              if(commentModify.commentFlag){
                 await commentUpdate({ commentsId: commentModify.commentsId, content: info});
               } else if (loginFlag()) {
                 await write({
@@ -98,7 +96,7 @@ const index = () => {
                 });
               } else openLoginModal(true);
               commentRefetch();
-              setCommentModify({...commentModify, commentFlag: false, comment2Flag: false});
+              setCommentModify({...commentModify, commentFlag: false});
             }} />
         </div>
       </div>

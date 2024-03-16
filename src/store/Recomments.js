@@ -5,5 +5,5 @@ export const useRecommentsStore = create((set) => ({
   open: false,
   comments: [],
   setOpen: (open) => set(() => ({ open: open })),
-  setComments: (id) => set(() => ({ id: id })),
+  setComments: (comments) => set(() => ({ comments: comments })),
 }))

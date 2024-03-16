@@ -24,7 +24,7 @@ const index = ({data}) => {
       {data.length == 0 ? '' : <div className='px-5 pt-7 pb-2'>
         <Ground_Pick>
           <Ground>PICK📌</Ground>
-          <div className='flex flex-col justify-end text-xs font-semibold text-grey04'>운동장 금주 트렌드</div>
+          <div className='flex mt-2 flex-col justify-end text-xs font-semibold text-grey04'>운동장 금주 트렌드</div>
         </Ground_Pick>
         <div className='mb-3 text-grey04 text-xxs'>운통장에서 김포를 이모저모를 소개해 드립니다.</div>
         <div className='flex flex-wrap'>

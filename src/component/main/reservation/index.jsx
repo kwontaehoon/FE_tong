@@ -23,12 +23,12 @@ const index = ({data}) => {
 
   return data.length !== 0 && (
     <Container>
-      <div className='flex'>
+      <div className='flex items-center'>
         <div className='text-xl font-bold'>Best Ground</div>
-        <div className='ml-1 text-xs flex justify-end flex-col text-grey04'>추천 운동장</div>
+        <div className='ml-1 mt-2 text-xs flex-col text-grey04'>추천 운동장</div>
       </div>
       <div className='flex mt-3' style={{marginBottom: "18px"}} onClick={()=>navigate(`/reservation/${data[0].reservationId}`)}>
-        <img className='w-3/5 rounded-xl border-grey05 border-2' style={{height: "135px"}} src={`https://tong-bucket.s3.ap-northeast-2.amazonaws.com/${data[0].reservationFiles[0]?.fileName}`} />
+        <img className='w-3/5 rounded-xl' style={{height: "135px"}} src={`https://tong-bucket.s3.ap-northeast-2.amazonaws.com/${data[0].reservationFiles[0]?.fileName}`} />
         <div className='ml-3 flex flex-col justify-center'>
           <div className='flex mb-six font-bold'>
             <div>🥇</div>
@@ -45,7 +45,7 @@ const index = ({data}) => {
         </div>
       </div>
       <div className='flex mt-3' style={{marginBottom: "18px"}} onClick={()=>navigate(`/reservation/${data[1].reservationId}`)}>
-        <img className='w-3/5 rounded-xl border-grey05 border-2' style={{height: "135px"}} src={`https://tong-bucket.s3.ap-northeast-2.amazonaws.com/${data[1]?.reservationFiles[0]?.fileName}`} />
+        <img className='w-3/5 rounded-xl' style={{height: "135px"}} src={`https://tong-bucket.s3.ap-northeast-2.amazonaws.com/${data[1]?.reservationFiles[0]?.fileName}`} />
         <div className='ml-3 flex flex-col justify-center'>
           <div className='flex font-bold'>
             <div>🥈</div>
@@ -68,7 +68,7 @@ const index = ({data}) => {
             <div key={x.reservationId} className='flex shadow-custom mr-3 ml-1 h-24 rounded-lg'
               style={{padding: "12px 18px", width: "207px"}}
               onClick={()=>navigate(`/reservation/${x.reservationId}`)}>
-                <img src={`https://tong-bucket.s3.ap-northeast-2.amazonaws.com/${x.reservationFiles[0]?.fileName}`} className='w-16 h-16 rounded-lg border-grey05 border-2' />
+                <img src={`https://tong-bucket.s3.ap-northeast-2.amazonaws.com/${x.reservationFiles[0]?.fileName}`} className='w-16 h-16 rounded-lg' />
               <div className='font-bold ml-3 flex-1 flex flex-col justify-center'>
                 <div>{index == 0 ? '🥉' : ''}{x.title}</div>
                 <div className='flex items-center'>

@@ -6,7 +6,10 @@ const COMMENT_URL = {
     commentUpdate: '/api/comments/updateComment',
     commentDelete: '/api/comments/deleteComment',
     mycommentList: '/api/myCommentList',
-    commentResponse: '/api/comments/response'
+    commentResponse: '/api/comments/response',
+    recommentsWrite: '/api/recomments/write',
+    recommentsUpdate: '/api/recomments/updateRecomment',
+    recommentsDelete: '/api/recomments/deleteRecomment'
 }
 
 // 댓글 전체 보기
@@ -26,3 +29,12 @@ export const postMyCommentList = (params) => client.post(COMMENT_URL.mycommentLi
 
 // 댓글 반응
 export const postCommentResponse = (params) => client.post(COMMENT_URL.commentResponse, params);
+
+// 대댓글 등록
+export const postRecommentsWrite = (params) => client.post(COMMENT_URL.recommentsWrite, params);
+
+// 대댓글 수정
+export const putRecommentsUpdate = (params) => client.put(COMMENT_URL.recommentsUpdate, params);
+
+// 대댓글 삭제
+export const delRecommentsDelete = (params) => client.delete(COMMENT_URL.recommentsDelete, { params: params });
