@@ -2,10 +2,13 @@ import React, { useEffect } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import Modal from './modal'
 import Introduce from './component/introduce'
+import { useCategoryStore } from './store/Category'
+import Category from './modal/api/category'
 
 const App = () => {
 
   const pathName = useLocation().pathname;
+  const categoryModal = useCategoryStore((state) => state.open);
 
   useEffect(() => {
     window.scrollTo({

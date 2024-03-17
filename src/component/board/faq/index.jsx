@@ -26,7 +26,7 @@ const index = () => {
 
   return (
     <Container>
-      <Header padding title="FAQ"  arrowUrl={"/"} closeUrl={"/"} />
+      <Header padding title="FAQ" arrowUrl={"/"} closeUrl={"/"} />
       <TabBox>
         <div className='h-full flex'>
           {boardTabText.map((x, index) => {
@@ -48,7 +48,7 @@ const index = () => {
         {faqCategoryText.map((x, index) => {
           return (
             <Besides $category={category[index]} key={x.id}
-              onClick={()=>{
+              onClick={() => {
                 let arr = Array(4).fill(false);
                 arr[index] = true;
                 setCategory(arr);
@@ -60,14 +60,15 @@ const index = () => {
       </FAQ_Box>
       {faqText.filter(x => x.category == categoryContent).map((x, index) => {
         return (
-          <Reservation_Box key={index}>
+          <Reservation_Box key={index}
+            onClick={() => {
+              let arr = [...dummy];
+              arr[index] = !arr[index];
+              setDummy(arr);
+            }}>
             <div className='flex items-center'>
               <Reservation>{x.title}</Reservation>
-              <div onClick={() => {
-                let arr = [...dummy];
-                arr[index] = !arr[index];
-                setDummy(arr);
-              }}>
+              <div>
                 {dummy[index] ? <img src="svg/false_arrow.svg" className='w-3' /> : <img src="/svg/Arrow_bottom.svg" className='w-3' />}
               </div>
             </div>
@@ -77,7 +78,7 @@ const index = () => {
           </Reservation_Box>
         )
       })}
-      <div className='h-24' />
+      <div className='h-20' />
       <Navi />
     </Container>
   )

@@ -74,7 +74,6 @@ const index = () => {
                 if(info == ''){
                     setCommentModify({...commentModify, commentFlag: false});
                 }
-                // Backspace 키를 눌렀을 때 수행할 작업을 여기에 추가합니다.
               }
             }} />
           <img src="/svg/Send.svg" className='absolute right-4'

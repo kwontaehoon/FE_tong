@@ -17,6 +17,7 @@ import { getToken } from '../../../utill/GetToken';
 import { useCommentListQuery, useRecommentsDeleteMutation, useRecommentsUpdateMutation, useRecommentsWriteMutation } from '../../../hooks/queries/api/Comment';
 import { loginFlag } from '../../../utill/LoginFlag';
 import { useParams } from 'react-router-dom';
+import { useLoginStore } from '../../../store/LoginFlag';
 
 const index = () => {
 
@@ -27,7 +28,7 @@ const index = () => {
 
   const recommentsModal = useRecommentsStore((state) => state.open);
   const openRecommentsModal = useRecommentsStore((state) => state.setOpen);
-  console.log("data: ", data?.content?.filter(x => x.board?.boardId == id)[0]);
+  const openLoginModal = useLoginStore((state) => state.setOpen);
 
   const { mutateAsync: write } = useRecommentsWriteMutation();
   const { mutateAsync: update } = useRecommentsUpdateMutation();
@@ -52,7 +53,7 @@ const index = () => {
         </div>
         <div className='my-5 overflow-scroll'>
           {data?.content?.filter(x => x.board?.boardId == id)[0].recomments.length == 0 ?
-            <div className='h-full flex items-center justify-center text-grey05'>등록된 댓글이 없습니다.</div>
+            <div className='pt-20 flex items-center justify-center text-grey05'>등록된 댓글이 없습니다.</div>
             : data?.content?.filter(x => x.board?.boardId == id)[0].recomments.map(x => {
               return (
                 <div key={x.recommentsId} className='flex mb-5'>
@@ -117,7 +118,10 @@ const index = () => {
                   }
 
                 });
-              } else openLoginModal(true);
+              } else {
+                openRecommentsModal(false);
+                openLoginModal(true);
+              }
               refetch();
               setCommentModify({ ...commentModify, commentFlag: false });
             }} />

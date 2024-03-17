@@ -43,7 +43,7 @@ export const Recruitment = styled.div`
 `
 export const Area = styled.div`
     background-color: #E7F3FF;
-    font-size: 13px;
+    font-size: 12px;
     border-radius: 8px;
     color: #007CFF;
     padding: 4px 8px;

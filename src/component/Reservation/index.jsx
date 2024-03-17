@@ -30,7 +30,6 @@ const index = () => {
   const { data: reservationList, isSuccess: reservationListSuccess, refetch: reservationRefetch } = useReservationListQuery();
 
   const [info, setInfo] = useState([]);
-  console.log("info: ", info);
 
   const { mutateAsync: wish } = useWishMutation();
 

@@ -35,6 +35,16 @@ const MC = styled.div`
     &::-webkit-scrollbar{
       display: none;
     }
+
+    @media (min-width: 768px) {
+        top: auto;
+        left: auto;
+        width: 392px;
+        height: 660px;
+        overflow: scroll;
+        border-radius: 16px;
+        position: absolute;
+    }
 `
 const MSC = styled.div`
     position: absolute;
@@ -56,6 +66,14 @@ const MCS = styled.div`
     z-index: 999;
     visibility: ${props => props.$show ? 'visible' : 'hidden'};
     transition: 0.3s;
+
+    @media (min-width: 768px) {
+        left: auto;
+        width: 392px;
+        margin-bottom: 40px;
+        overflow: scroll;
+        border-radius: 16px;
+    }
 `
 const MCSS = styled.div`
     position: absolute;
@@ -80,6 +98,16 @@ const MCMobile = styled.div`
     z-index: 999;
     visibility: ${props => props.$show ? 'visible' : 'hidden'};
     transition: 0.3s;
+
+    @media (min-width: 768px) {
+        top: auto;
+        left: auto;
+        width: 392px;
+        height: 660px;
+        overflow: scroll;
+        border-radius: 16px;
+        position: absolute;
+    }
 `
 const MSCMobile = styled.div`
     position: absolute;
@@ -106,6 +134,16 @@ const MCCMobile = styled.div`
     justify-content: center;
     align-items: center;
     z-index: 800;
+
+    @media (min-width: 768px) {
+        top: auto;
+        left: auto;
+        width: 392px;
+        height: 660px;
+        overflow: scroll;
+        border-radius: 16px;
+        position: absolute;
+    }
 `
 const MSCCMobile = styled.div`
     position: absolute;

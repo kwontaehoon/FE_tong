@@ -61,7 +61,7 @@ font-family: "Noto Sans KR", sans-serif;
 `
 
 export const P = styled.p`
-color: #FF2A6D;
+color: #9FA4A9;
 font-size: 11px;
 font-style: normal;
 font-weight: 700;

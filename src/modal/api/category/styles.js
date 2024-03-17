@@ -32,6 +32,10 @@ overflow: scroll;
 &::-webkit-scrollbar {
     display: none;
 }
+
+@media (min-width: 768px) {
+        position: relative;
+    }
 `
 
 export const H1Tit = styled.h1`

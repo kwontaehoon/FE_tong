@@ -26,7 +26,7 @@ const index = () => {
 
   return (
     <Container>
-      <Header title={myTabText[tab.findIndex(x => x)].content} padding search />
+      <Header arrowUrl={"/mypage"} title={myTabText[tab.findIndex(x => x)].content} padding search />
       <TabBox>
         <div className='h-full flex'>
           {myTabText.map((x, index) => {
@@ -50,7 +50,7 @@ const index = () => {
           <div className='mt-4 text-grey04'>찜한 시설이 없습니다.</div>
         </div> : data.map((x, index) => {
           return (
-            <div key={x.reservationId} className='flex bg-white p-4 mb-ten mx-5 rounded-lg'>
+            <div key={x.reservationId} className='flex bg-white p-4 mb-ten mx-5 rounded-lg h-40'>
               <div className='flex-1 mr-4 relative'>
                 <img src={`https://tong-bucket.s3.ap-northeast-2.amazonaws.com/${x.reservationFiles[0].fileName}`} className='w-full h-full rounded-lg overflow-hidden' />
                 <div className='absolute top-3 right-3' onClick={async () => {
@@ -78,7 +78,7 @@ const index = () => {
                   <div className='border border-m text-xs rounded text-m' style={{ padding: "2px 4px" }}>금주 예약 가능</div>
                   <div className='ml-1 border border-m text-m text-xs rounded' style={{ padding: "2px 4px" }}>0 ~ 5명</div>
                 </div>}
-                <div className='mt-8 text-sm'>{x.subTitle}</div>
+                <div className='mt-3 text-xs'>{x.subTitle}</div>
               </div>
             </div>
           )

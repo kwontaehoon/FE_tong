@@ -14,7 +14,7 @@ export const Icon = styled.div`
     @media (min-width: 768px) {
         width: 400px;
         margin-left: 40px;
-        margin-bottom: 35px;
+        margin-bottom: 40px;
         border-bottom-left-radius: 16px;
         border-bottom-right-radius: 16px;
         position: absolute;

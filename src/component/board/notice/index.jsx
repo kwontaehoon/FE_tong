@@ -49,7 +49,7 @@ const index = () => {
       <div className='mx-5'>
         {!isSuccess ? <Spinner /> : data.map((x, index) => {
           return (
-            <Announcement_Box key={index}>
+            <Announcement_Box key={index} onClick={() => navigate(`${index}`, { state: x})}>
               <div className='flex items-center w-full'>
                 <Update_in>
                   <Update_Box>
@@ -58,7 +58,7 @@ const index = () => {
                   </Update_Box>
                   <Days>{moment(x.createDate).format("YYYY.MM.DD")}</Days>
                 </Update_in>
-                <img src="/svg/Arrow_right.svg" className='w-3' onClick={() => navigate(`${index}`, { state: x})} />
+                <img src="/svg/Arrow_right.svg" className='w-3' />
               </div>
             </Announcement_Box>
           )

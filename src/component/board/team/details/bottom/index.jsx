@@ -12,6 +12,8 @@ import { useCommentDeleteMutation, useCommentResponseMutation, useCommentUpdateM
 import { profile } from '../../../../../function/profile';
 import { getToken } from '../../../../../utill/GetToken';
 import { useRecommentsStore } from '../../../../../store/Recomments';
+import { loginFlag } from '../../../../../utill/LoginFlag';
+import { useLoginStore } from '../../../../../store/LoginFlag';
 
 const index = ({ responseFlag, setResponseFlag, setInfo, commentModify, setCommentModify, inputRef, boardList, commentList, commentRefetch }) => {
 
@@ -20,6 +22,7 @@ const index = ({ responseFlag, setResponseFlag, setInfo, commentModify, setComme
   const { mutateAsync: response } = useCommentResponseMutation();
 
   const openRecommentsModal = useRecommentsStore((state) => state.setOpen);
+  const openLoginModal = useLoginStore((state) => state.setOpen);
 
   return (
     <Container
@@ -36,7 +39,7 @@ const index = ({ responseFlag, setResponseFlag, setInfo, commentModify, setComme
       </Exchange>
       {commentList.length === 0 ?
         <div className='mt-14 mb-10 flex-1 text-xs text-grey05 flex justify-center'>등록된 댓글이 없습니다.</div>
-        : 
+        :
         commentList.map((x, index) => {
           return (
             <Div key={x.commentsId}>
@@ -76,13 +79,16 @@ const index = ({ responseFlag, setResponseFlag, setInfo, commentModify, setComme
                                   src={`/svg/response${index}.svg`}
                                   className='w-full h-full'
                                   onClick={async () => {
-                                    switch (index) {
-                                      case 0: await response({ commentsId: x.commentsId, star: 1 }); return commentRefetch();
-                                      case 1: await response({ commentsId: x.commentsId, heart: 1 }); return commentRefetch();
-                                      case 2: await response({ commentsId: x.commentsId, smile: 1 }); return commentRefetch();
-                                      case 3: await response({ commentsId: x.commentsId, twist: 1 }); return commentRefetch();
-                                      case 4: await response({ commentsId: x.commentsId, angry: 1 }); return commentRefetch();
-                                    }
+                                    if (loginFlag()) {
+                                      switch (index) {
+                                        case 0: await response({ commentsId: x.commentsId, star: 1 }); return commentRefetch();
+                                        case 1: await response({ commentsId: x.commentsId, heart: 1 }); return commentRefetch();
+                                        case 2: await response({ commentsId: x.commentsId, smile: 1 }); return commentRefetch();
+                                        case 3: await response({ commentsId: x.commentsId, twist: 1 }); return commentRefetch();
+                                        case 4: await response({ commentsId: x.commentsId, angry: 1 }); return commentRefetch();
+                                      }
+                                    } else openLoginModal(true);
+
                                     setResponseFlag(Array(commentList.length).fill(false));
                                   }} />
                               </div>
@@ -92,27 +98,47 @@ const index = ({ responseFlag, setResponseFlag, setInfo, commentModify, setComme
                         {/* 아이콘1 */}
                         {x.star !== 0 && <IcoBox>
                           <img src='/svg/response0.svg' alt='별점아이콘'
-                            onClick={async () => { await response({ commentsId: x.commentsId, star: 1 }); commentRefetch(); }} />
+                            onClick={async () => {
+                              if (loginFlag()) {
+                                await response({ commentsId: x.commentsId, star: 1 }); commentRefetch();
+                              } else openLoginModal(true);
+                            }} />
                           <Count>{x.star}</Count>
                         </IcoBox>}
                         {x.heart !== 0 && <IcoBox>
                           <img src='/svg/response1.svg' alt='하트아이콘'
-                            onClick={async () => { await response({ commentsId: x.commentsId, heart: 1 }); commentRefetch(); }} />
+                            onClick={async () => {
+                              if (loginFlag()) {
+                                await response({ commentsId: x.commentsId, heart: 1 }); commentRefetch();
+                              } else openLoginModal(true);
+                            }} />
                           <Count>{x.heart}</Count>
                         </IcoBox>}
                         {x.smile !== 0 && <IcoBox>
                           <img src='/svg/response2.svg' alt='스마일아이콘'
-                            onClick={async () => { await response({ commentsId: x.commentsId, smile: 1 }); commentRefetch(); }} />
+                            onClick={async () => {
+                              if (loginFlag()) {
+                                await response({ commentsId: x.commentsId, smile: 1 }); commentRefetch();
+                              } else openLoginModal(true);
+                            }} />
                           <Count>{x.smile}</Count>
                         </IcoBox>}
                         {x.twist !== 0 && <IcoBox>
                           <img src='/svg/response3.svg' alt='찡그림아이콘'
-                            onClick={async () => { await response({ commentsId: x.commentsId, twist: 1 }); commentRefetch(); }} />
+                            onClick={async () => {
+                              if (loginFlag()) {
+                                await response({ commentsId: x.commentsId, twist: 1 }); commentRefetch();
+                              } else openLoginModal(true);
+                            }} />
                           <Count>{x.twist}</Count>
                         </IcoBox>}
                         {x.angry !== 0 && <IcoBox>
                           <img src='/svg/response4.svg' alt='화남아이콘'
-                            onClick={async () => { await response({ commentsId: x.commentsId, angry: 1 }); commentRefetch(); }} />
+                            onClick={async () => {
+                              if (loginFlag()) {
+                                await response({ commentsId: x.commentsId, angry: 1 }); commentRefetch();
+                              } else openLoginModal(true);
+                            }} />
                           <Count>{x.angry}</Count>
                         </IcoBox>}
                         {(x.star !== 0 && x.heart !== 0 && x.smile !== 0 && x.twist !== 0 && x.angry !== 0) ?

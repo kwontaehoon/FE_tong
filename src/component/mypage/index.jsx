@@ -105,8 +105,8 @@ const index = () => {
             <div className='mt-2 rounded-lg bg-grey07' style={{padding: "2px 4px", fontSize: "10px"}} onClick={()=>setProfileFlag(!profileFlag)}>프로필 변경</div>
           </div>
           <div style={{ marginBottom: '10px' }}>
-            <H3>{info.name}님</H3>
-            <P>오늘로 1번 로그인 하였습니다!</P>
+            <H3>안녕하세요, {info.name}님</H3>
+            <P>{info.email}</P>
           </div>
         </Left>
         <P2 onClick={()=>navigate("/myInfo")}>내 정보 관리</P2>
