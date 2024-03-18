@@ -11,7 +11,7 @@ const index = () => {
             <div className='mt-7 font-semibold'>[개요]</div>
             <div className='flex'>
                 <div className='text-m'>TongTong</div>
-                <div>은 김포 지역에 사는 사람들끼리 만든 사이드 프로젝트입니다.</div>
+                <div>은 김포 지역에 사는 사람들끼리 만든 프로젝트입니다.</div>
             </div>
             <div>김포에서 다양한 스포츠 시설을 활용하고자 하는 사람들에게 편리한 예약 서비스를 제공하기 위해
                 만든 예약 시스템입니다.
