@@ -3,7 +3,7 @@ import { create } from 'zustand'
 // 대댓글 모달
 export const useRecommentsStore = create((set) => ({
   open: false,
-  comments: [],
+  commentId: null,
   setOpen: (open) => set(() => ({ open: open })),
-  setComments: (comments) => set(() => ({ comments: comments })),
+  setCommentId: (commentId) => set(() => ({ commentId: commentId })),
 }))

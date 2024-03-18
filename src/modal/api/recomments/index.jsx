@@ -27,6 +27,7 @@ const index = () => {
   const { data, refetch } = useCommentListQuery();
 
   const recommentsModal = useRecommentsStore((state) => state.open);
+  const recommentCommentIdModal = useRecommentsStore((state) => state.commentId);
   const openRecommentsModal = useRecommentsStore((state) => state.setOpen);
   const openLoginModal = useLoginStore((state) => state.setOpen);
 
@@ -52,9 +53,9 @@ const index = () => {
           </div>
         </div>
         <div className='my-5 overflow-scroll'>
-          {data?.content?.filter(x => x.board?.boardId == id)[0].recomments.length == 0 ?
+          {data?.content?.filter(x => x.board?.boardId == id && x.commentsId == recommentCommentIdModal)[0].recomments.length == 0 ?
             <div className='pt-20 flex items-center justify-center text-grey05'>등록된 댓글이 없습니다.</div>
-            : data?.content?.filter(x => x.board?.boardId == id)[0].recomments.map(x => {
+            : data?.content?.filter(x => x.board?.boardId == id && x.commentsId == recommentCommentIdModal)[0].recomments.map(x => {
               return (
                 <div key={x.recommentsId} className='flex mb-5'>
                   <Left>
@@ -62,7 +63,7 @@ const index = () => {
                   </Left>
                   <Right>
                     <List>
-                      <Li>{x.user.name}</Li>
+                      <Li>{x.user.id}</Li>
                       <Li>{moment(x.createDate).format("MM.DD hh:mm")}</Li>
                       {x.user.userId !== getToken().userId ? '' : <div className='flex'>
                         <Li onClick={() => {
@@ -114,7 +115,7 @@ const index = () => {
                     userId: getToken().userId
                   },
                   comments: {
-                    commentsId: data?.content?.filter(x => x.board?.boardId == id)[0].commentsId
+                    commentsId: recommentCommentIdModal
                   }
 
                 });

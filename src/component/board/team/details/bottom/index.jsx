@@ -22,6 +22,7 @@ const index = ({ responseFlag, setResponseFlag, setInfo, commentModify, setComme
   const { mutateAsync: response } = useCommentResponseMutation();
 
   const openRecommentsModal = useRecommentsStore((state) => state.setOpen);
+  const setRecommentCommentIdModal = useRecommentsStore((state) => state.setCommentId);
   const openLoginModal = useLoginStore((state) => state.setOpen);
 
   return (
@@ -51,7 +52,7 @@ const index = ({ responseFlag, setResponseFlag, setInfo, commentModify, setComme
                   </Left>
                   <Right>
                     <List>
-                      <Li>{x.user.name}</Li>
+                      <Li>{x.user.id}</Li>
                       <Li>{moment(x.createDate).format("MM.DD hh:mm")}</Li>
                       {x.user.userId !== getToken().userId ? '' : <div className='flex'>
                         <Li onClick={() => {
@@ -164,6 +165,7 @@ const index = ({ responseFlag, setResponseFlag, setInfo, commentModify, setComme
                         <img src='/svg/comment_comment.svg' alt='대댓글아이콘'></img>
                         <P3 onClick={() => {
                           openRecommentsModal(true);
+                          setRecommentCommentIdModal(x.commentsId);
                         }}>{x.recomments.length == 0 ? '답글쓰기' : `${x.recomments.length}개의 댓글`}
                         </P3>
                       </IcoBox2>

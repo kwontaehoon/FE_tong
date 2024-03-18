@@ -40,8 +40,8 @@ const index = () => {
                   {profile(info?.profile)}
                 </div>
                 <div className='flex justify-center flex-col'>
-                  <div className='text-sm font-bold mb-six'>{info.name}님</div>
-                  <div className='text-grey05 text-xs font-bold'>{info.email}</div>
+                  <div className='text-sm font-bold mb-six'>{info?.name}님</div>
+                  <div className='text-grey05 text-xs font-bold'>{info?.email}</div>
                 </div>
               </InfoLogin> : <Info>
                 <Pcoment>로그인 해주세요 <span style={{ display: 'block' }}>회원이 아니신가요</span></Pcoment>
