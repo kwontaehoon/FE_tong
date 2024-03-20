@@ -1,6 +1,6 @@
 # ⚽ 김포 운통장 README
 
-![README img](./public/images/README%20img.png)
+![README img](./public/images/readme.png)
 
 ---
 
