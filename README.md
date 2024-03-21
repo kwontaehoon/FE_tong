@@ -5,8 +5,9 @@
 ---
 
 #### 작업 기간 : 24.01.28 ~ 24.03.09
-#### 배포 URL : https://www.tongtongball.com
-- User ID : user
+##### 보수 기간 : 24.03 ~ 현재
+#### 배포 URL : http://3.36.37.240
+- User ID : test
 - User PW : 1111
 - Admin ID : admin 
 - Admin PW : 1111
@@ -27,7 +28,7 @@
 
 | **권태훈** | **김정애** | **홍성혁** | **권나영** | **이민희** |
 | :------: |  :------: | :------: | :------: | :------: |
-| [<img src="./public//svg//profile1.svg" height=100 width=100> <br/> @gju04195](https://github.com/kwontaehoon) | [<img src="./public//svg//profile2.svg" height=100 width=100> <br/>@joni81](https://github.com/kimjungae) | [<img src="./public//svg//profile3.svg" height=100 width=100> <br/> @shhong497](https://github.com/hyeok0519) | [<img src="./public//svg//profile4.svg" height=100 width=100> <br/> @gilnayungli](https://github.com/nayoung33) | [<img src="./public//svg//profile5.svg" height=100 width=100> <br/> @dlalsgml1250]() |
+| [<img src="./public//svg//profile1.svg" height=100 width=150> <br/> @gju04195](https://github.com/kwontaehoon) | [<img src="./public//svg//profile2.svg" height=100 width=150> <br/>@joni81](https://github.com/kimjungae) | [<img src="./public//svg//profile3.svg" height=100 width=150> <br/> @shhong497](https://github.com/hyeok0519) | [<img src="./public//svg//profile4.svg" height=100 width=150> <br/> @gilnayungli](https://github.com/nayoung33) | [<img src="./public//svg//profile5.svg" height=100 width=150> <br/> @dlalsgml1250]() |
 |Front-end / Back-end|Design / Publishing|Back-end|Publishing|Design|
 
 </div>
