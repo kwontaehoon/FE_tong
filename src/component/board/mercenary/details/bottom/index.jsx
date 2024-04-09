@@ -12,6 +12,7 @@ import { useCommentDeleteMutation, useCommentResponseMutation, useCommentUpdateM
 import { profile } from '../../../../../function/profile';
 import { getToken } from '../../../../../utill/GetToken';
 import { useRecommentsStore } from '../../../../../store/Recomments';
+import { loginFlag } from '../../../../../utill/LoginFlag';
 import { useLoginStore } from '../../../../../store/LoginFlag';
 
 const index = ({ responseFlag, setResponseFlag, setInfo, commentModify, setCommentModify, inputRef, boardList, commentList, commentRefetch }) => {

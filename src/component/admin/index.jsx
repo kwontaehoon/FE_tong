@@ -25,6 +25,7 @@ import Pick from './main/pick'
 import Reservation from './main/reservation'
 import SearchRecommend from './search/searchRecommend'
 import Notice from './customerCenter/notice'
+import Login from './login'
 
 const index = (props) => {
 
@@ -180,7 +181,7 @@ const index = (props) => {
 
     const container = window !== undefined ? () => window().document.body : undefined;
 
-    return (
+    return !localStorage.getItem('adminLogin') ? <Login /> : (
         <div className='flex'>
             <Box className="w-full" sx={{ display: 'flex' }}>
                 <CssBaseline />
