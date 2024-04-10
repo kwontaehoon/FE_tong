@@ -23,6 +23,7 @@ const index = () => {
         if (data?.data?.status == "fail") {
             setValidation(true);
         } else if (data?.data?.status == "success") {
+            localStorage.setItem('adminLogin', true);
             window.location.reload();
         }
     }, [data]);

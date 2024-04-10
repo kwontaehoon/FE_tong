@@ -58,7 +58,12 @@ const index = (props) => {
 
     const drawer = (
         <div>
-            <Toolbar onClick={() => navigate("/")}>홈</Toolbar>
+            <Toolbar>
+                <div className='flex items-center'>
+                    <img src="/svg/Logo.svg" onClick={() => navigate("/")} className='cursor-pointer' />
+                    <div className='ml-2 font-bold text-sm'>관리자 페이지</div>
+                </div>
+            </Toolbar>
             <Divider />
             <List
                 sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
