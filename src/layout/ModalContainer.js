@@ -31,7 +31,7 @@ const MC = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 999;
+    z-index: 99999;
     &::-webkit-scrollbar{
       display: none;
     }
@@ -39,21 +39,27 @@ const MC = styled.div`
     @media (min-width: 768px) {
         top: auto;
         left: auto;
-        width: 392px;
-        height: 660px;
+        width: ${props => props.$admin ? '' : '392px'};
+        height: ${props => props.$admin ? '' : '660px'};
         overflow: scroll;
         border-radius: 16px;
-        position: absolute;
+        position: ${props => props.$admin ? 'fixed' : 'absolute'};
     }
 `
 const MSC = styled.div`
     position: absolute;
-    width: 80%;
+    width: ${props => props.$admin ? '' : '80%'};
+    max-height: 80%;
+    overflow-y: scroll;
     padding: 20px 16px;
     background-color: rgb(255, 255, 255);
     border-radius: 20px;
     box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
     font-size: 14px;
+
+    &::-webkit-scrollbar{
+      display: none;
+    }
 `
 const MCS = styled.div`
     position: fixed;

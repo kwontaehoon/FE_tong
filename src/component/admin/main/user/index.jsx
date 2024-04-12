@@ -5,6 +5,7 @@ import moment from 'moment';
 import { userListSearchText } from '../../../../constants/text/admin/User'
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
+import { useAdminCalendarStore } from '../../../../store/Calendar';
 
 const index = () => {
 
@@ -21,7 +22,7 @@ const index = () => {
 
     const { data, isSuccess } = useUsersListQuery();
 
-    const [value, onChange] = useState(new Date());
+    const openAdminCalendarModal = useAdminCalendarStore((state) => state.setOpen);
 
     return isSuccess && (
         <div onClick={()=>{
@@ -40,11 +41,11 @@ const index = () => {
                     <div className='flex border-b border-grey06 items-center'>
                         <div className='w-28 bg-grey07 pl-2 py-4 border-r border-grey07 font-bold'>검색어</div>
                         <div className='pl-2 flex'>
-                            <div className='border flex items-center mr-2 text-xxs px-1 relative cursor-pointer' onClick={()=>setSearchSelect(true)}>
+                            <div className='border flex items-center w-20 mr-2 text-xxs px-1 relative cursor-pointer' onClick={()=>setSearchSelect(true)}>
                                 {searchSelect && <div className='absolute shadow-custom rounded-lg bg-white top-8 left-0 flex-col z-50 w-full flex justify-center p-2'>
                                     {userListSearchText.map(x => {
                                         return (
-                                            <div key={x.id} className='' onClick={() => {
+                                            <div key={x.id} className='py-1' onClick={() => {
                                                 setSearchSelect(false);
                                                 setInfo({...info, searchType: x.content});
                                             }}>{x.content}
@@ -52,7 +53,7 @@ const index = () => {
                                         )
                                     })}
                                 </div>}
-                                <div>{info.searchType}</div>
+                                <div className='flex-1'>{info.searchType}</div>
                                 <img src="/svg/Arrow_bottom.svg" className='w-3 ml-5' />
                             </div>
                             <input className='border px-2 py-1' onChange={(e)=>setInfo({...info, search: e.target.value})} />
@@ -91,19 +92,18 @@ const index = () => {
                     <div className='flex'>
                         <div className='w-28 bg-grey07 flex items-center pl-2 py-4 border-r border-grey07 font-bold'>가입일</div>
                         <div className='flex-1 flex items-center pl-2'>
-                            <FaRegCalendarAlt className='cursor-pointer' onChange={onChange} value={value} />
+                            <FaRegCalendarAlt className='cursor-pointer' onClick={()=>openAdminCalendarModal(true)} />
                             <div className='border ml-2 px-2 py-3 w-32' />
                             <div className='mx-2'>~</div>
-                            <FaRegCalendarAlt className='cursor-pointer' />
+                            <FaRegCalendarAlt className='cursor-pointer' onClick={()=>openAdminCalendarModal(true)} />
                             <div className='border ml-2 px-2 py-3 w-32' />
                         </div>
                     </div>
                 </div>
             </div>
             <div className='mb-8 flex justify-end'>
-                <div className='p-2 rounded text-xs bg-m text-white cursor-pointer'>검색</div>
+                <div className='px-3 py-1 rounded text-xs bg-m text-white cursor-pointer'>검색</div>
             </div>
-            {/* <Calendar onChange={onChange} value={value} /> */}
 
             <div className='flex text-xs mb-2'>
                 <div>전체</div>
@@ -114,7 +114,7 @@ const index = () => {
             </div>
             <div className='overflow-x-scroll flex text-center text-xs' style={{ width: window.innerWidth - 320 }}>
                 <div>
-                    <div className='flex bg-grey04 text-white py-1'>
+                    <div className='flex bg-grey04 text-white py-2'>
                         <div className='w-12'>번호</div>
                         <div className='w-28'>아이디</div>
                         <div className='w-24'>이름</div>
@@ -140,10 +140,10 @@ const index = () => {
                                 <div className='w-28 py-1 border-r flex justify-center items-center'>{moment(x.create_date).format("YYYY-MM-DD")}</div>
                                 <div className='w-28 py-1 border-r flex justify-center items-center'></div>
                                 <div className='w-20 py-1 border-r flex justify-center items-center'>
-                                    <div className='border rounded-lg px-2 py-1 cursor-pointer'>메일</div>
+                                    <div className='border rounded-lg px-2 py-0.5 cursor-pointer'>메일</div>
                                 </div>
                                 <div className='w-12 py-1 flex-1 flex justify-center items-center'>
-                                    <div className='border rounded-lg px-2 py-1 cursor-pointer'>수정</div>
+                                    <div className='border rounded-lg px-2 py-0.5 cursor-pointer'>수정</div>
                                 </div>
                             </div>
                         )

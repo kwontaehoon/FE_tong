@@ -8,12 +8,16 @@ import Term from './api/account/term'
 import Privacy from './api/account/privacy'
 import ReservationCancel from './api/reservationCancel'
 import Recomments from './api/recomments'
+import FetchNote from './api/fetchNote'
+import Calendar from './admin/Calendar'
 import { useCategoryStore } from '../store/Category';
 import { useExpireLoginStore, useExpireStore } from '../store/Expire';
 import { useLoginStore } from '../store/LoginFlag'
 import { usePrivacyStore, useTermStore } from '../store/Account'
 import { useReservationCancelStore } from '../store/ReservationCancel'
 import { useRecommentsStore } from '../store/Recomments'
+import { useFetchNoteStore } from '../store/FetchNote'
+import { useAdminCalendarStore } from '../store/Calendar'
 
 const index = () => {
 
@@ -25,13 +29,16 @@ const index = () => {
   const privacyModal = usePrivacyStore((state) => state.open);
   const reservationCancelModal = useReservationCancelStore((state) => state.open);
   const recommentsModal = useRecommentsStore((state) => state.open);
+  const fetchNoteModal = useFetchNoteStore((state) => state.open);
+  const calendarModal = useAdminCalendarStore((state) => state.open);
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
-    if(categoryModal == "none" || !categoryModal){
+
+    if(!fetchNoteModal && (categoryModal == "none" || !categoryModal)){
       document.body.style.overflow = 'auto';
     }
-  }, [categoryModal]);
+  }, [categoryModal, fetchNoteModal]);
 
   return (
     <>
@@ -44,6 +51,8 @@ const index = () => {
         {reservationCancelModal && <ReservationCancel />}
         {expireLoginModal && <ExpireLogin />}
         {recommentsModal && <Recomments />}
+        {fetchNoteModal && <FetchNote />}
+        {calendarModal && <Calendar />}
     </>
   )
 }

@@ -4,16 +4,25 @@ import Modal from './modal'
 import Introduce from './component/introduce'
 import { useCategoryStore } from './store/Category'
 import Category from './modal/api/category'
+import { useFetchNoteStore } from './store/FetchNote'
 
 const App = () => {
 
   const pathName = useLocation().pathname;
-  const categoryModal = useCategoryStore((state) => state.open);
+  const openFetchNoteModal = useFetchNoteStore((state) => state.setOpen);
 
   useEffect(() => {
     window.scrollTo({
       top: 0,
-    })
+    });
+
+    if(window.innerWidth < 720){
+      openFetchNoteModal(true);
+    }
+
+    if(pathName.includes('admin')){
+      openFetchNoteModal(false);
+    }
   }, [pathName]);
 
   return (

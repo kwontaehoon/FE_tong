@@ -21,7 +21,6 @@ const index = () => {
                     style={{ display: 'none' }}
                     onChange={(e) => {
                         let arr = [...imgFileList];
-                        console.log("index: ", index);
                         arr[index] = e.target.files[0];
                         setImgFileList(arr);
                     }}

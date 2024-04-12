@@ -1,9 +1,11 @@
 import React from 'react'
 import { functionText } from '../../constants/text/api/Introduce'
+import FetchNote from './fetchNote'
 
 const index = () => {
     return (
         <div className='leading-6 text-sm pb-10'>
+            <FetchNote />
             <div className='text-2xl font-bold mb-2'>⚽TongTong</div>
             <div>기간: 2024.01.28 ~ 2024~03.09</div>
             <div>김포 축구 예약 서비스 Web-based Application</div>
