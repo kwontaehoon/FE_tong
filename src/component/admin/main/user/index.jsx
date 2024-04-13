@@ -6,6 +6,7 @@ import { userListSearchText } from '../../../../constants/text/admin/User'
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import { useAdminCalendarStore } from '../../../../store/Calendar';
+import { useAdminUserModifyStore } from '../../../../store/AdminUsersModify';
 
 const index = () => {
 
@@ -20,9 +21,17 @@ const index = () => {
         signUpDateEnd: ''
     });
 
-    const { data, isSuccess } = useUsersListQuery();
+    const { data, isSuccess } = useUsersListQuery(info);
 
     const openAdminCalendarModal = useAdminCalendarStore((state) => state.setOpen);
+
+    const flagAdminCalendarModal = useAdminCalendarStore((state) => state.setFlag);
+
+    const startDate = useAdminCalendarStore((state) => state.startDate);
+
+    const endDate = useAdminCalendarStore((state) => state.endDate);
+
+    const openAdminUserModifyModal = useAdminUserModifyStore((state) => state.setOpen);
 
     return isSuccess && (
         <div onClick={()=>{
@@ -92,11 +101,11 @@ const index = () => {
                     <div className='flex'>
                         <div className='w-28 bg-grey07 flex items-center pl-2 py-4 border-r border-grey07 font-bold'>가입일</div>
                         <div className='flex-1 flex items-center pl-2'>
-                            <FaRegCalendarAlt className='cursor-pointer' onClick={()=>openAdminCalendarModal(true)} />
-                            <div className='border ml-2 px-2 py-3 w-32' />
+                            <FaRegCalendarAlt className='cursor-pointer' onClick={()=>{ flagAdminCalendarModal("start"); openAdminCalendarModal(true)}} />
+                            <div className='border ml-2 px-2 py-1 w-32 min-h-6 cursor-pointer' onClick={()=>{ flagAdminCalendarModal("start"); openAdminCalendarModal(true); }} disabled>{startDate == '' ? '' : moment(startDate).format("YYYY-MM-DD")}</div>
                             <div className='mx-2'>~</div>
-                            <FaRegCalendarAlt className='cursor-pointer' onClick={()=>openAdminCalendarModal(true)} />
-                            <div className='border ml-2 px-2 py-3 w-32' />
+                            <FaRegCalendarAlt className='cursor-pointer' onClick={()=>{ flagAdminCalendarModal("end"); openAdminCalendarModal(true); }} />
+                            <div className='border ml-2 px-2 py-1 w-32 min-h-6 cursor-pointer' onClick={()=>{ flagAdminCalendarModal("end"); openAdminCalendarModal(true); }} disabled>{endDate == '' ? '' : moment(endDate).format("YYYY-MM-DD")}</div>
                         </div>
                     </div>
                 </div>
@@ -112,20 +121,21 @@ const index = () => {
                 <div>검색</div>
                 <div className='ml-1 font-bold'>{data.length}명</div>
             </div>
-            <div className='overflow-x-scroll flex text-center text-xs' style={{ width: window.innerWidth - 320 }}>
+            <div className='overflow-x-scroll flex text-center text-xs' style={{ width: window.innerWidth - 305 }}>
                 <div>
                     <div className='flex bg-grey04 text-white py-2'>
                         <div className='w-12'>번호</div>
                         <div className='w-28'>아이디</div>
                         <div className='w-24'>이름</div>
                         <div className='w-28'>닉네임</div>
-                        <div className='w-28'>등급</div>
+                        <div className='w-24'>등급</div>
                         <div className='w-32'>최종 로그인</div>
                         <div className='w-20'>생년월일</div>
                         <div className='w-28'>가입일</div>
                         <div className='w-28'>탈퇴일</div>
                         <div className='w-20'>메일 발송</div>
                         <div className='w-20'>수정</div>
+                        <div className='w-48'>비고</div>
                     </div>
                     {data.map(x => {
                         return (
@@ -134,7 +144,7 @@ const index = () => {
                                 <div className='w-28 py-1 border-r flex justify-center items-center'>{x.id}</div>
                                 <div className='w-24 py-1 border-r flex justify-center items-center'>{x.name}</div>
                                 <div className='w-28 py-1 border-r flex justify-center items-center'>{x.nickName}</div>
-                                <div className='w-28 py-1 border-r flex justify-center items-center'>일반등급</div>
+                                <div className='w-24 py-1 border-r flex justify-center items-center'>일반등급</div>
                                 <div className='w-32 py-1 border-r flex justify-center items-center'></div>
                                 <div className='w-20 py-1 border-r flex justify-center items-center'>{x.birth}</div>
                                 <div className='w-28 py-1 border-r flex justify-center items-center'>{moment(x.create_date).format("YYYY-MM-DD")}</div>
@@ -142,8 +152,11 @@ const index = () => {
                                 <div className='w-20 py-1 border-r flex justify-center items-center'>
                                     <div className='border rounded-lg px-2 py-0.5 cursor-pointer'>메일</div>
                                 </div>
-                                <div className='w-12 py-1 flex-1 flex justify-center items-center'>
-                                    <div className='border rounded-lg px-2 py-0.5 cursor-pointer'>수정</div>
+                                <div className='w-20 py-1 border-r flex justify-center items-center'>
+                                    <div className='border rounded-lg px-2 py-0.5 cursor-pointer' onClick={()=>openAdminUserModifyModal(true)}>수정</div>
+                                </div>
+                                <div className='w-48 py-1 flex-1 flex justify-center items-center'>
+                                    <div></div>
                                 </div>
                             </div>
                         )

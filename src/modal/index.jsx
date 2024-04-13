@@ -10,6 +10,7 @@ import ReservationCancel from './api/reservationCancel'
 import Recomments from './api/recomments'
 import FetchNote from './api/fetchNote'
 import Calendar from './admin/Calendar'
+import AdminUserModify from './admin/UserModify'
 import { useCategoryStore } from '../store/Category';
 import { useExpireLoginStore, useExpireStore } from '../store/Expire';
 import { useLoginStore } from '../store/LoginFlag'
@@ -18,6 +19,7 @@ import { useReservationCancelStore } from '../store/ReservationCancel'
 import { useRecommentsStore } from '../store/Recomments'
 import { useFetchNoteStore } from '../store/FetchNote'
 import { useAdminCalendarStore } from '../store/Calendar'
+import { useAdminUserModifyStore } from '../store/AdminUsersModify'
 
 const index = () => {
 
@@ -31,6 +33,7 @@ const index = () => {
   const recommentsModal = useRecommentsStore((state) => state.open);
   const fetchNoteModal = useFetchNoteStore((state) => state.open);
   const calendarModal = useAdminCalendarStore((state) => state.open);
+  const adminUserModifyModal = useAdminUserModifyStore((state) => state.open);
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -53,6 +56,7 @@ const index = () => {
         {recommentsModal && <Recomments />}
         {fetchNoteModal && <FetchNote />}
         {calendarModal && <Calendar />}
+        {adminUserModifyModal && <AdminUserModify />}
     </>
   )
 }

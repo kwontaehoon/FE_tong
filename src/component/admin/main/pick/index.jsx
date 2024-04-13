@@ -144,7 +144,7 @@ const index = () => {
                             <div className='mb-5'>
                                 <div>제목</div>
                                 <input className='border p-3 w-full rounded mt-2' disabled={!modifyFlag[index]} placeholder={x.title}
-                                    onChange={(e) => {
+                                    onChange={(e) => {z
                                         setInfo({ ...info, title: e.target.value });
                                     }} />
                             </div>

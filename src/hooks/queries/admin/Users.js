@@ -9,9 +9,9 @@ const USERS_KEYS = {
  * 관리자 회원 목록
  * 
  */
-export const useUsersListQuery = () => {
+export const useUsersListQuery = (params) => {
   return useQuery(USERS_KEYS.usersList, async () => {
-    const { data } = await getUsersList();
+    const { data } = await getUsersList(params);
     return data;
   }, {
     staleTime: Infinity,

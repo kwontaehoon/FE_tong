@@ -5,8 +5,8 @@ const USERS_URL = {
     usersLogin: "/admin/users/login"
 }
 
-// 목록
-export const getUsersList = () => client.get(USERS_URL.usersList);
+// 관리자 회원 목록
+export const getUsersList = (params) => client.get(USERS_URL.usersList, { params: params });
 
-// 로그인
+// 관리자 로그인
 export const postUsersLogin = (params) => client.post(USERS_URL.usersLogin, params);
