@@ -181,36 +181,51 @@ const index = () => {
                         <div className='w-full mt-5'>
                             <div className='mb-5'>
                                 <div>제목</div>
-                                <input className='border p-3 w-full rounded mt-2' disabled={!modifyFlag[index]} placeholder={x.title}
+                                <input className='border p-3 w-full rounded mt-2' disabled={!modifyFlag[index]} value={x.title}
                                     onChange={(e) => {
+                                        const arr = [...dataArr];
+                                        arr[index].title = e.target.value;
+                                        setDataArr(arr);
                                         setInfo({ ...info, title: e.target.value });
                                     }} />
                             </div>
                             <div className='mb-5'>
                                 <div>주소</div>
-                                <input className='border p-3 w-full rounded mt-2' disabled={!modifyFlag[index]} placeholder={x.subTitle}
+                                <input className='border p-3 w-full rounded mt-2' disabled={!modifyFlag[index]} value={x.subTitle}
                                     onChange={(e) => {
+                                        const arr = [...dataArr];
+                                        arr[index].subTitle = e.target.value;
+                                        setDataArr(arr);
                                         setInfo({ ...info, subTitle: e.target.value });
                                     }} />
                             </div>
                             <div className='mb-5'>
                                 <div>상세 주소</div>
-                                <input className='border p-3 w-full rounded mt-2' disabled={!modifyFlag[index]} placeholder={x.locationDetails}
+                                <input className='border p-3 w-full rounded mt-2' disabled={!modifyFlag[index]} value={x.locationDetails}
                                     onChange={(e) => {
+                                        const arr = [...dataArr];
+                                        arr[index].locationDetails = e.target.value;
+                                        setDataArr(arr);
                                         setInfo({ ...info, locationDetails: e.target.value });
                                     }} />
                             </div>
                             <div className='mb-5'>
                                 <div>위치</div>
-                                <input className='border p-3 w-full rounded mt-2' disabled={!modifyFlag[index]} placeholder={x.location}
+                                <input className='border p-3 w-full rounded mt-2' disabled={!modifyFlag[index]} value={x.location}
                                     onChange={(e) => {
+                                        const arr = [...dataArr];
+                                        arr[index].location = e.target.value;
+                                        setDataArr(arr);
                                         setInfo({ ...info, location: e.target.value });
                                     }} />
                             </div>
                             <div className='mb-5'>
                                 <div>평점</div>
-                                <input className='border p-3 w-full rounded mt-2' disabled={!modifyFlag[index]} type='number' placeholder={x.score}
+                                <input className='border p-3 w-full rounded mt-2' disabled={!modifyFlag[index]} type='number' value={x.score}
                                     onChange={(e) => {
+                                        const arr = [...dataArr];
+                                        arr[index].score = e.target.value;
+                                        setDataArr(arr);
                                         setInfo({ ...info, score: e.target.value });
                                     }} />
                             </div>

@@ -14,14 +14,14 @@ const index = () => {
                 <img src='/svg/close.svg' className='cursor-pointer' onClick={()=>setModal(false)} />
             </div>
             <div className='flex border-y py-1 border-grey04'>
-                <div className='w-20 text-center'>버전</div>
+                <div className='w-24 text-center'>버전</div>
                 <div className='w-36 text-center'>날짜</div>
                 <div className='flex-1 text-center'>변경이력</div>
             </div>
             {fetchNoteText.map(x => {
                 return (
                     <div className='flex py-3 border-b border-grey06' key={x.id}>
-                        <div className='w-20 flex justify-center items-center'>{x.version}</div>
+                        <div className='w-24 flex justify-center items-center'>{x.version}</div>
                         <div className='w-36 flex justify-center items-center'>{x.date}</div>
                         <div className='flex-1'>
                             <div className='text-m font-bold'>{x.title}</div>

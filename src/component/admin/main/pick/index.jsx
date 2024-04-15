@@ -143,15 +143,21 @@ const index = () => {
                         <div className='w-full mt-5'>
                             <div className='mb-5'>
                                 <div>제목</div>
-                                <input className='border p-3 w-full rounded mt-2' disabled={!modifyFlag[index]} placeholder={x.title}
-                                    onChange={(e) => {z
+                                <input className='border p-3 w-full rounded mt-2' disabled={!modifyFlag[index]} value={x.title}
+                                    onChange={(e) => {
+                                        const arr = [...dataArr];
+                                        arr[index].title = e.target.value;
+                                        setDataArr(arr);
                                         setInfo({ ...info, title: e.target.value });
                                     }} />
                             </div>
                             <div className='mb-5'>
                                 <div>내용</div>
-                                <input className='border p-3 w-full rounded mt-2' disabled={!modifyFlag[index]} placeholder={x.content}
+                                <input className='border p-3 w-full rounded mt-2' disabled={!modifyFlag[index]} value={x.content}
                                     onChange={(e) => {
+                                        const arr = [...dataArr];
+                                        arr[index].content = e.target.value;
+                                        setDataArr(arr);
                                         setInfo({ ...info, content: e.target.value });
                                     }} />
                             </div>
