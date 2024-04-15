@@ -38,10 +38,10 @@ const index = () => {
   useEffect(() => {
     document.body.style.overflow = 'hidden';
 
-    if(!fetchNoteModal && (categoryModal == "none" || !categoryModal)){
+    if(!fetchNoteModal && !adminUserModifyModal && (categoryModal == "none" || !categoryModal)){
       document.body.style.overflow = 'auto';
     }
-  }, [categoryModal, fetchNoteModal]);
+  }, [categoryModal, fetchNoteModal, adminUserModifyModal]);
 
   return (
     <>

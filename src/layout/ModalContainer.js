@@ -55,7 +55,7 @@ const MSC = styled.div`
     background-color: rgb(255, 255, 255);
     border-radius: 20px;
     box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
-    font-size: 14px;
+    font-size: ${props => props.$font ? '12px' : '14px'};
 
     &::-webkit-scrollbar{
       display: none;

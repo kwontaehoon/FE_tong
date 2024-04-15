@@ -9,7 +9,7 @@ const index = () => {
     const [modal, setModal] = useState(true);
 
     return modal && (
-        <div className='absolute right-20 border z-50 bg-white p-5 rounded-lg'>
+        <div className='absolute right-20 border bg-white p-5 rounded-lg' style={{width: "600px", zIndex: 999}}>
             <div className='flex justify-end mb-2'>
                 <img src='/svg/close.svg' className='cursor-pointer' onClick={()=>setModal(false)} />
             </div>

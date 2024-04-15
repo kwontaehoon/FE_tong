@@ -3,7 +3,6 @@ import { useUsersListQuery } from '../../../../hooks/queries/admin/Users'
 import { FaRegCalendarAlt } from "react-icons/fa";
 import moment from 'moment';
 import { userListSearchText } from '../../../../constants/text/admin/User'
-import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import { useAdminCalendarStore } from '../../../../store/Calendar';
 import { useAdminUserModifyStore } from '../../../../store/AdminUsersModify';
@@ -32,6 +31,7 @@ const index = () => {
     const endDate = useAdminCalendarStore((state) => state.endDate);
 
     const openAdminUserModifyModal = useAdminUserModifyStore((state) => state.setOpen);
+    const infoAdminUserModifyModal = useAdminUserModifyStore((state) => state.setInfo); 
 
     return isSuccess && (
         <div onClick={()=>{
@@ -153,7 +153,7 @@ const index = () => {
                                     <div className='border rounded-lg px-2 py-0.5 cursor-pointer'>메일</div>
                                 </div>
                                 <div className='w-20 py-1 border-r flex justify-center items-center'>
-                                    <div className='border rounded-lg px-2 py-0.5 cursor-pointer' onClick={()=>openAdminUserModifyModal(true)}>수정</div>
+                                    <div className='border rounded-lg px-2 py-0.5 cursor-pointer' onClick={()=>{openAdminUserModifyModal(true); infoAdminUserModifyModal(x)}}>수정</div>
                                 </div>
                                 <div className='w-48 py-1 flex-1 flex justify-center items-center'>
                                     <div></div>
