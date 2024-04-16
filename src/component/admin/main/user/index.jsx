@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useUsersListQuery } from '../../../../hooks/queries/admin/Users'
 import { FaRegCalendarAlt } from "react-icons/fa";
 import moment from 'moment';
@@ -14,13 +14,13 @@ const index = () => {
     const [info, setInfo] = useState({
         searchType: '아이디',
         search: '',
-        userType: '',
-        expire: false,
-        signUpDateStart: '',
-        signUpDateEnd: ''
+        // userType: '',
+        // expire: '',
+        signUpDateStart: moment('2024-03-01').format("YYYY-MM-DDTHH:mm:ss"),
+        signUpDateEnd: moment(new Date()).format("YYYY-MM-DDTHH:mm:ss")
     });
 
-    const { data, isSuccess } = useUsersListQuery(info);
+    const { data, isSuccess, refetch } = useUsersListQuery(info);
 
     const openAdminCalendarModal = useAdminCalendarStore((state) => state.setOpen);
 
@@ -31,7 +31,16 @@ const index = () => {
     const endDate = useAdminCalendarStore((state) => state.endDate);
 
     const openAdminUserModifyModal = useAdminUserModifyStore((state) => state.setOpen);
-    const infoAdminUserModifyModal = useAdminUserModifyStore((state) => state.setInfo); 
+    const infoAdminUserModifyModal = useAdminUserModifyStore((state) => state.setInfo);
+
+    useEffect(() => {
+        if(startDate == ''){
+            return;
+        }else setInfo({...info, signUpDateStart: moment(startDate).format("YYYY-MM-DDTHH:mm:ss")});
+        if(endDate == ''){
+            return;
+        }else setInfo({...info, signUpDateEnd: moment(endDate).format("YYYY-MM-DDTHH:mm:ss")});
+    }, [startDate, endDate]);
 
     return isSuccess && (
         <div onClick={()=>{
@@ -111,7 +120,7 @@ const index = () => {
                 </div>
             </div>
             <div className='mb-8 flex justify-end'>
-                <div className='px-3 py-1 rounded text-xs bg-m text-white cursor-pointer'>검색</div>
+                <div className='px-3 py-1 rounded text-xs bg-m text-white cursor-pointer' onClick={()=>refetch()}>검색</div>
             </div>
 
             <div className='flex text-xs mb-2'>
@@ -137,7 +146,9 @@ const index = () => {
                         <div className='w-20'>수정</div>
                         <div className='w-48'>비고</div>
                     </div>
-                    {data.map(x => {
+                    {data.length == 0 ? <div className='flex items-center justify-center font-bold' style={{height: "400px"}}>데이터가 없습니다.</div> 
+                    : 
+                    data.map(x => {
                         return (
                             <div className='border-b flex'>
                                 <div className='w-12 py-1 border-r flex justify-center items-center'>{x.userId}</div>
@@ -150,7 +161,7 @@ const index = () => {
                                 <div className='w-28 py-1 border-r flex justify-center items-center'>{moment(x.create_date).format("YYYY-MM-DD")}</div>
                                 <div className='w-28 py-1 border-r flex justify-center items-center'></div>
                                 <div className='w-20 py-1 border-r flex justify-center items-center'>
-                                    <div className='border rounded-lg px-2 py-0.5 cursor-pointer'>메일</div>
+                                    <div className='border rounded-lg px-2 py-0.5 cursor-pointer' onClick={()=>window.alert('서비스 준비중입니다.')}>메일</div>
                                 </div>
                                 <div className='w-20 py-1 border-r flex justify-center items-center'>
                                     <div className='border rounded-lg px-2 py-0.5 cursor-pointer' onClick={()=>{openAdminUserModifyModal(true); infoAdminUserModifyModal(x)}}>수정</div>
