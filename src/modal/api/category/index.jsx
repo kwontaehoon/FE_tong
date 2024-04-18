@@ -20,7 +20,7 @@ const index = () => {
   const { data, isSuccess } = usePickListQuery();
 
   const { data: info, isSuccess: infoSuccess, refetch } = useInfoQuery({ userId: !getToken().userId ? 0 : getToken().userId });
-  useEffect(()=>{
+  useEffect(() => {
     refetch();
   }, []);
 
@@ -36,7 +36,7 @@ const index = () => {
             {loginFlag() ?
               <InfoLogin>
                 <div style={{ width: "65px", height: "65px" }} className='rounded-full mr-2 flex justify-center items-center bg-bg'
-                  onClick={()=>{ navigate("/mypage"); openCategoryModal("none"); }}>
+                  onClick={() => { navigate("/mypage"); openCategoryModal("none"); }}>
                   {profile(info?.profile)}
                 </div>
                 <div className='flex justify-center flex-col'>
@@ -65,19 +65,19 @@ const index = () => {
               <Sec1H1>Category<span style={{ color: '#9FA4A9', fontSize: '12px', marginLeft: '4px' }}>카테고리</span></Sec1H1>
               <List>
                 <Icon>
-                  <div onClick={()=>{ navigate("/reservation"); openCategoryModal("none"); }}>
+                  <div onClick={() => { navigate("/reservation"); openCategoryModal("none"); }}>
                     <Img><img src="/svg/main_reservation.svg" /></Img>
                     <P>예약</P>
                   </div>
                 </Icon>
                 <Icon>
-                  <div onClick={()=>{ navigate("/reservation"); openCategoryModal("none"); }}>
+                  <div onClick={() => { navigate("/reservation"); openCategoryModal("none"); }}>
                     <Img><img src="/svg/main_ground.svg" /></Img>
                     <P>운동장찾기</P>
                   </div>
                 </Icon>
                 <Icon>
-                  <div onClick={()=>{ navigate("/event"); openCategoryModal("none"); }}>
+                  <div onClick={() => { navigate("/event"); openCategoryModal("none"); }}>
                     <Img><img src="/svg/category_pick.svg" /></Img>
                     <P>이벤트</P>
                   </div>
@@ -88,38 +88,38 @@ const index = () => {
             {/* 고객센터 */}
             <Sec2>
               <Sec1H1>Customer Center<span style={{ color: '#9FA4A9', fontSize: '12px', marginLeft: '4px' }}>고객센터</span></Sec1H1>
-              <List style={{marginBottom: "12px"}}>
+              <List style={{ marginBottom: "12px" }}>
                 <Icon>
-                  <div onClick={()=>{ navigate("/board"); openCategoryModal("none"); }}>
+                  <div onClick={() => { navigate("/freeBoard"); openCategoryModal("none"); }}>
+                    <Img><img src="/images/freeBoard.png" className='w-10' /></Img>
+                    <P>자유게시판</P>
+                  </div>
+                </Icon>
+                <Icon>
+                  <div onClick={() => { navigate("/board"); openCategoryModal("none"); }}>
                     <Img><img src="/svg/main_team.svg" /></Img>
                     <P>팀구하기</P>
                   </div>
                 </Icon>
                 <Icon>
-                  <div onClick={()=>{ navigate("/mercenary"); openCategoryModal("none"); }}>
+                  <div onClick={() => { navigate("/mercenary"); openCategoryModal("none"); }}>
                     <Img><img src="/svg/main_mercenary.svg" /></Img>
                     <P>용병구하기</P>
-                  </div>
-                </Icon>
-                <Icon>
-                  <div onClick={()=>{ navigate("/notice"); openCategoryModal("none"); }}>
-                    <Img><img src="/svg/category_notice.svg" /></Img>
-                    <P>공지사항</P>
                   </div>
                 </Icon>
               </List>
               <List>
                 <Icon>
-                  <div onClick={()=>{ navigate("/faq"); openCategoryModal("none"); }}>
-                    <Img><img src="/svg/category_faq.svg" /></Img>
-                    <P>F&Q</P>
+                  <div onClick={() => { navigate("/notice"); openCategoryModal("none"); }}>
+                    <Img><img src="/svg/category_notice.svg" /></Img>
+                    <P>공지사항</P>
                   </div>
                 </Icon>
                 <Icon>
-                  <a href='#'>
-                    <Img $none></Img>
-                    <P></P>
-                  </a>
+                  <div onClick={() => { navigate("/faq"); openCategoryModal("none"); }}>
+                    <Img><img src="/svg/category_faq.svg" /></Img>
+                    <P>F&Q</P>
+                  </div>
                 </Icon>
                 <Icon>
                   <a href='#'>

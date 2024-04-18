@@ -1,3 +1,9 @@
+export const boardFilterText = [
+    {id: 1, content: "최신순"},
+    {id: 2, content: "인기순"},
+    {id: 3, content: "조회순"}
+];
+
 export const boardTabText = [
     {id: 1, content: "팀 구하기"},
     {id: 2, content: "용병 구하기"},
@@ -22,6 +28,13 @@ export const faqCategoryText = [
     {id: 2, content: "회원정보"},
     {id: 3, content: "예약"},
     {id: 4, content: "기타"}
+];
+
+export const freeBoardTabText = [
+    {id: 1, content: "전체"},
+    {id: 2, content: "일상"},
+    {id: 3, content: "질문"},
+    {id: 4, content: "정보공유"},
 ];
 
 export const faqText = [

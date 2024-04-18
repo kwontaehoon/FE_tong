@@ -26,9 +26,9 @@ const index = () => {
                         <img src="/svg/main_reservation.svg"></img>
                         <Name>예약</Name>
                     </Button>
-                    <Button onClick={()=>navigate("/reservation")}>
-                        <img src="/svg/main_ground.svg"></img>
-                        <Name>운동장찾기</Name>
+                    <Button onClick={()=>navigate("/freeBoard")}>
+                        <img src="/images/freeBoard.png" className='w-9 pt-0'></img>
+                        <Name>자유게시판</Name>
                     </Button>
                     <Button onClick={()=>navigate("/board")}>
                         <img src="/svg/main_team.svg" style={{width: "36px", height: "36px"}}></img>

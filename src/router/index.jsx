@@ -28,6 +28,8 @@ import Board from '../component/board/team'
 import Board_details from '../component/board/team/details'
 import Mercenary from '../component/board/mercenary'
 import Mercenary_details from '../component/board/mercenary/details'
+import FreeBoard from '../component/board/freeBoard'
+import FreeBoard_details from '../component/board/freeBoard/details'
 import Notice from '../component/board/notice'
 import Notice_details from '../component/board/notice/details'
 import Faq from '../component/board/faq'
@@ -94,6 +96,13 @@ export const router = createBrowserRouter([
                 children: [
                     { index: true, element: <Mercenary /> },
                     { path: ":id", element: <Mercenary_details /> }
+                ]
+            },
+            {
+                path: "/freeBoard",
+                children: [
+                    { index: true, element: <FreeBoard /> },
+                    { path: ":id", element: <FreeBoard_details /> }
                 ]
             },
             { 

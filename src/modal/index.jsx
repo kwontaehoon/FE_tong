@@ -38,10 +38,14 @@ const index = () => {
   useEffect(() => {
     document.body.style.overflow = 'hidden';
 
-    if(!fetchNoteModal && !adminUserModifyModal && (categoryModal == "none" || !categoryModal)){
+    if(
+      // !fetchNoteModal &&
+      !adminUserModifyModal && (categoryModal == "none" || !categoryModal)){
       document.body.style.overflow = 'auto';
     }
-  }, [categoryModal, fetchNoteModal, adminUserModifyModal]);
+  }, [categoryModal,
+    // fetchNoteModal,
+    adminUserModifyModal]);
 
   return (
     <>
@@ -54,7 +58,7 @@ const index = () => {
         {reservationCancelModal && <ReservationCancel />}
         {expireLoginModal && <ExpireLogin />}
         {recommentsModal && <Recomments />}
-        {fetchNoteModal && <FetchNote />}
+        {/* {fetchNoteModal && <FetchNote />} */}
         {calendarModal && <Calendar />}
         {adminUserModifyModal && <AdminUserModify />}
     </>
