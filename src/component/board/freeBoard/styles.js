@@ -6,12 +6,11 @@ export const Container = styled.div`
 export const TabBox = styled.div`
     display: flex;
     align-items: center;
-
     padding: 12px 20px;
     background-color: white;
     border-bottom: 1px solid #E9EBED;
     border-top: 1px solid #E9EBED;
-    background-color: #F4F5FA;
+    background-color: white;
 `
 export const Tab = styled.div`
     padding: 8px 12px;

@@ -20,7 +20,8 @@ const index = () => {
     user: {
       userId: getToken().userId
     },
-    category: (state == '팀' || state[2] == '팀') ? '팀' : (state == '용병' || state[2] == '용병') ? '용병' : '자유'
+    category: (state == '팀' || state[2] == '팀') ? '팀' : (state == '용병' || state[2] == '용병') ? '용병' : '자유',
+    sub_category: ""
   });
 
   const [freeBoardFilter, setFreeBoardFilter] = useState(Array(freeBoardTabText.length - 1).fill(false));
@@ -75,6 +76,7 @@ const index = () => {
                     let arr = Array(freeBoardTabText.length-1).fill(false);
                     arr[index] = true;
                     setFreeBoardFilter(arr);
+                    setInfo({...info, sub_category: x.content})
                     setValidation({...validation, filter: false});
                   }}>{x.content}</div>
                 )
