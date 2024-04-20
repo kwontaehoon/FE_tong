@@ -16,6 +16,7 @@ const index = ({ data }) => {
     const navigate = useNavigate();
 
     const [dataArr, setDataArr] = useState([]);
+    console.log("dataArr: ", dataArr.length);
 
     useEffect(() => {
         setDataArr(data.filter(x => x.category == "자유"));
@@ -37,11 +38,12 @@ const index = ({ data }) => {
                             {index == 1 && <img src="/images/testImg2.jpg" />}
                             {index == 2 && <img src="/images/readme.png" />}
                         </div>
-                        <div className='mb-8 flex relative items-center'>
+                        <div className={'flex relative items-center' + (index+1 == dataArr.length ? ' mb-0' : ' mb-8')}>
                             <div className='flex w-full items-center bg-white rounded-b-2xl px-3 py-5'>
                                 <Soccer_Team_Box>
                                     <Soccer>{x.title}</Soccer>
                                     <Rescue>{x.content}</Rescue>
+                                    <div>{index}</div>
                                 </Soccer_Team_Box>
                                 <div className='border-b ml-24' style={{ fontSize: "11px", paddingBottom: "2px" }}
                                     onClick={() => navigate("/freeBoard")}>더보기

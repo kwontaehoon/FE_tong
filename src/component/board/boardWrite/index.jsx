@@ -36,14 +36,10 @@ const index = () => {
     title: false,
     content: false,
   });
-  console.log(info, validation);
 
   const [imgFile, setImgFile] = useState([]); // 이미지 파일 리스트, formData로 보낼정보
   const [imgFileList, setImgFileList] = useState([]); // 업로드된 이미지 파일 저장
   const [pickFileIds, setPickFileIds] = useState([]); // pickFileIds
-  console.log("imgFile: ", imgFile);
-  console.log("imgFileList: ", imgFileList);
-  console.log("pickFileIds: ", pickFileIds);
 
   return (
     <Container>

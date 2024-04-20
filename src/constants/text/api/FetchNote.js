@@ -27,11 +27,4 @@ export const fetchNoteText = [
         title: '관리자 / 사용자',
         content: '- 예약 카테고리 기능 추가 (현재 더미)'
     },
-    {
-        id: 5,
-        version: 'v0.3.3',
-        date: '24.05',
-        title: '사용자',
-        content: '- 날씨 상태 및 아이콘 추가'
-    }
 ]
