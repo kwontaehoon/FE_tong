@@ -6,6 +6,7 @@ import Reservation from './reservation'
 import Pick from './pick'
 import Recruitment from './recruitment'
 import Information from './information'
+import FreeBoard from './freeBoard'
 import Navi from '../../function/navi'
 import { useBannerListQuery, usePickListQuery, useReservationListQuery } from '../../hooks/queries/api/Main'
 import { useBoardListQuery } from '../../hooks/queries/api/Board'
@@ -28,6 +29,7 @@ const index = () => {
         <Reservation data={reservationList} />
         <Pick data={pickList} />
         <Recruitment data={boardList} />
+        <FreeBoard data={boardList} />
         <Information />
       </div> : <Spinner />}
       <div className='h-24' />

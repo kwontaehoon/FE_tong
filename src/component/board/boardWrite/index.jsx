@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import Header from '../../../function/header'
 import { Container } from './styles'
 import { useBoardUpdateMutation, useBoardWriteMutation } from '../../../hooks/queries/api/Board'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { getToken } from '../../../utill/GetToken'
 import { freeBoardTabText } from '../../../constants/text/api/Board'
+import { AiOutlinePicture } from "react-icons/ai";
 
 const index = () => {
 
@@ -12,7 +13,7 @@ const index = () => {
 
   const navigate = useNavigate();
 
-  console.log("state: ", state);
+  const imgRef = useRef();
 
   const [info, setInfo] = useState({
     title: state[0] == "수정" ? state[1].title : '',
@@ -37,12 +38,19 @@ const index = () => {
   });
   console.log(info, validation);
 
+  const [imgFile, setImgFile] = useState([]); // 이미지 파일 리스트, formData로 보낼정보
+  const [imgFileList, setImgFileList] = useState([]); // 업로드된 이미지 파일 저장
+  const [pickFileIds, setPickFileIds] = useState([]); // pickFileIds
+  console.log("imgFile: ", imgFile);
+  console.log("imgFileList: ", imgFileList);
+  console.log("pickFileIds: ", pickFileIds);
+
   return (
     <Container>
       <Header title="글쓰기" write={state[0] !== "수정"} update={state[0] == "수정"}
         func={async () => {
           let newValidation = validation;
-          if ((state == '자유' || state[2] == '자유') && !freeBoardFilter.some(x=> x === true)) {
+          if ((state == '자유' || state[2] == '자유') && !freeBoardFilter.some(x => x === true)) {
             newValidation = { ...newValidation, filter: true };
           }
           if (info.title == '') {
@@ -71,14 +79,14 @@ const index = () => {
               {freeBoardTabText.slice(1, freeBoardTabText.length).map((x, index) => {
                 return (
                   <div key={x.id} className={'border text-center px-3 py-1 mr-2 text-sm' + (freeBoardFilter[index] ? ' text-white bg-ms' : '')}
-                  style={{ borderRadius: "40px" }}
-                  onClick={()=>{
-                    let arr = Array(freeBoardTabText.length-1).fill(false);
-                    arr[index] = true;
-                    setFreeBoardFilter(arr);
-                    setInfo({...info, sub_category: x.content})
-                    setValidation({...validation, filter: false});
-                  }}>{x.content}</div>
+                    style={{ borderRadius: "40px" }}
+                    onClick={() => {
+                      let arr = Array(freeBoardTabText.length - 1).fill(false);
+                      arr[index] = true;
+                      setFreeBoardFilter(arr);
+                      setInfo({ ...info, sub_category: x.content })
+                      setValidation({ ...validation, filter: false });
+                    }}>{x.content}</div>
                 )
               })}
             </div>
@@ -108,7 +116,77 @@ const index = () => {
       </div>
       {validation.content && <div className='text-xs my-3 pl-1 text-valid'>내용을 입력해 주세요.</div>}
 
+      {(state == "자유" || state[2] == "자유") && <div>
+        <div className={'flex' + (imgFileList.length == 0 ? '' : ' mt-4')}>
+          {imgFileList.map((x, index) => {
+            return (
+              <div key={index} className='w-20 h-20 rounded mr-2 relative overflow-hidden'>
+                <img src={x} className='w-full h-full' />
+                <div className='absolute w-4 h-4 right-2 top-2 rounded-full bg-grey900 flex justify-center items-center cursor-pointer'
+                  onClick={() => {
+                    const arr = [...imgFileList];
+                    const arr2 = [...imgFile];
+                    if (arr.length == 1 || index == 0) {
+                      arr.splice(0, 1);
+                      arr2.splice(0, 1);
+                    } else {
+                      arr.splice(index, index);
+                      arr2.splice(index, index);
+                    }
+                    setImgFile(arr2);
+                    setImgFileList(arr);
+                  }}>
+                  <img src='/svg/close.svg' />
+                </div>
+              </div>
+            )
+          })}
+        </div>
 
+
+        <div className='my-4 flex'>
+          <label className="flex cursor-pointer items-center" htmlFor='boardImage'>
+            <AiOutlinePicture className='w-9 h-9 mr-2' />
+            <div className='text-sm'>이미지 첨부</div>
+          </label>
+          <input
+            type="file"
+            accept="image/*"
+            id='boardImage'
+            multiple
+            ref={imgRef}
+            style={{ display: 'none' }}
+            onChange={(e) => {
+              let arr = [...imgFileList];
+              // arr[imgIndex] = e.target.files[0];
+              console.log("eeee: ", e.target.files[0]);
+
+              const ids = [...pickFileIds];
+              // if (!ids.includes(y.pickFileId)) {
+              //   ids.push(y.pickFileId);
+              // }
+              console.log("arr: ", arr);
+              setPickFileIds(ids);
+              setImgFileList(arr);
+              const file = imgRef.current.files[0];
+              const reader = new FileReader();
+              reader.readAsDataURL(e.target.files[0]);
+              reader.onload = () => {
+                // let arr = [...dataArr];
+                // arr[index].pickFiles[imgIndex].imgPath = reader.result;
+                // setDataArr(arr);
+                e.target.value = "";
+                if (imgFileList.length == 3) {
+                  window.alert("이미지는 최대 3장까지 등록가능합니다.");
+                  return;
+                }
+                setImgFile([...imgFile, file]);
+                setImgFileList(prevState => ([...prevState, reader.result]));
+              };
+            }}
+          />
+        </div>
+      </div>}
     </Container>
   )
 }

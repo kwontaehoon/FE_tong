@@ -35,6 +35,20 @@ const index = () => {
 
     const { data, isSuccess, refetch } = useBoardListQuery();
 
+    const [dataArr, setDataArr] = useState();
+    console.log("dataArr: ", dataArr);
+
+    useEffect(() => {
+        if(data){
+            switch(true){
+                case "전체": setDataArr(data); break;
+                case "일상": setDataArr(data.filter(x=> x.sub_category == "일상")); break;
+                case "질문": setDataArr(data.filter(x=> x.sub_category == "질문")); break;
+                case "정보공유": setDataArr(data.filter(x=> x.sub_category == "정보공유")); break;
+            }
+        }
+    }, [data]);
+
     useEffect(() => {
         refetch();
     }, [navigate]);

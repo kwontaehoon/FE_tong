@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   Container,
   Soccer_Team_Box,
@@ -10,14 +10,20 @@ import { useNavigate } from 'react-router-dom'
 const index = ({ data }) => {
 
   const navigate = useNavigate();
+  
+  const [dataArr, setDataArr] = useState([]);
+
+  useEffect(()=>{
+    setDataArr(data.filter(x=>x.category !== "자유"));
+  }, []);
 
   return (
     <Container>
       <div className='flex mb-3'>
         <div className='text-lg font-bold mr-1'>구합니다</div>
-        <div className='flex flex-col justify-end text-xs text-grey04'>동호회 및 개인용병을 서치</div>
+        <div className='flex flex-col justify-end text-xs text-grey04'>동호회 및 개인용병 검색</div>
       </div>
-      {data.slice(0, 3).map((x, index) => {
+      {dataArr.slice(0, 3).map((x, index) => {
         return (
           <div key={x.boardId} className='mb-3 flex relative items-center'>
             <div className='flex w-full items-center bg-white rounded-2xl px-3 py-5'>
