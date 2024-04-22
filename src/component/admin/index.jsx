@@ -19,7 +19,8 @@ import ExpandMore from '@mui/icons-material/ExpandMore';
 import Collapse from '@mui/material/Collapse';
 import StarBorder from '@mui/icons-material/StarBorder';
 import { useNavigate } from 'react-router-dom';
-import User from './main/user'
+import User from './user'
+import Board from './board'
 import Banner from './main/banner'
 import Pick from './main/pick'
 import Reservation from './main/reservation'
@@ -90,7 +91,7 @@ const index = (props) => {
                             <ListItemIcon>
                                 <StarBorder />
                             </ListItemIcon>
-                            <ListItemText primary="회원" />
+                            <ListItemText primary="회원 관리" />
                         </ListItemButton>
                     </List>
                 </Collapse>
@@ -137,6 +138,27 @@ const index = (props) => {
                 </Collapse>
 
             </List>
+
+            <ListItemButton onClick={handleClick}>
+                <ListItemIcon>
+                    <InboxIcon />
+                </ListItemIcon>
+                <ListItemText primary="게시판" />
+                {open ? <ExpandLess /> : <ExpandMore />}
+            </ListItemButton>
+
+            <Collapse in={open} timeout="auto" unmountOnExit onClick={() => setContent("board")}>
+                <List component="div" disablePadding>
+                    <ListItemButton sx={{ pl: 4 }}>
+                        <ListItemIcon>
+                            <StarBorder />
+                        </ListItemIcon>
+                        <ListItemText primary="게시판 관리" />
+                    </ListItemButton>
+                </List>
+            </Collapse>
+
+
             <Divider />
             <List
                 sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
@@ -208,7 +230,7 @@ const index = (props) => {
                             <MenuIcon />
                         </IconButton>
                         <Typography variant="h6" noWrap component="div">
-                    
+
                         </Typography>
                     </Toolbar>
                 </AppBar>
@@ -249,10 +271,11 @@ const index = (props) => {
                     sx={{ p: 3 }}
                 >
                     <Toolbar />
-                    {content == "" && <User />}
+                    {content == "board" && <User />}
                     {content == "banner" && <Banner />}
                     {content == "pick" && <Pick />}
                     {content == "reservation" && <Reservation />}
+                    {content == "" && <Board />}
                     {content == "searchRecommend" && <SearchRecommend />}
                     {content == "notice" && <Notice />}
                 </Box>

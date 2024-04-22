@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { useUsersListQuery } from '../../../../hooks/queries/admin/Users'
+import { useUsersListQuery } from '../../../hooks/queries/admin/Users'
 import { FaRegCalendarAlt } from "react-icons/fa";
 import moment from 'moment';
-import { userListSearchText } from '../../../../constants/text/admin/User'
+import { userListSearchText } from '../../../constants/text/admin/User'
 import 'react-calendar/dist/Calendar.css';
-import { useAdminCalendarStore } from '../../../../store/Calendar';
-import { useAdminUserModifyStore } from '../../../../store/AdminUsersModify';
+import { useAdminCalendarStore } from '../../../store/Calendar';
+import { useAdminUserModifyStore } from '../../../store/AdminUsersModify';
 
 const index = () => {
 
@@ -81,7 +81,7 @@ const index = () => {
                         <div className='flex flex-1 items-center'>
                             <div className='w-28 bg-grey07 flex pl-2 py-4 border-r border-grey07 font-bold'>회원구분</div>
                             <div className='pl-2 flex items-center'>
-                                <div className='border rounded-full w-4 h-4 mr-2 flex justify-center items-center cursor-pointer'>
+                                <div className='border rounded-full w-4 h-4 mr-1 flex justify-center items-center cursor-pointer'>
                                     <div className='bg-grey10 rounded-full w-2 h-2'></div>
                                 </div>
                                 <div>전체</div>
