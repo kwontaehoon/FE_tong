@@ -6,4 +6,4 @@ export const userListSearchText = [
 
 export const userListSearchTypeText = [
     { id: 1, content: '일반등급' }
-]
+];

@@ -4,7 +4,7 @@ import { FaRegCalendarAlt } from "react-icons/fa";
 import moment from 'moment';
 import 'react-calendar/dist/Calendar.css';
 import { useAdminCalendarStore } from '../../../store/Calendar';
-import { useAdminUserModifyStore } from '../../../store/AdminUsersModify';
+import { useAdminUserModifyStore, useAdminBoardModifyStore } from '../../../store/Admin';
 import { adminBoardListText, adminBoardCategoryText } from '../../../constants/text/admin/Board'
 import { freeBoardTabText } from '../../../constants/text/api/Board'
 import { useBoardListQuery } from '../../../hooks/queries/api/Board'
@@ -26,7 +26,6 @@ const index = () => {
     const [subCategorySelect, setSubCategorySelect] = useState(Array(4).fill(false).map((_, index) => index === 0));
 
     const { data, isSuccess, refetch } = useBoardListQuery();
-    console.log("data: ", data);
 
     const openAdminCalendarModal = useAdminCalendarStore((state) => state.setOpen);
 
@@ -36,8 +35,8 @@ const index = () => {
 
     const endDate = useAdminCalendarStore((state) => state.endDate);
 
-    const openAdminUserModifyModal = useAdminUserModifyStore((state) => state.setOpen);
-    const infoAdminUserModifyModal = useAdminUserModifyStore((state) => state.setInfo);
+    const setOpenAdminBoardModifyModal = useAdminBoardModifyStore((state) => state.setOpen);
+    const setInfoAdminBoardModifyModal = useAdminBoardModifyStore((state) => state.setInfo);
 
     useEffect(() => {
         if (startDate == '') {
@@ -177,13 +176,9 @@ const index = () => {
                                     <div className='w-24 py-1 border-r flex justify-center items-center'>{x.subCategory}</div>
                                     <div className='w-32 py-1 border-r flex justify-center items-center'>{x.commentCount}</div>
                                     <div className='w-20 py-1 border-r flex justify-center items-center'>{x.hits}</div>
-                                    <div className='w-28 py-1 border-r flex justify-center items-center'>{moment(x.create_date).format("YYYY-MM-DD")}</div>
-                                    <div className='w-28 py-1 border-r flex justify-center items-center'></div>
+                                    <div className='w-28 py-1 border-r flex justify-center items-center'>{moment(x.createDate).format("YYYY-MM-DD")}</div>
                                     <div className='w-20 py-1 border-r flex justify-center items-center'>
-                                        <div className='border rounded-lg px-2 py-0.5 cursor-pointer' onClick={() => window.alert('서비스 준비중입니다.')}>메일</div>
-                                    </div>
-                                    <div className='w-20 py-1 border-r flex justify-center items-center'>
-                                        <div className='border rounded-lg px-2 py-0.5 cursor-pointer' onClick={() => { openAdminUserModifyModal(true); infoAdminUserModifyModal(x) }}>수정</div>
+                                        <div className='border rounded-lg px-2 py-0.5 cursor-pointer' onClick={() => { setOpenAdminBoardModifyModal(true); setInfoAdminBoardModifyModal(x) }}>수정</div>
                                     </div>
                                     <div className='w-48 py-1 flex-1 flex justify-center items-center'>
                                         <div></div>

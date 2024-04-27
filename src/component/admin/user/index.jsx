@@ -5,7 +5,7 @@ import moment from 'moment';
 import { userListSearchText } from '../../../constants/text/admin/User'
 import 'react-calendar/dist/Calendar.css';
 import { useAdminCalendarStore } from '../../../store/Calendar';
-import { useAdminUserModifyStore } from '../../../store/AdminUsersModify';
+import { useAdminUserModifyStore } from '../../../store/Admin';
 
 const index = () => {
 
@@ -22,16 +22,16 @@ const index = () => {
 
     const { data, isSuccess, refetch } = useUsersListQuery(info);
 
-    const openAdminCalendarModal = useAdminCalendarStore((state) => state.setOpen);
+    const setOpenAdminCalendarModal = useAdminCalendarStore((state) => state.setOpen);
 
-    const flagAdminCalendarModal = useAdminCalendarStore((state) => state.setFlag);
+    const setFlagAdminCalendarModal = useAdminCalendarStore((state) => state.setFlag);
 
     const startDate = useAdminCalendarStore((state) => state.startDate);
 
     const endDate = useAdminCalendarStore((state) => state.endDate);
 
-    const openAdminUserModifyModal = useAdminUserModifyStore((state) => state.setOpen);
-    const infoAdminUserModifyModal = useAdminUserModifyStore((state) => state.setInfo);
+    const setOpenAdminUserModifyModal = useAdminUserModifyStore((state) => state.setOpen);
+    const setInfoAdminUserModifyModal = useAdminUserModifyStore((state) => state.setInfo);
 
     useEffect(() => {
         if(startDate == ''){
@@ -110,11 +110,11 @@ const index = () => {
                     <div className='flex'>
                         <div className='w-28 bg-grey07 flex items-center pl-2 py-4 border-r border-grey07 font-bold'>가입일</div>
                         <div className='flex-1 flex items-center pl-2'>
-                            <FaRegCalendarAlt className='cursor-pointer' onClick={()=>{ flagAdminCalendarModal("start"); openAdminCalendarModal(true)}} />
-                            <div className='border ml-2 px-2 py-1 w-32 min-h-6 cursor-pointer' onClick={()=>{ flagAdminCalendarModal("start"); openAdminCalendarModal(true); }} disabled>{startDate == '' ? '' : moment(startDate).format("YYYY-MM-DD")}</div>
+                            <FaRegCalendarAlt className='cursor-pointer' onClick={()=>{ setFlagAdminCalendarModal("start"); setOpenAdminCalendarModal(true)}} />
+                            <div className='border ml-2 px-2 py-1 w-32 min-h-6 cursor-pointer' onClick={()=>{ setFlagAdminCalendarModal("start"); setOpenAdminCalendarModal(true); }} disabled>{startDate == '' ? '' : moment(startDate).format("YYYY-MM-DD")}</div>
                             <div className='mx-2'>~</div>
-                            <FaRegCalendarAlt className='cursor-pointer' onClick={()=>{ flagAdminCalendarModal("end"); openAdminCalendarModal(true); }} />
-                            <div className='border ml-2 px-2 py-1 w-32 min-h-6 cursor-pointer' onClick={()=>{ flagAdminCalendarModal("end"); openAdminCalendarModal(true); }} disabled>{endDate == '' ? '' : moment(endDate).format("YYYY-MM-DD")}</div>
+                            <FaRegCalendarAlt className='cursor-pointer' onClick={()=>{ setFlagAdminCalendarModal("end"); setOpenAdminCalendarModal(true); }} />
+                            <div className='border ml-2 px-2 py-1 w-32 min-h-6 cursor-pointer' onClick={()=>{ setFlagAdminCalendarModal("end"); setOpenAdminCalendarModal(true); }} disabled>{endDate == '' ? '' : moment(endDate).format("YYYY-MM-DD")}</div>
                         </div>
                     </div>
                 </div>
@@ -164,7 +164,7 @@ const index = () => {
                                     <div className='border rounded-lg px-2 py-0.5 cursor-pointer' onClick={()=>window.alert('서비스 준비중입니다.')}>메일</div>
                                 </div>
                                 <div className='w-20 py-1 border-r flex justify-center items-center'>
-                                    <div className='border rounded-lg px-2 py-0.5 cursor-pointer' onClick={()=>{openAdminUserModifyModal(true); infoAdminUserModifyModal(x)}}>수정</div>
+                                    <div className='border rounded-lg px-2 py-0.5 cursor-pointer' onClick={()=>{setOpenAdminUserModifyModal(true); setInfoAdminUserModifyModal(x)}}>수정</div>
                                 </div>
                                 <div className='w-48 py-1 flex-1 flex justify-center items-center'>
                                     <div></div>

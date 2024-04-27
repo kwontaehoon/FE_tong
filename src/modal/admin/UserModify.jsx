@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { ModalContainer, ModalSubContainer } from '../../layout/ModalContainer'
 import { useLocation } from 'react-router-dom'
-import { useAdminUserModifyStore } from '../../store/AdminUsersModify';
+import { useAdminUserModifyStore } from '../../store/Admin';
 import { FaInfoCircle } from "react-icons/fa";
 import { userListSearchTypeText } from '../../constants/text/admin/User'
 import moment from 'moment';
@@ -18,7 +18,6 @@ const index = () => {
     const [searchSelect, setSearchSelect] = useState(false); // 검색어 모달
 
     const [info, setInfo] = useState(infoadminUserModifyModal);
-    console.log("info: ", info);
 
     const { mutate: modify } = useUsersModifyMutation();
 

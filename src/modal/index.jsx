@@ -8,9 +8,9 @@ import Term from './api/account/term'
 import Privacy from './api/account/privacy'
 import ReservationCancel from './api/reservationCancel'
 import Recomments from './api/recomments'
-import FetchNote from './api/fetchNote'
 import Calendar from './admin/Calendar'
 import AdminUserModify from './admin/UserModify'
+import AdminBoardModify from './admin/BoardModify'
 import { useCategoryStore } from '../store/Category';
 import { useExpireLoginStore, useExpireStore } from '../store/Expire';
 import { useLoginStore } from '../store/LoginFlag'
@@ -19,7 +19,7 @@ import { useReservationCancelStore } from '../store/ReservationCancel'
 import { useRecommentsStore } from '../store/Recomments'
 import { useFetchNoteStore } from '../store/FetchNote'
 import { useAdminCalendarStore } from '../store/Calendar'
-import { useAdminUserModifyStore } from '../store/AdminUsersModify'
+import { useAdminUserModifyStore, useAdminBoardModifyStore } from '../store/Admin'
 
 const index = () => {
 
@@ -31,9 +31,9 @@ const index = () => {
   const privacyModal = usePrivacyStore((state) => state.open);
   const reservationCancelModal = useReservationCancelStore((state) => state.open);
   const recommentsModal = useRecommentsStore((state) => state.open);
-  const fetchNoteModal = useFetchNoteStore((state) => state.open);
   const calendarModal = useAdminCalendarStore((state) => state.open);
   const adminUserModifyModal = useAdminUserModifyStore((state) => state.open);
+  const adminBoardModifyModal = useAdminBoardModifyStore((state) => state.open);
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -61,6 +61,7 @@ const index = () => {
         {/* {fetchNoteModal && <FetchNote />} */}
         {calendarModal && <Calendar />}
         {adminUserModifyModal && <AdminUserModify />}
+        {adminBoardModifyModal && <AdminBoardModify />}
     </>
   )
 }
