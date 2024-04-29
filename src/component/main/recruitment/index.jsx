@@ -20,8 +20,8 @@ const index = ({ data }) => {
   return (
     <Container>
       <div className='flex mb-3'>
-        <div className='text-lg font-bold mr-1'>구합니다</div>
-        <div className='flex flex-col justify-end text-xs text-grey04'>동호회 및 개인용병 검색</div>
+        <div className='text-lg font-bold'>구합니다</div>
+        <div className='flex ml-1 flex-col mt-2 text-xs text-grey04'>동호회 및 개인용병 검색</div>
       </div>
       {dataArr.slice(0, 3).map((x, index) => {
         return (

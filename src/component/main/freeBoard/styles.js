@@ -4,7 +4,6 @@ export const Container = styled.div`
     margin: 20px 20px 0px 20px;
 `
 export const Soccer_Team_Box = styled.div`
-    margin-left: 12px;
     flex: 1;
     white-space: nowrap;
     overflow: hidden;

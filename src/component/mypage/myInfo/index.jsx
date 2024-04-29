@@ -29,7 +29,6 @@ const index = () => {
   const [validation, setValidation] = useState({
     email: false,
     name: false,
-    email: false,
     emailForm: false,
     birthLength: false,
   });

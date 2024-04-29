@@ -25,8 +25,8 @@ const index = ({ data }) => {
     return (
         <Container>
             <div className='flex mb-3'>
-                <div className='text-lg font-bold mr-1'>자유게시판</div>
-                <div className='flex flex-col justify-end text-xs text-grey04'>동호회 및 개인용병 서치</div>
+                <div className='text-lg font-bold'>자유게시판</div>
+                <div className='ml-1 mt-2 flex flex-col text-xs text-grey04'>소통의 장</div>
             </div>
             {dataArr.slice(0, 3).map((x, index) => {
                 return (
@@ -39,11 +39,10 @@ const index = ({ data }) => {
                             {index == 2 && <img src="/images/readme.png" />}
                         </div>
                         <div className={'flex relative items-center' + (index+1 == dataArr.length ? ' mb-0' : ' mb-8')}>
-                            <div className='flex w-full items-center bg-white rounded-b-2xl px-3 py-5'>
+                            <div className='flex w-full items-center bg-white rounded-b-2xl p-5'>
                                 <Soccer_Team_Box>
                                     <Soccer>{x.title}</Soccer>
                                     <Rescue>{x.content}</Rescue>
-                                    <div>{index}</div>
                                 </Soccer_Team_Box>
                                 <div className='border-b ml-24' style={{ fontSize: "11px", paddingBottom: "2px" }}
                                     onClick={() => navigate("/freeBoard")}>더보기

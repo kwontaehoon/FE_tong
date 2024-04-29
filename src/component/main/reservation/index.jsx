@@ -23,7 +23,7 @@ const index = ({data}) => {
 
   return data.length !== 0 && (
     <Container>
-      <div className='flex items-center'>
+      <div className='flex'>
         <div className='text-xl font-bold'>Best Ground</div>
         <div className='ml-1 mt-2 text-xs flex-col text-grey04'>추천 운동장</div>
       </div>
