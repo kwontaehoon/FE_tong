@@ -21,7 +21,7 @@ const index = () => {
     }); // 검색어 모달
 
     const [info, setInfo] = useState(infoadminUserModifyModal);
-    console.log("searchSelect: ", searchSelect);
+    console.log("info: ", info);
 
     const { mutate: modify } = useBoardModifyMutation();
 
@@ -54,7 +54,7 @@ const index = () => {
                         <div className='flex border-b border-grey06 items-center'>
                             <div className='w-28 bg-grey07 pl-2 py-4 border-r border-grey07 font-bold'>카테고리</div>
                             <div className='pl-2 flex'>
-                                <div className='border py-1 px-2 w-28 rounded flex items-center relative cursor-pointer' onClick={() => setSearchSelect({...searchSelect, category: !searchSelect.category})}>
+                                <div className='border py-1 px-2 w-32 rounded flex items-center relative cursor-pointer' onClick={() => setSearchSelect({...searchSelect, category: !searchSelect.category})}>
                                     {searchSelect.category && <div className='absolute shadow-custom rounded-lg bg-white top-8 left-0 flex-col z-50 w-full flex justify-center p-2'>
                                         {adminBoardCategoryText.slice(1, freeBoardTabText.length).map(x => {
                                             return (
@@ -71,10 +71,10 @@ const index = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className='flex border-b border-grey06 items-center'>
+                        {info.category == "자유" && <div className='flex border-b border-grey06 items-center'>
                             <div className='w-28 bg-grey07 pl-2 py-4 border-r border-grey07 font-bold'>서브 카테고리</div>
                             <div className='pl-2 flex'>
-                                <div className='border py-1 px-2 w-28 rounded flex items-center relative cursor-pointer' onClick={() => setSearchSelect({...searchSelect, subCategory: !searchSelect.subCategory})}>
+                                <div className='border py-1 px-2 w-32 rounded flex items-center relative cursor-pointer' onClick={() => setSearchSelect({...searchSelect, subCategory: !searchSelect.subCategory})}>
                                     {searchSelect.subCategory && <div className='absolute shadow-custom rounded-lg bg-white top-8 left-0 flex-col z-50 w-full flex justify-center p-2'>
                                         {freeBoardTabText.slice(1, freeBoardTabText.length).map(x => {
                                             return (
@@ -90,7 +90,7 @@ const index = () => {
                                     <img src="/svg/Arrow_bottom.svg" className='w-3 ml-5' />
                                 </div>
                             </div>
-                        </div>
+                        </div>}
                     </div>
 
                     <div className='my-5 flex justify-center text-xs'>

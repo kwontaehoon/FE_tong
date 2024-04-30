@@ -1,5 +1,22 @@
 import { useQuery, useMutation } from "react-query";
-import { postBoardModify } from "../../../service/admin/Board";
+import { getBoardLlist, postBoardModify } from "../../../service/admin/Board";
+
+const BOARD_KEYS = {
+  boardList: "boardList"
+}
+
+/**
+ * 관리자 게시판 목록
+ * 
+ */
+export const useBoardListQuery = (params) => {
+  return useQuery(BOARD_KEYS.boardList, async () => {
+    const { data } = await getBoardLlist(params);
+    return data;
+  }, {
+    staleTime: Infinity,
+  });
+};
 
 /**
  * 관리자 게시판 수정

@@ -16,9 +16,10 @@ const index = () => {
         search: '',
         // userType: '',
         // expire: '',
-        signUpDateStart: moment('2024-03-01').format("YYYY-MM-DDTHH:mm:ss"),
+        signUpDateStart: moment('2023-03-01').format("YYYY-MM-DDTHH:mm:ss"),
         signUpDateEnd: moment(new Date()).format("YYYY-MM-DDTHH:mm:ss")
     });
+    console.log("admin user info: ", info);
 
     const { data, isSuccess, refetch } = useUsersListQuery(info);
 

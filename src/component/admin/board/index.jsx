@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { useUsersListQuery } from '../../../hooks/queries/admin/Users'
 import { FaRegCalendarAlt } from "react-icons/fa";
 import moment from 'moment';
 import 'react-calendar/dist/Calendar.css';
 import { useAdminCalendarStore } from '../../../store/Calendar';
-import { useAdminUserModifyStore, useAdminBoardModifyStore } from '../../../store/Admin';
+import { useAdminBoardModifyStore } from '../../../store/Admin';
 import { adminBoardListText, adminBoardCategoryText } from '../../../constants/text/admin/Board'
 import { freeBoardTabText } from '../../../constants/text/api/Board'
-import { useBoardListQuery } from '../../../hooks/queries/api/Board'
+import { useBoardListQuery } from '../../../hooks/queries/admin/Board'
 
 const index = () => {
 
@@ -16,16 +15,17 @@ const index = () => {
     const [info, setInfo] = useState({
         searchType: '제목',
         search: '',
-        // userType: '',
-        // expire: '',
-        signUpDateStart: moment('2024-03-01').format("YYYY-MM-DDTHH:mm:ss"),
-        signUpDateEnd: moment(new Date()).format("YYYY-MM-DDTHH:mm:ss")
+        category: '전체',
+        sub_category: '',
+        createDateStart: moment('2023-03-01').format("YYYY-MM-DDTHH:mm:ss"),
+        createDateEnd: moment(new Date()).format("YYYY-MM-DDTHH:mm:ss")
     });
+    console.log("admin board list: ", info);
 
     const [categorySelect, setCategorySelect] = useState(Array(3).fill(false).map((_, index) => index === 0));
     const [subCategorySelect, setSubCategorySelect] = useState(Array(4).fill(false).map((_, index) => index === 0));
 
-    const { data, isSuccess, refetch } = useBoardListQuery();
+    const { data, isSuccess, refetch } = useBoardListQuery(info);
 
     const openAdminCalendarModal = useAdminCalendarStore((state) => state.setOpen);
 
@@ -41,10 +41,10 @@ const index = () => {
     useEffect(() => {
         if (startDate == '') {
             return;
-        } else setInfo({ ...info, signUpDateStart: moment(startDate).format("YYYY-MM-DDTHH:mm:ss") });
+        } else setInfo({ ...info, createDateStart: moment(startDate).format("YYYY-MM-DDTHH:mm:ss") });
         if (endDate == '') {
             return;
-        } else setInfo({ ...info, signUpDateEnd: moment(endDate).format("YYYY-MM-DDTHH:mm:ss") });
+        } else setInfo({ ...info, createDateEnd: moment(endDate).format("YYYY-MM-DDTHH:mm:ss") });
     }, [startDate, endDate]);
 
     return isSuccess && (
@@ -64,7 +64,7 @@ const index = () => {
                     <div className='flex border-b border-grey06 items-center'>
                         <div className='w-28 bg-grey07 pl-2 py-4 border-r border-grey07 font-bold'>검색어</div>
                         <div className='pl-2 flex'>
-                            <div className='border relative flex items-center w-20 mr-2 text-xxs px-1 relative cursor-pointer' onClick={() => setSearchSelect(true)}>
+                            <div className='border relative flex items-center w-20 mr-2 text-xxs px-1 cursor-pointer' onClick={() => setSearchSelect(true)}>
                                 {searchSelect && <div className='absolute shadow-custom rounded-lg bg-white top-8 left-0 flex-col z-50 w-full flex justify-center p-2'>
                                     {adminBoardListText.map(x => {
                                         return (
@@ -94,6 +94,7 @@ const index = () => {
                                                     let arr = Array(3).fill(false);
                                                     arr[index] = true;
                                                     setCategorySelect(arr);
+                                                    setInfo({...info, category: x.content})
                                                 }}>
                                                 {categorySelect[index] && <div className='bg-grey10 rounded-full w-2 h-2'></div>}
                                             </div>
@@ -115,8 +116,9 @@ const index = () => {
                                                     let arr = Array(4).fill(false);
                                                     arr[index] = true;
                                                     setSubCategorySelect(arr);
+                                                    setInfo({...info, sub_category: x.content});
                                                 }}>
-                                                {subCategorySelect[index] && <div className={'rounded-full w-2 h-2' + (info.expire ? '' : ' bg-grey10')}></div>}
+                                                {subCategorySelect[index] && <div className={'rounded-full w-2 h-2 bg-grey10'}></div>}
                                             </div>
                                             <div>{x.content}</div>
                                         </div>
@@ -126,7 +128,7 @@ const index = () => {
                         </div>}
                     </div>
                     <div className='flex'>
-                        <div className='w-28 bg-grey07 flex items-center pl-2 py-4 border-r border-grey07 font-bold'>가입일</div>
+                        <div className='w-28 bg-grey07 flex items-center pl-2 py-4 border-r border-grey07 font-bold'>생성일</div>
                         <div className='flex-1 flex items-center pl-2'>
                             <FaRegCalendarAlt className='cursor-pointer' onClick={() => { flagAdminCalendarModal("start"); openAdminCalendarModal(true) }} />
                             <div className='border ml-2 px-2 py-1 w-32 min-h-6 cursor-pointer' onClick={() => { flagAdminCalendarModal("start"); openAdminCalendarModal(true); }} disabled>{startDate == '' ? '' : moment(startDate).format("YYYY-MM-DD")}</div>
@@ -173,7 +175,7 @@ const index = () => {
                                     <div className='w-28 py-1 border-r flex justify-center items-center'>{x.title}</div>
                                     <div className='w-24 py-1 border-r flex justify-center items-center'>{x.content}</div>
                                     <div className='w-28 py-1 border-r flex justify-center items-center'>{x.category}</div>
-                                    <div className='w-24 py-1 border-r flex justify-center items-center'>{x.subCategory}</div>
+                                    <div className='w-24 py-1 border-r flex justify-center items-center'>{x.sub_category}</div>
                                     <div className='w-32 py-1 border-r flex justify-center items-center'>{x.commentCount}</div>
                                     <div className='w-20 py-1 border-r flex justify-center items-center'>{x.hits}</div>
                                     <div className='w-28 py-1 border-r flex justify-center items-center'>{moment(x.createDate).format("YYYY-MM-DD")}</div>
