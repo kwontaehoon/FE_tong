@@ -7,6 +7,7 @@ import { useAdminBoardModifyStore } from '../../../store/Admin';
 import { adminBoardListText, adminBoardCategoryText } from '../../../constants/text/admin/Board'
 import { freeBoardTabText } from '../../../constants/text/api/Board'
 import { useBoardListQuery } from '../../../hooks/queries/admin/Board'
+import Chart from '../../../function/chart'
 
 const index = () => {
 
@@ -20,7 +21,8 @@ const index = () => {
         createDateStart: moment('2023-03-01').format("YYYY-MM-DDTHH:mm:ss"),
         createDateEnd: moment(new Date()).format("YYYY-MM-DDTHH:mm:ss")
     });
-    console.log("admin board list: ", info);
+
+    const [chartData, setChartData] = useState([]);
 
     const [categorySelect, setCategorySelect] = useState(Array(3).fill(false).map((_, index) => index === 0));
     const [subCategorySelect, setSubCategorySelect] = useState(Array(4).fill(false).map((_, index) => index === 0));
@@ -42,10 +44,23 @@ const index = () => {
         if (startDate == '') {
             return;
         } else setInfo({ ...info, createDateStart: moment(startDate).format("YYYY-MM-DDTHH:mm:ss") });
+    }, [startDate]);
+
+    useEffect(() => {
         if (endDate == '') {
             return;
         } else setInfo({ ...info, createDateEnd: moment(endDate).format("YYYY-MM-DDTHH:mm:ss") });
-    }, [startDate, endDate]);
+    }, [endDate]);
+
+    useEffect(() => {
+        if(data){
+            let arr = Array(12).fill(0);
+            data.map(x => {
+                arr[Number(moment(x.createDate).format("MM"))-1]++;
+            });
+            setChartData(arr);
+        }
+    }, [data]); 
 
     return isSuccess && (
         <div onClick={() => {
@@ -53,12 +68,13 @@ const index = () => {
                 setSearchSelect(false);
             }
         }}>
-            <div className='flex mb-5'>
-                <div className='font-bold text-xl flex-1'>게시판 리스트</div>
-            </div>
+ 
+            <div className='mb-5 text-xs rounded-lg'>
+                <div className='flex items-center mb-2'>
+                    <div className='flex-1 font-bold text-base'>게시판 검색</div>
+                    <div className='px-3 py-1 rounded text-xs bg-m text-white cursor-pointer' onClick={() => refetch()}>검색</div>
+                </div>
 
-            <div className='my-5 text-xs rounded-lg'>
-                <div className='mb-1 font-extrabold'>게시판 검색</div>
 
                 <div className='border-y-2 border-grey04'>
                     <div className='flex border-b border-grey06 items-center'>
@@ -94,7 +110,7 @@ const index = () => {
                                                     let arr = Array(3).fill(false);
                                                     arr[index] = true;
                                                     setCategorySelect(arr);
-                                                    setInfo({...info, category: x.content})
+                                                    setInfo({ ...info, category: x.content })
                                                 }}>
                                                 {categorySelect[index] && <div className='bg-grey10 rounded-full w-2 h-2'></div>}
                                             </div>
@@ -116,7 +132,7 @@ const index = () => {
                                                     let arr = Array(4).fill(false);
                                                     arr[index] = true;
                                                     setSubCategorySelect(arr);
-                                                    setInfo({...info, sub_category: x.content});
+                                                    setInfo({ ...info, sub_category: x.content });
                                                 }}>
                                                 {subCategorySelect[index] && <div className={'rounded-full w-2 h-2 bg-grey10'}></div>}
                                             </div>
@@ -139,10 +155,13 @@ const index = () => {
                     </div>
                 </div>
             </div>
-            <div className='mb-8 flex justify-end'>
-                <div className='px-3 py-1 rounded text-xs bg-m text-white cursor-pointer' onClick={() => refetch()}>검색</div>
-            </div>
 
+        {chartData.length == 0 ? '' : <div className='my-8'>
+            <div className='w-full border'>
+                <Chart chartData={chartData}/>
+            </div>
+            <div className='flex justify-end'>설명</div>
+        </div>}
             <div className='flex text-xs mb-2'>
                 <div>전체</div>
                 <div className='ml-1 font-bold'>{data.length}명</div>

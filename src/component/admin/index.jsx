@@ -62,7 +62,7 @@ const index = (props) => {
             <Toolbar>
                 <div className='flex items-center'>
                     <img src="/svg/Logo.svg" onClick={() => navigate("/")} className='cursor-pointer' />
-                    <div className='ml-2 font-bold text-sm'>관리자 페이지</div>
+                    <div className='ml-2 font-bold text-xs'>관리자 페이지</div>
                 </div>
             </Toolbar>
             <Divider />
@@ -230,7 +230,7 @@ const index = (props) => {
                             <MenuIcon />
                         </IconButton>
                         <Typography variant="h6" noWrap component="div">
-
+                            {content == "" ? '게시판 리스트' : ''}
                         </Typography>
                     </Toolbar>
                 </AppBar>

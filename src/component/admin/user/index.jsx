@@ -54,7 +54,10 @@ const index = () => {
             </div>
 
             <div className='my-5 text-xs rounded-lg'>
-                <div className='mb-1 font-extrabold'>회원 검색</div>
+            <div className='flex items-center mb-2'>
+                    <div className='flex-1 font-extrabold'>회원 검색</div>
+                    <div className='px-3 py-1 rounded text-xs bg-m text-white cursor-pointer' onClick={() => refetch()}>검색</div>
+                </div>
 
                 <div className='border-y-2 border-grey04'>
                     <div className='flex border-b border-grey06 items-center'>
@@ -119,9 +122,6 @@ const index = () => {
                         </div>
                     </div>
                 </div>
-            </div>
-            <div className='mb-8 flex justify-end'>
-                <div className='px-3 py-1 rounded text-xs bg-m text-white cursor-pointer' onClick={()=>refetch()}>검색</div>
             </div>
 
             <div className='flex text-xs mb-2'>
