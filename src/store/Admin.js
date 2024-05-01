@@ -15,3 +15,11 @@ export const useAdminBoardModifyStore = create((set) => ({
   setOpen: (open) => set(() => ({ open: open })),
   setInfo: (info) => set(() => ({ info: info }))
 }))
+
+// 관리자 차트 선택
+export const useAdminChartSelectStore = create((set) => ({
+  open: false,
+  select: 0,
+  setOpen: (open) => set(() => ({ open: open })),
+  setSelect: (select) => set(() => ({ select: select }))
+}))

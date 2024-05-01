@@ -11,6 +11,7 @@ import Recomments from './api/recomments'
 import Calendar from './admin/Calendar'
 import AdminUserModify from './admin/UserModify'
 import AdminBoardModify from './admin/BoardModify'
+import AdminChartSelect from './admin/ChartSelect'
 import { useCategoryStore } from '../store/Category';
 import { useExpireLoginStore, useExpireStore } from '../store/Expire';
 import { useLoginStore } from '../store/LoginFlag'
@@ -19,7 +20,7 @@ import { useReservationCancelStore } from '../store/ReservationCancel'
 import { useRecommentsStore } from '../store/Recomments'
 import { useFetchNoteStore } from '../store/FetchNote'
 import { useAdminCalendarStore } from '../store/Calendar'
-import { useAdminUserModifyStore, useAdminBoardModifyStore } from '../store/Admin'
+import { useAdminUserModifyStore, useAdminBoardModifyStore, useAdminChartSelectStore } from '../store/Admin'
 
 const index = () => {
 
@@ -34,6 +35,7 @@ const index = () => {
   const calendarModal = useAdminCalendarStore((state) => state.open);
   const adminUserModifyModal = useAdminUserModifyStore((state) => state.open);
   const adminBoardModifyModal = useAdminBoardModifyStore((state) => state.open);
+  const adminChartSelectModal = useAdminChartSelectStore((state) => state.open);
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -62,6 +64,7 @@ const index = () => {
         {calendarModal && <Calendar />}
         {adminUserModifyModal && <AdminUserModify />}
         {adminBoardModifyModal && <AdminBoardModify />}
+        {adminChartSelectModal && <AdminChartSelect />}
     </>
   )
 }

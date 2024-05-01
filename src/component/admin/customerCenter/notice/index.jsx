@@ -16,7 +16,7 @@ const index = () => {
   return info && isSuccess && (
     <div>
       <div className='flex mb-5'>
-        <div className='font-bold text-xl flex-1'>추천 검색어</div>
+        <div className='font-bold text-xl flex-1'>공지사항</div>
         <Button sx={{ backgroundColor: '#007CFF' }} 
           variant="contained" 
           onClick={async()=>{

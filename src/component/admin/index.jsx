@@ -230,7 +230,8 @@ const index = (props) => {
                             <MenuIcon />
                         </IconButton>
                         <Typography variant="h6" noWrap component="div">
-                            {content == "" ? '게시판 리스트' : ''}
+                            {content == "" ? "회원 관리" : content == "banner" ? "배너 관리" : content == "pick" ? "PICK 관리" :
+                            content == "reservation" ? "예약 관리" : content == "board" ? "게시판 관리" : content == "searchRecommend" ? "검색어 관리" : "공지사항 관리"}
                         </Typography>
                     </Toolbar>
                 </AppBar>
@@ -271,11 +272,11 @@ const index = (props) => {
                     sx={{ p: 3 }}
                 >
                     <Toolbar />
-                    {content == "board" && <User />}
+                    {content == "" && <User />}
                     {content == "banner" && <Banner />}
                     {content == "pick" && <Pick />}
                     {content == "reservation" && <Reservation />}
-                    {content == "" && <Board />}
+                    {content == "board" && <Board />}
                     {content == "searchRecommend" && <SearchRecommend />}
                     {content == "notice" && <Notice />}
                 </Box>

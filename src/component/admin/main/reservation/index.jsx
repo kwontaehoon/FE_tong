@@ -82,7 +82,7 @@ const index = () => {
             <div>
                 {dataArr?.map((x, index) => {
                     return <div key={index}>
-                        <div className='flex mb-4 items-center'>
+                        <div className='flex mb-2 items-center'>
                             <div className='flex-1'>이미지</div>
                             <Button sx={{ backgroundColor: '#FF0000', marginRight: "8px" }} variant="contained"
                                 onClick={() => {

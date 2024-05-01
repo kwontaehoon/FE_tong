@@ -7,7 +7,7 @@ import { useAdminBoardModifyStore } from '../../../store/Admin';
 import { adminBoardListText, adminBoardCategoryText } from '../../../constants/text/admin/Board'
 import { freeBoardTabText } from '../../../constants/text/api/Board'
 import { useBoardListQuery } from '../../../hooks/queries/admin/Board'
-import Chart from '../../../function/chart'
+import LineChart from '../../../function/chart/lineChart'
 
 const index = () => {
 
@@ -157,10 +157,13 @@ const index = () => {
             </div>
 
         {chartData.length == 0 ? '' : <div className='my-8'>
-            <div className='w-full border'>
-                <Chart chartData={chartData}/>
+            <div className='w-full border-y-2 border-grey04'>
+                <LineChart chartData={chartData}/>
             </div>
-            <div className='flex justify-end'>설명</div>
+            <div className='flex items-center justify-end mt-5'>
+                <div className='bg-ms w-3 h-3'></div>
+                <div className='ml-2 font-bold text-xs'>게시글 생성일</div>
+            </div>
         </div>}
             <div className='flex text-xs mb-2'>
                 <div>전체</div>
@@ -169,7 +172,7 @@ const index = () => {
                 <div>검색</div>
                 <div className='ml-1 font-bold'>{data.length}명</div>
             </div>
-            <div className='overflow-x-scroll flex text-center text-xs' style={{ width: window.innerWidth - 305 }}>
+            <div className='overflow-x-scroll flex text-center text-xs' style={{ width: window.innerWidth - 305, height: "500px" }}>
                 <div>
                     <div className='flex bg-grey04 text-white py-2'>
                         <div className='w-12'>번호</div>
