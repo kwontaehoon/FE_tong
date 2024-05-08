@@ -27,6 +27,11 @@ import Reservation from './main/reservation'
 import SearchRecommend from './search/searchRecommend'
 import Notice from './customerCenter/notice'
 import Login from './login'
+import { FaUser } from "react-icons/fa";
+import { PiSoccerBallFill } from "react-icons/pi";
+import { FaThLarge } from "react-icons/fa";
+import { FaSearch } from "react-icons/fa";
+import { FaQuestion } from "react-icons/fa";
 
 const index = (props) => {
 
@@ -79,7 +84,7 @@ const index = (props) => {
 
                 <ListItemButton onClick={handleClick}>
                     <ListItemIcon>
-                        <InboxIcon />
+                        <FaUser className='w-5 h-5' />
                     </ListItemIcon>
                     <ListItemText primary="회원" />
                     {open ? <ExpandLess /> : <ExpandMore />}
@@ -89,7 +94,8 @@ const index = (props) => {
                     <List component="div" disablePadding>
                         <ListItemButton sx={{ pl: 4 }}>
                             <ListItemIcon>
-                                <StarBorder />
+                                {/* <StarBorder /> */}
+                                <div className='text-xl font-bold'>-</div>
                             </ListItemIcon>
                             <ListItemText primary="회원 관리" />
                         </ListItemButton>
@@ -98,7 +104,7 @@ const index = (props) => {
 
                 <ListItemButton onClick={handleClick}>
                     <ListItemIcon>
-                        <InboxIcon />
+                        <PiSoccerBallFill className='w-6 h-6' />
                     </ListItemIcon>
                     <ListItemText primary="메인" />
                     {open ? <ExpandLess /> : <ExpandMore />}
@@ -108,7 +114,7 @@ const index = (props) => {
                     <List component="div" disablePadding>
                         <ListItemButton sx={{ pl: 4 }}>
                             <ListItemIcon>
-                                <StarBorder />
+                                <div className='text-xl font-bold'>-</div>
                             </ListItemIcon>
                             <ListItemText primary="배너" />
                         </ListItemButton>
@@ -119,7 +125,7 @@ const index = (props) => {
                     <List component="div" disablePadding>
                         <ListItemButton sx={{ pl: 4 }}>
                             <ListItemIcon>
-                                <StarBorder />
+                                <div className='text-xl font-bold'>-</div>
                             </ListItemIcon>
                             <ListItemText primary="PICK" />
                         </ListItemButton>
@@ -130,7 +136,7 @@ const index = (props) => {
                     <List component="div" disablePadding>
                         <ListItemButton sx={{ pl: 4 }}>
                             <ListItemIcon>
-                                <StarBorder />
+                                <div className='text-xl font-bold'>-</div>
                             </ListItemIcon>
                             <ListItemText primary="예약" />
                         </ListItemButton>
@@ -141,7 +147,7 @@ const index = (props) => {
 
             <ListItemButton onClick={handleClick}>
                 <ListItemIcon>
-                    <InboxIcon />
+                    <FaThLarge className='w-5 h-5' />
                 </ListItemIcon>
                 <ListItemText primary="게시판" />
                 {open ? <ExpandLess /> : <ExpandMore />}
@@ -151,7 +157,7 @@ const index = (props) => {
                 <List component="div" disablePadding>
                     <ListItemButton sx={{ pl: 4 }}>
                         <ListItemIcon>
-                            <StarBorder />
+                            <div className='text-xl font-bold'>-</div>
                         </ListItemIcon>
                         <ListItemText primary="게시판 관리" />
                     </ListItemButton>
@@ -167,7 +173,7 @@ const index = (props) => {
             >
                 <ListItemButton onClick={handleClick}>
                     <ListItemIcon>
-                        <InboxIcon />
+                        <FaSearch className='w-5 h-5' />
                     </ListItemIcon>
                     <ListItemText primary="검색" />
                     {open ? <ExpandLess /> : <ExpandMore />}
@@ -177,7 +183,7 @@ const index = (props) => {
                     <List component="div" disablePadding>
                         <ListItemButton sx={{ pl: 4 }}>
                             <ListItemIcon>
-                                <StarBorder />
+                                <div className='text-xl font-bold'>-</div>
                             </ListItemIcon>
                             <ListItemText primary="추천 검색어" />
                         </ListItemButton>
@@ -186,7 +192,7 @@ const index = (props) => {
 
                 <ListItemButton onClick={handleClick}>
                     <ListItemIcon>
-                        <InboxIcon />
+                        <FaQuestion className='w-5 h-5' />
                     </ListItemIcon>
                     <ListItemText primary="고객센터" />
                     {open ? <ExpandLess /> : <ExpandMore />}
@@ -196,7 +202,7 @@ const index = (props) => {
                     <List component="div" disablePadding>
                         <ListItemButton sx={{ pl: 4 }}>
                             <ListItemIcon>
-                                <StarBorder />
+                                <div className='text-xl font-bold'>-</div>
                             </ListItemIcon>
                             <ListItemText primary="공지사항" />
                         </ListItemButton>

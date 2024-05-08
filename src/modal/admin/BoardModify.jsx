@@ -95,7 +95,7 @@ const index = () => {
 
                     <div className='my-5 flex justify-center text-xs'>
                         <div className='mr-1 px-2 py-1 bg-m rounded text-white cursor-pointer' 
-                            onClick={()=>{ modify(info); }}>수정
+                            onClick={()=>{ modify(info); window.location.reload(); }}>수정
                         </div>
                         <div className='ml-1 px-2 py-1 rounded border border-grey06 cursor-pointer' 
                             onClick={()=>setOpenAdminBoardModifyModal(false)}>취소

@@ -27,7 +27,7 @@ const index = () => {
 
     const navigate = useNavigate();
 
-    const [category, setCategory] = useState(Array(8).fill().map((_, index) => index === 0));
+    const [category, setCategory] = useState(Array(4).fill().map((_, index) => index === 0));
     const [categoryContent, setCategoryContent] = useState("자주찾는질문");
     const [filter, setFilter] = useState(false);
 
@@ -36,18 +36,23 @@ const index = () => {
     const { data, isSuccess, refetch } = useBoardListQuery();
 
     const [dataArr, setDataArr] = useState();
-    console.log("dataArr: ", dataArr);
+
+    useEffect(()=>{
+        if(data){
+            setDataArr(data);
+        }
+    }, [isSuccess]);
 
     useEffect(() => {
         if(data){
-            switch(true){
-                case "전체": setDataArr(data); break;
-                case "일상": setDataArr(data.filter(x=> x.sub_category == "일상")); break;
-                case "질문": setDataArr(data.filter(x=> x.sub_category == "질문")); break;
-                case "정보공유": setDataArr(data.filter(x=> x.sub_category == "정보공유")); break;
+            switch(category.findIndex(x => x)){
+                case 0: setDataArr(data); break;
+                case 1: setDataArr(data.filter(x=> x.sub_category == "일상")); break;
+                case 2: setDataArr(data.filter(x=> x.sub_category == "질문")); break;
+                case 3: setDataArr(data.filter(x=> x.sub_category == "정보공유")); break;
             }
         }
-    }, [data]);
+    }, [category]);
 
     useEffect(() => {
         refetch();
@@ -70,7 +75,7 @@ const index = () => {
                     )
                 })}
             </TabBox>
-            <Choice_Box>
+            {/* <Choice_Box>
                 <div className='flex items-center relative' onClick={()=>setFilter(!filter)}>
                     <Choice>{info}</Choice>
                     <img src="/svg/down_arrow.svg" className='w-3' />
@@ -86,8 +91,8 @@ const index = () => {
                     })}
                 </div>}
                 </div>
-            </Choice_Box>
-            {!isSuccess ? <Spinner /> : data.filter(x => x.category.includes("자유")).map((x, index) => {
+            </Choice_Box> */}
+            {!dataArr ? <Spinner /> : dataArr.filter(x => x.category.includes("자유")).map((x, index) => {
                 return (
                     <Recruitment_Box key={x.boardId} onClick={() => navigate(`${x.boardId}`)}>
                         <Recruitment>

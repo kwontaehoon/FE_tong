@@ -15,15 +15,15 @@ export const fetchNoteText = [
     },
     {
         id: 3,
-        version: 'v0.2.2(진행중)',
-        date: '24.04~현재',
+        version: 'v0.2.2(완료)',
+        date: '24.04',
         title: '관리자 / 사용자',
         content: '- 자유게시판 추가 및 관리자에서 모든 게시판 관리 가능하도록 기능 추가'
     },
     {
         id: 4,
-        version: 'v0.3.2',
-        date: '24.05',
+        version: 'v0.3.2(진행중)',
+        date: '24.05~현재',
         title: '관리자 / 사용자',
         content: '- 예약 카테고리 기능 추가 (현재 더미)'
     },
