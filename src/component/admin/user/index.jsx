@@ -9,6 +9,7 @@ import { useAdminChartSelectStore, useAdminUserModifyStore } from '../../../stor
 import BarChart from '../../../function/chart/barChart'
 import LineChart from '../../../function/chart/lineChart'
 import PieChart from '../../../function/chart/pieChart'
+import Spinner from '../../../function/spinner'
 
 const index = () => {
 
@@ -24,18 +25,20 @@ const index = () => {
     });
 
     const [chartData, setChartData] = useState([]);
-    console.log("user chartData: ", chartData);
+
+    const [reset, setReset] = useState(false);
 
     const { data, isSuccess, refetch } = useUsersListQuery(info);
-    console.log("user data: ", data);
 
     const setOpenAdminCalendarModal = useAdminCalendarStore((state) => state.setOpen);
 
     const setFlagAdminCalendarModal = useAdminCalendarStore((state) => state.setFlag);
 
     const startDate = useAdminCalendarStore((state) => state.startDate);
-
     const endDate = useAdminCalendarStore((state) => state.endDate);
+
+    const setStartDateAdminCalendarModal = useAdminCalendarStore((state) => state.setStartDate);
+    const setEndDateAdminCalendarModal = useAdminCalendarStore((state) => state.setEndDate);
 
     const setOpenAdminUserModifyModal = useAdminUserModifyStore((state) => state.setOpen);
     const setInfoAdminUserModifyModal = useAdminUserModifyStore((state) => state.setInfo);
@@ -61,6 +64,15 @@ const index = () => {
         }
     }, [data]);
 
+    useEffect(() => {
+        if (reset) {
+            refetch();
+        }
+        setStartDateAdminCalendarModal("");
+        setEndDateAdminCalendarModal("");
+        setReset(false);
+    }, [reset]);
+
     return isSuccess && (
         <div onClick={() => {
             if (searchSelect) {
@@ -71,6 +83,18 @@ const index = () => {
             <div className='mb-5 text-xs rounded-lg'>
                 <div className='flex items-center mb-2'>
                     <div className='flex-1 font-bold text-base'>회원 검색</div>
+                    <div className='px-3 py-1 rounded text-xs bg-m text-white cursor-pointer mr-1'
+                        onClick={() => {
+                            setInfo({
+                                searchType: '아이디',
+                                search: '',
+                                // userType: '',
+                                // expire: '',
+                                signUpDateStart: moment('2023-03-01').format("YYYY-MM-DDTHH:mm:ss"),
+                                signUpDateEnd: moment(new Date()).format("YYYY-MM-DDTHH:mm:ss")
+                            });
+                            setReset(true);
+                        }}>초기화</div>
                     <div className='px-3 py-1 rounded text-xs bg-m text-white cursor-pointer' onClick={() => refetch()}>검색</div>
                 </div>
 
@@ -139,19 +163,20 @@ const index = () => {
                 </div>
             </div>
 
-            {chartData.length == 0 ? '' : <div className='my-8'>
+            <div className='my-8'>
                 <div className='w-full border-y-2 border-grey04'>
                     {adminChartSelectInfoModal == 0 && <LineChart chartData={chartData} />}
                     {adminChartSelectInfoModal == 1 && <BarChart chartData={chartData} />}
                     {adminChartSelectInfoModal == 2 && <PieChart chartData={chartData} />}
                 </div>
                 <div className='flex items-center mt-5 font-bold text-xs'>
-                    <div className='px-2 py-1 bg-grey07 rounded cursor-pointer' onClick={()=>setOpenAdminChartSelectModal(true)}>다른 차트 보기</div>
+                    <div className='px-2 py-1 bg-grey07 rounded cursor-pointer' onClick={() => setOpenAdminChartSelectModal(true)}>다른 차트 보기</div>
                     <div className='flex-1'></div>
                     <div className='bg-ms w-3 h-3'></div>
                     <div className='ml-2'>회원가입 일</div>
                 </div>
-            </div>}
+            </div>
+
             <div className='flex text-xs mb-2'>
                 <div>전체</div>
                 <div className='ml-1 font-bold'>{data.length}명</div>
@@ -159,7 +184,7 @@ const index = () => {
                 <div>검색</div>
                 <div className='ml-1 font-bold'>{data.length}명</div>
             </div>
-            <div className='overflow-x-scroll flex text-center text-xs' style={{ width: window.innerWidth - 305, height: "500px" }}>
+            <div className='overflow-x-scroll flex text-center text-xs' style={{ width: window.innerWidth - 305 }}>
                 <div>
                     <div className='flex bg-grey04 text-white py-2'>
                         <div className='w-12'>번호</div>

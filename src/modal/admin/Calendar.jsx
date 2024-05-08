@@ -17,7 +17,6 @@ const index = () => {
     const endDateAdminCalendarModal = useAdminCalendarStore((state) => state.setEndDate);
 
     const flag = useAdminCalendarStore((state) => state.flag);
-    console.log("flag: ", flag);
 
     // const startDate = useAdminCalendarStore((state) => state.startDate);
     // console.log("startDate: ", startDate);

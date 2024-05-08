@@ -42,11 +42,13 @@ const index = () => {
 
     if(
       // !fetchNoteModal &&
+      !adminChartSelectModal &&
       !adminUserModifyModal && (categoryModal == "none" || !categoryModal)){
       document.body.style.overflow = 'auto';
     }
   }, [categoryModal,
     // fetchNoteModal,
+    adminChartSelectModal,
     adminUserModifyModal]);
 
   return (

@@ -31,9 +31,9 @@ const index = () => {
                                     setInfoAdminChartSelectModal(index);
                                 }}>
                                 <div className='flex-1 w-full flex items-center justify-center'>
-                                    {index === 0 ? <FaChartBar className='w-12 h-12 text-grey06' />
+                                    {index === 0 ? <FaChartLine className='w-12 h-12 text-grey06' />
                                     : 
-                                    index === 1 ? <FaChartLine className='w-12 h-12 text-grey06' />
+                                    index === 1 ? <FaChartBar className='w-12 h-12 text-grey06' />
                                     :
                                     <FaChartPie className='w-12 h-12 text-grey06' />}
                                 </div>

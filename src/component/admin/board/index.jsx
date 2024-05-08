@@ -3,11 +3,14 @@ import { FaRegCalendarAlt } from "react-icons/fa";
 import moment from 'moment';
 import 'react-calendar/dist/Calendar.css';
 import { useAdminCalendarStore } from '../../../store/Calendar';
-import { useAdminBoardModifyStore } from '../../../store/Admin';
+import { useAdminBoardModifyStore, useAdminChartSelectStore } from '../../../store/Admin';
 import { adminBoardListText, adminBoardCategoryText } from '../../../constants/text/admin/Board'
 import { freeBoardTabText } from '../../../constants/text/api/Board'
 import { useBoardListQuery } from '../../../hooks/queries/admin/Board'
+import BarChart from '../../../function/chart/barChart'
 import LineChart from '../../../function/chart/lineChart'
+import PieChart from '../../../function/chart/pieChart'
+import Spinner from '../../../function/spinner'
 
 const index = () => {
 
@@ -29,16 +32,22 @@ const index = () => {
 
     const { data, isSuccess, refetch } = useBoardListQuery(info);
 
+    const [reset, setReset] = useState(false);
+
     const openAdminCalendarModal = useAdminCalendarStore((state) => state.setOpen);
 
     const flagAdminCalendarModal = useAdminCalendarStore((state) => state.setFlag);
 
     const startDate = useAdminCalendarStore((state) => state.startDate);
-
     const endDate = useAdminCalendarStore((state) => state.endDate);
+
+    const setStartDateAdminCalendarModal = useAdminCalendarStore((state) => state.setStartDate);
+    const setEndDateAdminCalendarModal = useAdminCalendarStore((state) => state.setEndDate);
 
     const setOpenAdminBoardModifyModal = useAdminBoardModifyStore((state) => state.setOpen);
     const setInfoAdminBoardModifyModal = useAdminBoardModifyStore((state) => state.setInfo);
+    const setOpenAdminChartSelectModal = useAdminChartSelectStore((state) => state.setOpen);
+    const adminChartSelectInfoModal = useAdminChartSelectStore((state) => state.select);
 
     useEffect(() => {
         if (startDate == '') {
@@ -53,6 +62,7 @@ const index = () => {
     }, [endDate]);
 
     useEffect(() => {
+        console.log("reset: ", reset);
         if(data){
             let arr = Array(12).fill(0);
             data.map(x => {
@@ -60,7 +70,16 @@ const index = () => {
             });
             setChartData(arr);
         }
-    }, [data]); 
+    }, [data]);
+
+    useEffect(() => {
+        if(reset){
+            refetch();
+        }
+        setStartDateAdminCalendarModal("");
+        setEndDateAdminCalendarModal("");
+        setReset(false);
+    }, [reset]);
 
     return isSuccess && (
         <div onClick={() => {
@@ -72,9 +91,20 @@ const index = () => {
             <div className='mb-5 text-xs rounded-lg'>
                 <div className='flex items-center mb-2'>
                     <div className='flex-1 font-bold text-base'>게시판 검색</div>
+                    <div className='px-3 py-1 rounded text-xs bg-m text-white cursor-pointer mr-1' 
+                        onClick={()=>{
+                            setInfo({
+                                searchType: '제목',
+                                search: '',
+                                category: '전체',
+                                sub_category: '',
+                                createDateStart: moment('2023-03-01').format("YYYY-MM-DDTHH:mm:ss"),
+                                createDateEnd: moment(new Date()).format("YYYY-MM-DDTHH:mm:ss")
+                            });
+                            setReset(true);
+                        }}>초기화</div>
                     <div className='px-3 py-1 rounded text-xs bg-m text-white cursor-pointer' onClick={() => refetch()}>검색</div>
                 </div>
-
 
                 <div className='border-y-2 border-grey04'>
                     <div className='flex border-b border-grey06 items-center'>
@@ -156,15 +186,20 @@ const index = () => {
                 </div>
             </div>
 
-        {chartData.length == 0 ? '' : <div className='my-8'>
-            <div className='w-full border-y-2 border-grey04'>
-                <LineChart chartData={chartData}/>
+            <div className='my-8'>
+                <div className='w-full border-y-2 border-grey04'>
+                    {adminChartSelectInfoModal == 0 && <LineChart chartData={chartData} />}
+                    {adminChartSelectInfoModal == 1 && <BarChart chartData={chartData} />}
+                    {adminChartSelectInfoModal == 2 && <PieChart chartData={chartData} />}
+                </div>
+                <div className='flex items-center mt-5 font-bold text-xs'>
+                    <div className='px-2 py-1 bg-grey07 rounded cursor-pointer' onClick={()=>setOpenAdminChartSelectModal(true)}>다른 차트 보기</div>
+                    <div className='flex-1'></div>
+                    <div className='bg-ms w-3 h-3'></div>
+                    <div className='ml-2'>회원가입 일</div>
+                </div>
             </div>
-            <div className='flex items-center justify-end mt-5'>
-                <div className='bg-ms w-3 h-3'></div>
-                <div className='ml-2 font-bold text-xs'>게시글 생성일</div>
-            </div>
-        </div>}
+
             <div className='flex text-xs mb-2'>
                 <div>전체</div>
                 <div className='ml-1 font-bold'>{data.length}명</div>
