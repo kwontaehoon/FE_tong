@@ -45,7 +45,7 @@ import MyActiveBoard from '../component/myActive/board'
 import MyActiveWish from '../component/myActive/wish'
 import MyActiveComment from '../component/myActive/comment'
 
-import Comment from '../component/comment'
+import Maps from '../component/maps'
 
 import App from "../App"
 
@@ -124,7 +124,8 @@ export const router = createBrowserRouter([
             
             { path: "/privacy", element: <Privacy /> },
             { path: "/term", element: <Team /> },
-            { path: "/comment", element: <Comment /> }
+
+            { path: "/maps", element: <Maps /> },
         ]
     },
 ])
