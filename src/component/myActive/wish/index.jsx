@@ -16,7 +16,6 @@ const index = () => {
   const [tab, setTab] = useState(Array(3).fill().map((_, index) => index === 0));
 
   const { data, isSuccess, refetch } = useMyWishListQuery({ users: { userId: getToken().userId } });
-  console.log("data: ", data);
 
   const { mutateAsync: wish } = useWishMutation();
 
@@ -49,6 +48,7 @@ const index = () => {
           <img src="/svg/listNull.svg" />
           <div className='mt-4 text-grey04'>찜한 시설이 없습니다.</div>
         </div> : data.map((x, index) => {
+          console.log("x: ", x);
           return (
             <div key={x.reservationId} className='flex bg-white p-4 mb-ten mx-5 rounded-lg h-40'>
               <div className='flex-1 mr-4 relative'>
@@ -70,14 +70,11 @@ const index = () => {
                   <div className='flex'>{star(x.score)}</div>
                   <div className='ml-1'>{x.score}</div>
                 </div>
-                {index == 0 && <div className='flex mt-3'>
-                  <div className='border border-m text-xs rounded text-m' style={{ padding: "2px 4px" }}>역세권</div>
-                  <div className='ml-1 border border-m text-m text-xs rounded' style={{ padding: "2px 4px" }}>시설 청결</div>
-                </div>}
-                {index == 1 && <div className='flex mt-3'>
-                  <div className='border border-m text-xs rounded text-m' style={{ padding: "2px 4px" }}>금주 예약 가능</div>
-                  <div className='ml-1 border border-m text-m text-xs rounded' style={{ padding: "2px 4px" }}>0 ~ 5명</div>
-                </div>}
+                <div className='flex mt-3'>
+                  {x.category1 && <div className='border border-m text-xs rounded text-m mr-1' style={{ padding: "2px 4px" }}>{x.category1}</div>}
+                  {x.category2 && <div className='border border-m text-m text-xs rounded mr-1' style={{ padding: "2px 4px" }}>{x.category2}</div>}
+                  {x.category3 && <div className='border border-m text-m text-xs rounded mr-1' style={{ padding: "2px 4px" }}>{x.category3}</div>}
+                </div>
                 <div className='mt-3 text-xs'>{x.subTitle}</div>
               </div>
             </div>

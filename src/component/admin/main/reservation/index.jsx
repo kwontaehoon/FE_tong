@@ -18,7 +18,6 @@ const index = () => {
     const imgRef = useRef();
     const { data, isSuccess } = useReservationListQuery();
     const [dataArr, setDataArr] = useState(data);
-    console.log("dateArr: ", dataArr);
     const [addFlag, setAddFlag] = useState(false);
     const [location, setLocation] = useState('');
     const [info, setInfo] = useState({
@@ -28,9 +27,12 @@ const index = () => {
         score: "",
         peopleCount: "",
         deadLine: "",
-        locationDetails: ""
+        locationDetails: "",
+        category1: "",
+        category2: "",
+        category3: ""
     });
-    console.log("info: ", info);
+    
     const [imgFileList, setImgFileList] = useState([]); // 업로드된 이미지 파일 저장
     const [reservationFileIds, setReservationFileIds] = useState([]); // reservationFileIds
     const { mutateAsync: modify } = useReservationModifyMutation();
@@ -65,6 +67,9 @@ const index = () => {
         formData.append("yCoordinate", !addFlag ? info.ycoordinate : location.y);
         formData.append("deadLine", info.deadLine);
         formData.append("locationDetails", info.locationDetails);
+        formData.append("category1", info.category1);
+        formData.append("category2", info.category2);
+        formData.append("category3", info.category3);
 
         if (addFlag) {
             await add(formData);
@@ -231,9 +236,42 @@ const index = () => {
                             </div>
                             <div className='mb-5'>
                                 <div>인원</div>
-                                <input className='border p-3 w-full rounded mt-2' disabled={!modifyFlag[index]} type='number' placeholder={x.peopleCount}
+                                <input className='border p-3 w-full rounded mt-2' disabled={!modifyFlag[index]} type='number' value={x.peopleCount}
                                     onChange={(e) => {
+                                        const arr = [...dataArr];
+                                        arr[index].peopleCount = e.target.value;
+                                        setDataArr(arr);
                                         setInfo({ ...info, peopleCount: e.target.value });
+                                    }} />
+                            </div>
+                            <div className='mb-5'>
+                                <div>카테고리1</div>
+                                <input className='border p-3 w-full rounded mt-2' disabled={!modifyFlag[index]} value={x.category1}
+                                    onChange={(e) => {
+                                        const arr = [...dataArr];
+                                        arr[index].category1 = e.target.value;
+                                        setDataArr(arr);
+                                        setInfo({ ...info, category1: e.target.value });
+                                    }} />
+                            </div>
+                            <div className='mb-5'>
+                                <div>카테고리2</div>
+                                <input className='border p-3 w-full rounded mt-2' disabled={!modifyFlag[index]} value={x.category2}
+                                    onChange={(e) => {
+                                        const arr = [...dataArr];
+                                        arr[index].category2 = e.target.value;
+                                        setDataArr(arr);
+                                        setInfo({ ...info, category2: e.target.value });
+                                    }} />
+                            </div>
+                            <div className='mb-5'>
+                                <div>카테고리3</div>
+                                <input className='border p-3 w-full rounded mt-2' disabled={!modifyFlag[index]} value={x.category3}
+                                    onChange={(e) => {
+                                        const arr = [...dataArr];
+                                        arr[index].category3 = e.target.value;
+                                        setDataArr(arr);
+                                        setInfo({ ...info, category3: e.target.value });
                                     }} />
                             </div>
                             {!modifyFlag[index] ? '' : <LocalizationProvider dateAdapter={AdapterDayjs}>

@@ -28,7 +28,7 @@ const index = ({data}) => {
         <div className='ml-1 mt-2 text-xs flex-col text-grey04'>추천 운동장</div>
       </div>
       <div className='flex mt-3' style={{marginBottom: "18px"}} onClick={()=>navigate(`/reservation/${data[0].reservationId}`)}>
-        <img className='w-3/5 rounded-xl' style={{height: "135px"}} src={`https://tong-bucket.s3.ap-northeast-2.amazonaws.com/${data[0].reservationFiles[0]?.fileName}`} />
+        <img className='w-3/5 rounded-xl' style={{height: "145px"}} src={`https://tong-bucket.s3.ap-northeast-2.amazonaws.com/${data[0].reservationFiles[0]?.fileName}`} />
         <div className='ml-3 flex flex-col justify-center'>
           <div className='flex mb-six font-bold'>
             <div>🥇</div>
@@ -39,8 +39,10 @@ const index = ({data}) => {
             <div className='ml-1'>{data[0].score}</div>
           </div>
           <WeatherFuc data={data[0]}/>
-          <div className='text-xs mt-six'>
-            <span className='bg-grey07 rounded' style={{padding: "2px 4px"}}>금주 예약 가능</span>
+          <div className='text-xs mt-six flex flex-wrap'>
+            {data[0].category1 && <span className='bg-grey07 rounded mr-1 mb-1' style={{padding: "2px 4px"}}>{data[0].category1}</span>}
+            {data[0].category2 && <span className='bg-grey07 rounded mr-1 mb-1' style={{padding: "2px 4px"}}>{data[0].category2}</span>}
+            {data[0].category3 && <span className='bg-grey07 rounded mr-1 mb-1' style={{padding: "2px 4px"}}>{data[0].category3}</span>}
           </div>
         </div>
       </div>
@@ -56,8 +58,10 @@ const index = ({data}) => {
             <div className='ml-1'>{data[1]?.score}</div>
           </div>
           <WeatherFuc data={data[1]}/>
-          <div className='text-xs mt-six'>
-            <span className='bg-grey07 rounded' style={{padding: "2px 4px"}}>5명~10명</span>
+          <div className='text-xs mt-six flex flex-wrap'>
+            {data[1].category1 && <span className='bg-grey07 rounded mr-1 mb-1' style={{padding: "2px 4px"}}>{data[1].category1}</span>}
+            {data[1].category2 && <span className='bg-grey07 rounded mr-1 mb-1' style={{padding: "2px 4px"}}>{data[1].category2}</span>}
+            {data[1].category3 && <span className='bg-grey07 rounded mr-1 mb-1' style={{padding: "2px 4px"}}>{data[1].category3}</span>}
           </div>
         </div>
       </div>
