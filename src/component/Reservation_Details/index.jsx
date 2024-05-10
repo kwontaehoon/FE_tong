@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Banner from './banner'
 import Contents from './contents'
 import Weather_Box from './weather'
+import Maps from './maps'
 import Facilities from './facilities'
 import Header from '../../function/header'
 import { useReservationDetailsQuery } from '../../hooks/queries/api/Reservation'
@@ -56,6 +57,7 @@ const index = () => {
       <div className='p-5 pt-0'>
         <Contents data={data} />
         <Weather_Box selectBox={selectBox} setSelectBox={setSelectBox} info={info} setInfo={setInfo} data={data} />
+        <Maps data={data} />
         <Facilities />
         <div className={'py-5 px-2 flex items-center justify-center rounded-lg bg-grey07 text-grey05'
           + (Object.values(info).every(value => value !== "") && info.peopleCount !== 0 ? ' bg-m text-white' : '')}

@@ -26,8 +26,8 @@ export const weather = async (serviceKey, data) => {
             pageNo: 1,
             base_date: t < 2 ? moment().subtract(1, 'days').format("YYYYMMDD") : moment().format("YYYYMMDD"),
             base_time: baseTime,
-            nx: data.xcoordinate,
-            ny: data.ycoordinate,
+            nx: ["풍무동", "사우동", "장기동", "운양동"].includes(data.location) ? 55 : 54,
+            ny: ["사우동", "장기동", "구래동", "마산동"].includes(data.location) ? 128 : data.location == "풍무동" ? 127 : 129,
             dataType: "JSON"
         },
        
