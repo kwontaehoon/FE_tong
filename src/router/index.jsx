@@ -15,6 +15,7 @@ import SearchResult from '../component/search_result'
 import Reservation from '../component/Reservation'
 import Reservation_Details from '../component/Reservation_Details'
 import Reservation_information from '../component/reservation_information'
+import Reservation_maps from '../component/reservation_Details/maps_details'
 import Breakdown from '../component/breakdown'
 import Weather from '../component/weather'
 import Mypage_info from '../component/mypage/myInfo'
@@ -45,8 +46,6 @@ import MyActiveBoard from '../component/myActive/board'
 import MyActiveWish from '../component/myActive/wish'
 import MyActiveComment from '../component/myActive/comment'
 
-import Maps from '../component/maps'
-
 import App from "../App"
 
 export const router = createBrowserRouter([
@@ -76,7 +75,8 @@ export const router = createBrowserRouter([
                 path: "reservation",
                 children: [
                     { index: true, element: <Reservation /> },
-                    { path: ":id", element: <Reservation_Details /> }
+                    { path: ":id", element: <Reservation_Details /> },
+                    { path: ":id/maps", element: <Reservation_maps />}
                 ]
             },
             { path: "/reservation_information/:id", element: <Reservation_information />},
@@ -124,8 +124,6 @@ export const router = createBrowserRouter([
             
             { path: "/privacy", element: <Privacy /> },
             { path: "/term", element: <Team /> },
-
-            { path: "/maps", element: <Maps /> },
         ]
     },
 ])

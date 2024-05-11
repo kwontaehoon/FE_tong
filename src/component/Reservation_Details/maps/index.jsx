@@ -1,46 +1,49 @@
 import React, { useState, useCallback } from 'react'
 import { Container } from './styles'
 import { Container as MapDiv, NaverMap, Marker, useNavermaps } from 'react-naver-maps'
+import { useNavigate } from 'react-router-dom'
 
 const index = ({ data }) => {
-    console.log("maps data: ", data);
 
-    const navermaps = useNavermaps();
+  const navigate = useNavigate();
 
-    const [zoom, setZoom] = useState(13);
+  const navermaps = useNavermaps();
 
-    const [draggable, setDraggable] = useState(true);
-    const [disableKineticPan, setDisableKineticPan] = useState(true);
-    const [tileTransition, setTileTransition] = useState(true);
-    const [minZoom, setMinZoom] = useState(7);
-    const [scaleControl, setScaleControl] = useState(true);
+  const [zoom, setZoom] = useState(13);
 
-    const handleZoomChanged = useCallback((zoom) => {
-        console.log(`zoom: ${zoom}`)
-    }, [])
+  const [draggable, setDraggable] = useState(true);
+  const [disableKineticPan, setDisableKineticPan] = useState(true);
+  const [tileTransition, setTileTransition] = useState(true);
+  const [minZoom, setMinZoom] = useState(7);
+  const [scaleControl, setScaleControl] = useState(true);
 
-    const normalBtnStyle = {
-        backgroundColor: '#fff',
-        border: 'solid 1px #333',
-        outline: '0 none',
-        borderRadius: '5px',
-        boxShadow: '2px 2px 1px 1px rgba(0, 0, 0, 0.5)',
-        margin: '0 5px 5px 0',
-    }
+  const handleZoomChanged = useCallback((zoom) => {
+    console.log(`zoom: ${zoom}`)
+  }, [])
 
-    const selectedBtnStyle = {
-        ...normalBtnStyle,
-        backgroundColor: '#2780E3',
-        color: 'white',
-    }
+  const normalBtnStyle = {
+    backgroundColor: '#fff',
+    border: 'solid 1px #333',
+    outline: '0 none',
+    borderRadius: '5px',
+    boxShadow: '2px 2px 1px 1px rgba(0, 0, 0, 0.5)',
+    margin: '0 5px 5px 0',
+  }
 
-    return (
-        <Container>
-            <div>위치</div>
-            <div className='mt-[16px]'>
-                <MapDiv className='w-full h-[200px] rounded-lg overflow-hidden' onClick={()=>console.log(123)}>
-                    <div>
-                        {/* <button
+  const selectedBtnStyle = {
+    ...normalBtnStyle,
+    backgroundColor: '#2780E3',
+    color: 'white',
+  }
+
+  return (
+    <Container>
+      <div className='font-bold'>위치</div>
+      <div className='mt-[16px]'>
+        <MapDiv className='w-full h-[200px] rounded-lg overflow-hidden' 
+          onClick={() => navigate("maps", { state: data })}>
+          <div>
+            {/* <button
             style={draggable ? selectedBtnStyle : normalBtnStyle}
             onClick={() => {
               setDraggable((prev) => !prev)
@@ -80,47 +83,46 @@ const index = ({ data }) => {
           >
             최소/최대 줌 레벨: {minZoom} ~ 21
           </button> */}
-                    </div>
-                    <NaverMap
-                        // zoomControl
-                        //   zoomControlOptions={{
-                        //     position: navermaps.Position.top,
-                        //   }}
-                        
-                        defaultCenter={new navermaps.LatLng(data.xcoordinate, data.ycoordinate)}
-                        defaultZoom={13}
-                        onZoomChanged={handleZoomChanged}
-                        // 지도 인터랙션 옵션
-                        draggable={draggable}
-                        pinchZoom={draggable}
-                        scrollWheel={draggable}
-                        keyboardShortcuts={draggable}
-                        disableDoubleTapZoom={!draggable}
-                        disableDoubleClickZoom={!draggable}
-                        disableTwoFingerTapZoom={!draggable}
-                        // 관성 드래깅 옵션
-                        disableKineticPan={disableKineticPan}
-                        // 타일 fadeIn 효과
-                        tileTransition={tileTransition}
-                        // min/max 줌 레벨
-                        minZoom={minZoom}
-                        maxZoom={21}
-                        // 지도 컨트롤
-                        scaleControl={scaleControl}
-                        logoControl={scaleControl}
-                        mapDataControl={scaleControl}
+          </div>
+          <NaverMap
+            // zoomControl
+            //   zoomControlOptions={{
+            //     position: navermaps.Position.top,
+            //   }}
 
-                    // 일반, 위성
-                    //   mapTypeControl={scaleControl}
-                    //   zoomControl={scaleControl}
-                    >
-                        <Marker position={new navermaps.LatLng(37.608330446787, 126.73055919937)} />
-                        <Marker position={new navermaps.LatLng(37.612356452, 126.73255969)} />
-                    </NaverMap>
-                </MapDiv>
-            </div>
-        </Container>
-    )
+            defaultCenter={new navermaps.LatLng(data.xcoordinate, data.ycoordinate)}
+            defaultZoom={13}
+            onZoomChanged={handleZoomChanged}
+            // 지도 인터랙션 옵션
+            draggable={draggable}
+            pinchZoom={draggable}
+            scrollWheel={draggable}
+            keyboardShortcuts={draggable}
+            disableDoubleTapZoom={!draggable}
+            disableDoubleClickZoom={!draggable}
+            disableTwoFingerTapZoom={!draggable}
+            // 관성 드래깅 옵션
+            disableKineticPan={disableKineticPan}
+            // 타일 fadeIn 효과
+            tileTransition={tileTransition}
+            // min/max 줌 레벨
+            minZoom={minZoom}
+            maxZoom={21}
+            // 지도 컨트롤
+            scaleControl={scaleControl}
+            logoControl={scaleControl}
+            mapDataControl={scaleControl}
+
+          // 일반, 위성
+          //   mapTypeControl={scaleControl}
+          //   zoomControl={scaleControl}
+          >
+            <Marker position={new navermaps.LatLng(data.xcoordinate, data.ycoordinate)} />
+          </NaverMap>
+        </MapDiv>
+      </div>
+    </Container>
+  )
 }
 
 export default index
