@@ -27,10 +27,10 @@ export const clockText = [
 
 export const locationText = [
     {id: 1, location: "전체"},
-    {id: 2, location: "풍무동"},
-    {id: 3, location: "사우동"},
-    {id: 4, location: "장기동"},
-    {id: 5, location: "마산동"},
-    {id: 6, location: "운양동"},
-    {id: 7, location: "구래동"},
-]
+    {id: 2, location: "풍무동", grd_lo:"126.7259",grd_la:"37.6020"},
+    {id: 3, location: "사우동", grd_lo:"126.7191",grd_la:"37.6165"},
+    {id: 4, location: "장기동", grd_lo:"126.6713",grd_la:"37.6397"},
+    {id: 5, location: "마산동", grd_lo:"126.6438",grd_la:"37.6412"},
+    {id: 6, location: "운양동", grd_lo:"126.6837",grd_la:"37.6516"},
+    {id: 7, location: "구래동", grd_lo:"126.6237",grd_la:"37.6464"},
+];

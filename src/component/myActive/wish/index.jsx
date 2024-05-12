@@ -25,7 +25,7 @@ const index = () => {
 
   return (
     <Container>
-      <Header arrowUrl={"/mypage"} title={myTabText[tab.findIndex(x => x)].content} padding search />
+      <Header title={myTabText[tab.findIndex(x => x)].content} padding search />
       <TabBox>
         <div className='h-full flex'>
           {myTabText.map((x, index) => {

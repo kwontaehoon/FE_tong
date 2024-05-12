@@ -38,7 +38,7 @@ const index = ({ data }) => {
 
   return (
     <Container>
-      <div className='font-bold'>위치</div>
+      <div className='font-bold'>지도 / 위치</div>
       <div className='mt-[16px]'>
         <MapDiv className='w-full h-[200px] rounded-lg overflow-hidden' 
           onClick={() => navigate("maps", { state: data })}>

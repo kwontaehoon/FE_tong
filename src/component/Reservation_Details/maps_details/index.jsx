@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import Header from '../../../function/header'
-import { Container as MapDiv, NaverMap, Marker, useNavermaps } from 'react-naver-maps'
+import { Container as MapDiv, NaverMap, Marker, useNavermaps, Overlay, useMap } from 'react-naver-maps'
 import { Title, Jangi, Introduction } from './styles'
 import { GrHomeRounded } from "react-icons/gr";
 import { PiNavigationArrow } from "react-icons/pi";
+import { makeMarkerClustering } from './MakeMarkerClustering';
+import { locationText } from '../../../constants/text/api/Reservation';
 
 const index = () => {
 
@@ -25,6 +27,89 @@ const index = () => {
     const [scaleControl, setScaleControl] = useState(true);
 
     const [error, setError] = useState(null);
+
+    function MarkerCluster() {
+    
+      const navermaps = useNavermaps()
+      const map = useMap()
+    
+      const MarkerClustering = makeMarkerClustering(window.naver);
+    
+      const htmlMarker1 = {
+        content:
+          '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(https://navermaps.github.io/maps.js.ncp/docs/img/cluster-marker-1.png);background-size:contain;"></div>',
+        size: navermaps.Size(40, 40),
+        anchor: navermaps.Point(20, 20),
+      }
+      const htmlMarker2 = {
+        content:
+          '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(https://navermaps.github.io/maps.js.ncp/docs/img/cluster-marker-2.png);background-size:contain;"></div>',
+        size: navermaps.Size(40, 40),
+        anchor: navermaps.Point(20, 20),
+      }
+      const htmlMarker3 = {
+        content:
+          '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(https://navermaps.github.io/maps.js.ncp/docs/img/cluster-marker-3.png);background-size:contain;"></div>',
+        size: navermaps.Size(40, 40),
+        anchor: navermaps.Point(20, 20),
+      }
+      const htmlMarker4 = {
+        content:
+          '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(https://navermaps.github.io/maps.js.ncp/docs/img/cluster-marker-4.png);background-size:contain;"></div>',
+        size: navermaps.Size(40, 40),
+        anchor: navermaps.Point(20, 20),
+      }
+      const htmlMarker5 = {
+        content:
+          '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(https://navermaps.github.io/maps.js.ncp/docs/img/cluster-marker-5.png);background-size:contain;"></div>',
+        size: navermaps.Size(40, 40),
+        anchor: navermaps.Point(20, 20),
+      }
+    
+      const data = locationText;
+    
+      const [cluster] = useState(() => {
+        const markers = []
+    
+        for (var i = 0, ii = data.length; i < ii; i++) {
+          var spot = data[i],
+            latlng = new naver.maps.LatLng(spot.grd_la, spot.grd_lo),
+            marker = new naver.maps.Marker({
+              position: latlng,
+              draggable: true,
+            })
+    
+          markers.push(marker)
+        }
+    
+        const cluster = new MarkerClustering({
+          minClusterSize: 2,
+          maxZoom: 8,
+          map: map,
+          markers: markers,
+          disableClickZoom: false,
+          gridSize: 120,
+          icons: [
+            htmlMarker1,
+            htmlMarker2,
+            htmlMarker3,
+            htmlMarker4,
+            htmlMarker5,
+          ],
+          indexGenerator: [10, 100, 200, 500, 1000],
+          stylingFunction: function (clusterMarker, count) {
+            // without jquery $(clusterMarker.getElement()).find('div:first-child').text(count)
+            clusterMarker
+              .getElement()
+              .querySelector('div:first-child').innerText = count
+          },
+        })
+    
+        return cluster
+      })
+    
+      return <Overlay element={cluster} />
+    }
 
 
     const handleClick = (g) => {
@@ -174,6 +259,7 @@ const index = () => {
                             `,
                             anchor: new window.naver.maps.Point(10, 10),
                         }} />
+                      <MarkerCluster />
                 </NaverMap>
             </MapDiv>
             <div className='p-5 bg-white absolute bottom-0 w-full'>
