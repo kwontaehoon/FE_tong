@@ -2,178 +2,198 @@ import React, { useState, useEffect, useCallback } from 'react'
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import Header from '../../../function/header'
 import { Container as MapDiv, NaverMap, Marker, useNavermaps, Overlay, useMap } from 'react-naver-maps'
-import { Title, Jangi, Introduction } from './styles'
 import { GrHomeRounded } from "react-icons/gr";
 import { PiNavigationArrow } from "react-icons/pi";
 import { makeMarkerClustering } from './MakeMarkerClustering';
 import { locationText } from '../../../constants/text/api/Reservation';
+import { star } from '../../../function/star';
+import { useReservationListQuery } from '../../../hooks/queries/api/Main';
+import { FaMapMarkerAlt } from "react-icons/fa";
 
 const index = () => {
 
+  const navermaps = useNavermaps();
+
+  const data = useLocation().state;
+
+  const [zoom, setZoom] = useState(13);
+  const [map, setMap] = useState();
+
+  const [latitude, setLatitude] = useState(null);
+  const [longitude, setLongitude] = useState(null);
+
+  const [draggable, setDraggable] = useState(true);
+  const [disableKineticPan, setDisableKineticPan] = useState(true);
+  const [tileTransition, setTileTransition] = useState(true);
+  const [minZoom, setMinZoom] = useState(7);
+  const [scaleControl, setScaleControl] = useState(true);
+
+  const [error, setError] = useState(null);
+
+  const { data: reservationList } = useReservationListQuery();
+
+  function MarkerCluster() {
+
     const navermaps = useNavermaps();
+    const map = useMap();
 
-    const data = useLocation().state;
+    const MarkerClustering = makeMarkerClustering(window.naver);
 
-    const [zoom, setZoom] = useState(13);
-    const [map, setMap] = useState();
-
-    const [latitude, setLatitude] = useState(null);
-    const [longitude, setLongitude] = useState(null);
-
-    const [draggable, setDraggable] = useState(true);
-    const [disableKineticPan, setDisableKineticPan] = useState(true);
-    const [tileTransition, setTileTransition] = useState(true);
-    const [minZoom, setMinZoom] = useState(7);
-    const [scaleControl, setScaleControl] = useState(true);
-
-    const [error, setError] = useState(null);
-
-    function MarkerCluster() {
-    
-      const navermaps = useNavermaps()
-      const map = useMap()
-    
-      const MarkerClustering = makeMarkerClustering(window.naver);
-    
-      const htmlMarker1 = {
-        content:
-          '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(https://navermaps.github.io/maps.js.ncp/docs/img/cluster-marker-1.png);background-size:contain;"></div>',
-        size: navermaps.Size(40, 40),
-        anchor: navermaps.Point(20, 20),
-      }
-      const htmlMarker2 = {
-        content:
-          '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(https://navermaps.github.io/maps.js.ncp/docs/img/cluster-marker-2.png);background-size:contain;"></div>',
-        size: navermaps.Size(40, 40),
-        anchor: navermaps.Point(20, 20),
-      }
-      const htmlMarker3 = {
-        content:
-          '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(https://navermaps.github.io/maps.js.ncp/docs/img/cluster-marker-3.png);background-size:contain;"></div>',
-        size: navermaps.Size(40, 40),
-        anchor: navermaps.Point(20, 20),
-      }
-      const htmlMarker4 = {
-        content:
-          '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(https://navermaps.github.io/maps.js.ncp/docs/img/cluster-marker-4.png);background-size:contain;"></div>',
-        size: navermaps.Size(40, 40),
-        anchor: navermaps.Point(20, 20),
-      }
-      const htmlMarker5 = {
-        content:
-          '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(https://navermaps.github.io/maps.js.ncp/docs/img/cluster-marker-5.png);background-size:contain;"></div>',
-        size: navermaps.Size(40, 40),
-        anchor: navermaps.Point(20, 20),
-      }
-    
-      const data = locationText;
-    
-      const [cluster] = useState(() => {
-        const markers = []
-    
-        for (var i = 0, ii = data.length; i < ii; i++) {
-          var spot = data[i],
-            latlng = new naver.maps.LatLng(spot.grd_la, spot.grd_lo),
-            marker = new naver.maps.Marker({
-              position: latlng,
-              draggable: true,
-            })
-    
-          markers.push(marker)
-        }
-    
-        const cluster = new MarkerClustering({
-          minClusterSize: 2,
-          maxZoom: 8,
-          map: map,
-          markers: markers,
-          disableClickZoom: false,
-          gridSize: 120,
-          icons: [
-            htmlMarker1,
-            htmlMarker2,
-            htmlMarker3,
-            htmlMarker4,
-            htmlMarker5,
-          ],
-          indexGenerator: [10, 100, 200, 500, 1000],
-          stylingFunction: function (clusterMarker, count) {
-            // without jquery $(clusterMarker.getElement()).find('div:first-child').text(count)
-            clusterMarker
-              .getElement()
-              .querySelector('div:first-child').innerText = count
-          },
-        })
-    
-        return cluster
-      })
-    
-      return <Overlay element={cluster} />
+    const htmlMarker1 = {
+      content:
+        '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(https://navermaps.github.io/maps.js.ncp/docs/img/cluster-marker-1.png);background-size:contain;"></div>',
+      size: navermaps.Size(80, 80),
+      anchor: navermaps.Point(20, 20),
+    }
+    const htmlMarker2 = {
+      content:
+        '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(https://navermaps.github.io/maps.js.ncp/docs/img/cluster-marker-2.png);background-size:contain;"></div>',
+      size: navermaps.Size(40, 40),
+      anchor: navermaps.Point(20, 20),
+    }
+    const htmlMarker3 = {
+      content:
+        '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(https://navermaps.github.io/maps.js.ncp/docs/img/cluster-marker-3.png);background-size:contain;"></div>',
+      size: navermaps.Size(40, 40),
+      anchor: navermaps.Point(20, 20),
+    }
+    const htmlMarker4 = {
+      content:
+        '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(https://navermaps.github.io/maps.js.ncp/docs/img/cluster-marker-4.png);background-size:contain;"></div>',
+      size: navermaps.Size(40, 40),
+      anchor: navermaps.Point(20, 20),
+    }
+    const htmlMarker5 = {
+      content:
+        '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(https://navermaps.github.io/maps.js.ncp/docs/img/cluster-marker-5.png);background-size:contain;"></div>',
+      size: navermaps.Size(40, 40),
+      anchor: navermaps.Point(20, 20),
     }
 
+    const data = locationText;
 
-    const handleClick = (g) => {
-        const successHandler = (position) => {
-            const { latitude, longitude } = position.coords;
+    const [cluster] = useState(() => {
+      const markers = [];
 
-            setLatitude(latitude);
-            setLongitude(longitude);
+      for (var i = 0, ii = data.length; i < ii; i++) {
+        var spot = data[i],
+          latlng = new naver.maps.LatLng(spot.grd_la, spot.grd_lo),
+          marker = new naver.maps.Marker({
+            position: latlng,
+            title: spot.title,
+            draggable: false,
+            icon: {
+              content: `
+                <div style="position: relative; border: 1px solid black;">
+                  <FaMapMarkerAlt width="32px" height="32px" />
+                  <div style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%); font-size: 12px;">${spot.title}</div>
+                </div>
+              `,
+              anchor: new window.naver.maps.Point(16, 32), // 이미지의 중심 위치를 지정
+            },
+          })
 
-            if (g) {
-                map.setCenter(new navermaps.LatLng(data.xcoordinate, data.ycoordinate));
-            } else map.setCenter(new navermaps.LatLng(latitude, longitude));
-        };
+        markers.push(marker);
+      }
 
-        const errorHandler = (error) => {
-            setError(error.message);
-        };
+      markers.forEach((marker, index) => {
+        naver.maps.Event.addListener(marker, 'click', () => {
+          console.log("marker: ", marker.title);
+        });
+      });
 
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(successHandler, errorHandler);
-        } else {
-            setError('Geolocation is not supported by this browser.');
-        }
+      const cluster = new MarkerClustering({
+        minClusterSize: 2,
+        maxZoom: 10,
+        map: map,
+        markers: markers,
+        disableClickZoom: false,
+        gridSize: 120,
+        icons: [
+          htmlMarker1,
+          // htmlMarker2,
+          // htmlMarker3,
+          // htmlMarker4,
+          // htmlMarker5,
+        ],
+        indexGenerator: [10, 100, 200, 500, 1000],
+        stylingFunction: function (clusterMarker, count) {
+          // without jquery $(clusterMarker.getElement()).find('div:first-child').text(count)
+          clusterMarker
+            .getElement()
+            .querySelector('div:first-child').innerText = count
+        },
+      });
+
+      return cluster
+    })
+
+    return <Overlay element={cluster} />
+  }
+
+
+  const handleClick = (g) => {
+    const successHandler = (position) => {
+      const { latitude, longitude } = position.coords;
+
+      setLatitude(latitude);
+      setLongitude(longitude);
+
+      if (g) {
+        map.setCenter(new navermaps.LatLng(data.xcoordinate, data.ycoordinate));
+      } else map.setCenter(new navermaps.LatLng(latitude, longitude));
     };
 
+    const errorHandler = (error) => {
+      setError(error.message);
+    };
 
-    const handleZoomChanged = useCallback((zoom) => {
-        console.log(`zoom: ${zoom}`)
-    }, [])
-
-    const normalBtnStyle = {
-        backgroundColor: '#fff',
-        border: 'solid 1px #333',
-        outline: '0 none',
-        borderRadius: '5px',
-        boxShadow: '2px 2px 1px 1px rgba(0, 0, 0, 0.5)',
-        margin: '0 5px 5px 0',
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(successHandler, errorHandler);
+    } else {
+      setError('Geolocation is not supported by this browser.');
     }
+  };
 
-    const selectedBtnStyle = {
-        ...normalBtnStyle,
-        backgroundColor: '#2780E3',
-        color: 'white',
-    }
 
-    return (
-        <div className='bg-bg'>
-            <Header
-                padding title={"지도"}
-                noClose
-            />
-            <MapDiv className='w-full h-screen rounded-lg overflow-hidden relative'>
-                <div className='absolute h-20 top-0 right-0 flex p-5'>
-                    <div className='shadow-custom mr-3 w-11 h-11 flex justify-center items-center bg-white rounded-full'
-                        onClick={() => handleClick("home")}>
-                        <GrHomeRounded className='text-xl' />
-                    </div>
-                    <div className='shadow-custom w-11 h-11 flex justify-center items-center bg-white rounded-full'
-                        onClick={() => handleClick()}>
-                        <PiNavigationArrow className='text-2xl' />
-                    </div>
-                </div>
-                <div>
-                    {/* <button
+  const handleZoomChanged = useCallback((zoom) => {
+    console.log(`zoom: ${zoom}`)
+  }, [])
+
+  const normalBtnStyle = {
+    backgroundColor: '#fff',
+    border: 'solid 1px #333',
+    outline: '0 none',
+    borderRadius: '5px',
+    boxShadow: '2px 2px 1px 1px rgba(0, 0, 0, 0.5)',
+    margin: '0 5px 5px 0',
+  }
+
+  const selectedBtnStyle = {
+    ...normalBtnStyle,
+    backgroundColor: '#2780E3',
+    color: 'white',
+  }
+
+  return (
+    <div className='bg-bg h-full'>
+      <Header
+        padding title={"지도"}
+        noClose
+      />
+      <MapDiv className='w-full h-1/2 rounded-lg overflow-hidden relative'>
+        <div className='absolute h-20 top-0 right-0 flex p-5'>
+          <div className='shadow-custom mr-2 w-8 h-8 flex justify-center items-center bg-white rounded-full'
+            onClick={() => handleClick("home")}>
+            <GrHomeRounded />
+          </div>
+          <div className='shadow-custom w-8 h-8 flex justify-center items-center bg-white rounded-full'
+            onClick={() => handleClick()}>
+            <PiNavigationArrow className='text-lg' />
+          </div>
+        </div>
+        <div>
+          {/* <button
             style={draggable ? selectedBtnStyle : normalBtnStyle}
             onClick={() => {
               setDraggable((prev) => !prev)
@@ -213,62 +233,81 @@ const index = () => {
           >
             최소/최대 줌 레벨: {minZoom} ~ 21
           </button> */}
-                </div>
-                <NaverMap
-                    // zoomControl
-                    //   zoomControlOptions={{
-                    //     position: navermaps.Position.top,
-                    //   }}
+        </div>
+        <NaverMap
+          // zoomControl
+          //   zoomControlOptions={{
+          //     position: navermaps.Position.top,
+          //   }}
 
-                    ref={setMap}
-                    defaultCenter={new navermaps.LatLng(data.xcoordinate, data.ycoordinate)}
-                    defaultZoom={13}
-                    onZoomChanged={handleZoomChanged}
-                    // 지도 인터랙션 옵션
-                    draggable={draggable}
-                    pinchZoom={draggable}
-                    scrollWheel={draggable}
-                    keyboardShortcuts={draggable}
-                    disableDoubleTapZoom={!draggable}
-                    disableDoubleClickZoom={!draggable}
-                    disableTwoFingerTapZoom={!draggable}
-                    // 관성 드래깅 옵션
-                    disableKineticPan={disableKineticPan}
-                    // 타일 fadeIn 효과
-                    tileTransition={tileTransition}
-                    // min/max 줌 레벨
-                    minZoom={minZoom}
-                    maxZoom={21}
-                    // 지도 컨트롤
-                    scaleControl={scaleControl}
-                    logoControl={scaleControl}
-                    mapDataControl={scaleControl}
+          ref={setMap}
+          defaultCenter={new navermaps.LatLng(data.xcoordinate, data.ycoordinate)}
+          defaultZoom={13}
+          onZoomChanged={handleZoomChanged}
+          // 지도 인터랙션 옵션
+          draggable={draggable}
+          pinchZoom={draggable}
+          scrollWheel={draggable}
+          keyboardShortcuts={draggable}
+          disableDoubleTapZoom={!draggable}
+          disableDoubleClickZoom={!draggable}
+          disableTwoFingerTapZoom={!draggable}
+          // 관성 드래깅 옵션
+          disableKineticPan={disableKineticPan}
+          // 타일 fadeIn 효과
+          tileTransition={tileTransition}
+          // min/max 줌 레벨
+          minZoom={minZoom}
+          maxZoom={21}
+          // 지도 컨트롤
+          scaleControl={scaleControl}
+          logoControl={scaleControl}
+          mapDataControl={scaleControl}
 
-                // 일반, 위성
-                //   mapTypeControl={scaleControl}
-                //   zoomControl={scaleControl}
-                >
-                    <Marker position={new navermaps.LatLng(data.xcoordinate, data.ycoordinate)} />
-                    <Marker
-                        position={new navermaps.LatLng(latitude, longitude)}
-                        icon={{
-                            content: `
+        // 일반, 위성
+        //   mapTypeControl={scaleControl}
+        //   zoomControl={scaleControl}
+        >
+          {/* <Marker position={new navermaps.LatLng(data.xcoordinate, data.ycoordinate)} /> */}
+          <Marker
+            position={new navermaps.LatLng(latitude, longitude)}
+            icon={{
+              content: `
                             <div style="display: flex; justify-content: center; align-items: center; width: 20px; height: 20px; background-color: white; border-radius: 50%; box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);">
                                 <div style="width: 13px; height: 13px; background-color: red; border-radius: 50%;"></div>
                             </div>
                             `,
-                            anchor: new window.naver.maps.Point(10, 10),
-                        }} />
-                      <MarkerCluster />
-                </NaverMap>
-            </MapDiv>
-            <div className='p-5 bg-white absolute bottom-0 w-full'>
-                <Title>{data.title}</Title>
-                <Jangi>{data.subTitle}</Jangi>
-                <Introduction>{data.locationDetails}</Introduction>
+              anchor: new window.naver.maps.Point(10, 10),
+            }} />
+          <MarkerCluster />
+        </NaverMap>
+      </MapDiv>
+      <div className='p-5 bg-white absolute bottom-0 h-1/2 w-full overflow-y-scroll'>
+        {reservationList && reservationList.map(x => {
+          return (
+            <div key={x.reservationId} className='border-y border-grey07 flex py-5'>
+              <img className='w-32 h-28 rounded' src={`https://tong-bucket.s3.ap-northeast-2.amazonaws.com/${x.reservationFiles[0]?.fileName}`} />
+              <div className='m-2 ml-4 text-xs flex flex-col'>
+                <div className='flex mb-2 flex-wrap'>
+                  <div className='mr-1 py-[2px] font-bold'>{x.title}</div>
+                  {x.category1 && <div className='bg-ms text-white px-1 py-[2px] rounded mr-1'>{x.category1}</div>}
+                  {x.category2 && <div className='bg-ms text-white px-1 py-[2px] rounded mr-1'>{x.category2}</div>}
+                  {x.category3 && <div className='bg-ms text-white px-1 py-[2px] rounded mr-1'>{x.category3}</div>}
+                </div>
+                {/* <div>{data.subTitle}</div> */}
+                <div className='flex'>{x.locationDetails}</div>
+                <div className='flex mt-1'>{star(x.score)}</div>
+                <div className='flex flex-1 items-end'>
+                  <div>신청 {x.resrvationApplicants.length}</div>
+                  <div className='text-grey04'>/{x.peopleCount}명</div>
+                </div>
+              </div>
             </div>
-        </div>
-    )
+          )
+        })}
+      </div>
+    </div>
+  )
 }
 
 export default index

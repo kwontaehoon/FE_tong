@@ -27,10 +27,10 @@ export const clockText = [
 
 export const locationText = [
     {id: 1, location: "전체"},
-    {id: 2, location: "풍무동", grd_lo:"126.7259",grd_la:"37.6020"},
-    {id: 3, location: "사우동", grd_lo:"126.7191",grd_la:"37.6165"},
-    {id: 4, location: "장기동", grd_lo:"126.6713",grd_la:"37.6397"},
-    {id: 5, location: "마산동", grd_lo:"126.6438",grd_la:"37.6412"},
-    {id: 6, location: "운양동", grd_lo:"126.6837",grd_la:"37.6516"},
-    {id: 7, location: "구래동", grd_lo:"126.6237",grd_la:"37.6464"},
+    {id: 2, location: "풍무동", title: "풍무동", grd_lo:"126.7259", grd_la:"37.6020"},
+    {id: 3, location: "사우동", title: "사우동", grd_lo:"126.7191", grd_la:"37.6165"},
+    {id: 4, location: "장기동", title: "장기동", grd_lo:"126.6713", grd_la:"37.6397"},
+    {id: 5, location: "마산동", title: "마산동", grd_lo:"126.6438", grd_la:"37.6412"},
+    {id: 6, location: "운양동", title: "운양동", grd_lo:"126.6837", grd_la:"37.6516"},
+    {id: 7, location: "구래동", title: "구래동", grd_lo:"126.6237", grd_la:"37.6464"},
 ];
