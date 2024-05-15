@@ -13,6 +13,7 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 const index = () => {
 
   const navermaps = useNavermaps();
+  const navigate = useNavigate();
 
   const data = useLocation().state;
 
@@ -32,7 +33,7 @@ const index = () => {
 
   const { data: reservationList } = useReservationListQuery();
 
-  const [select, setSelect] = useState(6);
+  const [select, setSelect] = useState(data.reservationId);
 
   // 위치 아이콘 누르면 화면 센터로 이동
 
@@ -79,11 +80,13 @@ const index = () => {
                       <img src="/images/marker.png" style="width: 30px;" />
                     </div>
 
-                    <div style="font-size: 12px; position: absolute; width: 200px; top: -100px; left: -85px; display: flex; margin-bottom: 10px; background-color: white; padding: 5px;">
-                      <img src="https://tong-bucket.s3.ap-northeast-2.amazonaws.com/${spot.reservationFiles[0]?.fileName}" style="width: 100px; height: 70px;" />
-                      <div style="margin-left: 12px;">
-                        <div>${spot.title}</div>
-                        <div></div>
+                    <div style="font-size: 12px; border-radius: 10px; position: absolute; width: 200px; top: -100px; left: -85px; display: flex; margin-bottom: 10px; background-color: white; padding: 8px; z-index: 10;">
+                    <div style="width: 40%; height: 70px;" display: flex;>
+                      <img src="https://tong-bucket.s3.ap-northeast-2.amazonaws.com/${spot.reservationFiles[0]?.fileName}" style="width: 100%; height: 100%;" />
+                    </div>
+                      <div style="width: 60%; margin-left: 12px;">
+                        <div style="margin-bottom: 3px; font-weight: bold;">${spot.title}</div>
+                        <div style="font-size: 11px;">${spot.locationDetails}</div>
                       </div>
                     </div>
 
@@ -105,6 +108,9 @@ const index = () => {
 
     markers.forEach((marker, index) => {
       naver.maps.Event.addListener(marker, 'click', () => {
+        if(reservationList.filter(x => x.title == marker.title)[0].reservationId == select){
+          navigate(`/reservation/${select}`);
+        }
         setSelect(reservationList.filter(x => x.title == marker.title)[0].reservationId);
       });
     });
@@ -286,14 +292,14 @@ const index = () => {
       <div className='p-5 bg-white absolute bottom-0 h-2/5 w-full overflow-y-scroll'>
         {reservationList && reservationList.map(x => {
           return (
-            <div key={x.reservationId} className='border-y border-grey07 flex py-5'>
+            <div key={x.reservationId} className='border-y border-grey07 flex py-5' onClick={()=>navigate(`/reservation/${x.reservationId}`)}>
               <img className='w-32 h-28 rounded' src={`https://tong-bucket.s3.ap-northeast-2.amazonaws.com/${x.reservationFiles[0]?.fileName}`} />
               <div className='m-2 ml-4 text-xs flex flex-col'>
                 <div className='flex mb-2 flex-wrap'>
                   <div className='mr-1 py-[2px] font-bold'>{x.title}</div>
-                  {x.category1 && <div className='bg-ms text-white px-1 py-[2px] rounded mr-1'>{x.category1}</div>}
-                  {x.category2 && <div className='bg-ms text-white px-1 py-[2px] rounded mr-1'>{x.category2}</div>}
-                  {x.category3 && <div className='bg-ms text-white px-1 py-[2px] rounded mr-1'>{x.category3}</div>}
+                  {x.category1 && <div className='bg-ms text-white px-1 py-[2px] rounded mr-1 mb-1'>{x.category1}</div>}
+                  {x.category2 && <div className='bg-ms text-white px-1 py-[2px] rounded mr-1 mb-1'>{x.category2}</div>}
+                  {x.category3 && <div className='bg-ms text-white px-1 py-[2px] rounded mr-1 mb-1'>{x.category3}</div>}
                 </div>
                 {/* <div>{data.subTitle}</div> */}
                 <div className='flex'>{x.locationDetails}</div>

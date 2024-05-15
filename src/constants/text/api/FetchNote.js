@@ -29,8 +29,8 @@ export const fetchNoteText = [
     },
     {
         id: 5,
-        version: 'v0.4.2(진행중)',
-        date: '24.05~현재',
+        version: 'v0.4.2(완료)',
+        date: '24.05',
         title: '사용자',
         content: '- 등록된 예약 좌표를 이용한 네이버 지도 API 연동'
     }
