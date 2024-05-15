@@ -32,7 +32,20 @@ const index = () => {
 
   const { data: reservationList } = useReservationListQuery();
 
-  function MarkerCluster() {
+  const [select, setSelect] = useState(6);
+
+  // 위치 아이콘 누르면 화면 센터로 이동
+
+  // useEffect(() => {
+  //   if (reservationList && select) {
+  //     const selectedMarker = reservationList.find(x => x.reservationId === select);
+  //     if (selectedMarker) {
+  //       map.setCenter(new navermaps.LatLng(selectedMarker.xcoordinate, selectedMarker.ycoordinate));
+  //     }
+  //   }
+  // }, [select]);
+
+  const MarkerCluster = () => {
 
     const navermaps = useNavermaps();
     const map = useMap();
@@ -45,92 +58,80 @@ const index = () => {
       size: navermaps.Size(80, 80),
       anchor: navermaps.Point(20, 20),
     }
-    const htmlMarker2 = {
-      content:
-        '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(https://navermaps.github.io/maps.js.ncp/docs/img/cluster-marker-2.png);background-size:contain;"></div>',
-      size: navermaps.Size(40, 40),
-      anchor: navermaps.Point(20, 20),
-    }
-    const htmlMarker3 = {
-      content:
-        '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(https://navermaps.github.io/maps.js.ncp/docs/img/cluster-marker-3.png);background-size:contain;"></div>',
-      size: navermaps.Size(40, 40),
-      anchor: navermaps.Point(20, 20),
-    }
-    const htmlMarker4 = {
-      content:
-        '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(https://navermaps.github.io/maps.js.ncp/docs/img/cluster-marker-4.png);background-size:contain;"></div>',
-      size: navermaps.Size(40, 40),
-      anchor: navermaps.Point(20, 20),
-    }
-    const htmlMarker5 = {
-      content:
-        '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(https://navermaps.github.io/maps.js.ncp/docs/img/cluster-marker-5.png);background-size:contain;"></div>',
-      size: navermaps.Size(40, 40),
-      anchor: navermaps.Point(20, 20),
-    }
 
-    const data = locationText;
+    const data = reservationList;
 
-    const [cluster] = useState(() => {
-      const markers = [];
+    const markers = [];
 
+    if (reservationList) {
       for (var i = 0, ii = data.length; i < ii; i++) {
         var spot = data[i],
-          latlng = new naver.maps.LatLng(spot.grd_la, spot.grd_lo),
+          latlng = new naver.maps.LatLng(spot.xcoordinate, spot.ycoordinate),
           marker = new naver.maps.Marker({
             position: latlng,
             title: spot.title,
             draggable: false,
-            icon: {
+            icon: i + 1 == select ? {
               content: `
-                <div style="position: relative; border: 1px solid black;">
-                  <FaMapMarkerAlt width="32px" height="32px" />
-                  <div style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%); font-size: 12px;">${spot.title}</div>
-                </div>
-              `,
-              anchor: new window.naver.maps.Point(16, 32), // 이미지의 중심 위치를 지정
-            },
-          })
+                  <div>
+                    
+                    <div style="display: flex; justify-content: center;">
+                      <img src="/images/marker.png" style="width: 30px;" />
+                    </div>
 
+                    <div style="font-size: 12px; position: absolute; width: 200px; top: -100px; left: -85px; display: flex; margin-bottom: 10px; background-color: white; padding: 5px;">
+                      <img src="https://tong-bucket.s3.ap-northeast-2.amazonaws.com/${spot.reservationFiles[0]?.fileName}" style="width: 100px; height: 70px;" />
+                      <div style="margin-left: 12px;">
+                        <div>${spot.title}</div>
+                        <div></div>
+                      </div>
+                    </div>
+
+                  </div>
+                `,
+
+            } : {
+              content: `
+                  <div style="display: flex; justify-content: center;">
+                    <img src="/images/marker.png" style="width: 30px;" />
+                  </div>
+                `
+            },
+          });
+          
         markers.push(marker);
       }
+    }
 
-      markers.forEach((marker, index) => {
-        naver.maps.Event.addListener(marker, 'click', () => {
-          console.log("marker: ", marker.title);
+    markers.forEach((marker, index) => {
+      naver.maps.Event.addListener(marker, 'click', () => {
+        setSelect(reservationList.filter(x => x.title == marker.title)[0].reservationId);
+      });
+    });
+
+    useEffect(() => {
+      if (markers.length > 0) {
+        const cluster = new MarkerClustering({
+          minClusterSize: 2,
+          maxZoom: 10,
+          map: map,
+          markers: markers,
+          disableClickZoom: false,
+          gridSize: 120,
+          icons: [htmlMarker1],
+          indexGenerator: [10, 100, 200, 500, 1000],
+          stylingFunction: (clusterMarker, count) => {
+            clusterMarker.getElement().querySelector('div:first-child').innerText = count;
+          },
         });
-      });
 
-      const cluster = new MarkerClustering({
-        minClusterSize: 2,
-        maxZoom: 10,
-        map: map,
-        markers: markers,
-        disableClickZoom: false,
-        gridSize: 120,
-        icons: [
-          htmlMarker1,
-          // htmlMarker2,
-          // htmlMarker3,
-          // htmlMarker4,
-          // htmlMarker5,
-        ],
-        indexGenerator: [10, 100, 200, 500, 1000],
-        stylingFunction: function (clusterMarker, count) {
-          // without jquery $(clusterMarker.getElement()).find('div:first-child').text(count)
-          clusterMarker
-            .getElement()
-            .querySelector('div:first-child').innerText = count
-        },
-      });
-
-      return cluster
-    })
-
-    return <Overlay element={cluster} />
+        return () => {
+          // Naver 지도 API에서 클러스터를 지도에서 제거하는 메서드
+          cluster.setMap(null);
+        };
+      }
+    }, [select]);
   }
-
 
   const handleClick = (g) => {
     const successHandler = (position) => {
@@ -181,7 +182,7 @@ const index = () => {
         padding title={"지도"}
         noClose
       />
-      <MapDiv className='w-full h-1/2 rounded-lg overflow-hidden relative'>
+      <MapDiv className='w-full h-3/5 rounded-lg overflow-hidden relative'>
         <div className='absolute h-20 top-0 right-0 flex p-5'>
           <div className='shadow-custom mr-2 w-8 h-8 flex justify-center items-center bg-white rounded-full'
             onClick={() => handleClick("home")}>
@@ -282,7 +283,7 @@ const index = () => {
           <MarkerCluster />
         </NaverMap>
       </MapDiv>
-      <div className='p-5 bg-white absolute bottom-0 h-1/2 w-full overflow-y-scroll'>
+      <div className='p-5 bg-white absolute bottom-0 h-2/5 w-full overflow-y-scroll'>
         {reservationList && reservationList.map(x => {
           return (
             <div key={x.reservationId} className='border-y border-grey07 flex py-5'>
