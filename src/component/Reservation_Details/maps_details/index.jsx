@@ -32,6 +32,7 @@ const index = () => {
   const [error, setError] = useState(null);
 
   const { data: reservationList } = useReservationListQuery();
+  console.log("data: ", data);
 
   const [select, setSelect] = useState(data.reservationId);
 
