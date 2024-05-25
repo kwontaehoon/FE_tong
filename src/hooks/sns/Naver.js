@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const REST_API_KEY ="JQ3LN1au64GoCxY_jppC";
-// const REDIRECT_URI = "http://localhost:5173";
-const REDIRECT_URI = "http://52.78.174.115";
+// const REDIRECT_URI = "http://localhost:5173/login";
+const REDIRECT_URI = "https://www.tongtongball.com/login";
 const REST_API_SECRET_KEY = "FChqSs3QA6";
 
 export const naverLogin = () => {
@@ -15,18 +15,20 @@ export const naverLogin = () => {
 }
 
 export const naverToken = (code, state) => {
-    return axios({
+    const response = axios({
         url: "https://nid.naver.com/oauth2.0/token",
-        method: "post",
+        method: "get",
         headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
+            'Content-Type': 'application/json',
         },
-        data: {
+        params: {
             client_id: REST_API_KEY,
             client_secret: REST_API_SECRET_KEY,
             code: code,
             state: state,
             grant_type: "authorization_code",
         }
-    })
+    });
+    console.log("response: ", response);
+    return response;
 }

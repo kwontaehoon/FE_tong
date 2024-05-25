@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const REST_API_KEY ="ba157ca0d9257f05c9b0f7a77540df9e";
-const REDIRECT_URI = "http://localhost:5173/login";
-// const REDIRECT_URI = "http://52.78.174.115";
+// const REDIRECT_URI = "http://localhost:5173/login";
+const REDIRECT_URI = "https://www.tongtongball.com/login";
 
 export const kakaoLogin = () => {
 

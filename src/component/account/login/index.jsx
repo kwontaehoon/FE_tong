@@ -49,7 +49,7 @@ const index = () => {
                 navigate("/signup", { state: info.data.email });
             } else {
                 localStorage.setItem("token", response.data.token)
-                navigate("/main");
+                navigate("/");
             }
         }
     });
@@ -71,7 +71,7 @@ const index = () => {
                     navigate("/signup", { state: info.data.kakao_account.email });
                 } else {
                     localStorage.setItem("token", response.data.token);
-                    navigate("/main");
+                    navigate("/");
                 }
             }
 
