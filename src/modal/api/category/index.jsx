@@ -20,9 +20,10 @@ const index = () => {
   const { data, isSuccess } = usePickListQuery();
 
   const { data: info, isSuccess: infoSuccess, refetch } = useInfoQuery({ userId: !getToken().userId ? 0 : getToken().userId });
+
   useEffect(() => {
     refetch();
-  }, []);
+  }, [getToken]);
 
   return isSuccess && infoSuccess && (
     <ModalSideContainer $show={categoryModal}>
