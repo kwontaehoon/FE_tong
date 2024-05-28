@@ -9,7 +9,7 @@ const index = () => {
     const [modal, setModal] = useState(true);
 
     return modal && (
-        <div className='absolute right-20 bg-white p-5 py-7 shadow-custom rounded-lg' style={{width: "600px", zIndex: 999}}>
+        <div className='absolute right-20 bg-white h-[600px] overflow-y-scroll p-5 py-7 shadow-custom rounded-lg' style={{width: "600px", zIndex: 999}}>
             <div className='flex justify-end mb-2'>
                 <img src='/svg/close.svg' className='cursor-pointer' onClick={()=>setModal(false)} />
             </div>

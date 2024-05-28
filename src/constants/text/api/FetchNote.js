@@ -33,5 +33,34 @@ export const fetchNoteText = [
         date: '24.05',
         title: '사용자',
         content: '- 등록된 예약 좌표를 이용한 네이버 지도 API 연동'
+    },
+    {
+        id: 6,
+        version: 'v0.4.3(진행중)',
+        date: '24.06',
+        title: '사용자',
+        content: '- 지도 좌표 배포 주소로는 위도경도 상이'
+    },
+    {
+        id: 7,
+        version: 'v0.4.4',
+        date: '24.06',
+        title: '사용자',
+        content: '- 지도 UX 개선'
+    },
+    {
+        id: 8,
+        version: 'v0.4.5',
+        date: '24.06',
+        title: '사용자',
+        content: '- 네이버 로그인 오류'
+    },
+    {
+        
+        id: 9,
+        version: 'v0.4.5',
+        date: '24.06',
+        title: '사용자',
+        content: '- 소셜 로그인 UX 개선'
     }
 ]
