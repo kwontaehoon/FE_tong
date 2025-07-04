@@ -5,14 +5,13 @@
 ---
 
 #### 작업 기간 : 24.01.28 ~ 24.03.09
-##### 보수 기간 : 24.03 ~ 현재
-#### 배포 URL : http://3.36.37.240
+##### 보수 기간 : 24.03 ~ 24.05
+#### 배포 URL : 현재 내려감
 - User ID : test
 - User PW : 1111
-- Admin ID : admin 
+- Admin ID : admin
 - Admin PW : 1111
 - [Back-end Github](https://github.com/kwontaehoon/BE_tong)
-- [Notion 회의록](https://dynamic-ketchup-d66.notion.site/9e137d4f6ca143188d55c5b642fdbaf0?pvs=4)
 
 ---
 
@@ -28,7 +27,7 @@
 
 | **권태훈** | **김정애** | **홍성혁** | **권나영** | **이민희** |
 | :------: |  :------: | :------: | :------: | :------: |
-| [<img src="./public//svg//profile1.svg" height=100 width=150> <br/> @gju04195](https://github.com/kwontaehoon) | [<img src="./public//svg//profile2.svg" height=100 width=150> <br/>@joni81](https://github.com/kimjungae) | [<img src="./public//svg//profile3.svg" height=100 width=150> <br/> @shhong497](https://github.com/hyeok0519) | [<img src="./public//svg//profile4.svg" height=100 width=150> <br/> @gilnayungli](https://github.com/nayoung33) | [<img src="./public//svg//profile5.svg" height=100 width=150> <br/> @dlalsgml1250]() |
+|gju04195 | joni81 | shhong497 | gilnayungli | dlalsgml1250 |
 |Front-end / Back-end|Design / Publishing|Back-end|Publishing|Design|
 
 </div>
